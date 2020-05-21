@@ -1,0 +1,16 @@
+{% set googleFontsUrl = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&amp;family=Montserrat:wght@900&amp;display=swap" %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" media="all" href="{{ '/css/all.css' | path }}">
+		<link rel="stylesheet" media="print" href="{{ googleFontsUrl }}" onload="this.media='all'">
+		<noscript><link rel="stylesheet" media="all" href="{{ googleFontsUrl }}"></noscript>
+		<title>Preview</title>
+	</head>
+	<body>
+		{{ yield }}
+		<script src="{{ '/js/all.js' | path }}"></script>
+	</body>
+</html>

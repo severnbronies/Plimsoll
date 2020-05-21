@@ -27,9 +27,9 @@ COMPONENT_PATH=$PARENT_DIR/components/$COMPONENT_NAME_LOWER
 
 # Create files
 mkdir $COMPONENT_PATH
-touch "$COMPONENT_PATH/template.njk"
-touch "$COMPONENT_PATH/macro.njk"
-touch "$COMPONENT_PATH/$COMPONENT_NAME_LOWER.njk"
+touch "$COMPONENT_PATH/template.twig"
+touch "$COMPONENT_PATH/macro.twig"
+touch "$COMPONENT_PATH/$COMPONENT_NAME_LOWER.twig"
 touch "$COMPONENT_PATH/$COMPONENT_NAME_LOWER.config.yaml"
 touch "$COMPONENT_PATH/README.md"
 touch "$COMPONENT_PATH/params.yaml"
@@ -37,14 +37,14 @@ touch "$COMPONENT_PATH/$COMPONENT_NAME_LOWER.js"
 touch "$COMPONENT_PATH/_$COMPONENT_NAME_LOWER.scss"
 
 # Prepopulate macro
-cat <<EOF > "$COMPONENT_PATH/macro.njk"
+cat <<EOF > "$COMPONENT_PATH/macro.twig"
 {% macro ${NAMESPACE}${COMPONENT_NAME_CAMEL}(params) %}
-    {%- include "./template.njk" -%}
+    {%- include "./template.twig" -%}
 {% endmacro %}
 EOF
 
 # Prepopulate template
-cat <<EOF > "$COMPONENT_PATH/template.njk"
+cat <<EOF > "$COMPONENT_PATH/template.twig"
 <div
     data-module="${NAMESPACE}-${COMPONENT_NAME_LOWER}"
     class="${NAMESPACE}-${COMPONENT_NAME_LOWER} {%- if params.classes %} {{ params.classes }}{% endif %}"
@@ -53,8 +53,8 @@ cat <<EOF > "$COMPONENT_PATH/template.njk"
 EOF
 
 # Prepopulate demo file
-cat <<EOF > "$COMPONENT_PATH/$COMPONENT_NAME_LOWER.njk"
-{% from "${COMPONENT_NAME_LOWER}/macro.njk" import ${NAMESPACE}${COMPONENT_NAME_CAMEL} %}
+cat <<EOF > "$COMPONENT_PATH/$COMPONENT_NAME_LOWER.twig"
+{% from "${COMPONENT_NAME_LOWER}/macro.twig" import ${NAMESPACE}${COMPONENT_NAME_CAMEL} %}
 
 {{ ${NAMESPACE}${COMPONENT_NAME_CAMEL}({
     
@@ -79,11 +79,9 @@ cat <<EOF > "$COMPONENT_PATH/params.yaml"
 params:
   - name: attributes
     type: object
-    required: false
     description: HTML attributes, such as data attributes, to add to the component.
   - name: classes
     type: string
-    required: false
     description: Classes to add to the component.
 EOF
 

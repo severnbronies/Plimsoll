@@ -19,6 +19,27 @@ function getDesignTokens() {
 	return tokenData;
 }
 
+// Twig (for components)
+const twig = require("@frctl/twig")({
+	method: "fs",
+	namespaces: {
+		components: path.join(__dirname, "../components/")
+	},
+	filters: {
+		merge: function(...objs) {
+			let result = {};
+			objs.forEach(obj => {
+				if (!obj || typeof obj !== "object") {
+					return;
+				}
+				result = _.merge(result, obj);
+			});
+			return result;
+		}
+	}
+});
+
+// Nunjucks (for docs)
 const nunjucks = require("@frctl/nunjucks")({
 	paths: ["components", "docs"],
 	globals: {
@@ -35,24 +56,14 @@ const nunjucks = require("@frctl/nunjucks")({
 		},
 		theoTokenSass: function(string) {
 			return `$${string.replace(/_/g, "-")}`;
-		},
-		merge: function(...objs) {
-			let result = {};
-			objs.forEach(obj => {
-				if (!obj || typeof obj !== "object") {
-					return;
-				}
-				result = _.merge(result, obj);
-			});
-			return result;
 		}
 	}
 });
 
-fractal.set("project.title", `Kickstart your design system`);
+fractal.set("project.title", `Plimsoll design system`);
 
-fractal.components.engine(nunjucks);
-fractal.components.set("ext", ".(html|njk)");
+fractal.components.engine(twig);
+fractal.components.set("ext", ".twig");
 fractal.components.set("path", "./components");
 fractal.components.set("default.preview", "@preview");
 fractal.components.set("default.status", "prototype");

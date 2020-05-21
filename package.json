@@ -24,6 +24,7 @@
 		"@frctl/fractal": "^1.2.0",
 		"@frctl/mandelbrot": "git+ssh://git@github.com/querkmachine/mandelbrot.git",
 		"@frctl/nunjucks": "^2.0.1",
+		"@frctl/twig": "^1.2.0",
 		"@prettier/plugin-php": "^0.14.0",
 		"babelify": "^10.0.0",
 		"browserify": "^16.5.0",
