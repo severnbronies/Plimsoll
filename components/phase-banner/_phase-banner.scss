@@ -1,0 +1,56 @@
+@use "tokens.web" as *;
+@use "mixins/helpers";
+
+.sb-phase-banner {
+	$self: &;
+	$bannerPadding: 1rem;
+	$arrowSize: 0.8rem;
+	$arrowMargin: 1.5rem;
+	$arrowColor: $color-primary;
+	@include helpers.details-no-arrow;
+	color: $color-off-black;
+	background-color: $color-white;
+	border-bottom: 1px solid currentColor;
+	&[open] {
+		#{$self}__summary {
+			&::before {
+				clip-path: polygon(0 0, 100% 0, 50% 100%);
+			}
+		}
+	}
+	&__summary {
+		display: inline-block;
+		padding: ($bannerPadding / 2) $bannerPadding ($bannerPadding / 2)
+			($bannerPadding + $arrowMargin);
+		cursor: pointer;
+		&::before {
+			content: "";
+			display: inline-block;
+			width: $arrowSize;
+			height: $arrowSize;
+			margin-top: 0.2em;
+			margin-left: 0 - $arrowMargin;
+			float: left;
+			clear: left;
+			background-color: $arrowColor;
+			clip-path: polygon(0 0, 100% 50%, 0 100%);
+		}
+	}
+	&__summary-heading,
+	&__summary-subheading {
+		display: block;
+	}
+	&__summary-heading {
+		font-weight: 700;
+		line-height: $lead-title;
+	}
+	&__summary-subheading {
+		margin-top: 0.25rem;
+		font-size: $size-small;
+	}
+	&__body {
+		max-width: $measure-default;
+		padding: ($bannerPadding / 2) $bannerPadding ($bannerPadding / 2)
+			($bannerPadding + $arrowMargin);
+	}
+}

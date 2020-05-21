@@ -66,3 +66,16 @@
 	padding: 0;
 	list-style-type: none;
 }
+
+/**
+ * Remove arrow marker from <details>/<summary> elements.
+ */
+
+@mixin details-no-arrow {
+	> summary {
+		list-style-type: none;
+	}
+	> summary::-webkit-details-marker {
+		display: none;
+	}
+}
