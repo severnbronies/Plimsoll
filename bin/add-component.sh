@@ -54,7 +54,7 @@ EOF
 
 # Prepopulate demo file
 cat <<EOF > "$COMPONENT_PATH/$COMPONENT_NAME_LOWER.twig"
-{% from "${COMPONENT_NAME_LOWER}/macro.twig" import ${NAMESPACE}${COMPONENT_NAME_CAMEL} %}
+{% from "components::${COMPONENT_NAME_LOWER}/macro.twig" import ${NAMESPACE}${COMPONENT_NAME_CAMEL} %}
 
 {{ ${NAMESPACE}${COMPONENT_NAME_CAMEL}({
     
