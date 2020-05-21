@@ -1,0 +1,76 @@
+@use "tokens.web" as *;
+@use "mixins/typography";
+@use "mixins/theme";
+@use "mixins/media";
+
+.sb-prose {
+	$baseline: $lead-default * 1;
+	@include typography.oldstyle-figures;
+	@include typography.force-wrap;
+	font-family: $font-body;
+	line-height: $lead-default;
+	> * + * {
+		margin-top: $baseline;
+	}
+	:first-child {
+		margin-top: 0;
+	}
+	:last-child {
+		margin-bottom: 0;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+		font-family: $font-header;
+		font-weight: 900;
+	}
+	h1 {
+		margin-top: $baseline + 2.7059rem;
+		margin-bottom: $baseline;
+		font-size: $size-title;
+		line-height: $lead-solid;
+	}
+	h2 {
+		margin-top: $baseline + 1.1765rem;
+		margin-bottom: $baseline;
+		font-size: $size-subtitle;
+		line-height: $lead-title;
+	}
+	h3 {
+		margin-top: $baseline + 0.0588rem;
+		margin-bottom: $baseline;
+		font-size: $size-pullquote;
+		line-height: $lead-title;
+	}
+	h4 {
+		font-size: $size-small-subtitle;
+		line-height: $baseline;
+	}
+	h5,
+	h6 {
+		@include typography.all-caps;
+		@include typography.modern-figures;
+		font-weight: 700;
+		line-height: $baseline;
+		letter-spacing: $tracking-wide;
+	}
+	h5 {
+		font-size: $size-byline;
+	}
+	h6 {
+		font-size: $size-body;
+	}
+	dl {
+	}
+	dt {
+		font-weight: 700;
+	}
+	a {
+		position: relative;
+		z-index: $layer-default;
+	}
+}

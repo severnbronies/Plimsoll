@@ -1,6 +1,7 @@
 @use "tokens.web" as *;
 @use "sass:string";
 @use "mixins/media";
+@use "mixins/theme";
 
 @forward "utilities";
 
@@ -16,8 +17,11 @@ html {
 }
 
 body {
+	@include media.mq(40rem) {
+		font-size: 112.5%;
+	}
 }
 
 a:not([class]) {
-	color: $color-primary;
+	@include theme.default-link($color-primary, $color-primary-light);
 }

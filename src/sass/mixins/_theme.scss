@@ -1,3 +1,37 @@
+@use "tokens.web" as *;
+@use "mixins/a11y";
+
+@mixin default-link--initial(
+	$textColor: currentColor,
+	$highlightColor: currentColor
+) {
+	color: $textColor;
+	text-decoration: none;
+	box-shadow: inset 0 -0.15em 0 0 $highlightColor;
+	transition: box-shadow 0.125s linear;
+}
+
+@mixin default-link--active(
+	$textColor: currentColor,
+	$highlightColor: currentColor
+) {
+	color: $textColor;
+	box-shadow: inset 0 -0.5em 0 0 $highlightColor;
+}
+
+@mixin default-link(
+	$textColor: currentColor,
+	$highlightColor: $color-primary-light
+) {
+	@include default-link--initial($textColor, $highlightColor);
+	&:hover {
+		@include default-link--active($textColor, $highlightColor);
+	}
+	&:focus {
+		@include a11y.focus-ring;
+	}
+}
+
 @mixin extend-link {
 	&::after {
 		content: "";

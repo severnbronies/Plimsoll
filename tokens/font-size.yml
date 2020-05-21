@@ -1,22 +1,20 @@
 props:
   size_jumbotron:
-    value: 2.027rem
+    value: 2.986rem
   size_title:
-    value: 1.802rem
+    value: 2.488rem
   size_subtitle:
-    value: 1.602rem
+    value: 2.074rem
   size_pullquote:
-    value: 1.424rem
+    value: 1.728rem
   size_small_subtitle:
-    value: 1.266rem
+    value: 1.44rem
   size_byline:
-    value: 1.125rem
+    value: 1.2rem
   size_body:
     value: 1rem
-  size_endnote:
-    value: 0.889rem
-  size_footnote:
-    value: 0.79rem
+  size_small:
+    value: 0.833rem
 global:
   category: font-size
   type: size
