@@ -1,0 +1,23 @@
+{% extends "_layout.twig" %}
+
+{% block main %}
+	{%- if post %}
+		<article>
+			<h1>{{ post.title }}</h1>
+			<dl>
+				<dt>Start time</dt> <dd>{{ post.meta('meet_start_time') | normaliseCustomField }}</dd>
+				<dt>End time</dt> <dd>{{ post.meta('meet_end_time') | normaliseCustomField }}</dd>
+				<dt>Location</dt> <dd>{{ dump(function('sb_location_twig_function', (post.meta('meet_location') | normaliseCustomField))) }}</dd>
+				<dt>Organisers</dt> <dd>{{ post.meta('meet_runner') | join(', ') }}</dd>
+			</dl>
+			
+			{%- if post.thumbnail %}
+				<figure>
+					<img src="{{ post.thumbnail.src }}" alt="">
+					<figcaption>Image credit: {{ dump(function('get_featured_image_copyright')) }} </figcaption>
+				</figure>
+			{%- endif %}
+			{{ post.content | wpautop }}
+		</article>
+	{%- endif %}
+{% endblock %}

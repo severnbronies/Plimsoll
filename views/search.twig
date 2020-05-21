@@ -1,0 +1,21 @@
+{% extends "_layout.twig" %}
+
+{% block main %}
+	{%- if search_query %}
+		<h1>Results for <em>{{ search_query }}</em></h1>
+	{%- else %}
+		<h1>Search Severn Bronies</h1>
+	{%- endif %}
+	{% include "partials/search-form.twig" %}
+	{%- if search_query %}
+		{%- if posts %}
+			<ol>
+				{%- for post in posts %}
+					<li><a href="{{ post.link }}">{{ post.title }}</a></li>
+				{%- endfor %}
+			</ol>
+		{%- else %}
+			<p><em>No results found.</em></p>
+		{%- endif %}
+	{%- endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+<table>
+	<thead>
+		<tr>
+			<th scope="col">Meet name</th>
+			<th scope="col">Start time</th>
+			<th scope="col">End date</th>
+			<th scope="col">Location</th>
+			<th scope="col">Organisers</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in meets %}
+			<tr>
+				<th scope="row"><a href="{{ item.link }}">{{ item.title }}</a></th>
+				<td>{{ item.meta('meet_start_time') | normaliseCustomField | date('c') }}</td>
+				<td>{{ item.meta('meet_end_time') | normaliseCustomField | date('c') }}</td>
+				<td>{{ function('sb_location_twig_function', (item.meta('meet_location') | normaliseCustomField)).locality }}</td>
+				<td>
+					{{ item.meta('meet_runner') | join(', ') }}
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>

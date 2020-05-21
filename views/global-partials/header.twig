@@ -1,0 +1,14 @@
+<header class="sb-masthead">
+	<a class="sb-branding" href="{{ site.url }}" rel="home" role="banner">{{ site.name }}</a>
+	{% if primary_navigation %}
+		<nav class="sb-navigation" role="navigation" aria-label="{{ _e('Main navigation', 'sb') }}">
+			<ul class="sb-navigation__list">
+			{% for item in primary_navigation.get_items %}
+				<li class="sb-navigation__item {{ item.classes | join(' ') }}">
+					<a class="sb-navigation__link" target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		</nav>
+	{% endif %}
+</header>

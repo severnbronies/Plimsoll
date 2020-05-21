@@ -1,0 +1,16 @@
+<footer class="sb-footer" role="contentinfo">
+	{% if footer_navigation %}
+		<nav class="sb-footer__nav" aria-label="Footer navigation">
+			<ul class="sb-footer__list">
+			{% for item in footer_navigation.get_items %}
+				<li class="sb-footer__item {{ item.classes | join(' ') }}">
+					<a class="sb-footer__link" target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		</nav>
+	{% endif %}
+	{% if footer_boilerplate %}
+		<small class="sb-footer__boilerplate">{{ footer_boilerplate }}</small>
+	{% endif %}
+</footer>

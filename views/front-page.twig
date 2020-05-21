@@ -1,0 +1,16 @@
+{% extends "_layout.twig" %}
+
+{% block main %}
+	{%- if post %}
+		<article>
+			<h1>{{ post.title }}</h1>
+			<p>{{ post.content }}</p>
+		</article>
+	{%- endif %}
+	{%- if upcoming_meets | length > 0 %}
+		<section>
+			<h2>Upcoming meets</h2>
+			{% include "partials/meet-list.twig" with { 'meets': upcoming_meets } %}
+		</section>
+	{%- endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "_layout.twig" %}
+
+{% block main %}
+	<article>
+		<h1>{{ post.title }}</h1>
+		{{ post.content }}
+		{%- if children %}
+			<aside>
+				<h2>Child pages</h2>
+				<ul>
+					{%- for item in children %}
+					<li>
+						<a href="{{ item.link }}">{{ item.title }}</a>
+					</li>
+					{%- endfor %}
+				</ul>
+			</aside>
+		{%- endif %}
+	</article>
+{% endblock %}

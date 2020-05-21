@@ -1,0 +1,25 @@
+{% include 'global-partials/html-head.twig' %}
+
+<body class="{{ body_class }}">
+	<a class="sb-skiplink" href="#content">{{ _e( 'Skip to content', 'sb') }}</a>
+	<details style="background-color: #ddd; padding: 1rem">
+		<summary>Hi! This is where we're doing an <em>open redesign</em> of the Severn Bronies website.</summary>
+		<p>Everything has been stripped right down to basics so that we can start from scratch, adding iterative improvements to both the front and back of the code. </p>
+		<p>The beta is entirely standalone from <a href="//severnbronies.co.uk">the current website</a>. Content here may be out of date.</p></p>
+		<p>Check out the <a href="//github.com/severnbronies/plimsoll/">GitHub repo</a> if you're into that.</p>
+	</details>
+	{% block header %}
+		{% include "global-partials/header.twig" %}
+	{% endblock %}
+	<hr>
+	<main id="content" role="main">
+		{% block main %}
+			<p>No page content was found. :(</p>
+		{% endblock %}
+	</main>
+	<hr>
+	{% block footer %}
+		{% include "global-partials/footer.twig" %}
+	{% endblock %}
+	{{ function('wp_footer') }}
+</body>

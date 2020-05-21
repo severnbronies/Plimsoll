@@ -1,0 +1,37 @@
+{% extends "_layout.twig" %}
+
+{% block main %}
+	<h1>{{ title }}</h1>
+	<dl>
+		<dt>query year</dt> <dd>{{ meet_year }}</dd>
+		<dt>query month</dt> <dd>{{ meet_month }}</dd>
+		<dt>calculated start</dt> <dd>{{ meet_range_start }}</dd>
+		<dt>calculated end</dt> <dd>{{ meet_range_end }}</dd>
+	</dl>
+
+	{#{{ dump(meets)}}#}
+
+	{%- if not showing_archived_meets %}
+		{%- if meets %}
+			{% include "partials/meet-list.twig" with { 'meets': meets } %}
+		{%- else %}
+			<p><em>There are no upcoming meets at the moment. Sorry.</em></p>
+		{%- endif %}
+	{%- else %}
+		{% include "partials/meet-list.twig" with { 'meets': meets } %}
+	{%- endif %}
+	
+	<nav aria-label="Archive navigation">
+		<h2>Archives</h2>
+		<ul>
+			{%- for item in meet_archive %}
+				<li>
+					<a href="/meet/{{ item.year }}/{{ item.month }}/">
+						{{- "#{item.year}-#{item.month}-01" | date('F Y') -}}
+					</a>
+				</li>
+			{%- endfor %}
+		</ul>
+	</nav>
+
+{% endblock %}

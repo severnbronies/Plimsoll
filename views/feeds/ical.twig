@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR{{ EOL -}}
+VERSION:2.0{{ EOL -}}
+PRODID:-//SEVERN BRONIES//SEVERN BRONIES//EN{{ EOL -}}
+{% for item in meets %}
+{%- set location = function('sb_location_twig_function', (item.meta('meet_location') | normaliseCustomField)) %}
+BEGIN:VEVENT{{ EOL -}}
+SUMMARY:{{ item.title }}{{ EOL -}}
+UID:{{ item.guid }}{{ EOL -}}
+DTSTART:{{ item.meta('meet_start_time') | normaliseCustomField | date('r') }}{{ EOL -}}
+DTEND:{{ item.meta('meet_end_time') | normaliseCustomField | date('r') }}{{ EOL -}}
+LOCATION:{{ location.name }}, {{ location.address }}{{ EOL -}}
+GEO:{{ location.latitude }};{{ location.longitude }}{{ EOL -}}
+ORGANIZER;CN=Severn Bronies:MAILTO:hello@severnbronies.co.uk{{ EOL -}}
+END:VEVENT{{ EOL -}}
+{% endfor %}
+END:VCALENDAR
