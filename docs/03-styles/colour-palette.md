@@ -15,3 +15,7 @@ status: draft
 ## Neutrals
 
 {{ fractalColoursSingle(tokens.colors | theoTokenCategory('palette-neutral')) }}
+
+## Contextual
+
+{{ fractalColoursSingle(tokens.colors | theoTokenCategory('palette-context')) }}

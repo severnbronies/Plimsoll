@@ -1,0 +1,60 @@
+/**
+ * Typography helpers.
+ * Those with `font-feature-settings` only work if the font being used has
+ * support for the specific feature, otherwise it won't work.
+ */
+
+// Tabulated or fixed width numerals
+@mixin tabulated-figures {
+	font-variant-numeric: tabular-nums;
+	font-feature-settings: "tnum";
+}
+
+@mixin oldstyle-figures {
+	font-variant-numeric: oldstyle-nums;
+	font-feature-settings: "onum";
+}
+
+@mixin modern-figures {
+	font-feature-settings: "onum" 0, "tnum" 0;
+}
+
+// Use font's all-caps kerning for all caps text
+@mixin all-caps {
+	text-transform: uppercase;
+	font-feature-settings: "cpsp", "onum" 0, "tnum" 0;
+	letter-spacing: 0.05em;
+}
+
+// Small caps (nice for acronyms)
+@mixin small-caps {
+	font-variant: small-caps;
+	font-feature-settings: "c2sc", "smcp";
+}
+
+// Antialias text
+@mixin antialiasing {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Overflow text
+@mixin overflow-text {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+// Hide copy (for image replacement)
+@mixin hide-text {
+	text-indent: 110%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+// Force long words to break across lines
+@mixin force-wrap {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: break-word;
+}

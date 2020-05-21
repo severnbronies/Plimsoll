@@ -1,6 +1,5 @@
-@import "../../dist/tokens/tokens.web.scss";
+// Vendor files
+@use "vendor";
 
-@import "functions/functions";
-
-@import "mixins/helpers";
-@import "mixins/media-queries";
+// Global
+@use "global";

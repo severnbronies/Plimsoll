@@ -1,4 +1,5 @@
-@import "../../dist/tokens/tokens.web.scss";
+@use "tokens.web" as *;
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&amp;family=Montserrat:wght@900&amp;display=swap");
 
 html {
 	font-family: unquote($font-body);

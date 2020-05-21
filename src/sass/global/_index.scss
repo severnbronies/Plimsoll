@@ -1,0 +1,21 @@
+@use "tokens.web" as *;
+@use "sass:string";
+@use "utilities";
+
+/**
+ * Global styles
+ */
+
+html {
+	color: $color-white;
+	background-color: $color-primary-dark;
+	font-family: string.unquote($font-body);
+	line-height: $lead-default;
+}
+
+body {
+}
+
+a:not([class]) {
+	color: $color-primary-light;
+}

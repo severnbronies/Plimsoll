@@ -29,5 +29,8 @@ props:
   color_weston:
     value: "hsl(60, 67%, 90%)"
     category: palette-accent
+  color_accessibility:
+    value: "hsl(48, 100%, 50%)"
+    category: palette-context
 global:
   type: color

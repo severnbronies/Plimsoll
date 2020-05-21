@@ -1,0 +1,33 @@
+@use "tokens.web" as *;
+@use "a11y";
+@use "media";
+
+/** 
+ * Range input styling helpers.
+ */
+
+// Background "track" section
+@mixin range-input-track {
+	&::-webkit-slider-runnable-track {
+		@content;
+	}
+	&::-moz-range-track {
+		@content;
+	}
+	&::-ms-track {
+		@content;
+	}
+}
+
+// Draggable "thumb" section
+@mixin range-input-thumb {
+	&::-webkit-slider-thumb {
+		@content;
+	}
+	&::-moz-range-thumb {
+		@content;
+	}
+	&::-ms-thumb {
+		@content;
+	}
+}
