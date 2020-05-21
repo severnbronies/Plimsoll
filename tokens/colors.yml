@@ -2,6 +2,9 @@ props:
   color_white:
     value: "hsl(0, 0%, 100%)"
     category: palette-neutral
+  color_off_black:
+    value: "hsl(0, 0%, 13%)"
+    category: palette-neutral
   color_black:
     value: "hsl(0, 0%, 0%)"
     category: palette-neutral

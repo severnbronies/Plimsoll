@@ -1,0 +1,5 @@
+props:
+  card_padding:
+    value: 1.5rem
+    category: sizing
+    type: size

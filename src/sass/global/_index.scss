@@ -1,15 +1,17 @@
 @use "tokens.web" as *;
 @use "sass:string";
-@use "utilities";
+@use "mixins/media";
+
+@forward "utilities";
 
 /**
  * Global styles
  */
 
 html {
-	color: $color-white;
-	background-color: $color-primary-dark;
-	font-family: string.unquote($font-body);
+	color: $color-off-black;
+	background-color: $color-white;
+	font-family: $font-body;
 	line-height: $lead-default;
 }
 
@@ -17,5 +19,5 @@ body {
 }
 
 a:not([class]) {
-	color: $color-primary-light;
+	color: $color-primary;
 }
