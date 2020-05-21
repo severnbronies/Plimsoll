@@ -4,9 +4,13 @@ status: draft
 
 {% from './fractalMacros.njk' import fractalColoursSingle %}
 
-## Brand colours
+## Primary brand colours
 
 {{ fractalColoursSingle(tokens.colors | theoTokenCategory('palette-brand')) }}
+
+## Accent brand colours
+
+{{ fractalColoursSingle(tokens.colors | theoTokenCategory('palette-accent')) }}
 
 ## Neutrals
 
