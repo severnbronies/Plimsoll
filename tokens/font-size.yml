@@ -19,4 +19,4 @@ props:
     value: 0.79rem
 global:
   category: font-size
-  type: number
+  type: size

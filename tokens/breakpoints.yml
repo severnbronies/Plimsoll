@@ -17,4 +17,4 @@ props:
     value: 1440px
 global:
   category: media-query
-  type: number
+  type: size
