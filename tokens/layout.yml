@@ -1,4 +1,12 @@
 props:
+  grid_max_width:
+    value: 80em
+    category: sizing
+    type: size
+  grid_gutter:
+    value: 3em
+    category: sizing
+    type: size
   card_padding:
     value: 1.5rem
     category: sizing

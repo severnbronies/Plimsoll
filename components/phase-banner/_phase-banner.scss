@@ -1,19 +1,27 @@
 @use "tokens.web" as *;
 @use "mixins/helpers";
+@use "mixins/layout";
+@use "mixins/a11y";
 
 .sb-phase-banner {
 	$self: &;
 	$bannerPadding: 1rem;
 	$arrowSize: 0.8rem;
 	$arrowMargin: 1.5rem;
-	@include helpers.details-no-arrow;
 	color: var(--theme-text);
 	background-color: var(--theme-background);
 	border-bottom: 1px solid currentColor;
-	&[open] {
-		#{$self}__summary {
-			&::before {
-				clip-path: polygon(0 0, 100% 0, 50% 100%);
+	&__inner {
+		@include layout.container;
+		@include helpers.details-no-arrow;
+		> summary:focus {
+			@include a11y.focus-ring;
+		}
+		&[open] {
+			#{$self}__summary {
+				&::before {
+					clip-path: polygon(0 0, 100% 0, 50% 100%);
+				}
 			}
 		}
 	}

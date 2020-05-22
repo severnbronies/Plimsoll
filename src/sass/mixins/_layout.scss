@@ -1,3 +1,16 @@
+@use "tokens.web" as *;
+
+/**
+ * Content container so it doesn't get too wide like.
+ */
+
+@mixin container {
+	width: 95%;
+	max-width: $grid-max-width;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 /**
  * Non overflow-based clearfix for elements that need things to be able to go
  * outside of them.
