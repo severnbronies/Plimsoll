@@ -2,7 +2,6 @@
 
 rsync -av \
       --exclude 'bin/' \
-      --exclude 'components/' \
       --exclude 'docs/' \
       --exclude 'gulpfiles/' \
       --exclude 'node_modules/' \
