@@ -5,9 +5,11 @@
 
 .sb-splash {
 	$theme-clip-padding: 6vh;
-	color: var(--theme-accent-mod);
-	background-color: var(--theme-accent);
+	margin-top: $grid-gutter;
+	margin-bottom: $grid-gutter;
 	position: relative;
+	color: $color-primary-light;
+	background-color: $color-primary;
 	clip-path: polygon(
 		0 #{$theme-clip-padding},
 		100% 0,
