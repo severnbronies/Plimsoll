@@ -23,7 +23,7 @@ function getDesignTokens() {
 const twig = require("@frctl/twig")({
 	method: "fs",
 	namespaces: {
-		components: path.join(__dirname, "../components/")
+		components: path.join(__dirname, "../components")
 	},
 	functions: {
 		merge: function(...objs) {

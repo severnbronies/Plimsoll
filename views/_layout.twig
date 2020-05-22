@@ -1,13 +1,22 @@
 {% include 'global-partials/html-head.twig' %}
+{% from '@components/phase-banner/macro.twig' import sbPhaseBanner %}
+
+{% set bannerMessage %}
+	<p>This is an <em>open redesign</em> of the Severn Bronies website.</p>
+	<p>After four years of using the same site (which is like, four hundred years in internet terms)&mdash;I've stripped everything right down to basics again, rejigged how tons of backend code works, and are giving the old bird some new bells, whistles, and a new coat of paint.</p>
+	<p>Because I've reworked a lot of things, the open redesign has to operate independently of the current Severn Bronies website and may not be up to date. Be sure to check <a href="//severnbronies.co.uk" rel="noopener" target="_blank">the main site</a> if you're looking for current information.</p>
+	<p>If you're the curious type, the code for the redevelopment work is <a href="https://github.com/severnbronies/plimsoll/tree/develop" rel="noopener" target="_blank">open source on GitHub</a>! I welcome <a href="https://github.com/severnbronies/plimsoll/issues" rel="noopener" target="_blank">your issues</a>.</p>
+	<p>~ Kim</p>
+{% endset %}
 
 <body class="{{ body_class }}">
 	<a class="sb-skiplink" href="#content">{{ _e( 'Skip to content', 'sb') }}</a>
-	<details style="background-color: #ddd; padding: 1rem">
-		<summary>Hi! This is where we're doing an <em>open redesign</em> of the Severn Bronies website.</summary>
-		<p>Everything has been stripped right down to basics so that we can start from scratch, adding iterative improvements to both the front and back of the code. </p>
-		<p>The beta is entirely standalone from <a href="//severnbronies.co.uk">the current website</a>. Content here may be out of date.</p></p>
-		<p>Check out the <a href="//github.com/severnbronies/plimsoll/">GitHub repo</a> if you're into that.</p>
-	</details>
+	{{ sbPhaseBanner({
+	    heading: 'This is a new website under active development.',
+	    subheading: 'Things may be broken, weird looking, or change for no apparent reason.',
+	    html: bannerMessage
+	}) }}
+
 	{% block header %}
 		{% include "global-partials/header.twig" %}
 	{% endblock %}

@@ -53,6 +53,10 @@ class Plimsoll extends Timber\Site
 	public function __construct()
 	{
 		add_action('after_setup_theme', [$this, 'theme_supports']);
+		add_filter('timber/loader/loader', function ($loader) {
+			$loader->addPath(__DIR__ . "/components", "components");
+			return $loader;
+		});
 		add_filter('timber/context', [$this, 'add_to_context']);
 		add_filter('timber/twig', [$this, 'add_to_twig']);
 		add_action('init', [$this, 'register_post_types']);

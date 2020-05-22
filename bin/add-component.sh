@@ -39,7 +39,7 @@ touch "$COMPONENT_PATH/_$COMPONENT_NAME_LOWER.scss"
 # Prepopulate macro
 cat <<EOF > "$COMPONENT_PATH/macro.twig"
 {% macro ${NAMESPACE}${COMPONENT_NAME_CAMEL}(params) %}
-    {%- include "./template.twig" -%}
+    {%- include "@components/${COMPONENT_NAME_LOWER}/template.twig" -%}
 {% endmacro %}
 EOF
 
@@ -54,7 +54,7 @@ EOF
 
 # Prepopulate demo file
 cat <<EOF > "$COMPONENT_PATH/$COMPONENT_NAME_LOWER.twig"
-{% from "components::${COMPONENT_NAME_LOWER}/macro.twig" import ${NAMESPACE}${COMPONENT_NAME_CAMEL} %}
+{% from "@components/${COMPONENT_NAME_LOWER}/macro.twig" import ${NAMESPACE}${COMPONENT_NAME_CAMEL} %}
 
 {{ ${NAMESPACE}${COMPONENT_NAME_CAMEL}({
     
