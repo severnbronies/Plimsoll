@@ -109,6 +109,19 @@ class Plimsoll extends Timber\Site
 		return $obj;
 	}
 
+	function twig_merge_function()
+	{
+		$get_args = func_get_args();
+		$return_array_data = [];
+		foreach ($get_args as $arg) {
+			$return_array_data = array_merge_recursive(
+				$return_array_data,
+				$arg
+			);
+		}
+		return $return_array_data;
+	}
+
 	/** This is where you can add your own functions to twig.
 	 *
 	 * @param string $twig get extension.
@@ -130,6 +143,9 @@ class Plimsoll extends Timber\Site
 				$this,
 				'sb_location_twig_function',
 			])
+		);
+		$twig->addFunction(
+			new Timber\Twig_Function('merge', [$this, 'twig_merge_function'])
 		);
 		return $twig;
 	}

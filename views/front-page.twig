@@ -1,17 +1,17 @@
 {% extends "_layout.twig" %}
 
+{% from "@components/splash/macro.twig" import sbSplash %}
+
 {% block main %}
 	{%- if post %}
-		{%- if post.thumbnail %}
-			<figure>
-				<img src="{{ post.thumbnail.src }}" alt="">
-				<figcaption>Image credit: {{ dump(function('get_featured_image_copyright')) }} </figcaption>
-			</figure>
-		{%- endif %}
-		<article>
-			<h1>{{ post.title }}</h1>
-			<p>{{ post.content }}</p>
-		</article>
+		{{ sbSplash({
+		    image: {
+		        src: post.thumbnail.src,
+		        alt: 'A pony, probably.'
+		    },
+		    heading: post.title,
+		    blurb: post.content
+		}) }}
 	{%- endif %}
 	{%- if upcoming_meets | length > 0 %}
 		<section>
