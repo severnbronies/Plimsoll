@@ -25,7 +25,7 @@ const twig = require("@frctl/twig")({
 	namespaces: {
 		components: path.join(__dirname, "../components/")
 	},
-	filters: {
+	functions: {
 		merge: function(...objs) {
 			let result = {};
 			objs.forEach(obj => {
