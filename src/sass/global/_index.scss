@@ -5,13 +5,33 @@
 
 @forward "utilities";
 
+/** 
+ * Semantic colours 
+ */
+
+:root {
+	--theme-text: #{$color-off-black};
+	--theme-background: #{$color-white};
+	--theme-accent: #{$color-primary};
+	--theme-accent-mod: #{$color-primary-light};
+}
+
+@include media.dark-mode {
+	:root {
+		--theme-text: #{$color-white};
+		--theme-background: #{$color-primary-dark};
+		--theme-accent: #{$color-primary-light};
+		--theme-accent-mod: #{$color-primary};
+	}
+}
+
 /**
  * Global styles
  */
 
 html {
-	color: $color-off-black;
-	background-color: $color-white;
+	color: var(--theme-text);
+	background-color: var(--theme-background);
 	font-family: $font-body;
 	line-height: $lead-default;
 	@include media.mq(40em) {
@@ -23,5 +43,5 @@ body {
 }
 
 a:not([class]) {
-	@include theme.default-link($color-primary, $color-primary-light);
+	@include theme.default-link(var(--theme-accent), var(--theme-accent-mod));
 }

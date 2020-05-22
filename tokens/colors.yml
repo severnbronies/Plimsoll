@@ -15,7 +15,7 @@ props:
     value: "hsl(259, 67%, 90%)"
     category: palette-brand
   color_primary_dark:
-    value: "hsl(259, 38%, 11%)"
+    value: "hsl(259, 38%, 14%)"
     category: palette-brand
   color_bristol:
     value: "hsl(0, 67%, 90%)"
