@@ -2,6 +2,12 @@
 
 {% block main %}
 	{%- if post %}
+		{%- if post.thumbnail %}
+			<figure>
+				<img src="{{ post.thumbnail.src }}" alt="">
+				<figcaption>Image credit: {{ dump(function('get_featured_image_copyright')) }} </figcaption>
+			</figure>
+		{%- endif %}
 		<article>
 			<h1>{{ post.title }}</h1>
 			<p>{{ post.content }}</p>

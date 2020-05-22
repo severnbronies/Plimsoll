@@ -5,13 +5,14 @@
 @use "mixins/media";
 
 .sb-masthead {
-	$flipBreakpoint: 50em;
+	$flipBreakpoint: 25em;
 	&__inner {
 		@include layout.container;
 		position: relative;
 	}
 	&__branding {
 		display: block;
+		overflow: hidden;
 	}
 	&__logo {
 		margin-top: -1.25vw;

@@ -1,4 +1,5 @@
 {% include 'global-partials/html-head.twig' %}
+{% from '@components/skiplink/macro.twig' import sbSkiplink %}
 {% from '@components/phase-banner/macro.twig' import sbPhaseBanner %}
 
 {% set bannerMessage %}
@@ -10,7 +11,12 @@
 {% endset %}
 
 <body class="{{ body_class }}">
-	<a class="sb-skiplink" href="#content">{{ _e( 'Skip to content', 'sb') }}</a>
+	
+	{{ sbSkiplink({
+		href: '#content',
+		text: 'Skip to content'
+	}) }}
+
 	{{ sbPhaseBanner({
 	    heading: 'This is a new website under active development.',
 	    subheading: 'Things may be broken, weird looking, or change for no apparent reason.',
@@ -20,13 +26,11 @@
 	{% block header %}
 		{% include "global-partials/header.twig" %}
 	{% endblock %}
-	<hr>
 	<main id="content" role="main">
 		{% block main %}
 			<p>No page content was found. :(</p>
 		{% endblock %}
 	</main>
-	<hr>
 	{% block footer %}
 		{% include "global-partials/footer.twig" %}
 	{% endblock %}
