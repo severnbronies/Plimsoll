@@ -1,8 +1,16 @@
+@use "tokens.web" as *;
+
 /**
  * Typography helpers.
  * Those with `font-feature-settings` only work if the font being used has
  * support for the specific feature, otherwise it won't work.
  */
+
+// Heading
+@mixin heading {
+	font-family: $font-header;
+	font-weight: 900;
+}
 
 // Tabulated or fixed width numerals
 @mixin tabulated-figures {
@@ -10,11 +18,13 @@
 	font-feature-settings: "tnum";
 }
 
+// Oldstyle figures
 @mixin oldstyle-figures {
 	font-variant-numeric: oldstyle-nums;
 	font-feature-settings: "onum";
 }
 
+// Non-tabulated lining figures
 @mixin modern-figures {
 	font-feature-settings: "onum" 0, "tnum" 0;
 }

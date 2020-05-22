@@ -42,3 +42,11 @@
 		left: 0;
 	}
 }
+
+@mixin triangle($size: 0.76em, $color: currentColor) {
+	display: inline-block;
+	width: $size;
+	height: $size;
+	background-color: $color;
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+}

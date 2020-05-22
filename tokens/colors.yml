@@ -17,6 +17,10 @@ props:
   color_primary_dark:
     value: "hsl(259, 38%, 14%)"
     category: palette-brand
+  color_secondary:
+    value: "hsl(326, 100%, 41%)"
+    category: palette-brand
+    type: color
   color_bristol:
     value: "hsl(0, 67%, 90%)"
     category: palette-accent
@@ -35,5 +39,21 @@ props:
   color_accessibility:
     value: "hsl(48, 100%, 50%)"
     category: palette-context
+  color_opacity_primary:
+    value: 1
+    category: palette-opacity
+    type: number
+  color_opacity_secondary:
+    value: .87
+    category: palette-opacity
+    type: number
+  color_opacity_tertiary:
+    value: .6
+    category: palette-opacity
+    type: number
+  color_opacity_disabled:
+    value: .38
+    category: palette-opacity
+    type: number
 global:
   type: color

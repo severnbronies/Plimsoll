@@ -1,0 +1,42 @@
+@use "tokens.web" as *;
+@use "mixins/typography";
+
+.sb-image {
+	$self: &;
+	position: relative;
+	line-height: 0;
+	&__image {
+		width: 100%;
+		#{$self}:not(#{$self}--cover) & {
+			height: auto;
+		}
+	}
+	&__attribution {
+		@include typography.all-caps;
+		display: inline-block;
+		padding: 0.2em 0.4em;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		color: $color-white;
+		background-color: rgba($color-black, $color-opacity-secondary);
+		font-size: $size-small;
+		font-weight: 400;
+		line-height: $lead-solid;
+	}
+	&__attribution-source {
+		color: currentColor;
+		text-decoration: none;
+	}
+	&--flattened {
+		#{$self}__image {
+			filter: grayscale(100%);
+			mix-blend-mode: multiply;
+		}
+	}
+	&--cover {
+		#{$self}__image {
+			object-fit: cover;
+		}
+	}
+}

@@ -1,0 +1,42 @@
+{% from "components::image/macro.twig" import sbImage %}
+
+<!-- Standard image with attribution. -->
+{{ sbImage({
+    src: '//placeponi.es/400/300',
+    alt: 'Ponies, probably.',
+    width: 400,
+    height: 300,
+    attribution: {
+    	copyright: 'Hasbro / DHX Media',
+    	source: '//example.com'
+    }
+}) }}
+
+
+<!-- Colour flattened image. This multiplies the image with the background. -->
+<div style="background-color: red;">
+    {{ sbImage({
+        variants: ['flattened'],
+        src: '//placeponi.es/400/300',
+        alt: 'Ponies, probably.',
+        width: 400,
+        height: 300,
+        attribution: {
+        	copyright: 'Hasbro / DHX Media',
+        	source: '//example.com'
+        }
+    }) }}
+</div>
+
+<!-- Crop image to fit height instead of maintaining intrinsic ratio. -->
+{{ sbImage({
+    variants: ['cover'],
+    src: '//placeponi.es/900/300',
+    alt: 'Ponies, probably.',
+    width: 400,
+    height: 300,
+    attribution: {
+    	copyright: 'Hasbro / DHX Media',
+    	source: '//example.com'
+    }
+}) }}

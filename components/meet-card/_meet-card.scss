@@ -1,0 +1,71 @@
+@use "tokens.web" as *;
+@use "mixins/theme";
+@use "mixins/typography";
+
+.sb-meet-card {
+	$self: &;
+	position: relative;
+	border: 1px solid currentColor;
+	border-radius: $card-border-radius;
+	color: $color-white;
+	background-color: $color-primary;
+	overflow: hidden;
+	&__image {
+	}
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding: 1rem;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		bottom: 0;
+	}
+	&__title {
+		@include typography.heading;
+		font-size: $size-small-subtitle;
+		line-height: $lead-title;
+	}
+	&__link {
+		@include theme.default-link($color-white, $color-secondary);
+		@include theme.extend-link;
+	}
+	&__details {
+		@include typography.all-caps;
+		order: -1;
+		margin: 0 0 0.25rem 0;
+		font-size: $size-small;
+		font-weight: 700;
+		pointer-events: none;
+	}
+	&__details-item {
+		display: inline;
+		& + & {
+			&::before {
+				@include theme.triangle();
+				content: "";
+				margin-right: 0.25em;
+				margin-left: 0.25em;
+				opacity: $color-opacity-tertiary;
+			}
+		}
+	}
+	&__details-info {
+		display: inline;
+		margin: 0;
+		opacity: $color-opacity-secondary;
+	}
+	&--banner {
+		#{$self}__image img {
+			height: 30vh;
+			min-height: 16rem;
+		}
+	}
+	&--list {
+		#{$self}__image img {
+			height: 200px;
+		}
+	}
+}
