@@ -1,0 +1,20 @@
+{% set variant = 'info' %}
+{% if params.variant %}{% set variant = params.variant %}{% endif %}
+
+<div
+    data-module="sb-banner"
+    class="sb-banner sb-banner--{{ variant }} {%- if params.classes %} {{ params.classes }}{% endif %}"
+    role="alert"
+    id="{{ params.id }}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    <div class="sb-banner__inner">
+        <div class="sb-banner__body">
+            {{ params.html }}
+        </div>
+        {%- if params.dismissable %}
+            <button class="sb-banner__dismiss" type="button">
+                <span class="sb-banner__dismiss-label">Dismiss</span>
+            </button>
+        {%- endif %}
+    </div>
+</div>
