@@ -10,7 +10,7 @@
 	$arrowMargin: 1.5rem;
 	color: var(--theme-text);
 	background-color: var(--theme-background);
-	border-bottom: 1px solid currentColor;
+	border-bottom: 0.5em solid var(--theme-accent-mod);
 	&__inner {
 		@include layout.container;
 		@include helpers.details-no-arrow;
