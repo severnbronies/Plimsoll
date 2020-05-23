@@ -8,7 +8,6 @@
 
 // Heading
 @mixin heading {
-	@include modern-figures;
 	font-family: $font-header;
 	font-weight: 900;
 }
