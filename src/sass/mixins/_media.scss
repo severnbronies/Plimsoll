@@ -14,7 +14,7 @@
 		@if $min and $max {
 			$query: append($query, " and ");
 		}
-		$query: append($query, "(max-width: #{$max - 1px})");
+		$query: append($query, "(max-width: #{$max - 0.01em})");
 	}
 	@media screen and #{$query} {
 		@content;
