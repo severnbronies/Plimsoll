@@ -13,9 +13,9 @@ $meet_month = get_query_var('meet_month');
 
 if ($meet_year || $meet_month) {
 	$context['showing_archived_meets'] = true;
-	$context['title'] = $meet_month
-		? 'Meets from ' . $meet_month . ' ' . $meet_year
-		: 'Meets from ' . $meet_year;
+	$context['showing_archive_date'] = $meet_month
+		? mktime(0, 0, 0, $meet_month, 1, $meet_year)
+		: mktime(0, 0, 0, 1, 1, $meet_year);
 
 	// Obtain meets from the archive
 	$meet_range_start = $meet_month
@@ -39,7 +39,6 @@ if ($meet_year || $meet_month) {
 	]);
 } else {
 	$context['showing_archived_meets'] = false;
-	$context['title'] = 'Upcoming meets';
 
 	// Get upcoming or ongoing meets only
 	$context['meets'] = new Timber\PostQuery([

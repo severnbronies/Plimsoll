@@ -1,0 +1,35 @@
+@use "tokens.web" as *;
+@use "mixins/layout";
+@use "mixins/theme";
+@use "mixins/typography";
+@use "mixins/media";
+
+.sbt-archive {
+	&__inner {
+		@include layout.container;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-column-gap: $grid-gutter;
+		grid-row-gap: $grid-gutter / 2;
+		grid-template-areas: "header" "body" "nav";
+		@include media.mq(60em) {
+			grid-template-columns: 20em 1fr;
+			grid-template-areas: "header body" "nav body";
+		}
+	}
+	&__header {
+		grid-area: header;
+	}
+	&__heading {
+		@include typography.all-caps;
+		@include theme.highlight(var(--theme-accent-mod));
+		display: inline;
+		color: var(--theme-accent);
+	}
+	&__body {
+		grid-area: body;
+	}
+	&__nav {
+		grid-area: nav;
+	}
+}

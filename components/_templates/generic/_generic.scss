@@ -13,7 +13,7 @@
 	&__heading {
 		@include typography.all-caps;
 		@include theme.highlight(var(--theme-accent-mod));
-		display: inline-block;
+		display: inline;
 		color: var(--theme-accent);
 	}
 	&__body {

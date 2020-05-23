@@ -6,7 +6,6 @@
 	margin-top: $grid-gutter * 2;
 	margin-bottom: $grid-gutter * 2;
 	&__inner {
-		@include layout.container;
 	}
 	&__header {
 		color: var(--theme-accent);

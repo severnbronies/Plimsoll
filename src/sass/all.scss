@@ -21,4 +21,6 @@
 @use "stack/stack";
 
 // Templates
+@use "_templates/archive/archive";
 @use "_templates/generic/generic";
+@use "_templates/home/home";
