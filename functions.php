@@ -10,6 +10,7 @@ require get_template_directory() . '/inc/meet.php';
 require get_template_directory() . '/inc/meet-archive.php';
 require get_template_directory() . '/inc/meet-runners.php';
 require get_template_directory() . '/inc/navigations.php';
+require get_template_directory() . '/inc/phase-banner.php';
 require get_template_directory() . '/inc/search.php';
 require get_template_directory() . '/inc/site-description.php';
 
@@ -83,6 +84,18 @@ class Plimsoll extends Timber\Site
 		$context['primary_navigation'] = new Timber\Menu('primary', [
 			'depth' => 1,
 		]);
+		$context['phase_banner_title'] = get_field(
+			'phase_banner_title',
+			'option'
+		);
+		$context['phase_banner_subtitle'] = get_field(
+			'phase_banner_subtitle',
+			'option'
+		);
+		$context['phase_banner_description'] = get_field(
+			'phase_banner_description',
+			'option'
+		);
 		$context['footer_navigation'] = new Timber\Menu('footer');
 		$context['footer_boilerplate'] = get_theme_mod('footer_boilerplate');
 		$context['site'] = $this;

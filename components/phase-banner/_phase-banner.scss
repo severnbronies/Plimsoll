@@ -13,34 +13,38 @@
 	border-bottom: 0.5em solid var(--theme-accent-mod);
 	&__inner {
 		@include layout.container;
-		@include helpers.details-no-arrow;
-		> summary:focus {
-			@include a11y.focus-ring;
-		}
-		&[open] {
-			#{$self}__summary {
-				&::before {
-					clip-path: polygon(0 0, 100% 0, 50% 100%);
+		#{$self}--interactive & {
+			@include helpers.details-no-arrow;
+			> summary:focus {
+				@include a11y.focus-ring;
+			}
+			&[open] {
+				#{$self}__summary {
+					&::before {
+						clip-path: polygon(0 0, 100% 0, 50% 100%);
+					}
 				}
 			}
 		}
 	}
 	&__summary {
 		display: inline-block;
-		padding: ($bannerPadding / 2) $bannerPadding ($bannerPadding / 2)
-			($bannerPadding + $arrowMargin);
-		cursor: pointer;
-		&::before {
-			content: "";
-			display: inline-block;
-			width: $arrowSize;
-			height: $arrowSize;
-			margin-top: 0.2em;
-			margin-left: 0 - $arrowMargin;
-			float: left;
-			clear: left;
-			background-color: var(--theme-accent);
-			clip-path: polygon(0 0, 100% 50%, 0 100%);
+		padding: ($bannerPadding / 2) $bannerPadding;
+		#{$self}--interactive & {
+			padding-left: ($bannerPadding + $arrowMargin);
+			cursor: pointer;
+			&::before {
+				content: "";
+				display: inline-block;
+				width: $arrowSize;
+				height: $arrowSize;
+				margin-top: 0.2em;
+				margin-left: 0 - $arrowMargin;
+				float: left;
+				clear: left;
+				background-color: var(--theme-accent);
+				clip-path: polygon(0 0, 100% 50%, 0 100%);
+			}
 		}
 	}
 	&__summary-heading,
