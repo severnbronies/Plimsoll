@@ -4,7 +4,7 @@ props:
   tracking_wide:
     value: .2em
   tracking_narrow:
-    value: -.05em
+    value: -.01em
 global:
   category: font-tracking
   type: size

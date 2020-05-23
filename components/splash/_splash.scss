@@ -22,7 +22,6 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-
 		img {
 			height: 100%;
 		}
@@ -44,6 +43,7 @@
 		@include typography.all-caps;
 		font-size: 6vw;
 		line-height: 0.9;
+		letter-spacing: $tracking-narrow;
 	}
 	&__content {
 		max-width: $measure-narrow;
