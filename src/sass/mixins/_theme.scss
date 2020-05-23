@@ -54,4 +54,5 @@
 @mixin highlight($color) {
 	background-color: $color;
 	box-shadow: 0.25em 0 0 0 $color, -0.25em 0 0 0 $color;
+	box-decoration-break: clone;
 }
