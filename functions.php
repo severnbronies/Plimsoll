@@ -1,5 +1,15 @@
 <?php
 
+// This page is used by multiple of the requires below, so let's just stick it here.
+if (function_exists('acf_add_options_page')) {
+	acf_add_options_page([
+		'page_title' => 'Website Settings',
+		'menu_title' => 'Website Settings',
+		'menu_slug' => 'website-settings',
+		'capability' => 'edit_posts',
+	]);
+}
+
 require get_template_directory() . '/inc/footer.php';
 require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/image-copyright.php';
@@ -81,9 +91,11 @@ class Plimsoll extends Timber\Site
 	 */
 	public function add_to_context($context)
 	{
+		// Header
 		$context['primary_navigation'] = new Timber\Menu('primary', [
 			'depth' => 1,
 		]);
+		// Phase banner
 		$context['phase_banner_title'] = get_field(
 			'phase_banner_title',
 			'option'
@@ -96,8 +108,30 @@ class Plimsoll extends Timber\Site
 			'phase_banner_description',
 			'option'
 		);
+		// Footer
 		$context['footer_navigation'] = new Timber\Menu('footer');
-		$context['footer_boilerplate'] = get_theme_mod('footer_boilerplate');
+		$context['footer_legal_copy'] = get_field(
+			'footer_legal_copy',
+			'option'
+		);
+		// Footer - Newsletter sign up
+		$context['newsletter_show'] =
+			get_field('footer_newsletter_visible', 'option') == 'true'
+				? true
+				: false;
+		$context['newsletter_heading'] = get_field(
+			'footer_newsletter_heading',
+			'option'
+		);
+		$context['newsletter_description'] = get_field(
+			'footer_newsletter_description',
+			'option'
+		);
+		$context['newsletter_placeholder'] = get_field(
+			'footer_newsletter_placeholder',
+			'option'
+		);
+		// Everything else
 		$context['site'] = $this;
 		return $context;
 	}

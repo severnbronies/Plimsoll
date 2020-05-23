@@ -24,15 +24,16 @@
 		margin-bottom: $padding;
 	}
 	&__subscribe-heading {
-		margin-bottom: 0.25em;
+		line-height: $lead-title;
 	}
 	&__subscribe-body {
-		margin-bottom: 0.25em;
+		margin-top: 1em;
 		font-size: $size-small;
 	}
 	&__subscribe-form {
 		display: flex;
 		flex-direction: row;
+		margin-top: 1em;
 	}
 	&__subscribe-input,
 	&__subscribe-button {

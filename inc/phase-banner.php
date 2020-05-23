@@ -1,22 +1,15 @@
 <?php
 
 if (function_exists('acf_add_options_page')) {
-	acf_add_options_page([
-		'page_title' => 'Website Settings',
-		'menu_title' => 'Website Settings',
-		'menu_slug' => 'website-settings',
-		'capability' => 'edit_posts',
-	]);
-
 	acf_add_options_sub_page([
-		'page_title' => 'Header',
-		'menu_title' => 'Header',
+		'page_title' => 'Phase Banner',
+		'menu_title' => 'Phase Banner',
 		'parent_slug' => 'website-settings',
 	]);
 
 	acf_add_local_field_group([
 		'key' => 'group_5ec903b4466aa',
-		'title' => 'Phase banner',
+		'title' => 'Phase Banner',
 		'fields' => [
 			[
 				'key' => 'field_5ec903ce70362',
@@ -82,7 +75,7 @@ if (function_exists('acf_add_options_page')) {
 				[
 					'param' => 'options_page',
 					'operator' => '==',
-					'value' => 'acf-options-header',
+					'value' => 'acf-options-phase-banner',
 				],
 			],
 		],

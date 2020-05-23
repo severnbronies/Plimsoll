@@ -1,15 +1,20 @@
+{% from "@components/prose/macro.twig" import sbProse %}
+
 <footer
 	data-module="sb-footer"
 	role="contentinfo"
 	class="sb-footer {%- if params.classes %} {{ params.classes }}{% endif %}"
 	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 	<div class="sb-footer__inner">
-		{%- if params.newsletter %}
-			<form class="sb-footer__subscribe" action="https://severnbronies.us17.list-manage.com/subscribe/post?u=c8d8b4a300a10d369b7acfbe5&amp;id=680dc9c902" method="post" target="_blank">
-				<h2 class="sb-footer__subscribe-heading">Stay updated</h2>
-				<div class="sb-footer__subscribe-body">
-					<p>Get our monthly meet update email. No spam, no marketing, just meets.</p>
-				</div>
+		{%- if params.newsletter.show %}
+			<form class="sb-footer__subscribe" action="https://severnbronies.us17.list-manage.com/subscribe/post?u=c8d8b4a300a10d369b7acfbe5&amp;id=680dc9c902" method="post" target="_blank" aria-label="Sign up for meet updates by email">
+				<h2 class="sb-footer__subscribe-heading">{{ params.newsletter.heading }}</h2>
+				{%- if params.newsletter.description %}
+					{{ sbProse({
+						classes: 'sb-footer__subscribe-body',
+						html: params.newsletter.description
+					}) }}
+				{%- endif %}
 				<div class="sb-footer__subscribe-form">
 					<label class="sb-sr" for="mce-EMAIL">Email address</label>
 					<input class="sb-footer__subscribe-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="{{ params.newsletter.placeholder }}" autocomplete="email" required>
@@ -31,8 +36,10 @@
 				{%- endfor %}
 			</ul>
 		</nav>
-		<small class="sb-footer__boilerplate">
-			{{ params.legalText }}
-		</small>
+		{%- if params.legalText %}
+			<small class="sb-footer__boilerplate">
+				{{ params.legalText }}
+			</small>
+		{%- endif %}
 	</div>
 </footer>
