@@ -86,9 +86,32 @@
 	}
 	&__inner {
 		@include layout.container;
-		max-width: $measure-default;
 	}
 	&__body {
 		max-width: $measure-default;
+	}
+	&__aside {
+		@include media.mq(40em) {
+			&--left {
+				width: 15em;
+				float: left;
+				clear: left;
+				margin-right: 1.5em;
+			}
+		}
+		@include media.mq($measure-default) {
+			&--right {
+				width: 20em;
+				float: right;
+				clear: right;
+				margin-left: 1.5em;
+			}
+		}
+		@include media.mq($measure-default + 25em) {
+			&--right,
+			&--center {
+				margin-right: -13em;
+			}
+		}
 	}
 }

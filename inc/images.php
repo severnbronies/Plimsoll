@@ -121,7 +121,7 @@ function sb_aside_shortcode($attributes, $content = null)
 	if ($align === "centre") {
 		$align = "center";
 	}
-	return '<aside class="article__aside article__aside--' .
+	return '<aside class="sbt-meet__aside sbt-meet__aside--' .
 		$align .
 		'">' .
 		$content .
