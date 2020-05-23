@@ -1,50 +1,54 @@
 @use "tokens.web" as *;
 @use "mixins/a11y";
 @use "mixins/helpers";
-@use "mixins/theme";
+@use "mixins/layout";
 @use "mixins/typography";
 @use "mixins/media";
+@use "mixins/theme";
 
 .sb-banner {
 	$self: &;
+	$flipBreakpoint: 30em;
+	color: var(--theme-accent);
+	background-color: var(--theme-accent-mod);
+	& + & {
+		border-top: 1px solid var(--theme-background);
+	}
 	&__inner {
-		//@include layout.container($withPadding: false);
-		//display: flex;
-		@include media.mq(20em) {
+		@include layout.container;
+		padding-top: 1em;
+		padding-bottom: 1em;
+		@include media.mq($flipBreakpoint) {
 			display: flex;
-			align-items: flex-end;
+			align-items: center;
 		}
 	}
 	&__body {
 		margin-right: 2rem;
-		padding-top: 1rem;
-		padding-bottom: 1rem;
 		font-size: $size-small;
 		line-height: $lead-default;
+		a {
+			@include theme.default-link(var(--theme-accent), var(--theme-background));
+		}
 	}
 	&__dismiss {
 		@include helpers.button-reset;
+		@include typography.all-caps;
 		flex-shrink: 0;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		//margin-right: $layout-grid-gutter / 2;
 		margin-left: auto;
-		font-size: 1.125rem;
-		opacity: $color-opacity-tertiary;
-		cursor: pointer;
+		border: 1px solid var(--theme-background);
+		padding: 0.25em 0.5em;
+		background-color: var(--theme-background);
+		font-size: $size-small;
+		@include media.mq(null, $flipBreakpoint) {
+			margin-top: 1em;
+		}
 		&:hover {
-			opacity: 1;
+			border-color: var(--theme-accent);
 		}
 		&:focus {
 			@include a11y.focus-ring;
 		}
-	}
-	&__dismiss-label {
-		@include typography.all-caps;
-		font-size: $size-small;
-		margin-right: 0.125em;
-		font-weight: 500;
 	}
 	&--info {
 	}

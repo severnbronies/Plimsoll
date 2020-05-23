@@ -1,7 +1,7 @@
 export default class Banner {
 	constructor($module) {
 		this.$module = $module;
-		this.$dismiss = this.$module.querySelector(".sb-banner__dismiss");
+		this.$dismiss = this.$module.querySelector(".js-banner-dismiss");
 		if (this.$dismiss) {
 			this.bindControls();
 		}
