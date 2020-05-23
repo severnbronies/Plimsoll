@@ -1,14 +1,16 @@
 {% extends "_layout.twig" %}
 
+{% from "@components/heading/macro.twig" import sbHeading %}
 {% from "@components/prose/macro.twig" import sbProse %}
 
 {% block main %}
 	<article class="sbt-generic">
 		<div class="sbt-generic__inner">
 			<header class="sbt-generic__header">
-				<h1 class="sbt-generic__heading">
-					{{- post.title -}}
-				</h1>
+				{{ sbHeading({
+					classes: 'sbt-generic__heading',
+					html: post.title
+				}) }}
 			</header>
 			<div class="sbt-generic__body">
 				{{ sbProse({

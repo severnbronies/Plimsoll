@@ -11,11 +11,9 @@
 		margin-bottom: $grid-gutter / 2;
 	}
 	&__heading {
-		@include typography.heading;
 		@include typography.all-caps;
 		@include theme.highlight(var(--theme-accent-mod));
 		display: inline-block;
-		font-size: $size-title;
 		color: var(--theme-accent);
 	}
 	&__body {

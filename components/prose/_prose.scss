@@ -32,6 +32,9 @@
 			margin-top: 0.86em;
 		}
 	}
+	// TODO: These styles are intended to be aligned with the ones in the
+	// Heading component (with added spacing rules). These could probably be
+	// abstracted into a mixin or something.
 	h1,
 	h2 {
 		margin-top: 1.95em;
@@ -40,7 +43,7 @@
 	}
 	h3 {
 		margin-top: 1.72em;
-		font-size: $size-small-subtitle;
+		font-size: $size-pullquote;
 		line-height: $lead-title;
 	}
 	h4 {
@@ -51,7 +54,6 @@
 	h5,
 	h6 {
 		@include typography.all-caps;
-		@include typography.modern-figures;
 		line-height: $lead-default;
 		letter-spacing: $tracking-wide;
 	}
