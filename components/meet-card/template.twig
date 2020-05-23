@@ -1,4 +1,4 @@
-{% from 'components::image/macro.twig' import sbImage %}
+{% from '@components/image/macro.twig' import sbImage %}
 
 <article
     itemscope
@@ -23,18 +23,18 @@
         </strong>
         {%- if params.location or params.date %}
         <dl class="sb-meet-card__details">
-            {%- if params.location %}
-            <div class="sb-meet-card__details-item">
-                <dt class="sb-sr">City</dt>
-                <dd class="sb-meet-card__details-info" itemprop="location">{{ params.location }}</dd>
-            </div>
-            {%- endif %}
             {%- if params.date %}
             <div class="sb-meet-card__details-item">
                 <dt class="sb-sr">Start date</dt>
                 <dd class="sb-meet-card__details-info">
                     <time datetime="{{ params.date }}" itemprop="startDate">{{ params.date | date('l, j F Y') }}</time>
                 </dd>
+            </div>
+            {%- endif %}
+            {%- if params.location %}
+            <div class="sb-meet-card__details-item">
+                <dt class="sb-sr">City</dt>
+                <dd class="sb-meet-card__details-info" itemprop="location">{{ params.location }}</dd>
             </div>
             {%- endif %}
         </dl>

@@ -5,17 +5,18 @@
 .sb-meet-card {
 	$self: &;
 	position: relative;
-	border: 1px solid currentColor;
 	border-radius: $card-border-radius;
 	color: $color-white;
 	background-color: $color-primary;
+	text-align: center;
 	overflow: hidden;
 	&__image {
 	}
 	&__inner {
 		display: flex;
 		flex-direction: column;
-		justify-content: flex-end;
+		justify-content: center;
+		align-items: center;
 		padding: 1rem;
 		position: absolute;
 		width: 100%;
@@ -29,7 +30,7 @@
 		line-height: $lead-title;
 	}
 	&__link {
-		@include theme.default-link($color-white, $color-secondary);
+		@include theme.default-link($color-white, $color-primary-dark);
 		@include theme.extend-link;
 	}
 	&__details {
@@ -65,7 +66,8 @@
 	}
 	&--list {
 		#{$self}__image img {
-			height: 200px;
+			min-height: 12em;
+			height: 33vh;
 		}
 	}
 }
