@@ -1,20 +1,32 @@
 {% extends "_layout.twig" %}
 
+{% from "@components/prose/macro.twig" import sbProse %}
+
 {% block main %}
-	<article>
-		<h1>{{ post.title }}</h1>
-		{{ post.content }}
-		{%- if children %}
-			<aside>
-				<h2>Child pages</h2>
-				<ul>
-					{%- for item in children %}
-					<li>
-						<a href="{{ item.link }}">{{ item.title }}</a>
-					</li>
-					{%- endfor %}
-				</ul>
-			</aside>
-		{%- endif %}
+	<article class="sbt-generic">
+		<div class="sbt-generic__inner">
+			<header class="sbt-generic__header">
+				<h1 class="sbt-generic__heading">
+					{{- post.title -}}
+				</h1>
+			</header>
+			<div class="sbt-generic__body">
+				{{ sbProse({
+					html: post.content
+				}) }}
+			</div>
+			{%- if children %}
+				<nav class="sbt-generic__sidebar" aria-label="Child pages">
+					<h2>Child pages</h2>
+					<ul>
+						{%- for item in children %}
+						<li>
+							<a href="{{ item.link }}">{{ item.title }}</a>
+						</li>
+						{%- endfor %}
+					</ul>
+				</nav>
+			{%- endif %}
+		</div>
 	</article>
 {% endblock %}
