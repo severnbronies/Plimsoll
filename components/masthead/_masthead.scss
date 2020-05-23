@@ -17,10 +17,7 @@
 		overflow: hidden;
 		color: var(--theme-accent);
 		&:hover {
-			#{$self}__logo-left,
-			#{$self}__logo-right {
-				transform: translateY(20%);
-			}
+			color: var(--theme-text);
 		}
 		&:focus {
 			@include a11y.focus-ring;
@@ -32,12 +29,6 @@
 	&__logo-left,
 	&__logo-right {
 		fill: currentColor;
-		transition-property: transform;
-		transition-duration: 0.5s;
-		transition-timing-function: ease-in-out;
-	}
-	&__logo-right {
-		transition-delay: 0.15s;
 	}
 	&__nav {
 		margin-top: 1em;
