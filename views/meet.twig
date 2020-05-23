@@ -1,23 +1,68 @@
 {% extends "_layout.twig" %}
 
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/image/macro.twig" import sbImage %}
+{% from "@components/prose/macro.twig" import sbProse %}
+
+{% set startTime = post.meta('meet_start_time') | normaliseCustomField %}
+{% set endTime = post.meta('meet_end_time') | normaliseCustomField %}
+{% set location = function('sb_location_twig_function', (post.meta('meet_location') | normaliseCustomField)) %}
+
 {% block main %}
-	{%- if post %}
-		<article>
-			<h1>{{ post.title }}</h1>
-			<dl>
-				<dt>Start time</dt> <dd>{{ post.meta('meet_start_time') | normaliseCustomField }}</dd>
-				<dt>End time</dt> <dd>{{ post.meta('meet_end_time') | normaliseCustomField }}</dd>
-				<dt>Location</dt> <dd>{{ dump(function('sb_location_twig_function', (post.meta('meet_location') | normaliseCustomField))) }}</dd>
-				<dt>Organisers</dt> <dd>{{ post.meta('meet_runner') | join(', ') }}</dd>
-			</dl>
-			
+	<article 
+		itemscope
+		itemtype="http://schema.org/Event"
+		class="sbt-meet">
+		<div class="sbt-meet__banner">
 			{%- if post.thumbnail %}
-				<figure>
-					<img src="{{ post.thumbnail.src }}" alt="">
-					<figcaption>Image credit: {{ dump(function('get_featured_image_copyright')) }} </figcaption>
-				</figure>
+				{% set copyrightInfo = function('get_featured_image_copyright') %}
+				{{ sbImage({
+					classes: 'sbt-meet__image',
+					image: {
+						attributes: { 'itemprop': 'image' }
+					},
+					variants: ['cover'],
+					src: post.thumbnail.src('meet-medium'),
+					srcset: post.thumbnail.srcset,
+					alt: post.thumbnail.post_content,
+					attribution: {
+						copyright: copyrightInfo.copyright,
+						source: copyrightInfo.source
+					}
+				}) }}
+			{%- else %}
+				<div class="sbt-meet__image sbt-meet__image--blank" aria-hidden="true"></div>
 			{%- endif %}
-			{{ post.content | wpautop }}
-		</article>
-	{%- endif %}
+			<div class="sbt-meet__banner-inner">
+				<header class="sbt-meet__header">
+					{{ sbHeading({
+						classes: 'sbt-meet__heading',
+						hierarchy: 1,
+						html: post.title
+					}) }}
+				</header>
+				<footer class="sbt-meet__details">
+					<p>We'll be meeting at
+					<strong><a href="#location">{{ location.name }}</a></strong>
+					at
+					<time datetime="{{ startTime | date('c') }}" itemprop="startDate"><strong>{{ startTime | date('g:ia') }}</strong> on <strong>{{ startTime | date(' l, j F Y') }}</strong></time>,
+					until
+					<strong><time datetime="{{ endTime | date('c') }}" itemprop="endDate">{{ endTime | date('g:ia') }}</time></strong>.</p>
+					<p><strong><a href="#runners">[NAME OR NAMES]</a></strong> is/are in charge.</p>
+					{#<dl>
+						<dt>Start time</dt> <dd>{{  }}</dd>
+						<dt>End time</dt> <dd>{{ post.meta('meet_end_time') | normaliseCustomField }}</dd>
+						<dt>Organisers</dt> <dd>{{ post.meta('meet_runner') | join(', ') }}</dd>
+					</dl>#}
+				</footer>
+			</div>
+		</div>
+		<div class="sbt-meet__inner">
+			<div class="sbt-meet__body">
+				{{ sbProse({
+					html: post.content
+				}) }}
+			</div>
+		</div>
+	</article>
 {% endblock %}

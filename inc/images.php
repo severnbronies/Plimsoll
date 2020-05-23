@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * Additional named crop sizes
+ */
+
+add_image_size("search-result", 160, 160, true);
+add_image_size("meet-smaller", 380, 190, true);
+add_image_size("meet-small", 760, 380, true);
+add_image_size("meet-medium", 1140, 760, true);
+add_image_size("meet-large", 1520, 1140, true);
+add_image_size("meet-larger", 1900, 1520, true);
+
+/**
  * Make image attachments 'link to' setting default to 'none'.
  */
 

@@ -30,7 +30,7 @@
 		line-height: $lead-title;
 	}
 	&__link {
-		@include theme.default-link($color-white, $color-primary-dark);
+		@include theme.default-link($color-white, $color-primary-light);
 		@include theme.extend-link;
 	}
 	&__details {

@@ -12,6 +12,6 @@ props:
     category: sizing
     type: size
   card_border_radius:
-    value: .75rem
+    value: 0
     category: border-radius
     type: size

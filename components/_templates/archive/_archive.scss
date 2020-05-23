@@ -25,6 +25,7 @@
 		@include theme.highlight(var(--theme-accent-mod));
 		display: inline;
 		color: var(--theme-accent);
+		line-height: $lead-solid;
 	}
 	&__body {
 		grid-area: body;
