@@ -24,10 +24,7 @@
 	h5,
 	h6 {
 		@include typography.heading;
-		color: $color-primary-dark;
-		@include media.dark-mode {
-			color: $color-primary-light;
-		}
+		color: var(--theme-accent);
 		+ * {
 			margin-top: 0.86em;
 		}
