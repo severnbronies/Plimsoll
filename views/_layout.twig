@@ -1,6 +1,7 @@
 {% include 'global-partials/html-head.twig' %}
 {% from '@components/skiplink/macro.twig' import sbSkiplink %}
 {% from '@components/phase-banner/macro.twig' import sbPhaseBanner %}
+{% from '@components/banner/macro.twig' import sbBanner %}
 
 <body class="{{ body_class }}">
 	
@@ -14,6 +15,14 @@
 	    subheading: phase_banner_subtitle,
 	    html: phase_banner_description
 	}) }}
+
+	{%- for banner in banners %}
+		{{ sbBanner({
+			id: 'sbAlert-' ~ function('md5', banner.banner_text),
+			html: banner.banner_text,
+			dismissable: banner.banner_dismissable
+		}) }}
+	{%- endfor %}
 
 	{% block header %}
 		{% include "global-partials/header.twig" %}

@@ -1,0 +1,20 @@
+{% from "@components/prose/macro.twig" import sbProse %}
+
+{%- if params.html %}
+	<div
+		data-module="sb-banner"
+		class="sb-banner {%- if params.classes %} {{ params.classes }}{% endif %}"
+		role="alert"
+		id="{{ params.id }}"
+		{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+		<div class="sb-banner__inner">
+			{{ sbProse({
+				classes: 'sb-banner__body', 
+				html: params.html,
+			}) }}
+			{%- if params.dismissable %}
+				<button class="sb-banner__dismiss js-banner-dismiss" type="button">Dismiss</button>
+			{%- endif %}
+		</div>
+	</div>
+{%- endif %}

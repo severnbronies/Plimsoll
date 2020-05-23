@@ -11,6 +11,7 @@ if (function_exists('acf_add_options_page')) {
 }
 
 require get_template_directory() . '/inc/footer.php';
+require get_template_directory() . '/inc/header.php';
 require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/image-copyright.php';
 require get_template_directory() . '/inc/images.php';
@@ -108,6 +109,8 @@ class Plimsoll extends Timber\Site
 			'phase_banner_description',
 			'option'
 		);
+		// Notification banners
+		$context['banners'] = get_field('banners', 'option');
 		// Footer
 		$context['footer_navigation'] = new Timber\Menu('footer');
 		$context['footer_legal_copy'] = get_field(
