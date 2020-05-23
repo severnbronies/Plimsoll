@@ -26,13 +26,19 @@
 	{% block header %}
 		{% include "global-partials/header.twig" %}
 	{% endblock %}
+
 	<main id="content" role="main">
 		{% block main %}
 			<p>No page content was found. :(</p>
 		{% endblock %}
 	</main>
+
 	{% block footer %}
 		{% include "global-partials/footer.twig" %}
 	{% endblock %}
+
+	<script src="{{ site.theme.link }}/dist/js/all.js"></script>
+	<script>window.sb.initAll();</script>
+
 	{{ function('wp_footer') }}
 </body>

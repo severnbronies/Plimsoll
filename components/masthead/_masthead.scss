@@ -3,6 +3,7 @@
 @use "mixins/layout";
 @use "mixins/theme";
 @use "mixins/media";
+@use "mixins/a11y";
 
 .sb-masthead {
 	$flipBreakpoint: 25em;
@@ -13,6 +14,9 @@
 	&__branding {
 		display: block;
 		overflow: hidden;
+		&:focus {
+			@include a11y.focus-ring;
+		}
 	}
 	&__logo {
 		margin-top: -1.25vw;

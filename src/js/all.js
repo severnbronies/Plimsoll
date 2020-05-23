@@ -11,8 +11,7 @@
  * This file also exports all component classes so that they can be initialized
  * individually, if necessary.
  *
- * `window.theNamespace.initAll()` (where `theNamespace` is the configured name
- * of the npm package.)
+ * To initialise everything at once: `window.sb.initAll()`
 
 import Datepicker from '../../components/datepicker/datepicker';
 
@@ -35,3 +34,5 @@ export {
 }
 
 */
+
+import "what-input";

@@ -5,8 +5,11 @@
  */
 
 @mixin focus-ring {
-	outline: 2px solid $color-accessibility;
-	outline-offset: 2px;
+	outline: 3px solid $color-accessibility;
+	outline-offset: 1px;
+	html[data-whatintent="mouse"] & {
+		outline: none;
+	}
 }
 
 /**
