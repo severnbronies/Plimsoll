@@ -41,25 +41,34 @@
 }
 
 /**
- * Button reset.
- * Gives buttons some sensible default styles.
+ * Input reset.
  */
 
-@mixin button-reset {
+@mixin input-reset {
 	padding: 0;
 	border: none;
 	border-radius: 0;
 	color: inherit;
 	background: none;
 	font: inherit;
-	cursor: pointer;
+	line-height: inherit;
 	&:focus {
 		@include a11y.focus-ring;
 	}
 }
 
+/**
+ * Button reset.
+ * Gives buttons some sensible default styles.
+ */
+
+@mixin button-reset {
+	@include input-reset;
+	cursor: pointer;
+}
+
 /** 
- * Reset list style
+ * List style reset.
  */
 
 @mixin list-reset {

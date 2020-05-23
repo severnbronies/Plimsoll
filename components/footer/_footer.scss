@@ -1,0 +1,91 @@
+@use "tokens.web" as *;
+@use "mixins/helpers";
+@use "mixins/layout";
+@use "mixins/theme";
+@use "mixins/media";
+@use "mixins/forms";
+
+.sb-footer {
+	$padding: $grid-gutter;
+	$narrowPadding: $grid-gutter / 2;
+	margin-top: $padding;
+	padding-top: $padding;
+	padding-bottom: $padding;
+	color: $color-white;
+	background-color: $color-off-black;
+	@include media.dark-mode {
+		background-color: $color-black;
+	}
+	&__inner {
+		@include layout.container;
+	}
+	&__subscribe {
+		max-width: $measure-narrow;
+		margin-bottom: $padding;
+	}
+	&__subscribe-heading {
+		margin-bottom: 0.25em;
+	}
+	&__subscribe-body {
+		margin-bottom: 0.25em;
+		font-size: $size-small;
+	}
+	&__subscribe-form {
+		display: flex;
+		flex-direction: row;
+	}
+	&__subscribe-input,
+	&__subscribe-button {
+		@include helpers.input-reset;
+		padding: 0.5em 1em;
+		border: 1px solid rgba($color-white, $color-opacity-tertiary);
+	}
+	&__subscribe-input {
+		flex-grow: 1;
+		border-right: 0;
+		border-top-left-radius: 2em;
+		border-bottom-left-radius: 2em;
+		@include forms.placeholder {
+		}
+	}
+	&__subscribe-button {
+		flex-shrink: 0;
+		border-top-right-radius: 2em;
+		border-bottom-right-radius: 2em;
+		cursor: pointer;
+		&:hover {
+			background-color: rgba($color-white, $color-opacity-disabled);
+		}
+	}
+	&__nav {
+	}
+	&__nav-list {
+		@include helpers.list-reset;
+		@include media.mq(60em) {
+			display: flex;
+		}
+	}
+	&__nav-item {
+		@include media.mq(60em) {
+			& + & {
+				margin-left: 1.5em;
+			}
+		}
+	}
+	&__nav-link {
+		@include theme.default-link($color-white, $color-primary);
+		&[aria-current] {
+		}
+	}
+	&__boilerplate {
+		display: block;
+		max-width: $measure-wide;
+		margin-top: $narrowPadding;
+		font-size: 0.75em;
+		line-height: $lead-title;
+		opacity: $color-opacity-tertiary;
+		a {
+			@include theme.default-link($color-white, $color-primary);
+		}
+	}
+}

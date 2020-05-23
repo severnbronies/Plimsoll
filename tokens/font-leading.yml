@@ -2,7 +2,7 @@ props:
   lead_default:
     value: 1.6
   lead_title:
-    value: 1.2
+    value: 1.3
   lead_solid:
     value: 1
 global:
