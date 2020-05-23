@@ -1,14 +1,6 @@
-@use "tokens.web" as *;
 @use "../mixins";
 
 // Visually hide copy while keeping it available to screen readers.
 [class~="sb-sr"] {
 	@include mixins.a11y-hidden;
-}
-
-// Simple two-dimensional grid
-.sb-grid {
-	display: grid;
-	grid-gap: $grid-gutter;
-	grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
 }

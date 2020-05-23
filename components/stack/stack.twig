@@ -1,0 +1,16 @@
+{% from "@components/stack/macro.twig" import sbStack %}
+
+{% set stackContent %}
+	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, fuga consequuntur eveniet deserunt, aspernatur voluptatum, pariatur libero eum necessitatibus cumque quas tempora numquam cupiditate molestias debitis natus modi iure fugit?</div>
+	<div>Magnam hic, pariatur molestiae quidem molestias esse rem voluptates voluptas ex eos amet, consectetur voluptatibus nesciunt delectus at reiciendis tempora. Minus iusto facilis culpa quisquam recusandae perspiciatis consequuntur necessitatibus quis!</div>
+	<div>Officiis quisquam ab provident quibusdam accusantium accusamus iste velit omnis nihil magnam saepe sint ad quam, est vel architecto atque molestiae, minima hic facilis, repudiandae! Quod eos nostrum nemo placeat!</div>
+{% endset %}
+
+{{ sbStack({
+	html: stackContent
+}) }}
+
+{{ sbStack({
+	direction: 'horizontal',
+	html: stackContent
+}) }}

@@ -8,6 +8,7 @@
 @use "banner/banner";
 @use "button/button";
 @use "footer/footer";
+@use "grid/grid";
 @use "image/image";
 @use "masthead/masthead";
 @use "meet-card/meet-card";
@@ -15,6 +16,7 @@
 @use "prose/prose";
 @use "skiplink/skiplink";
 @use "splash/splash";
+@use "stack/stack";
 
 // Templates
 @use "_templates/generic/generic";
