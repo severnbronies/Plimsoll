@@ -70,7 +70,7 @@
 					{{ sbSection({
 						attributes: { 'id': 'location' },
 						heading: {
-							html: 'Location'
+							html: (runners | length > 1) ? 'Locations' : 'Meeting location'
 						},
 						html: dump(location)
 					}) }}
