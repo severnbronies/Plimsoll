@@ -92,6 +92,12 @@ if (function_exists("register_field_group")) {
 				'center_lng' => '-2.5835877',
 				'zoom' => 12,
 				'height' => '',
+				'conditional_logic' => 0,
+				'wrapper' => [
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				],
 			],
 			[
 				'key' => 'field_56c487d97e01f',
@@ -109,6 +115,44 @@ if (function_exists("register_field_group")) {
 				'default_value' => '',
 				'allow_null' => 1,
 				'multiple' => 0,
+			],
+			[
+				'key' => 'field_5eca48be711ea',
+				'label' => 'Travel information',
+				'name' => 'location_travel',
+				'type' => 'wysiwyg',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => [
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				],
+				'default_value' => '',
+				'tabs' => 'all',
+				'toolbar' => 'basic',
+				'media_upload' => 0,
+				'delay' => 0,
+			],
+			[
+				'key' => 'field_5eca47e2711e9',
+				'label' => 'Accessibility information',
+				'name' => 'location_accessibility',
+				'type' => 'wysiwyg',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => [
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				],
+				'default_value' => '',
+				'tabs' => 'all',
+				'toolbar' => 'basic',
+				'media_upload' => 0,
+				'delay' => 0,
 			],
 		],
 		'location' => [
@@ -148,6 +192,11 @@ function sb_location_twig_function($id)
 				get_field("location_locality", $location_id) != ""
 					? get_field("location_locality", $location_id)
 					: false,
+			"accessibility_info" => get_field(
+				"location_accessibility",
+				$location_id
+			),
+			"travel_info" => get_field("location_travel", $location_id),
 		];
 	}
 	return $return_array;
