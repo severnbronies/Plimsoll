@@ -6,6 +6,7 @@
 {% from "@components/section/macro.twig" import sbSection %}
 {% from "@components/stack/macro.twig" import sbStack %}
 {% from "@components/organiser/macro.twig" import sbOrganiser %}
+{% from "@components/location/macro.twig" import sbLocation %}
 
 {% set startTime = post.meta('meet_start_time') | normaliseCustomField %}
 {% set endTime = post.meta('meet_end_time') | normaliseCustomField %}
@@ -45,7 +46,7 @@
 				</header>
 				<footer class="sbt-meet__details">
 					<p>We'll be meeting at
-					<strong><a href="#location">{{ location[0].name }}</a></strong>
+					<strong><a href="#location">{{ locations[0].name }}</a></strong>
 					at
 					<time datetime="{{ startTime | date('c') }}" itemprop="startDate"><strong>{{ startTime | date('g:ia') }}</strong> on <strong>{{ startTime | date(' l, j F Y') }}</strong></time>,
 					until
@@ -60,6 +61,11 @@
 					html: post.content
 				}) }}
 			</div>
+			{% set infoSectionLocations %}
+				{%- for location in locations %}
+					{{ sbLocation(location) }}
+				{%- endfor %}
+			{% endset %}
 			{% set infoSectionRunners %}
 				{%- for runner in runners %}
 					{{ sbOrganiser(runner) }}
@@ -72,7 +78,7 @@
 						heading: {
 							html: (runners | length > 1) ? 'Locations' : 'Meeting location'
 						},
-						html: dump(location)
+						html: infoSectionLocations
 					}) }}
 				</div>
 				<div>

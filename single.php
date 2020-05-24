@@ -4,7 +4,7 @@ $context = Timber::context();
 $timber_post = Timber::query_post();
 
 $context['post'] = $timber_post;
-$context['location'] = sb_location_twig_function($timber_post->ID);
+$context['locations'] = sb_location_twig_function($timber_post->ID);
 
 $runners = sb_runner_twig_function($timber_post->ID);
 $context['runners'] = $runners;

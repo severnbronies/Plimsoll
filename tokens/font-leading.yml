@@ -4,7 +4,7 @@ props:
   lead_title:
     value: 1.3
   lead_solid:
-    value: .9
+    value: .95
 global:
   category: line-height
   type: number
