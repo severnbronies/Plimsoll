@@ -7,6 +7,7 @@
 {% from "@components/stack/macro.twig" import sbStack %}
 {% from "@components/organiser/macro.twig" import sbOrganiser %}
 {% from "@components/location/macro.twig" import sbLocation %}
+{% from "@components/map/macro.twig" import sbMap %}
 
 {% set startTime = post.meta('meet_start_time') | normaliseCustomField %}
 {% set endTime = post.meta('meet_end_time') | normaliseCustomField %}
@@ -62,9 +63,26 @@
 				}) }}
 			</div>
 			{% set infoSectionLocations %}
+				{{ sbMap({
+					id: 'LocationMap'
+				}) }}
 				{%- for location in locations %}
 					{{ sbLocation(location) }}
 				{%- endfor %}
+				<script>
+					window.addEventListener('DOMContentLoaded', function() {
+						var map = new window.sb.Map(document.getElementById('LocationMap'), function() {
+							{%- for location in locations %}
+							map.addLocation({
+								name: '{{ location.name }}',
+								address: '{{ location.address }}',
+								lat: {{ location.latitude }},
+								lng: {{ location.longitude }}
+							});
+							{%- endfor %}
+						});
+					});
+				</script>
 			{% endset %}
 			{% set infoSectionRunners %}
 				{%- for runner in runners %}

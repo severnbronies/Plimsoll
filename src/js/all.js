@@ -17,6 +17,7 @@
 import "what-input";
 
 import Banner from "../../components/banner/banner";
+import Map from "../../components/map/map";
 
 function initAll(options) {
 	options = typeof options !== "undefined" ? options : {};
@@ -30,4 +31,4 @@ function initAll(options) {
 	});
 }
 
-export { initAll, Banner };
+export { initAll, Banner, Map };

@@ -1,5 +1,18 @@
 <?php
 
+// ACF configuration
+function my_acf_init()
+{
+	// This key is public facing, so having it here seems to be fine for the
+	// time being. Also it's restricted to certain domains, which is probably
+	// good enough, right?
+	acf_update_setting(
+		'google_api_key',
+		'AIzaSyCmQJYucuxqKFwJoWiDTOwvFRGrTNXX9zk'
+	);
+}
+add_action('acf/init', 'my_acf_init');
+
 // This page is used by multiple of the requires below, so let's just stick it here.
 if (function_exists('acf_add_options_page')) {
 	acf_add_options_page([
