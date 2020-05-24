@@ -5,11 +5,10 @@
 {% from "@components/prose/macro.twig" import sbProse %}
 {% from "@components/section/macro.twig" import sbSection %}
 {% from "@components/stack/macro.twig" import sbStack %}
+{% from "@components/organiser/macro.twig" import sbOrganiser %}
 
 {% set startTime = post.meta('meet_start_time') | normaliseCustomField %}
 {% set endTime = post.meta('meet_end_time') | normaliseCustomField %}
-{% set location = function('sb_location_twig_function', post.id) %}
-{% set runners = function('sb_runner_twig_function', post.id) %}
 
 {% block main %}
 	<article 
@@ -51,12 +50,7 @@
 					<time datetime="{{ startTime | date('c') }}" itemprop="startDate"><strong>{{ startTime | date('g:ia') }}</strong> on <strong>{{ startTime | date(' l, j F Y') }}</strong></time>,
 					until
 					<strong><time datetime="{{ endTime | date('c') }}" itemprop="endDate">{{ endTime | date('g:ia') }}</time></strong>.</p>
-					<p><strong><a href="#runners">[NAME OR NAMES]</a></strong> is/are in charge.</p>
-					{#<dl>
-						<dt>Start time</dt> <dd>{{  }}</dd>
-						<dt>End time</dt> <dd>{{ post.meta('meet_end_time') | normaliseCustomField }}</dd>
-						<dt>Organisers</dt> <dd>{{ post.meta('meet_runner') | join(', ') }}</dd>
-					</dl>#}
+					<p><strong><a href="#runners">{{ runners_names | join(', ', ' and ') }}</a></strong> {{ (runners_names | length > 1) ? 'are' : 'is' }} in charge.</p>
 				</footer>
 			</div>
 		</div>
@@ -66,6 +60,11 @@
 					html: post.content
 				}) }}
 			</div>
+			{% set infoSectionRunners %}
+				{%- for runner in runners %}
+					{{ sbOrganiser(runner) }}
+				{%- endfor %}
+			{% endset %}
 			{% set infoSections %}
 				<div>
 					{{ sbSection({
@@ -80,9 +79,9 @@
 					{{ sbSection({
 						attributes: { 'id': 'runners' },
 						heading: {
-							html: 'Organiser(s)'
+							html: (runners | length > 1) ? 'Organisers' : 'Organiser' 
 						},
-						html: dump(runners)
+						html: infoSectionRunners
 					}) }}
 				</div>
 			{% endset %}

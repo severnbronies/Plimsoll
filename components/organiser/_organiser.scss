@@ -1,0 +1,48 @@
+@use "tokens.web" as *;
+@use "mixins/media";
+
+.sb-organiser {
+	$flipBreakpoint: 60em;
+	$avatarSize: 9em;
+	$avatarMargin: 1.5em;
+	$avatarPaddingLeft: $avatarSize + $avatarMargin;
+	overflow: hidden;
+	@include media.mq($flipBreakpoint) {
+		padding-left: $avatarPaddingLeft;
+	}
+	& + & {
+		margin-top: $grid-gutter / 2;
+	}
+	&__image-container {
+		width: $avatarSize;
+		margin-bottom: $avatarMargin;
+		position: relative;
+		line-height: 0;
+		&::after {
+			content: "";
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+			box-shadow: inset 0 0 1em rgba($color-black, 0.25);
+		}
+		@include media.mq($flipBreakpoint) {
+			margin-bottom: 0;
+			margin-left: 0 - $avatarPaddingLeft;
+			float: left;
+			clear: left;
+		}
+	}
+	&__image {
+		width: 100%;
+		border-radius: 50%;
+	}
+	&__name {
+	}
+	&__biography {
+		max-width: $measure-default;
+		margin-top: 1em;
+	}
+}
