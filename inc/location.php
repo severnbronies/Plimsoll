@@ -39,37 +39,33 @@ add_action('init', 'sb_location_post_type');
  * @param  array $defaults List of existing column headers.
  * @return array           List of modified column headers.
  */
-function sb_meet_locality_column_title($defaults)
+function sb_meet_address_column_title($defaults)
 {
 	$new = [];
 	foreach ($defaults as $key => $title) {
 		if ($key == "author") {
-			$new['locality'] = 'Locality';
+			$new['address'] = 'Address';
 		}
 		$new[$key] = $title;
 	}
 	return $new;
 }
-add_filter(
-	"manage_location_posts_columns",
-	"sb_meet_locality_column_title",
-	10
-);
+add_filter("manage_location_posts_columns", "sb_meet_address_column_title", 10);
 
 /**
  * Add locality column content to list of meet locations.
  * @param  string $column_name The current column name.
  * @param  int    $post_id     The current post ID.
  */
-function sb_meet_locality_column_content($column_name, $post_id)
+function sb_meet_address_column_content($column_name, $post_id)
 {
-	if ($column_name == "locality") {
-		echo get_field("location_locality", $post_id);
+	if ($column_name == "address") {
+		echo get_field("location_address", $post_id)['address'];
 	}
 }
 add_filter(
 	"manage_location_posts_custom_column",
-	"sb_meet_locality_column_content",
+	"sb_meet_address_column_content",
 	10,
 	2
 );

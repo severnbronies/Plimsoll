@@ -44,7 +44,7 @@ function sb_runner_staff_column_title($defaults)
 	$new = [];
 	foreach ($defaults as $key => $title) {
 		if ($key == "author") {
-			$new['staff'] = 'Staff?';
+			$new['staff'] = 'Current staff?';
 		}
 		$new[$key] = $title;
 	}
@@ -65,7 +65,7 @@ function sb_runner_staff_column_content($column_name, $post_id)
 {
 	if ($column_name == "staff") {
 		$staff_status = get_field("runner_staff", $post_id);
-		if (!empty($staff_status[0]) && $staff_status[0] == "true") {
+		if (!empty($staff_status) && $staff_status == "true") {
 			echo "&#x2714; Yes";
 		}
 	}
@@ -132,13 +132,29 @@ if (function_exists("register_field_group")) {
 				'label' =>
 					'Is this person a current Severn Bronies staff member?',
 				'name' => 'runner_staff',
-				'type' => 'checkbox',
-				'choices' => [
-					'true' =>
-						'Yes, this person is a current Severn Bronies staff member!',
+				'type' => 'select',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => [
+					'width' => '',
+					'class' => '',
+					'id' => '',
 				],
-				'default_value' => '',
-				'layout' => 'vertical',
+				'choices' => [
+					'false' => 'Nope, never',
+					'true' =>
+						'Yes, this person is a current Severn Bronies staff member',
+					'former' =>
+						'This person is a former Severn Bronies staff member',
+				],
+				'default_value' => 'nope',
+				'allow_null' => 0,
+				'multiple' => 0,
+				'ui' => 0,
+				'return_format' => 'value',
+				'ajax' => 0,
+				'placeholder' => '',
 			],
 			[
 				'key' => 'field_8xWzasD44tWQD',
@@ -194,20 +210,6 @@ if (function_exists("register_field_group")) {
 				'save_in_media_library' => 'yes',
 				'retina_mode' => 'no',
 				'save_format' => 'url',
-			],
-			[
-				'key' => 'field_562e6c282319c',
-				'label' => 'Links',
-				'name' => 'runner_links',
-				'type' => 'textarea',
-				'instructions' =>
-					'URLs for social media or other websites you want to show off. One per line.',
-				'default_value' => '',
-				'placeholder' =>
-					"http://severnbronies.co.uk\nhttp://twitter.com/severnbronies\nhttp://facebook.com/severnbronies",
-				'maxlength' => '',
-				'rows' => 5,
-				'formatting' => 'none',
 			],
 		],
 		'location' => [

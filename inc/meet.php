@@ -33,7 +33,7 @@ function sb_meet_time_column_title($defaults)
 	unset($new["date"]);
 	return $new;
 }
-add_filter("manage_posts_columns", "sb_meet_time_column_title", 10);
+add_filter("manage_post_posts_columns", "sb_meet_time_column_title", 10);
 
 /**
  * Add running time column content to WP admin.
@@ -49,7 +49,12 @@ function sb_meet_time_column_content($column_name, $post_id)
 		);
 	}
 }
-add_filter("manage_posts_custom_column", "sb_meet_time_column_content", 10, 2);
+add_filter(
+	"manage_post_posts_custom_column",
+	"sb_meet_time_column_content",
+	10,
+	2
+);
 
 /**
  * Make running time sortable in WP admin.
@@ -87,13 +92,13 @@ function sb_meet_location_column_title($defaults)
 	$new = [];
 	foreach ($defaults as $key => $title) {
 		if ($key == "author") {
-			$new['location'] = 'Location';
+			$new['location'] = 'Starting Location';
 		}
 		$new[$key] = $title;
 	}
 	return $new;
 }
-add_filter("manage_posts_columns", "sb_meet_location_column_title", 11);
+add_filter("manage_post_posts_columns", "sb_meet_location_column_title", 11);
 
 /**
  * Add location column content to WP admin.
@@ -103,21 +108,16 @@ add_filter("manage_posts_columns", "sb_meet_location_column_title", 11);
 function sb_meet_location_column_content($column_name, $post_id)
 {
 	if ($column_name == "location") {
-		$meet_location = get_field("meet_location", $post_id);
-		for ($i = 0; $i < count($meet_location); $i++) {
-			$address = get_field("location_address", $meet_location[$i]);
-			echo '<strong>' .
-				get_the_title($meet_location[$i]) .
-				"</strong><br>" .
-				$address["address"];
-			if (!empty($meet_location[$i + 1])) {
-				echo "<br>";
-			}
-		}
+		$meet_location = get_field("meet_location", $post_id)[0];
+		$address = get_field("location_address", $meet_location);
+		echo '<strong>' .
+			get_the_title($meet_location) .
+			"</strong><br>" .
+			$address["address"];
 	}
 }
 add_filter(
-	"manage_posts_custom_column",
+	"manage_post_posts_custom_column",
 	"sb_meet_location_column_content",
 	10,
 	2
