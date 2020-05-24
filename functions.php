@@ -189,12 +189,6 @@ class Plimsoll extends Timber\Site
 			new Twig\TwigFilter('parseCustomField', [$this, 'parseCustomField'])
 		);
 		$twig->addFunction(
-			new Timber\Twig_Function('sb_location', [
-				$this,
-				'sb_location_twig_function',
-			])
-		);
-		$twig->addFunction(
 			new Timber\Twig_Function('merge', [$this, 'twig_merge_function'])
 		);
 		return $twig;

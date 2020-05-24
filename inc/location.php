@@ -135,15 +135,20 @@ if (function_exists("register_field_group")) {
 
 function sb_location_twig_function($id)
 {
-	$data = get_field("location_address", $id);
-	return [
-		"name" => get_the_title($id),
-		"address" => $data["address"],
-		"latitude" => $data["lat"],
-		"longitude" => $data["lng"],
-		"locality" =>
-			get_field("location_locality", $id) != ""
-				? get_field("location_locality", $id)
-				: false,
-	];
+	$locations = get_field('meet_location', $id);
+	$return_array = [];
+	foreach ($locations as $location_id) {
+		$data = get_field("location_address", $location_id);
+		$return_array[] = [
+			"name" => get_the_title($location_id),
+			"address" => $data["address"],
+			"latitude" => $data["lat"],
+			"longitude" => $data["lng"],
+			"locality" =>
+				get_field("location_locality", $location_id) != ""
+					? get_field("location_locality", $location_id)
+					: false,
+		];
+	}
+	return $return_array;
 }

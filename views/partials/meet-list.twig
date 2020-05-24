@@ -12,7 +12,7 @@
 			},
 			href: item.link,
 			name: item.title,
-			location: function('sb_location_twig_function', (item.meta('meet_location') | normaliseCustomField)).locality,
+			location: function('sb_location_twig_function', item.id)[0].locality,
 			date: item.meta('meet_start_time') | normaliseCustomField | date('c')
 		}) }}
 	{%- endfor %}

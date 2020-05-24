@@ -3,10 +3,13 @@
 {% from "@components/heading/macro.twig" import sbHeading %}
 {% from "@components/image/macro.twig" import sbImage %}
 {% from "@components/prose/macro.twig" import sbProse %}
+{% from "@components/section/macro.twig" import sbSection %}
+{% from "@components/stack/macro.twig" import sbStack %}
 
 {% set startTime = post.meta('meet_start_time') | normaliseCustomField %}
 {% set endTime = post.meta('meet_end_time') | normaliseCustomField %}
-{% set location = function('sb_location_twig_function', (post.meta('meet_location') | normaliseCustomField)) %}
+{% set location = function('sb_location_twig_function', post.id) %}
+{% set runners = function('sb_runner_twig_function', post.id) %}
 
 {% block main %}
 	<article 
@@ -43,7 +46,7 @@
 				</header>
 				<footer class="sbt-meet__details">
 					<p>We'll be meeting at
-					<strong><a href="#location">{{ location.name }}</a></strong>
+					<strong><a href="#location">{{ location[0].name }}</a></strong>
 					at
 					<time datetime="{{ startTime | date('c') }}" itemprop="startDate"><strong>{{ startTime | date('g:ia') }}</strong> on <strong>{{ startTime | date(' l, j F Y') }}</strong></time>,
 					until
@@ -63,6 +66,30 @@
 					html: post.content
 				}) }}
 			</div>
+			{% set infoSections %}
+				<div>
+					{{ sbSection({
+						attributes: { 'id': 'location' },
+						heading: {
+							html: 'Location'
+						},
+						html: dump(location)
+					}) }}
+				</div>
+				<div>
+					{{ sbSection({
+						attributes: { 'id': 'runners' },
+						heading: {
+							html: 'Organiser(s)'
+						},
+						html: dump(runners)
+					}) }}
+				</div>
+			{% endset %}
+			{{ sbStack({
+				direction: 'horizontal',
+				html: infoSections
+			}) }}
 		</div>
 	</article>
 {% endblock %}

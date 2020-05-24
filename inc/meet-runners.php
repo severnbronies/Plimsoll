@@ -231,3 +231,50 @@ if (function_exists("register_field_group")) {
 		'menu_order' => 0,
 	]);
 }
+
+/**
+ * Twig function
+ */
+
+function sb_runner_twig_function($id)
+{
+	$runners = get_field('meet_runner', $id);
+	$meet_runners = [];
+	foreach ($runners as $runner_id) {
+		$meet_runners[] = [
+			"id" => $runner_id,
+			"name" => get_the_title($runner_id),
+			"avatar" => sb_runner_avatar($runner_id),
+			"biography" => sb_runner_biography($runner_id),
+			"email" => get_field("runner_email", $runner_id),
+		];
+	}
+	return $meet_runners;
+}
+
+/**
+ * Get a meet runner's avatar from their user ID
+ * @param  int    $id The post ID.
+ * @return string     The URL for their avatar image.
+ */
+function sb_runner_avatar($id)
+{
+	if ($image = get_field("runner_avatar", $id)) {
+		return $image;
+	} else {
+		return "http://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=96";
+	}
+}
+
+/**
+ * Get a meet runner's biography from their user ID
+ * @param  int    $id The post ID.
+ * @return string     Their biography contents as HTML.
+ */
+function sb_runner_biography($id)
+{
+	$content_post = get_post($id);
+	$content = $content_post->post_content;
+	$content = apply_filters('the_content', $content);
+	return $content;
+}
