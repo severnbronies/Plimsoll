@@ -155,10 +155,39 @@ class Plimsoll extends Timber\Site
 
 	public function theme_supports()
 	{
-		add_filter("show_admin_bar", "__return_false");
+		/**
+		 * Turn stuff on
+		 */
+		// Enabled auto-generated <title> tag
 		add_theme_support('title-tag');
+		// Enable post thumbnails
 		add_theme_support('post-thumbnails');
+		// Enable CMS-manageable navigation
 		add_theme_support('menus');
+
+		/**
+		 * Turn stuff off
+		 */
+		// Disable WP emoji
+		remove_action('wp_head', 'print_emoji_detection_script', 7);
+		remove_action('wp_print_styles', 'print_emoji_styles');
+		// Disable admin bar
+		add_filter("show_admin_bar", "__return_false");
+		// Disable oEmbed support
+		add_filter('embed_oembed_discover', '__return_false');
+		remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
+		remove_action('wp_head', 'wp_oembed_add_discovery_links');
+		remove_action('wp_head', 'wp_oembed_add_host_js');
+		add_filter('rewrite_rules_array', 'disable_embeds_rewrites');
+		// Disable WP blocks CSS
+		add_action(
+			'wp_enqueue_scripts',
+			function () {
+				wp_dequeue_style('wp-block-library'); // WordPress core
+				wp_dequeue_style('wp-block-library-theme'); // WordPress core
+			},
+			100
+		);
 	}
 
 	/**
