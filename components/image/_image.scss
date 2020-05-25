@@ -3,6 +3,8 @@
 
 .sb-image {
 	$self: &;
+	margin: 0;
+	padding: 0;
 	position: relative;
 	line-height: 0;
 	&__image {
