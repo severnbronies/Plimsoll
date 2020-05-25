@@ -194,7 +194,7 @@ class Plimsoll extends Timber\Site
 	 * For some reason custom fields are janked, with some stored as strings
 	 * and others as arrays. This is a temporary workaround For this issue.
 	 */
-	public function normaliseCustomField($obj)
+	public function twig_normalise_custom_field_filter($obj)
 	{
 		if (is_array($obj)) {
 			return $obj[0];
@@ -202,6 +202,10 @@ class Plimsoll extends Timber\Site
 		return $obj;
 	}
 
+	/**
+	 * Function for merging multiple arrays together (useful for setting
+	 * default or overriding parameters).
+	 */
 	function twig_merge_function()
 	{
 		$get_args = func_get_args();
@@ -215,6 +219,18 @@ class Plimsoll extends Timber\Site
 		return $return_array_data;
 	}
 
+	/**
+	 * See if a named cookie has been set and, if so, what the value is.
+	 */
+	function twig_cookie_value_function($cookieName)
+	{
+		if (isset($_COOKIE[$cookieName])) {
+			return $_COOKIE[$cookieName];
+		} else {
+			return false;
+		}
+	}
+
 	/** This is where you can add your own functions to twig.
 	 *
 	 * @param string $twig get extension.
@@ -225,14 +241,17 @@ class Plimsoll extends Timber\Site
 		$twig->addFilter(
 			new Twig\TwigFilter('normaliseCustomField', [
 				$this,
-				'normaliseCustomField',
+				'twig_normalise_custom_field_filter',
 			])
-		);
-		$twig->addFilter(
-			new Twig\TwigFilter('parseCustomField', [$this, 'parseCustomField'])
 		);
 		$twig->addFunction(
 			new Timber\Twig_Function('merge', [$this, 'twig_merge_function'])
+		);
+		$twig->addFunction(
+			new Timber\Twig_Function('getCookie', [
+				$this,
+				'twig_cookie_value_function',
+			])
 		);
 		return $twig;
 	}
