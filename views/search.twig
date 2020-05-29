@@ -1,21 +1,45 @@
 {% extends "_layout.twig" %}
 
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/prose/macro.twig" import sbProse %}
+
 {% block main %}
-	{%- if search_query %}
-		<h1>Results for <em>{{ search_query }}</em></h1>
-	{%- else %}
-		<h1>Search Severn Bronies</h1>
-	{%- endif %}
-	{% include "partials/search-form.twig" %}
-	{%- if search_query %}
-		{%- if posts %}
-			<ol>
-				{%- for post in posts %}
-					<li><a href="{{ post.link }}">{{ post.title }}</a></li>
-				{%- endfor %}
-			</ol>
-		{%- else %}
-			<p><em>No results found.</em></p>
-		{%- endif %}
-	{%- endif %}
+	<section class="sbt-search">
+		<header class="sbt-search__header">
+			<div class="sbt-search__inner">
+				{% set searchFormLabel %}
+					<h1>Search</h1>
+				{% endset %}
+				<div class="sbt-search__form">
+					{% include "partials/search-form.twig" with {
+						id: 'search',
+						search_query: search_query,
+						label: searchFormLabel
+					} %}
+				</div>
+			</div>
+		</header>
+		<div class="sbt-search__inner">
+			<div class="sbt-search__body">
+				<div class="sbt-search__results">
+					{%- if search_query %}
+						{%- if results.found_posts %}
+							{# Results for query. #}
+							{% include "partials/meet-list.twig" with { 'meets': results } %}
+						{%- else %}
+							{# No results for query, empty state. #}
+							{{ sbProse({
+								html: '<p><em>No results found. Try something more generic, perhaps?</em></p>' 
+							}) }}
+						{%- endif %}
+					{%- else %}
+						{# No query, empty state. #}
+						{{ sbProse({
+							html: '<p><em>Search for something in order to find something.</em></p>' 
+						}) }}
+					{%- endif %}
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

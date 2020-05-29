@@ -19,6 +19,7 @@
 @use "organiser/organiser";
 @use "phase-banner/phase-banner";
 @use "prose/prose";
+@use "search-form/search-form";
 @use "section/section";
 @use "skiplink/skiplink";
 @use "splash/splash";
@@ -29,3 +30,4 @@
 @use "_templates/generic/generic";
 @use "_templates/home/home";
 @use "_templates/meet/meet";
+@use "_templates/search/search";

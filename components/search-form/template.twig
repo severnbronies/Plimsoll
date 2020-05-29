@@ -1,0 +1,13 @@
+<form 
+	data-module="sb-search-form"
+    class="sb-search-form {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+    role="search"
+    method="get"
+    action="/">
+	<label class="sb-search-form__label" for="{{ params.id }}">
+		{{ params.label }}
+	</label>
+	<input class="sb-search-form__input" type="search" name="s" id="{{ params.id }}" value="{{ params.search_query }}" enterkeyhint="search" spellcheck="false" placeholder="Search">
+	<button class="sb-search-form__button" type="submit">Go</button>
+</form>
