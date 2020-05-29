@@ -1,3 +1,41 @@
+@use "tokens.web" as *;
+@use "mixins/helpers";
+@use "mixins/a11y";
+@use "mixins/typography";
+@use "mixins/theme";
+@use "mixins/forms";
+
 .sb-search-form {
-	// Put code here
+	@include typography.heading;
+	display: flex;
+	color: var(--theme-accent);
+	background-color: var(--theme-accent-mod);
+	border-bottom: 0.5em solid var(--theme-accent);
+	&__label {
+		@include a11y.hidden;
+	}
+	&__input {
+		@include helpers.input-reset;
+		width: 100%;
+		flex-grow: 1;
+		padding-right: 0.5em;
+		@include forms.placeholder {
+			color: var(--theme-accent);
+			opacity: 0.5;
+		}
+	}
+	&__button {
+		@include helpers.button-reset;
+		flex-shrink: 0;
+		color: var(--theme-background);
+		&:hover {
+			color: var(--theme-accent);
+		}
+	}
+	&__input,
+	&__button {
+		@include typography.all-caps;
+		font-size: $size-title;
+		line-height: $lead-title;
+	}
 }

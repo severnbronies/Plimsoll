@@ -52,6 +52,7 @@
 	background: none;
 	font: inherit;
 	line-height: inherit;
+	appearance: none;
 	&:focus {
 		@include a11y.focus-ring;
 	}

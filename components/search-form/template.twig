@@ -5,9 +5,9 @@
     role="search"
     method="get"
     action="/">
-	<label for="{{ id }}">
-		Search
+	<label class="sb-search-form__label" for="{{ params.id }}">
+		{{ params.label }}
 	</label>
-	<input type="search" name="s" id="{{ id }}" value="{{ search_query }}">
-	<button type="submit">Go</button>
+	<input class="sb-search-form__input" type="search" name="s" id="{{ params.id }}" value="{{ params.search_query }}" enterkeyhint="search" spellcheck="false" placeholder="Search">
+	<button class="sb-search-form__button" type="submit">Go</button>
 </form>

@@ -1,7 +1,7 @@
-<form role="search" method="get" action="/">
-	<label for="{{ id }}">
-		Search
-	</label>
-	<input type="search" name="s" id="{{ id }}" value="{{ search_query }}">
-	<button type="submit">Go</button>
-</form>
+{% from "@components/search-form/macro.twig" import sbSearchForm %}
+
+{{ sbSearchForm({
+	id: id,
+	search_query: search_query,
+	label: label
+}) }}
