@@ -16,6 +16,7 @@
 
 import "what-input";
 
+import ArchiveNavigation from "../../components/archive-navigation/archive-navigation";
 import Banner from "../../components/banner/banner";
 import Map from "../../components/map/map";
 
@@ -25,6 +26,10 @@ function initAll(options) {
 	// Scope initialization to only certain parts of the page
 	// Defaults to entire document if not set
 	const scope = typeof options.scope !== "undefined" ? options.scope : document;
+
+	scope.querySelectorAll('[data-module="sb-archive-navigation"]').forEach(m => {
+		new ArchiveNavigation(m);
+	});
 
 	scope.querySelectorAll('[data-module="sb-banner"]').forEach(m => {
 		new Banner(m);

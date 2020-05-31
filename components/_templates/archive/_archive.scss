@@ -14,6 +14,7 @@
 		grid-template-areas: "header" "body" "nav";
 		@include media.mq(60em) {
 			grid-template-columns: 20em 1fr;
+			grid-template-rows: auto 1fr;
 			grid-template-areas: "header body" "nav body";
 		}
 	}

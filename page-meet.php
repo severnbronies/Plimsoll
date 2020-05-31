@@ -54,6 +54,22 @@ if ($meet_year || $meet_month) {
 // TODO: Make this use WP_Query and not janky inline SQL
 $archives_nav = "SELECT DISTINCT YEAR(meta_value) as 'year', DATE_FORMAT(meta_value, '%m') as 'month' FROM $wpdb->postmeta WHERE meta_key = 'meet_start_time' ORDER BY meta_value DESC";
 $archives_nav_results = $wpdb->get_results($archives_nav);
-$context['meet_archive'] = $archives_nav_results;
+$return_archive_array = [];
+foreach ($archives_nav_results as $result) {
+	if ($result->year && $result->month) {
+		$return_archive_array[] = [
+			"link" => "/meet/{$result->year}/{$result->month}",
+			"title" => date(
+				'F Y',
+				strtotime("{$result->year}-{$result->month}-01")
+			),
+			"current" =>
+				$meet_year == $result->year && $meet_month == $result->month
+					? true
+					: false,
+		];
+	}
+}
+$context['meet_archive'] = $return_archive_array;
 
 Timber::render('archive.twig', $context);
