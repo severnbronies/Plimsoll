@@ -1,4 +1,4 @@
-{% from "@components/prose/macro.twig" import sbProse %}
+{% from "@components/subscription-form/macro.twig" import sbSubscriptionForm %}
 
 <footer
 	data-module="sb-footer"
@@ -7,23 +7,12 @@
 	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 	<div class="sb-footer__inner">
 		{%- if params.newsletter.show %}
-			<form class="sb-footer__subscribe" action="https://severnbronies.us17.list-manage.com/subscribe/post?u=c8d8b4a300a10d369b7acfbe5&amp;id=680dc9c902" method="post" target="_blank" aria-label="Sign up for meet updates by email">
-				<h2 class="sb-footer__subscribe-heading">{{ params.newsletter.heading }}</h2>
-				{%- if params.newsletter.description %}
-					{{ sbProse({
-						classes: 'sb-footer__subscribe-body',
-						html: params.newsletter.description
-					}) }}
-				{%- endif %}
-				<div class="sb-footer__subscribe-form">
-					<label class="sb-sr" for="mce-EMAIL">Email address</label>
-					<input class="sb-footer__subscribe-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="{{ params.newsletter.placeholder }}" autocomplete="email" required>
-					<div style="position: absolute; left: -5000px;" aria-hidden="true">
-						<input name="b_c8d8b4a300a10d369b7acfbe5_680dc9c902" tabindex="-1" value="">
-					</div>
-					<button class="sb-footer__subscribe-button" type="submit">Subscribe</button>
-				</div>
-			</form>
+			{{ sbSubscriptionForm({
+				classes: 'sb-footer__subscription-form',
+				heading: params.newsletter.heading,
+				description: params.newsletter.description,
+				placeholder: params.newsletter.placeholder
+			}) }}
 		{%- endif %}
 		<nav class="sb-footer__nav">
 			<ul class="sb-footer__nav-list">

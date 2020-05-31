@@ -1,0 +1,16 @@
+@use "tokens.web" as *;
+
+.sb-subscription-form {
+	&__heading {
+		font-size: $size-byline;
+		line-height: $lead-title;
+	}
+	&__body {
+		max-width: $measure-default;
+		margin-top: 1em;
+	}
+	&__inner {
+		max-width: $measure-narrow;
+		margin-top: 1em;
+	}
+}

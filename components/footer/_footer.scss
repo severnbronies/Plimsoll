@@ -8,7 +8,7 @@
 .sb-footer {
 	$padding: $grid-gutter;
 	$narrowPadding: $grid-gutter / 2;
-	margin-top: $padding;
+	margin-top: $padding * 2;
 	padding-top: $padding;
 	padding-bottom: $padding;
 	color: $color-white;
@@ -19,44 +19,13 @@
 	&__inner {
 		@include layout.container;
 	}
-	&__subscribe {
-		max-width: $measure-narrow;
+	&__subscription-form {
+		max-width: $measure-default;
+		margin-top: 0 - ($padding * 2);
 		margin-bottom: $padding;
-	}
-	&__subscribe-heading {
-		line-height: $lead-title;
-	}
-	&__subscribe-body {
-		margin-top: 1em;
-		font-size: $size-small;
-	}
-	&__subscribe-form {
-		display: flex;
-		flex-direction: row;
-		margin-top: 1em;
-	}
-	&__subscribe-input,
-	&__subscribe-button {
-		@include helpers.input-reset;
-		padding: 0.5em 1em;
-		border: 1px solid rgba($color-white, $color-opacity-tertiary);
-	}
-	&__subscribe-input {
-		flex-grow: 1;
-		border-right: 0;
-		border-top-left-radius: 2em;
-		border-bottom-left-radius: 2em;
-		@include forms.placeholder {
-		}
-	}
-	&__subscribe-button {
-		flex-shrink: 0;
-		border-top-right-radius: 2em;
-		border-bottom-right-radius: 2em;
-		cursor: pointer;
-		&:hover {
-			background-color: rgba($color-white, $color-opacity-disabled);
-		}
+		padding: $padding;
+		color: var(--theme-background);
+		background-color: var(--theme-accent);
 	}
 	&__nav {
 	}
