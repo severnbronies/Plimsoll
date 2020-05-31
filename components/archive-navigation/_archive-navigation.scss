@@ -48,6 +48,12 @@
 	&__item {
 	}
 	&__link {
+		$arrowSize: 0.76em;
+		$arrowSpacing: 0.5em;
+		$leftPadding: $arrowSize + $arrowSpacing;
+		display: inline-flex;
+		align-items: center;
+		padding-left: $leftPadding;
 		color: inherit;
 		text-decoration: none;
 		&:hover {
@@ -55,6 +61,14 @@
 		}
 		&[aria-current] {
 			font-weight: 700;
+			&::before {
+				@include theme.triangle($size: $arrowSize, $color: var(--theme-accent));
+				content: "";
+				margin-right: $arrowSpacing;
+				margin-left: 0 - $leftPadding;
+				float: left;
+				clear: left;
+			}
 		}
 	}
 }
