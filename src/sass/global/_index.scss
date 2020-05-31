@@ -48,3 +48,25 @@ body {
 a:not([class]) {
 	@include theme.default-link(var(--theme-accent), var(--theme-accent-mod));
 }
+
+kbd:not([class]) {
+	display: inline-block;
+	min-width: 1.5em;
+	padding: 0 0.25rem;
+	border-radius: 3px;
+	background-color: var(--theme-background);
+	font-family: inherit;
+	font-size: $size-small;
+	text-align: center;
+	box-shadow: 0 0 0 1px currentColor, 0 2px 0 0 var(--theme-background),
+		0 2px 0 1px currentColor;
+}
+hr {
+	width: 100%;
+	height: 0;
+	margin-top: $grid-gutter;
+	margin-bottom: $grid-gutter;
+	border: none;
+	border-bottom: 0.5em solid var(--theme-accent-mod);
+	background-color: transparent;
+}
