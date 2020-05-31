@@ -1,0 +1,12 @@
+{% from "@components/form-label/macro.twig" import sbFormLabel %}
+
+{{ sbFormLabel({
+	for: 'id',
+	html: 'Form label',
+	required: true
+}) }}
+
+{{ sbFormLabel({
+	for: 'id',
+	html: 'Form label'
+}) }}
