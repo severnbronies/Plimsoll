@@ -3,6 +3,8 @@
 $context = Timber::context();
 $timber_post = Timber::query_post();
 
+$context['GOOGLE_MAPS_API_KEY'] = GOOGLE_MAPS_API_KEY;
+
 $context['post'] = $timber_post;
 $context['locations'] = sb_location_twig_function($timber_post->ID);
 

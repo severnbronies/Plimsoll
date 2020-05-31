@@ -71,7 +71,10 @@
 				{%- endfor %}
 				<script>
 					window.addEventListener('DOMContentLoaded', function() {
-						var map = new window.sb.Map(document.getElementById('LocationMap'), function() {
+						var map = new window.sb.Map(
+							document.getElementById('LocationMap'),
+							'{{ GOOGLE_MAPS_API_KEY }}',
+							function() {
 							{%- for location in locations %}
 							map.addLocation({
 								name: '{{ location.name }}',

@@ -1,7 +1,7 @@
 export default class Map {
-	constructor($module, cb = function() {}) {
+	constructor($module, apiKey, cb = function() {}) {
 		this.$module = $module;
-		this.apiKey = "AIzaSyCmQJYucuxqKFwJoWiDTOwvFRGrTNXX9zk";
+		this.apiKey = apiKey;
 		this.markers = [];
 		this.cb = cb;
 		this.loadGoogleMaps();
@@ -9,8 +9,7 @@ export default class Map {
 	loadGoogleMaps() {
 		// Create the script tag, set the appropriate attributes
 		var script = document.createElement("script");
-		script.src =
-			"https://maps.googleapis.com/maps/api/js?key=AIzaSyCmQJYucuxqKFwJoWiDTOwvFRGrTNXX9zk";
+		script.src = `https://maps.googleapis.com/maps/api/js?key=${this.apiKey}`;
 		script.defer = true;
 		script.async = true;
 		script.onload = () => {

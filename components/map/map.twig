@@ -6,7 +6,9 @@
 
 <script>
 	window.addEventListener('DOMContentLoaded', function() {
-		var map = new window.sb.Map(document.getElementById('map'), function() {
+		var map = new window.sb.Map(document.getElementById('map'),
+			'{{ GOOGLE_MAPS_API_KEY }}',
+			function() {
 			map.addLocation({
 				name: 'Example location',
 				address: 'Brandon Hill Park, Park Street, Bristol BS1 5RR',
