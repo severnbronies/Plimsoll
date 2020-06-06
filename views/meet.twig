@@ -53,6 +53,7 @@
 					until
 					<strong><time datetime="{{ endTime | date('c') }}" itemprop="endDate">{{ endTime | date('g:ia') }}</time></strong>.</p>
 					<p><strong><a href="#runners">{{ runners_names | join(', ', ' and ') }}</a></strong> {{ (runners_names | length > 1) ? 'are' : 'is' }} in charge.</p>
+					<p>Filed under <strong>{{ categories_names | join(', ', ' and ') }}</strong>.</p>
 				</footer>
 			</div>
 		</div>
