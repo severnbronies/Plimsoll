@@ -23,7 +23,8 @@
 		@include forms.checkbox(
 			$size: $checkboxSize,
 			$checkRatio: 0.6,
-			$strokeWidth: 0.125em
+			$strokeWidth: 0.125em,
+			$verticalOffset: 0.1em
 		);
 		margin-left: 0 - $leftPadding;
 		float: left;
