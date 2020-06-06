@@ -12,15 +12,16 @@
 					html: post.title
 				}) }}
 			</header>
-			<div class="sbt-generic__body">
-				{{ sbProse({
-					html: post.content
-				}) }}
+			<div class="sbt-generic__main">
+				<div class="sbt-generic__body">
+					{{ sbProse({
+						html: post.content
+					}) }}
+				</div>
 			</div>
 			{%- if children %}
-				<hr>
 				<nav class="sbt-generic__sidebar" aria-label="Child pages">
-					<h2>Child pages</h2>
+					<h2>More information</h2>
 					<ul>
 						{%- for item in children %}
 						<li>

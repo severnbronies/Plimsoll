@@ -2,13 +2,23 @@
 @use "mixins/layout";
 @use "mixins/theme";
 @use "mixins/typography";
+@use "mixins/media";
 
 .sbt-generic {
 	&__inner {
 		@include layout.container;
+		display: grid;
+		grid-column-gap: $grid-gutter;
+		grid-row-gap: $grid-gutter / 2;
+		grid-template-areas: "header" "main" "sidebar";
+		grid-template-columns: 1fr;
+		@include media.mq(50em) {
+			grid-template-columns: 2fr 1fr;
+			grid-template-areas: "header header" "main sidebar";
+		}
 	}
 	&__header {
-		margin-bottom: $grid-gutter / 2;
+		grid-area: header;
 	}
 	&__heading {
 		@include typography.all-caps;
@@ -17,9 +27,13 @@
 		color: var(--theme-accent);
 		line-height: $lead-solid;
 	}
+	&__main {
+		grid-area: main;
+	}
 	&__body {
 		max-width: $measure-default;
 	}
 	&__sidebar {
+		grid-area: sidebar;
 	}
 }
