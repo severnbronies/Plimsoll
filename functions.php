@@ -20,6 +20,7 @@ if (function_exists('acf_add_options_page')) {
 	]);
 }
 
+require get_template_directory() . '/inc/about.php';
 require get_template_directory() . '/inc/blocks.php';
 require get_template_directory() . '/inc/footer.php';
 require get_template_directory() . '/inc/header.php';
