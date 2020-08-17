@@ -3,7 +3,6 @@
 {% from "@components/prose/macro.twig" import sbProse %}
 {% from "@components/heading/macro.twig" import sbHeading %}
 {% from "@components/section/macro.twig" import sbSection %}
-{% from "@components/stack/macro.twig" import sbStack %}
 {% from "@components/organiser/macro.twig" import sbOrganiser %}
 
 {% block main %}
@@ -24,7 +23,7 @@
 		html: introSection
 	}) }}
 
-	{% set statSectionContent %}
+	{% set statSection %}
 		<div>
 			We've been doing events for
 			{{ sbHeading({
@@ -50,12 +49,6 @@
 			}) }}
 			of good times
 		</div>
-	{% endset %}
-	{% set statSection %}
-		{{ sbStack({
-			direction: 'horizontal',
-			html: statSectionContent
-		}) }}
 	{% endset %}
 	{{ sbSection({
 		classes: 'sbt-about__stats',
@@ -90,13 +83,10 @@
 		html: meetTypesSection
 	}) }}
 
-	{% set staffSectionContent %}
+	{% set staffSection %}
 		{%- for item in staff_current %}
 			{{ sbOrganiser(item) }}
 		{%- endfor %}
-	{% endset %}
-	{% set staffSection %}
-		{{ staffSectionContent }}
 	{% endset %}
 	{{ sbSection({
 		classes: 'sbt-about__staff',
