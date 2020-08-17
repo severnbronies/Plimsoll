@@ -83,23 +83,23 @@
 		html: meetTypesSection
 	}) }}
 
-	{% set staffSection %}
-		{%- for item in staff_current %}
-			{{ sbOrganiser(item) }}
-		{%- endfor %}
-	{% endset %}
-	{{ sbSection({
-		classes: 'sbt-about__staff',
-		heading: {
-			html: 'The folks in charge',
-			hierarchy: 2
-		},
-		html: staffSection
-	}) }}
+	{%- if staff_current %}
+		{% set staffSection %}
+			{%- for item in staff_current %}
+				{{ sbOrganiser(item) }}
+			{%- endfor %}
+		{% endset %}
+		{{ sbSection({
+			classes: 'sbt-about__staff',
+			heading: {
+				html: 'The folks in charge',
+				hierarchy: 2
+			},
+			html: staffSection
+		}) }}
+	{%- endif %}
 
-	{#<h2>meet types</h2>
-	
-	<h2>staff</h2>
+	{#<h2>staff</h2>
 	<h3>current</h3>
 	{{ dump(staff_current) }}
 	<h3>former</h3>
