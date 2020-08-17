@@ -18,6 +18,7 @@
 
 	{%- for banner in banners %}
 		{% set bannerId = 'sbAlert-' ~ function('md5', banner.banner_text) %}
+		{{ dump(getCookie(bannerId)) }}
 		{%- if getCookie(bannerId) == false %}
 			{{ sbBanner({
 				id: bannerId,
@@ -54,7 +55,7 @@
 				{
 					name: 'analytics',
 					label: 'Analytics',
-					description: '',
+					description: 'We use Google Analytics to collect anonymised user data, which is used to inform how we develop the website.',
 					cookies: ['_ga', '_gid', '_gat', 'APM_TOKEN', '_gac_*'],
 					onAccept : function(){
 						var script = document.createElement("script");
@@ -68,6 +69,14 @@
 					onRevoke: function(){
 						window['ga-disable-UA-34034973-1'] = true;
 					}
+				},
+				{
+					name: 'preferences',
+					label: 'Preferences',
+					description: 'Cookies that remember the things you do so you don\'t need to keep doing them.',
+					cookies: ['sbAlert-*'],
+					onAccept : function(){},
+					onRevoke: function(){}
 				}
 			],
 			position: 'LEFT',
