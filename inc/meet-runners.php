@@ -35,49 +35,6 @@ function sb_runner_post_type()
 add_action("init", "sb_runner_post_type");
 
 /**
- * Add SB staff identifier column header to list of meet runners.
- * @param  array $defaults List of existing column headers.
- * @return array           List of modified column headers.
- */
-function sb_runner_staff_column_title($defaults)
-{
-	$new = [];
-	foreach ($defaults as $key => $title) {
-		if ($key == "author") {
-			$new['staff'] = 'Current staff?';
-		}
-		$new[$key] = $title;
-	}
-	return $new;
-}
-add_filter(
-	"manage_meet_runner_posts_columns",
-	"sb_runner_staff_column_title",
-	10
-);
-
-/**
- * Add SB staff identifier column content to list of meet runners.
- * @param  string $column_name The current column name.
- * @param  int    $post_id     The current post ID.
- */
-function sb_runner_staff_column_content($column_name, $post_id)
-{
-	if ($column_name == "staff") {
-		$staff_status = get_field("runner_staff", $post_id);
-		if (!empty($staff_status) && $staff_status == "true") {
-			echo "&#x2714; Yes";
-		}
-	}
-}
-add_filter(
-	"manage_meet_runner_posts_custom_column",
-	"sb_runner_staff_column_content",
-	10,
-	2
-);
-
-/**
  * Add meet runner column header to WP admin.
  * @param  array $defaults The existing list of column headers.
  * @return array           The modified list of column headers.
@@ -127,35 +84,6 @@ if (function_exists("register_field_group")) {
 		'id' => 'acf_meet-runner-metadata',
 		'title' => 'Meet Runner Metadata',
 		'fields' => [
-			[
-				'key' => 'field_53384f1437d30',
-				'label' =>
-					'Is this person a current Severn Bronies staff member?',
-				'name' => 'runner_staff',
-				'type' => 'select',
-				'instructions' => '',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => [
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				],
-				'choices' => [
-					'false' => 'Nope, never',
-					'true' =>
-						'Yes, this person is a current Severn Bronies staff member',
-					'former' =>
-						'This person is a former Severn Bronies staff member',
-				],
-				'default_value' => 'nope',
-				'allow_null' => 0,
-				'multiple' => 0,
-				'ui' => 0,
-				'return_format' => 'value',
-				'ajax' => 0,
-				'placeholder' => '',
-			],
 			[
 				'key' => 'field_8xWzasD44tWQD',
 				'label' => 'Contact email',
