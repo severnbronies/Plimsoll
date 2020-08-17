@@ -176,7 +176,9 @@ class Plimsoll extends Timber\Site
 		remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
 		remove_action('wp_head', 'wp_oembed_add_discovery_links');
 		remove_action('wp_head', 'wp_oembed_add_host_js');
-		add_filter('rewrite_rules_array', 'disable_embeds_rewrites');
+		if (function_exists('disable_embeds_rewrites')) {
+			add_filter('rewrite_rules_array', 'disable_embeds_rewrites');
+		}
 		// Disable WP blocks CSS
 		add_action(
 			'wp_enqueue_scripts',
