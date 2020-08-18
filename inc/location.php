@@ -105,6 +105,7 @@ if (function_exists("register_field_group")) {
 					'Bristol' => 'Bristol',
 					'Cardiff' => 'Cardiff',
 					'Newport' => 'Newport',
+					'Taunton' => 'Taunton',
 					'Weston-super-Mare' => 'Weston-super-Mare',
 					'' => 'Elsewhere',
 				],
