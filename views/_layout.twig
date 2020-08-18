@@ -18,7 +18,6 @@
 
 	{%- for banner in banners %}
 		{% set bannerId = 'sbAlert-' ~ function('md5', banner.banner_text) %}
-		{{ dump(getCookie(bannerId)) }}
 		{%- if getCookie(bannerId) == false %}
 			{{ sbBanner({
 				id: bannerId,
