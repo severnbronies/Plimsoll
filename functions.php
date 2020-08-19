@@ -143,6 +143,13 @@ class Plimsoll extends Timber\Site
 			'footer_newsletter_placeholder',
 			'option'
 		);
+		// Asset cachebusting
+		$context['cachebust_css_version'] = filemtime(
+			get_stylesheet_directory() . '/dist/css/all.css'
+		);
+		$context['cachebust_js_version'] = filemtime(
+			get_stylesheet_directory() . '/dist/js/all.js'
+		);
 		// Everything else
 		$context['site'] = $this;
 		return $context;
