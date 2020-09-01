@@ -1,0 +1,9 @@
+{% from "@components/masthead/macro.twig" import sbMasthead %}
+
+{{ sbMasthead({
+	branding: {
+		href: site.url,
+		name: site.name
+	},
+	navItems: primary_navigation.get_items
+}) }}

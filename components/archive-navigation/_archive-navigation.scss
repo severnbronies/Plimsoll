@@ -1,0 +1,74 @@
+@use "tokens.web" as *;
+@use "mixins/helpers";
+@use "mixins/media";
+@use "mixins/theme";
+
+.sb-archive-navigation {
+	&__heading {
+		margin-bottom: 1em;
+	}
+	&__list {
+		--theme-background-opacity0: #{rgba($color-white, 0)};
+		--theme-accent-opacity0: #{rgba($color-primary, 0)};
+		--theme-accent-opacity20: #{rgba($color-primary, 0.2)};
+		min-height: 13em;
+		max-height: 60vh;
+		@include media.dark-mode {
+			--theme-background-opacity0: #{rgba($color-primary-dark, 0)};
+			--theme-accent-opacity0: #{rgba($color-primary-light, 0)};
+			--theme-accent-opacity20: #{rgba($color-primary-light, 0.2)};
+		}
+		@include helpers.list-reset;
+		background: linear-gradient(
+				var(--theme-background) 30%,
+				var(--theme-background-opacity0)
+			),
+			linear-gradient(
+					var(--theme-background-opacity0),
+					var(--theme-background) 70%
+				)
+				0 100%,
+			radial-gradient(
+				farthest-side at 50% 0,
+				var(--theme-accent-opacity20),
+				var(--theme-accent-opacity0)
+			),
+			radial-gradient(
+					farthest-side at 50% 100%,
+					var(--theme-accent-opacity20),
+					var(--theme-accent-opacity0)
+				)
+				0 100%;
+		background-repeat: no-repeat;
+		background-color: var(--theme-background);
+		background-size: 100% 3.5em, 100% 3.5em, 100% 1em, 100% 1em;
+		background-attachment: local, local, scroll, scroll;
+		overflow: auto;
+	}
+	&__item {
+	}
+	&__link {
+		$arrowSize: 0.76em;
+		$arrowSpacing: 0.5em;
+		$leftPadding: $arrowSize + $arrowSpacing;
+		display: inline-flex;
+		align-items: center;
+		padding-left: $leftPadding;
+		color: inherit;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+		&[aria-current] {
+			font-weight: 700;
+			&::before {
+				@include theme.triangle($size: $arrowSize, $color: var(--theme-accent));
+				content: "";
+				margin-right: $arrowSpacing;
+				margin-left: 0 - $leftPadding;
+				float: left;
+				clear: left;
+			}
+		}
+	}
+}

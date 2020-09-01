@@ -1,0 +1,61 @@
+@use "tokens.web" as *;
+@use "mixins/helpers";
+@use "mixins/layout";
+@use "mixins/theme";
+@use "mixins/media";
+@use "mixins/forms";
+
+.sb-footer {
+	$padding: $grid-gutter;
+	$narrowPadding: $grid-gutter / 2;
+	margin-top: $padding * 2;
+	padding-top: $padding;
+	padding-bottom: $padding;
+	color: $color-white;
+	background-color: $color-off-black;
+	@include media.dark-mode {
+		background-color: $color-black;
+	}
+	&__inner {
+		@include layout.container;
+	}
+	&__subscription-form {
+		max-width: $measure-default;
+		margin-top: 0 - ($padding * 2);
+		margin-bottom: $padding;
+		padding: $padding;
+		color: var(--theme-background);
+		background-color: var(--theme-accent);
+	}
+	&__nav {
+	}
+	&__nav-list {
+		@include helpers.list-reset;
+		@include media.mq(60em) {
+			display: flex;
+		}
+	}
+	&__nav-item {
+		@include media.mq(60em) {
+			& + & {
+				margin-left: 1.5em;
+			}
+		}
+	}
+	&__nav-link {
+		@include theme.default-link($color-white, $color-primary);
+		&[aria-current] {
+		}
+	}
+	&__boilerplate {
+		display: block;
+		max-width: $measure-wide;
+		margin-top: $narrowPadding;
+		font-size: 0.75em;
+		line-height: $lead-title;
+		opacity: $color-opacity-tertiary;
+		a {
+			@include theme.default-link($color-white, $color-primary);
+		}
+	}
+}

@@ -1,0 +1,54 @@
+{% from "@components/prose/macro.twig" import sbProse %}
+{% from "@components/button/macro.twig" import sbButton %}
+{% from "@components/input/macro.twig" import sbInput %}
+{% from "@components/checkbox/macro.twig" import sbCheckbox %}
+{% from "@components/form-row/macro.twig" import sbFormRow %}
+
+<form 
+	class="sb-subscription-form {%- if params.classes %} {{ params.classes }}{% endif %}"
+	action="https://severnbronies.us17.list-manage.com/subscribe/post?u=c8d8b4a300a10d369b7acfbe5&amp;id=680dc9c902"
+	method="post" 
+	name="mc-embedded-subscribe-form"
+	target="_blank"
+	aria-label="Sign up for meet updates by email"
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+	{%- if params.heading %}
+		<h2 class="sb-subscription-form__heading">{{ params.heading }}</h2>
+	{%- endif %}
+	{%- if params.description %}
+		{{ sbProse({
+			classes: 'sb-subscription-form__body',
+			html: params.description
+		}) }}
+	{%- endif %}
+	<div class="sb-subscription-form__inner">
+		{{ sbInput({
+			type: 'email',
+			name: 'EMAIL',
+			id: 'subscribe-email',
+			placeholder: params.placeholder,
+			label: 'Email address',
+			required: true
+		}) }}
+		{{ sbCheckbox({
+			classes: 'sb-subscription-form__checkbox',
+			name: 'gdpr[11793]',
+			options: [
+				{ required: true, id: 'gdpr_11793', value: 'Y', html: 'The law says you need to explicitly agree to us sending you emails. Check this box to say yes.' }
+			]
+		}) }}
+		<div style="position: absolute; left: -5000px;" aria-hidden="true">
+			<input type="text" name="b_c8d8b4a300a10d369b7acfbe5_680dc9c902" tabindex="-1" value="">
+		</div>
+		{% set submitFormRow %}
+			{{ sbButton({
+				type: 'submit',
+				html: 'Subscribe',
+				name: 'subscribe'
+			}) }}
+		{% endset %}
+		{{ sbFormRow({
+			html: submitFormRow
+		}) }}
+	</div>
+</form>

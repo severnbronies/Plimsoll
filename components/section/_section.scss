@@ -1,0 +1,19 @@
+@use "tokens.web" as *;
+@use "mixins/layout";
+@use "mixins/theme";
+
+.sb-section {
+	margin-top: $grid-gutter * 2;
+	margin-bottom: $grid-gutter * 2;
+	&__inner {
+	}
+	&__header {
+		color: var(--theme-accent);
+	}
+	&__link {
+		@include theme.default-link(var(--theme-accent), var(--theme-accent-mod));
+	}
+	&__body {
+		margin-top: 1.5em;
+	}
+}

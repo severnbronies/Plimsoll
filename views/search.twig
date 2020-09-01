@@ -1,0 +1,45 @@
+{% extends "_layout.twig" %}
+
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/prose/macro.twig" import sbProse %}
+
+{% block main %}
+	<section class="sbt-search">
+		<header class="sbt-search__header">
+			<div class="sbt-search__inner">
+				{% set searchFormLabel %}
+					<h1>Search</h1>
+				{% endset %}
+				<div class="sbt-search__form">
+					{% include "partials/search-form.twig" with {
+						id: 'search',
+						search_query: search_query,
+						label: searchFormLabel
+					} %}
+				</div>
+			</div>
+		</header>
+		<div class="sbt-search__inner">
+			<div class="sbt-search__body">
+				<div class="sbt-search__results">
+					{%- if search_query %}
+						{%- if results.found_posts %}
+							{# Results for query. #}
+							{% include "partials/meet-list.twig" with { 'meets': results } %}
+						{%- else %}
+							{# No results for query, empty state. #}
+							{{ sbProse({
+								html: '<p><em>No results found. Try something more generic, perhaps?</em></p>' 
+							}) }}
+						{%- endif %}
+					{%- else %}
+						{# No query, empty state. #}
+						{{ sbProse({
+							html: '<p><em>Search for something in order to find something.</em></p>' 
+						}) }}
+					{%- endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "_layout.twig" %}
+
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/prose/macro.twig" import sbProse %}
+{% from "@components/section/macro.twig" import sbSection %}
+{% from "@components/archive-navigation/macro.twig" import sbArchiveNavigation %}
+
+{% block main %}
+	<article class="sbt-archive">
+		<div class="sbt-archive__inner">
+			<header class="sbt-archive__header">
+				{{ sbHeading({
+					classes: 'sbt-archive__heading',
+					hierarchy: 1,
+					html: (showing_archived_meets) ? 'Meets in ' ~ (showing_archive_date | date('F Y')) : 'Upcoming meets'
+				}) }}
+			</header>
+			<div class="sbt-archive__body">
+				{%- if not showing_archived_meets %}
+					{%- if meets | length > 0 %}
+						{% include "partials/meet-list.twig" with { 'meets': meets } %}
+					{%- else %}
+						{{ sbProse({
+							html: "<p><strong>There are no upcoming meets to list.</strong><br>Check back later, just in case we forgot to put it up yet.</p>"
+						}) }}
+					{%- endif %}
+				{%- else %}
+					{% include "partials/meet-list.twig" with { 'meets': meets } %}
+				{%- endif %}
+			</div>
+			{{ sbArchiveNavigation({
+				classes: 'sbt-archive__nav',
+				heading: 'Meet history by month',
+				items: meet_archive
+			}) }}
+		</div>
+	</article>
+	
+	{#<dl>
+		<dt>query year</dt> <dd>{{ meet_year }}</dd>
+		<dt>query month</dt> <dd>{{ meet_month }}</dd>
+		<dt>calculated start</dt> <dd>{{ meet_range_start }}</dd>
+		<dt>calculated end</dt> <dd>{{ meet_range_end }}</dd>
+	</dl>#}
+
+	{#{{ dump(meets)}}#}
+
+{% endblock %}

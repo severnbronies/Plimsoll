@@ -1,0 +1,55 @@
+@use "tokens.web" as *;
+@use "mixins/layout";
+@use "mixins/theme";
+@use "mixins/typography";
+@use "mixins/media";
+
+.sbt-about {
+	$self: &;
+	.sb-section__inner {
+		@include layout.container;
+	}
+
+	// Intro area
+	&__intro {
+	}
+	&__text {
+		max-width: $measure-default;
+	}
+
+	// Stats
+	&__stats {
+		.sb-section__body {
+			column-width: 22em;
+			column-gap: $grid-gutter;
+			column-rule: 0.5em solid var(--theme-accent-mod);
+			> div {
+				break-inside: avoid;
+			}
+		}
+	}
+
+	// Categories
+	&__categories {
+		.sb-prose {
+			column-width: 22em;
+			column-gap: $grid-gutter;
+			column-rule: 0.5em solid var(--theme-accent-mod);
+			p {
+				break-inside: avoid;
+			}
+		}
+	}
+
+	// Staff
+	&__staff {
+		.sb-section__body {
+			column-width: 28em;
+			column-gap: $grid-gutter * 2;
+			column-rule: 0.5em solid var(--theme-accent-mod);
+		}
+		.sb-organiser {
+			break-inside: avoid;
+		}
+	}
+}

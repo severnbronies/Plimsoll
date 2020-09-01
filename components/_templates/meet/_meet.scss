@@ -1,0 +1,117 @@
+@use "tokens.web" as *;
+@use "mixins/layout";
+@use "mixins/theme";
+@use "mixins/typography";
+@use "mixins/media";
+
+.sbt-meet {
+	$self: &;
+	$bannerFlipBreakpoint: 60em;
+	&__banner {
+		@include media.mq(null, $bannerFlipBreakpoint) {
+			margin-bottom: $grid-gutter / 2;
+			padding-bottom: $grid-gutter / 2;
+			border-bottom: 0.5em solid var(--theme-accent-mod);
+		}
+		@include media.mq($bannerFlipBreakpoint) {
+			@include layout.container;
+			position: relative;
+			margin-bottom: $grid-gutter * 2;
+			padding-top: $grid-gutter;
+			padding-bottom: $grid-gutter;
+		}
+	}
+	&__banner-inner {
+		position: relative;
+		z-index: $layer-default;
+		@include media.mq(null, $bannerFlipBreakpoint) {
+			@include layout.container;
+		}
+		@include media.mq(50em) {
+			width: 50%;
+		}
+	}
+	&__image {
+		background-color: var(--theme-accent);
+		border-radius: $card-border-radius;
+		overflow: hidden;
+		@include media.mq(null, $bannerFlipBreakpoint) {
+			&:not(#{$self}__image--blank) + #{$self}__banner-inner {
+				margin-top: -1em;
+			}
+		}
+		@include media.mq($bannerFlipBreakpoint) {
+			width: 60%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			img {
+				height: 100%;
+			}
+		}
+		&--blank {
+			background-color: var(--theme-accent-mod);
+			background-image: linear-gradient(
+					45deg,
+					rgba(0, 0, 0, 0.25) 25%,
+					transparent 0,
+					transparent 75%,
+					rgba(0, 0, 0, 0.25) 0
+				),
+				linear-gradient(
+					45deg,
+					rgba(0, 0, 0, 0.25) 25%,
+					transparent 0,
+					transparent 75%,
+					rgba(0, 0, 0, 0.25) 0
+				);
+			background-position: 0 0, 1em 1em, 1em 1em, 2em 2em;
+			background-size: 2em 2em;
+		}
+	}
+	&__header {
+		margin-bottom: $grid-gutter;
+	}
+	&__heading {
+		@include typography.all-caps;
+		@include theme.highlight(var(--theme-accent-mod));
+		display: inline;
+		color: var(--theme-accent);
+		line-height: $lead-solid;
+	}
+	&__details {
+		max-width: $measure-narrow;
+	}
+	&__inner {
+		@include layout.container;
+	}
+	&__body {
+		max-width: $measure-default;
+	}
+	&__aside {
+		@include media.mq(40em) {
+			&--left {
+				width: 15em;
+				float: left;
+				clear: left;
+				margin-right: 1.5em;
+			}
+		}
+		@include media.mq($measure-default) {
+			&--right {
+				width: 20em;
+				float: right;
+				clear: right;
+				margin-left: 1.5em;
+			}
+		}
+		@include media.mq($measure-default + 25em) {
+			&--right,
+			&--center {
+				margin-right: -13em;
+			}
+		}
+	}
+}

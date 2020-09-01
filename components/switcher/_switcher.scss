@@ -1,0 +1,20 @@
+@use "tokens.web" as *;
+@use "mixins/media";
+
+.sb-switcher {
+	display: flex;
+	flex-direction: column;
+	> * + * {
+		margin-top: $grid-gutter / 2;
+	}
+	@include media.mq(50em) {
+		flex-direction: row;
+		> * {
+			flex: 1 1 1px;
+		}
+		> * + * {
+			margin-top: 0;
+			margin-left: $grid-gutter;
+		}
+	}
+}

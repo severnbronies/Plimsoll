@@ -1,0 +1,33 @@
+{% extends "_layout.twig" %}
+
+{% from "@components/section/macro.twig" import sbSection %}
+{% from "@components/splash/macro.twig" import sbSplash %}
+
+{% block main %}
+	<div class="sbt-home">
+		{%- if post %}
+			{{ sbSplash({
+				image: {
+					src: post.thumbnail.src,
+					alt: post.thumbnail.post_content
+				},
+				heading: post.title,
+				blurb: post.content
+			}) }}
+		{%- endif %}
+		<div class="sbt-home__inner">
+			{%- if upcoming_meets | length > 0 %}
+				{% set sectionContent %}
+					{% include "partials/meet-list.twig" with { 'meets': upcoming_meets } %}
+				{% endset %}
+				{{ sbSection({
+					href: '/meet',
+				    heading: {
+					    html: 'Upcoming meets'
+					},
+					html: sectionContent
+				}) }}
+			{%- endif %}
+		</div>
+	</div>
+{% endblock %}

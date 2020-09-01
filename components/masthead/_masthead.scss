@@ -1,0 +1,58 @@
+@use "tokens.web" as *;
+@use "mixins/helpers";
+@use "mixins/layout";
+@use "mixins/theme";
+@use "mixins/media";
+@use "mixins/a11y";
+
+.sb-masthead {
+	$self: &;
+	$flipBreakpoint: 25em;
+	margin-bottom: $grid-gutter;
+	&__inner {
+		@include layout.container;
+		position: relative;
+	}
+	&__branding {
+		display: block;
+		overflow: hidden;
+		color: var(--theme-accent);
+		&:hover {
+			color: var(--theme-text);
+		}
+		&:focus {
+			@include a11y.focus-ring;
+		}
+	}
+	&__logo {
+		margin-top: -1.25vw;
+	}
+	&__logo-left,
+	&__logo-right {
+		fill: currentColor;
+	}
+	&__nav {
+		margin-top: 1em;
+	}
+	&__nav-list {
+		@include helpers.list-reset;
+		@include media.mq($flipBreakpoint) {
+			display: flex;
+			flex-direction: row;
+		}
+	}
+	&__nav-item {
+		@include media.mq($flipBreakpoint) {
+			& + & {
+				margin-left: 1.25em;
+			}
+		}
+	}
+	&__nav-link {
+		@include theme.default-link(var(--theme-accent), var(--theme-accent-mod));
+		font-size: $size-byline;
+		&[aria-current] {
+			@include theme.default-link(var(--theme-text), var(--theme-accent-mod));
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{% from "@components/grid/macro.twig" import sbGrid %}
+{% from "@components/meet-card/macro.twig" import sbMeetCard %}
+
+{% set gridContent %}
+	{%- for item in meets %}
+		{{ sbMeetCard({
+			variants: ['list'],
+			image: {
+				src: item.thumbnail.src('medium_large'),
+				srcset: item.thumbnail.srcset('medium_large'),
+				alt: item.thumbnail.post_content
+			},
+			href: item.link,
+			name: item.title,
+			location: function('sb_location_twig_function', item.id)[0].locality,
+			date: item.meta('meet_start_time') | normaliseCustomField | date('c')
+		}) }}
+	{%- endfor %}
+{% endset %}
+
+{{ sbGrid({
+	html: gridContent
+}) }}

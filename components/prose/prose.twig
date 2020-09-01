@@ -1,0 +1,46 @@
+{% from "components::prose/macro.twig" import sbProse %}
+
+{% set proseContent %}
+	<p>Paragraph text. Sit commodi corrupti ducimus vel inventore! Ratione cumque dignissimos consectetur praesentium molestias quasi nobis omnis eum ducimus numquam, ut vero, rem alias sed rerum sunt. Cupiditate, fugiat ex distinctio eum?</p>
+	<p><strong>Bold copy</strong></p>
+	<p><em>Emphasised copy</em></p>
+	<p><abbr title="Abbreviated copy">Abbrv. copy</abbr></p>
+	<p><del>Deleted copy</del></p>
+	<p><ins>Inserted copy</ins></p>
+	<p><mark>Highlighted copy</mark></p>
+	<p><code>Inline code</code></p>
+	<p><kbd>Keyboard key</kbd></p>
+	<p><a href="#" target="_blank" rel="noopener">Inline link</a></p>
+	<h1>Heading level 1</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda deserunt accusamus ex eius, vel temporibus quam doloremque, nihil? Officiis illum voluptatum, sapiente. Quo minima molestias quidem odio amet doloremque reiciendis!</p>
+	<h2>Heading level 2</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum mollitia cupiditate veniam. Illum architecto optio vero dolores, in minima soluta eaque reiciendis quibusdam molestias quidem totam assumenda iste animi commodi!</p>
+	<h3>Heading level 3</h3>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis natus distinctio autem. Officiis veniam adipisci quis laboriosam ex, ratione nemo, laborum eius cupiditate sequi illum consequuntur est quae magni earum.</p>
+	<h4>Heading level 4</h4>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, quo, cumque, praesentium at incidunt porro sapiente officiis voluptas totam ea mollitia illum sed a ratione qui. Ipsa distinctio officiis dolor.</p>
+	<h5>Heading level 5</h5>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro est aperiam nam quasi asperiores sed delectus, placeat voluptates, maxime perferendis repellendus nihil ratione beatae dolorum, deleniti? Facilis natus eligendi enim.</p>
+	<h6>Heading level 6</h6>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi dolor ut voluptate quibusdam corporis quo aut quam non necessitatibus qui dignissimos error velit, placeat iure consequuntur beatae eaque. Quas, suscipit!</p>
+	<ol>
+		<li>Ordered list</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
+		<li>Libero quas voluptates explicabo illo nostrum, ipsa unde est voluptatibus animi blanditiis magnam aliquid assumenda voluptatum quis sit quaerat eum rerum ea.</li>
+	</ol>
+	<ul>
+		<li>Unordered list</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+		<li>Doloremque, modi mollitia eius repellat reprehenderit iusto suscipit dolores quaerat, quis in atque velit. Omnis ipsa architecto optio consequatur eligendi in expedita.</li>
+	</ul>
+	<dl>
+		<dt>Definition list</dt>
+		<dd>Eu ex et viverra.</dd>
+		<dt>Suspendisse porta</dt>
+		<dd>Quaerat, laboriosam numquam voluptatem facere, nesciunt debitis animi repellat quod qui, ab quae necessitatibus dolores provident non velit unde et rerum illum.</dd>
+	</dl>
+{% endset %}
+
+{{ sbProse({
+	html: proseContent
+}) }}

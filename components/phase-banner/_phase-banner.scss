@@ -1,0 +1,67 @@
+@use "tokens.web" as *;
+@use "mixins/helpers";
+@use "mixins/layout";
+@use "mixins/a11y";
+
+.sb-phase-banner {
+	$self: &;
+	$bannerPadding: 1rem;
+	$arrowSize: 0.8rem;
+	$arrowMargin: 1.5rem;
+	color: var(--theme-text);
+	background-color: var(--theme-background);
+	border-bottom: 0.5em solid var(--theme-accent-mod);
+	&__inner {
+		@include layout.container;
+		#{$self}--interactive & {
+			@include helpers.details-no-arrow;
+			> summary:focus {
+				@include a11y.focus-ring;
+			}
+			&[open] {
+				#{$self}__summary {
+					&::before {
+						clip-path: polygon(0 0, 100% 0, 50% 100%);
+					}
+				}
+			}
+		}
+	}
+	&__summary {
+		display: inline-block;
+		padding: ($bannerPadding / 2) $bannerPadding;
+		#{$self}--interactive & {
+			padding-left: ($bannerPadding + $arrowMargin);
+			cursor: pointer;
+			&::before {
+				content: "";
+				display: inline-block;
+				width: $arrowSize;
+				height: $arrowSize;
+				margin-top: 0.2em;
+				margin-left: 0 - $arrowMargin;
+				float: left;
+				clear: left;
+				background-color: var(--theme-accent);
+				clip-path: polygon(0 0, 100% 50%, 0 100%);
+			}
+		}
+	}
+	&__summary-heading,
+	&__summary-subheading {
+		display: block;
+	}
+	&__summary-heading {
+		font-weight: 700;
+		line-height: $lead-title;
+	}
+	&__summary-subheading {
+		margin-top: 0.25rem;
+		font-size: $size-small;
+	}
+	&__body {
+		max-width: $measure-default;
+		padding: ($bannerPadding / 2) $bannerPadding ($bannerPadding / 2)
+			($bannerPadding + $arrowMargin);
+	}
+}

@@ -1,0 +1,10 @@
+props:
+  tracking_default:
+    value: 0
+  tracking_wide:
+    value: .2em
+  tracking_narrow:
+    value: -.01em
+global:
+  category: font-tracking
+  type: size

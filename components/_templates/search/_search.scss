@@ -1,0 +1,26 @@
+@use "tokens.web" as *;
+@use "mixins/layout";
+@use "mixins/media";
+@use "mixins/theme";
+@use "mixins/typography";
+
+.sbt-search {
+	&__inner {
+		@include layout.container;
+	}
+	&__header {
+		padding-top: $grid-gutter / 2;
+		padding-bottom: $grid-gutter / 2;
+		margin-bottom: $grid-gutter / 2;
+		color: var(--theme-accent);
+		background-color: var(--theme-accent-mod);
+	}
+	&__heading {
+		@include typography.all-caps;
+		line-height: $lead-solid;
+	}
+	&__form {
+	}
+	&__body {
+	}
+}

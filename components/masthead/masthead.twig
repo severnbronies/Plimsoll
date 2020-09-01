@@ -1,0 +1,14 @@
+{% from "@components/masthead/macro.twig" import sbMasthead %}
+
+{{ sbMasthead({
+    branding: {
+	    href: '#',
+	    name: 'Severn Bronies'
+	},
+	navItems: [
+		{ link: '#', title: 'Meets' },
+		{ link: '#', title: 'About' },
+		{ link: '#', title: 'Meet rules' },
+		{ link: '#', title: 'Blog' }
+	]
+}) }}

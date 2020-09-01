@@ -1,0 +1,42 @@
+@use "tokens.web" as *;
+@use "mixins/typography";
+
+.sb-heading {
+	@include typography.heading;
+	display: block;
+	font-style: normal;
+	&--0 {
+		@include typography.all-caps;
+		font-size: $size-jumbotron;
+		line-height: $lead-solid;
+		letter-spacing: $tracking-narrow;
+	}
+	&--1 {
+		font-size: $size-title;
+		line-height: $lead-title;
+	}
+	&--2 {
+		font-size: $size-subtitle;
+		line-height: $lead-title;
+	}
+	&--3 {
+		font-size: $size-pullquote;
+		line-height: $lead-title;
+	}
+	&--4 {
+		font-size: $size-small-subtitle;
+		line-height: $lead-default;
+	}
+	&--5,
+	&--6 {
+		@include typography.all-caps;
+		line-height: $lead-default;
+		letter-spacing: $tracking-wide;
+	}
+	&--5 {
+		font-size: $size-byline;
+	}
+	&--6 {
+		font-size: $size-body;
+	}
+}

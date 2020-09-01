@@ -1,0 +1,20 @@
+@use "tokens.web" as *;
+@use "mixins/a11y";
+
+.sb-skiplink {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	position: absolute;
+	top: -9999rem;
+	left: -9999rem;
+	z-index: $layer-overlay;
+	color: $color-black;
+	background-color: $color-accessibility;
+	font-weight: 700;
+	text-decoration: none;
+	&:focus {
+		@include a11y.focus-ring;
+		top: 0;
+		left: 1rem;
+	}
+}

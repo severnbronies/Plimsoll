@@ -1,0 +1,147 @@
+@use "tokens.web" as *;
+@use "mixins/a11y";
+
+/**
+ * Input styles.
+ */
+
+@mixin form-base {
+	border: none;
+	border-width: 0;
+	border-style: solid;
+	border-color: currentColor;
+	color: inherit;
+	background-color: transparent;
+	box-shadow: none;
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	line-height: inherit;
+}
+
+@mixin form-base--input {
+	@include form-base;
+	width: 100%;
+	border-bottom-width: 0.125em;
+	&:focus {
+		@include a11y.focus-ring;
+	}
+	@include placeholder {
+		color: currentColor;
+		opacity: $color-opacity-tertiary;
+	}
+}
+
+/**
+ * Checkbox mixins.
+ * Checkbox styles can get used in quite a few places, so having these abstracted out is pretty nice to have.
+ */
+
+// Apply to the <input> itself
+@mixin checkbox(
+	$size: 1em,
+	$checkRatio: 0.8,
+	$strokeWidth: 3px,
+	$strokeColor: currentColor,
+	$verticalOffset: 0
+) {
+	@supports (-webkit-appearance: none) or (-moz-appearance: none) or
+		(appearance: none) {
+		@include form-base;
+		box-sizing: content-box;
+		display: inline-block;
+		width: $size;
+		height: $size;
+		border-width: $strokeWidth;
+		position: relative;
+		top: $verticalOffset;
+		line-height: 1;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		&::after {
+			$checkWidth: $size * $checkRatio; // change this to make the check smaller/larger relative to box
+			$checkHeight: $checkWidth * 0.4;
+			@include checkbox--mark(
+				$color: $strokeColor,
+				$width: $checkWidth,
+				$height: $checkHeight,
+				$strokeWidth: $strokeWidth
+			);
+			position: absolute;
+			top: calc(
+				#{($size - $checkHeight) / 2.5} - 1px
+			); // as below but we want slightly less than half remaining space to bias towards top of box
+			left: calc(
+				#{($size - $checkWidth) / 2} - 1px
+			); // divide remaining space by two to get horizontal offset
+		}
+		&:checked {
+			&::after {
+				content: "";
+			}
+		}
+		&:focus {
+			@include a11y.focus-ring;
+		}
+	}
+}
+
+@mixin checkbox--mark($color, $width: 1em, $height: 0.5em, $strokeWidth: 3px) {
+	display: block;
+	width: $width;
+	height: $height;
+	border-width: 0 0 $strokeWidth $strokeWidth;
+	border-style: solid;
+	border-color: $color;
+	transform: rotate(-45deg);
+}
+
+/**
+ * Input placeholder styling.
+ */
+
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+	&:-moz-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&:-ms-input-placeholder {
+		@content;
+	}
+}
+
+/** 
+ * Range input styling helpers.
+ */
+
+// Background "track" section
+@mixin range-input-track {
+	&::-webkit-slider-runnable-track {
+		@content;
+	}
+	&::-moz-range-track {
+		@content;
+	}
+	&::-ms-track {
+		@content;
+	}
+}
+
+// Draggable "thumb" section
+@mixin range-input-thumb {
+	&::-webkit-slider-thumb {
+		@content;
+	}
+	&::-moz-range-thumb {
+		@content;
+	}
+	&::-ms-thumb {
+		@content;
+	}
+}

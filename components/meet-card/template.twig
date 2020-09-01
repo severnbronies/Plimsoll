@@ -1,0 +1,43 @@
+{% from '@components/image/macro.twig' import sbImage %}
+
+<article
+    itemscope
+    itemtype="http://schema.org/Event"
+    class="sb-meet-card {%- for v in params.variants %} sb-meet-card--{{ v }} {% endfor %} {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {%- if params.image %}
+        {% set imageParams = merge(params.image, {
+            image: {
+                attributes: { 'itemprop': 'image' }
+            },
+            classes: 'sb-meet-card__image',
+            variants: ['flattened', 'cover']
+        }) %}
+        {{ sbImage(imageParams) }}
+    {%- endif %}
+    <div class="sb-meet-card__inner">
+        <strong class="sb-meet-card__title" itemprop="name">
+            <a class="sb-meet-card__link" href="{{ params.href }}" itemprop="url">
+                {{ params.name }}
+            </a>
+        </strong>
+        {%- if params.location or params.date %}
+        <dl class="sb-meet-card__details">
+            {%- if params.date %}
+            <div class="sb-meet-card__details-item">
+                <dt class="sb-sr">Start date</dt>
+                <dd class="sb-meet-card__details-info">
+                    <time datetime="{{ params.date }}" itemprop="startDate">{{ params.date | date('l, j F Y') }}</time>
+                </dd>
+            </div>
+            {%- endif %}
+            {%- if params.location %}
+            <div class="sb-meet-card__details-item">
+                <dt class="sb-sr">City</dt>
+                <dd class="sb-meet-card__details-info" itemprop="location">{{ params.location }}</dd>
+            </div>
+            {%- endif %}
+        </dl>
+        {%- endif %}
+    </div>
+</article>

@@ -1,0 +1,110 @@
+{% extends "_layout.twig" %}
+
+{% from "@components/prose/macro.twig" import sbProse %}
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/section/macro.twig" import sbSection %}
+{% from "@components/organiser/macro.twig" import sbOrganiser %}
+
+{% block main %}
+<div class="sbt-about">
+
+	{% set introSection %}
+		{{ sbProse({
+			classes: 'sbt-about__text',
+			html: post.content
+		}) }}
+	{% endset %}
+	{{ sbSection({
+		classes: 'sbt-about__intro',
+		heading: {
+			html: 'About us',
+			hierarchy: 1
+		},
+		html: introSection
+	}) }}
+
+	{% set statSection %}
+		<div>
+			We've been doing events for
+			{{ sbHeading({
+				html: meet_years ~ ' years',
+				hierarchy: 0,
+				element: 'strong'
+			}) }}
+		</div>
+		<div>
+			making up a total of 
+			{{ sbHeading({
+				html: meet_count ~ ' meets',
+				hierarchy: 0,
+				element: 'strong'
+			}) }}
+		</div>
+		<div>
+			for more than
+			{{ sbHeading({
+				html: meet_hours ~ ' hours',
+				hierarchy: 0,
+				element: 'strong'
+			}) }}
+			of good times
+		</div>
+	{% endset %}
+	{{ sbSection({
+		classes: 'sbt-about__stats',
+		heading: {
+			html: 'Meet by numbers',
+			hierarchy: 2
+		},
+		html: statSection
+	}) }}
+
+	{% set meetTypesSectionContent %}
+		{%- for cat in meet_types %}
+			{%- if cat.description %}
+				<p>
+					<strong>{{ cat.name }}</strong>:
+					{{ cat.description }}
+				</p>
+			{%- endif %}
+		{%- endfor %}
+	{% endset %}
+	{% set meetTypesSection %}
+		{{ sbProse({
+			html: meetTypesSectionContent
+		}) }}
+	{% endset %}
+	{{ sbSection({
+		classes: 'sbt-about__categories',
+		heading: {
+			html: 'Types of meet',
+			hierarchy: 2
+		},
+		html: meetTypesSection
+	}) }}
+
+	{%- if staff_current %}
+		{% set staffSection %}
+			{%- for item in staff_current %}
+				{{ sbOrganiser(item) }}
+			{%- endfor %}
+		{% endset %}
+		{{ sbSection({
+			classes: 'sbt-about__staff',
+			heading: {
+				html: 'The folks in charge',
+				hierarchy: 2
+			},
+			html: staffSection
+		}) }}
+	{%- endif %}
+
+	{#<h2>staff</h2>
+	<h3>current</h3>
+	{{ dump(staff_current) }}
+	<h3>former</h3>
+	{{ dump(staff_former) }}
+	<h2>Media appearances</h2>
+	{{ dump(media_appearances) }}#}
+</div>
+{% endblock %}

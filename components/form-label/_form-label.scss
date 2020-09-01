@@ -1,0 +1,8 @@
+@use "tokens.web" as *;
+
+.sb-form-label {
+	margin-bottom: 0.25em;
+	&__optional {
+		opacity: $color-opacity-secondary;
+	}
+}

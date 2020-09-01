@@ -1,0 +1,22 @@
+{% from "@components/section/macro.twig" import sbSection %}
+
+{% set sectionContent %}
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate facilis aperiam, atque veniam. Inventore mollitia itaque quam animi voluptate et quaerat. Minus, quam, aspernatur. Assumenda magni inventore fugiat, itaque culpa!</p>
+	<p>Repudiandae maiores ratione minima odio optio odit hic excepturi molestiae beatae, recusandae vitae sed ex natus nisi asperiores, in autem perspiciatis maxime accusamus tenetur laudantium possimus sequi. Dolores accusantium, voluptatum.</p>
+	<p>Id iste et nulla vel repellat, possimus dolores officiis voluptas sunt tempore quibusdam aut velit eaque nostrum officia dicta alias itaque commodi sit. Rem debitis amet porro consectetur commodi ex?</p>
+{% endset %}
+
+{{ sbSection({
+	href: '#',
+	heading: {
+		html: 'Upcoming meets'
+	},
+	html: sectionContent
+}) }}
+
+{{ sbSection({
+	heading: {
+		html: 'Not-upcoming meets'
+	},
+	html: sectionContent
+}) }}
