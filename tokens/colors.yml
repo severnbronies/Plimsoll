@@ -1,13 +1,45 @@
 props:
+  # Generic colours
+  color_red:
+    value: "hsl(0, 92%, 68%)"
+    category: palette-generic
+  color_orange:
+    value: "hsl(30, 87%, 54%)"
+    category: palette-generic
+  color_yellow:
+    value: "hsl(48, 84%, 57%)"
+    category: palette-generic
+  color_green:
+    value: "hsl(146, 51%, 49%)"
+    category: palette-generic
+  color_teal:
+    value: "hsl(177, 62%, 43%)"
+    category: palette-generic
+  color_blue:
+    value: "hsl(207, 76%, 56%)"
+    category: palette-generic
+  color_indigo:
+    value: "hsl(230, 81%, 66%)"
+    category: palette-generic
+  color_violet:
+    value: "hsl(261, 78%, 70%)"
+    category: palette-generic
+  color_pink:
+    value: "hsl(331, 83%, 66%)"
+    category: palette-generic
+
+  # Neutrals
   color_white:
     value: "hsl(0, 0%, 100%)"
-    category: palette-neutral
-  color_off_black:
-    value: "hsl(0, 0%, 13%)"
     category: palette-neutral
   color_black:
     value: "hsl(0, 0%, 0%)"
     category: palette-neutral
+  color_off_black:
+    value: "hsl(0, 0%, 13%)"
+    category: palette-neutral
+
+  # Brand colours
   color_primary:
     value: "hsl(259, 55%, 43%)"
     category: palette-brand
@@ -17,28 +49,13 @@ props:
   color_primary_dark:
     value: "hsl(259, 38%, 14%)"
     category: palette-brand
-  color_secondary:
-    value: "hsl(326, 100%, 41%)"
-    category: palette-brand
-    type: color
-  color_bristol:
-    value: "hsl(0, 67%, 90%)"
-    category: palette-accent
-  color_cardiff:
-    value: "hsl(240, 67%, 90%)"
-    category: palette-accent
-  color_newport:
-    value: "hsl(120, 67%, 90%)"
-    category: palette-accent
-  color_taunton:
-    value: "hsl(180, 67%, 90%)"
-    category: palette-accent
-  color_weston:
-    value: "hsl(60, 67%, 90%)"
-    category: palette-accent
+
+  # Contextual use colours
   color_accessibility:
     value: "hsl(48, 100%, 50%)"
     category: palette-context
+
+  # Opacity modifiers
   color_opacity_primary:
     value: 1
     category: palette-opacity

@@ -8,9 +8,9 @@ status: draft
 
 {{ fractalColoursSingle(tokens.colors | theoTokenCategory('palette-brand')) }}
 
-## Accent brand colours
+## Generic colours
 
-{{ fractalColoursSingle(tokens.colors | theoTokenCategory('palette-accent')) }}
+{{ fractalColoursSingle(tokens.colors | theoTokenCategory('palette-generic')) }}
 
 ## Neutrals
 
