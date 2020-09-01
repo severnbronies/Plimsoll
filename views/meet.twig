@@ -42,7 +42,8 @@
 					{{ sbHeading({
 						classes: 'sbt-meet__heading',
 						hierarchy: 1,
-						html: post.title
+						html: post.title,
+						attributes: { "itemprop": "name" } 
 					}) }}
 				</header>
 				<footer class="sbt-meet__details">
@@ -58,7 +59,7 @@
 			</div>
 		</div>
 		<div class="sbt-meet__inner">
-			<div class="sbt-meet__body">
+			<div class="sbt-meet__body" itemprop="description">
 				{{ sbProse({
 					html: post.content
 				}) }}
