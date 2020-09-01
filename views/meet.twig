@@ -4,7 +4,7 @@
 {% from "@components/image/macro.twig" import sbImage %}
 {% from "@components/prose/macro.twig" import sbProse %}
 {% from "@components/section/macro.twig" import sbSection %}
-{% from "@components/stack/macro.twig" import sbStack %}
+{% from "@components/switcher/macro.twig" import sbSwitcher %}
 {% from "@components/organiser/macro.twig" import sbOrganiser %}
 {% from "@components/location/macro.twig" import sbLocation %}
 {% from "@components/map/macro.twig" import sbMap %}
@@ -113,8 +113,7 @@
 					}) }}
 				</div>
 			{% endset %}
-			{{ sbStack({
-				direction: 'horizontal',
+			{{ sbSwitcher({
 				html: infoSections
 			}) }}
 		</div>

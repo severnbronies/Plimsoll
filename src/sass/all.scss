@@ -28,9 +28,10 @@
 @use "search-form/search-form";
 @use "section/section";
 @use "skiplink/skiplink";
-@use "subscription-form/subscription-form";
 @use "splash/splash";
 @use "stack/stack";
+@use "subscription-form/subscription-form";
+@use "switcher/switcher";
 
 // Templates
 @use "_templates/about/about";
