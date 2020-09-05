@@ -28,7 +28,7 @@
 					variants: ['cover'],
 					src: post.thumbnail.src('meet-medium'),
 					srcset: post.thumbnail.srcset,
-					alt: post.thumbnail.post_content,
+					alt: post.thumbnail.alt | e('html_attr'),
 					attribution: {
 						copyright: copyrightInfo.copyright,
 						source: copyrightInfo.source

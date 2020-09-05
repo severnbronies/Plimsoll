@@ -9,7 +9,7 @@
 			{{ sbSplash({
 				image: {
 					src: post.thumbnail.src,
-					alt: post.thumbnail.post_content
+					alt: post.thumbnail.alt | e('html_attr')
 				},
 				heading: post.title,
 				blurb: post.content
