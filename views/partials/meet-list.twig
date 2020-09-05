@@ -8,7 +8,7 @@
 			image: {
 				src: item.thumbnail.src('medium_large'),
 				srcset: item.thumbnail.srcset('medium_large'),
-				alt: item.thumbnail.post_content
+				alt: item.thumbnail.alt | e('html_attr')
 			},
 			href: item.link,
 			name: item.title,
