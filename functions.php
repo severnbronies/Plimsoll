@@ -34,6 +34,7 @@ require get_template_directory() . '/inc/meet.php';
 require get_template_directory() . '/inc/meet-archive.php';
 require get_template_directory() . '/inc/meet-runners.php';
 require get_template_directory() . '/inc/navigations.php';
+require get_template_directory() . '/inc/news.php';
 require get_template_directory() . '/inc/phase-banner.php';
 require get_template_directory() . '/inc/search.php';
 require get_template_directory() . '/inc/signposts.php';
