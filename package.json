@@ -1,7 +1,7 @@
 {
 	"name": "sb-plimsoll",
 	"namespace": "sb",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "",
 	"main": "./dist/js/all.js",
 	"browserslist": [
@@ -10,7 +10,7 @@
 	"scripts": {
 		"start": "gulp",
 		"clean": "gulp clean",
-		"build": "gulp build",
+		"build": "gulp build --minify",
 		"export": "gulp export --minify",
 		"add": "sh ./bin/add-component.sh",
 		"prettify": "pretty-quick",
