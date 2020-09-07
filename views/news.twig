@@ -1,0 +1,41 @@
+{% extends "_layout.twig" %}
+
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/prose/macro.twig" import sbProse %}
+{% from "@components/image/macro.twig" import sbImage %}
+
+{% block main %}
+	<article class="sbt-article">
+		<div class="sbt-article__inner">
+			<header class="sbt-article__header">
+				{{ sbHeading({
+					classes: 'sbt-article__heading',
+					html: post.title
+				}) }}
+				<time class="sbt-article__date" datetime="{{ post.date | date('c') }}">
+					Posted on <strong>{{- post.date | date('l, j F Y') -}}</strong>.
+				</time>
+			</header>
+			<div class="sbt-article__main">
+				<div class="sbt-article__body">
+					{%- if post.thumbnail %}
+						{% set copyrightInfo = function('get_featured_image_copyright') %}
+						{{ sbImage({
+							classes: 'sbt-article__image',
+							src: post.thumbnail.src('meet-medium'),
+							srcset: post.thumbnail.srcset,
+							alt: post.thumbnail.alt | e('html_attr'),
+							attribution: {
+								copyright: copyrightInfo.copyright,
+								source: copyrightInfo.source
+							}
+						}) }}
+					{%- endif %}
+					{{ sbProse({
+						html: post.content
+					}) }}
+				</div>
+			</div>
+		</div>
+	</article>
+{% endblock %}
