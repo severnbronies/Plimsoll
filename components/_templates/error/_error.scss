@@ -1,0 +1,24 @@
+@use "tokens.web" as *;
+@use "mixins/layout";
+@use "mixins/theme";
+@use "mixins/typography";
+@use "mixins/media";
+
+.sbt-error {
+	@include layout.container;
+	&__inner {
+		max-width: $measure-default;
+	}
+	&__header {
+		margin-bottom: $grid-gutter;
+	}
+	&__heading {
+		@include typography.all-caps;
+		@include theme.highlight(var(--theme-accent-mod));
+		display: inline;
+		color: var(--theme-accent);
+		line-height: $lead-solid;
+	}
+	&__body {
+	}
+}

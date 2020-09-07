@@ -1,5 +1,23 @@
 {% extends "_layout.twig" %}
 
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/prose/macro.twig" import sbProse %}
+
 {% block main %}
-	404 Page not found 
+	<div class="sbt-error">
+		<div class="sbt-error__inner">
+			<div class="sbt-error__header">
+				{{ sbHeading({
+					classes: 'sbt-error__heading',
+					html: error404_heading,
+					hierarchy: 1
+				}) }}
+			</div>
+			<div class="sbt-error__body">
+				{{ sbProse({
+					html: error404_content
+				}) }}
+			</div>
+		</div>
+	</div>
 {% endblock %}
