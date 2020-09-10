@@ -3,120 +3,71 @@
 {% from "@components/heading/macro.twig" import sbHeading %}
 {% from "@components/image/macro.twig" import sbImage %}
 {% from "@components/prose/macro.twig" import sbProse %}
-{% from "@components/section/macro.twig" import sbSection %}
-{% from "@components/switcher/macro.twig" import sbSwitcher %}
-{% from "@components/organiser/macro.twig" import sbOrganiser %}
-{% from "@components/location/macro.twig" import sbLocation %}
-{% from "@components/map/macro.twig" import sbMap %}
+{% from "@components/meet-date/macro.twig" import sbMeetDate %}
 
 {% set startTime = post.meta('meet_start_time') | normaliseCustomField %}
 {% set endTime = post.meta('meet_end_time') | normaliseCustomField %}
+
+{% set imageOrientation = false %}
+{% if post.thumbnail %}
+	{% set imageOrientation = post.thumbnail.width > post.thumbnail.height ? 'landscape' : 'portrait' %}
+{% endif %}
 
 {% block main %}
 	<article 
 		itemscope
 		itemtype="http://schema.org/Event"
-		class="sbt-meet">
-		<div class="sbt-meet__banner">
-			{%- if post.thumbnail %}
-				{% set copyrightInfo = function('get_featured_image_copyright') %}
-				{{ sbImage({
-					classes: 'sbt-meet__image',
-					image: {
-						attributes: { 'itemprop': 'image' }
-					},
-					variants: ['cover'],
-					src: post.thumbnail.src('meet-medium'),
-					srcset: post.thumbnail.srcset,
-					alt: post.thumbnail.alt | e('html_attr'),
-					attribution: {
-						copyright: copyrightInfo.copyright,
-						source: copyrightInfo.source
-					}
-				}) }}
-			{%- else %}
-				<div class="sbt-meet__image sbt-meet__image--blank" aria-hidden="true"></div>
-			{%- endif %}
-			<div class="sbt-meet__banner-inner">
-				<header class="sbt-meet__header">
-					{{ sbHeading({
-						classes: 'sbt-meet__heading',
-						hierarchy: 1,
-						html: post.title,
-						attributes: { "itemprop": "name" } 
-					}) }}
-				</header>
-				<footer class="sbt-meet__details">
-					<p>We'll be meeting at
-					<strong><a href="#location">{{ locations[0].name }}</a></strong>
-					at
-					<time datetime="{{ startTime | date('c') }}" itemprop="startDate"><strong>{{ startTime | date('g:ia') }}</strong> on <strong>{{ startTime | date(' l, j F Y') }}</strong></time>,
-					until
-					<strong><time datetime="{{ endTime | date('c') }}" itemprop="endDate">{{ endTime | date('g:ia') }}</time></strong>.</p>
-					<p><strong><a href="#runners">{{ runners_names | join(', ', ' and ') }}</a></strong> {{ (runners_names | length > 1) ? 'are' : 'is' }} in charge.</p>
-					<p>Filed under <strong>{{ categories_names | join(', ', ' and ') }}</strong>.</p>
-				</footer>
-			</div>
-		</div>
+		class="sbt-meet"
+		{%- if imageOrientation %} data-image-orientation="{{ imageOrientation }}"{% endif %}>
 		<div class="sbt-meet__inner">
+			<header class="sbt-meet__header">
+				<div class="sbt-meet__categories">
+					A {{ categories_names | join(', ', ' and ') }}
+				</div>
+				{{ sbHeading({
+					hierarchy: 0,
+					element: 'h1',
+					html: post.title,
+					attributes: { "itemprop": "name" } 
+				}) }}
+			</header>
+			{%- if post.thumbnail%}
+				<div class="sbt-meet__image">
+					{% set copyrightInfo = function('get_featured_image_copyright') %}
+					{{ sbImage({
+						image: {
+							attributes: { 'itemprop': 'image' }
+						},
+						src: post.thumbnail.src('meet-medium'),
+						srcset: post.thumbnail.srcset,
+						alt: post.thumbnail.alt | e('html_attr'),
+						attribution: {
+							copyright: copyrightInfo.copyright,
+							source: copyrightInfo.source
+						}
+					}) }}
+				</div>
+			{%- endif %}
+			<div class="sbt-meet__date">
+				{{ sbMeetDate({
+					startDate: startTime,
+					endDate: endTime,
+					showTime: true
+				}) }}
+				<span content="{{ endTime | date('c') }}" itemprop="endDate" hidden></span>
+			</div>
 			<div class="sbt-meet__body" itemprop="description">
 				{{ sbProse({
+					classes: 'sbt-meet__prose',
 					html: post.content
 				}) }}
 			</div>
-			{% set infoSectionLocations %}
-				{{ sbMap({
-					id: 'LocationMap'
-				}) }}
-				{%- for location in locations %}
-					{{ sbLocation(location) }}
-				{%- endfor %}
-				<script>
-					window.addEventListener('DOMContentLoaded', function() {
-						var map = new window.sb.Map(
-							document.getElementById('LocationMap'),
-							'{{ GOOGLE_MAPS_API_KEY }}',
-							function() {
-							{%- for location in locations %}
-							map.addLocation({
-								name: '{{ location.name }}',
-								address: '{{ location.address }}',
-								lat: {{ location.latitude }},
-								lng: {{ location.longitude }}
-							});
-							{%- endfor %}
-						});
-					});
-				</script>
-			{% endset %}
-			{% set infoSectionRunners %}
-				{%- for runner in runners %}
-					{{ sbOrganiser(runner) }}
-				{%- endfor %}
-			{% endset %}
-			{% set infoSections %}
-				<div>
-					{{ sbSection({
-						attributes: { 'id': 'location' },
-						heading: {
-							html: (runners | length > 1) ? 'Locations' : 'Meeting location'
-						},
-						html: infoSectionLocations
-					}) }}
-				</div>
-				<div>
-					{{ sbSection({
-						attributes: { 'id': 'runners' },
-						heading: {
-							html: (runners | length > 1) ? 'Organisers' : 'Organiser' 
-						},
-						html: infoSectionRunners
-					}) }}
-				</div>
-			{% endset %}
-			{{ sbSwitcher({
-				html: infoSections
-			}) }}
+			<div class="sbt-meet__venues">
+				[venues]
+			</div>
+			<div class="sbt-meet__organisers">
+				[organisers]
+			</div>
 		</div>
 	</article>
 {% endblock %}

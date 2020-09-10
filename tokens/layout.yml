@@ -1,6 +1,6 @@
 props:
   grid_max_width:
-    value: 80em
+    value: 70em
     category: sizing
     type: size
   grid_gutter:

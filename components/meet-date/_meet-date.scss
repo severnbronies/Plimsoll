@@ -1,0 +1,36 @@
+@use "mixins/typography";
+
+.sb-meet-date {
+	display: block;
+	&__day,
+	&__month,
+	&__time {
+		@include typography.all-caps;
+		display: block;
+		line-height: 1;
+	}
+	&__day,
+	&__month {
+		font-weight: 700;
+	}
+	&__time {
+		&::before {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 0.5rem;
+			margin-top: 0.25rem;
+			margin-bottom: 0.25rem;
+			background-image: repeating-linear-gradient(
+				53.13deg,
+				var(--theme-accent-mod),
+				var(--theme-accent-mod) 1px,
+				transparent 1px,
+				transparent 2px
+			);
+		}
+	}
+	&__day-ord {
+		text-transform: lowercase;
+	}
+}

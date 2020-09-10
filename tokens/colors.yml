@@ -36,7 +36,7 @@ props:
     value: "hsl(0, 0%, 0%)"
     category: palette-neutral
   color_off_black:
-    value: "hsl(0, 0%, 13%)"
+    value: "hsl(240, 14%, 22%)"
     category: palette-neutral
 
   # Brand colours

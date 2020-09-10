@@ -1,0 +1,12 @@
+{% from "@components/meet-date/macro.twig" import sbMeetDate %}
+
+{{ sbMeetDate({
+    startDate: '2020-09-10T11:00:00Z'
+}) }}
+
+
+{{ sbMeetDate({
+    startDate: '2020-09-10T11:00:00Z',
+    endDate: '2020-09-10T18:30:00Z',
+    showTime: true
+}) }}
