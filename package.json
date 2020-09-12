@@ -29,7 +29,6 @@
 		"babelify": "^10.0.0",
 		"browserify": "^16.5.0",
 		"del": "^5.1.0",
-		"fitty": "^2.3.2",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^7.0.1",
 		"gulp-dart-sass": "^1.0.2",

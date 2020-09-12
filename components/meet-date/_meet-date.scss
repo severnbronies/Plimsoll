@@ -8,6 +8,11 @@
 		@include typography.all-caps;
 		display: block;
 		line-height: 1;
+		text-align: center;
+		html.js & {
+			display: inline-block;
+			white-space: nowrap;
+		}
 	}
 	&__day,
 	&__month {
