@@ -1,8 +1,44 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
+@use "mixins/typography";
 
 .sb-map {
-	width: 100%;
-	height: 33vh;
-	min-height: 14em;
-	margin-bottom: $grid-gutter / 2;
+	&__map {
+		width: 100%;
+		height: 33vh;
+		min-height: 14em;
+	}
+	&__list {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		counter-reset: locationList;
+	}
+	&__list-item {
+		$pinIconWidth: 28px;
+		padding-left: calc(#{$pinIconWidth} + 1em);
+		counter-increment: locationList;
+		& + & {
+			margin-top: 1em;
+		}
+		&::before {
+			// These styles are intended to match those of the custom pins on the Google Map. Don't change these unless you're changing those too.
+			@include typography.heading;
+			content: counter(locationList);
+			display: block;
+			width: $pinIconWidth;
+			height: 35px;
+			margin-left: calc(0px - (#{$pinIconWidth} + 1em));
+			padding-top: 6px;
+			float: left;
+			clear: left;
+			color: tokens.$color-white;
+			background-image: url("../images/google-map-pin.png");
+			background-repeat: no-repeat;
+			font-size: 16px;
+			text-align: center;
+			line-height: 1;
+		}
+		&--highlight {
+		}
+	}
 }

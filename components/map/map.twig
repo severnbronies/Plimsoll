@@ -1,26 +1,19 @@
 {% from "@components/map/macro.twig" import sbMap %}
 
 {{ sbMap({
-    id: 'map'
+    id: 'map',
+    points: [
+    	{
+	    	name: 'Example location',
+			address: 'Brandon Hill Park, Park Street, Bristol BS1 5RR',
+			lat: 51.454029,
+			lng: -2.606814
+	    },
+	    {
+	    	name: 'Another example location',
+			address: '5 Nelson Street, Bristol BS1 2JT',
+			lat: 51.456540,
+			lng: -2.594255
+		}
+    ]
 }) }}
-
-<script>
-	window.addEventListener('DOMContentLoaded', function() {
-		var map = new window.sb.Map(document.getElementById('map'),
-			'{{ GOOGLE_MAPS_API_KEY }}',
-			function() {
-			map.addLocation({
-				name: 'Example location',
-				address: 'Brandon Hill Park, Park Street, Bristol BS1 5RR',
-				lat: 51.454029,
-				lng: -2.606814
-			});
-			map.addLocation({
-				name: 'Another example location',
-				address: '5 Nelson Street, Bristol BS1 2JT',
-				lat: 51.456540,
-				lng: -2.594255
-			});
-		});
-	});
-</script>
