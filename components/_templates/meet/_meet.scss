@@ -15,13 +15,12 @@
 	&__inner {
 		display: grid;
 		grid-template-columns: $colGutterWidth auto $colGutterWidth;
-		grid-template-rows: auto $rowGutterWidth auto $rowGutterWidth auto $rowGutterWidth 1fr $rowGutterWidth auto $rowGutterWidth auto;
+		grid-template-rows: auto $rowGutterWidth auto auto $rowGutterWidth 1fr $rowGutterWidth auto $rowGutterWidth auto;
 		grid-template-areas:
 			". header ."
 			". . ."
+			"date date ."
 			"image image image"
-			". . ."
-			". date ."
 			". . ."
 			". body ."
 			". . ."
@@ -163,7 +162,7 @@
 		}
 	}
 	&__prose {
-		max-width: 36em;
+		max-width: tokens.$measure-default;
 	}
 	// Organisers
 	&__organisers {
