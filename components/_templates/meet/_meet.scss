@@ -42,18 +42,18 @@
 				". body ."
 				". body organisers"
 				". body .";
-			background-image: repeating-linear-gradient(
-				53.13deg,
-				var(--theme-accent-mod),
-				var(--theme-accent-mod) 1px,
-				transparent 1px,
-				transparent 2px
-			);
-			background-repeat: repeat-y;
-			background-size: $leftMarginTextureWidth auto;
-			background-position-x: calc(
-				#{$leftMarginWidth} - #{$leftMarginTextureWidth} - #{$colGutterWidth}
-			);
+			position: relative;
+			&::before {
+				@include theme.shade(var(--theme-accent-mod));
+				content: "";
+				width: $leftMarginTextureWidth;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: calc(
+					#{$leftMarginWidth} - #{$leftMarginTextureWidth} - #{$colGutterWidth}
+				);
+			}
 			#{$self}[data-image-orientation] & {
 				grid-template-rows: auto $rowGutterWidth auto $rowGutterWidth auto $rowGutterWidth auto 1fr;
 			}

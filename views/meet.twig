@@ -3,6 +3,7 @@
 {% from "@components/heading/macro.twig" import sbHeading %}
 {% from "@components/image/macro.twig" import sbImage %}
 {% from "@components/prose/macro.twig" import sbProse %}
+{% from "@components/map/macro.twig" import sbMap %}
 {% from "@components/meet-date/macro.twig" import sbMeetDate %}
 {% from "@components/organiser/macro.twig" import sbOrganiser %}
 
@@ -64,7 +65,9 @@
 				}) }}
 			</div>
 			<section class="sbt-meet__venues">
-				[venues]
+				{{ sbMap({
+					points: locations
+				}) }}
 			</section>
 			<section class="sbt-meet__organisers">
 				{{ sbHeading({

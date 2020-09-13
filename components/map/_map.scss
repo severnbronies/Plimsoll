@@ -1,16 +1,30 @@
 @use "tokens.web" as tokens;
+@use "mixins/theme";
 @use "mixins/typography";
 
 .sb-map {
+	@include theme.shade(var(--theme-accent-mod));
+	$gutter: 1em;
+	margin-top: $gutter * 2;
+	padding: $gutter;
+	&__map-container {
+		margin-top: 0 - ($gutter * 2);
+		margin-bottom: $gutter;
+		padding-top: 56.25%;
+		position: relative;
+	}
 	&__map {
 		width: 100%;
-		height: 33vh;
-		min-height: 14em;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 	&__list {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
+		font-size: tokens.$size-small;
 		counter-reset: locationList;
 	}
 	&__list-item {
@@ -37,8 +51,12 @@
 			font-size: 16px;
 			text-align: center;
 			line-height: 1;
+			transition: filter 0.1666s ease;
 		}
 		&--highlight {
+			&::before {
+				filter: drop-shadow(0 0 0.25em var(--theme-accent));
+			}
 		}
 	}
 }

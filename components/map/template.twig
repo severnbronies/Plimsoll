@@ -2,7 +2,9 @@
     data-module="sb-map"
     class="sb-map {%- if params.classes %} {{ params.classes }}{% endif %}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-    <div class="sb-map__map" id="{{ params.id }}"></div>
+    <div class="sb-map__map-container">
+        <div class="sb-map__map" id="{{ params.id }}"></div>
+    </div>
     <ol class="sb-map__list">
     	{%- for loc in params.points %}
     		<li class="sb-map__list-item">

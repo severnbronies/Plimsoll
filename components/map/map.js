@@ -60,7 +60,10 @@ export default class Map {
 		});
 	}
 	addLocation(location) {
-		const latLng = { lat: location.lat, lng: location.lng };
+		const latLng = {
+			lat: +location.latitude,
+			lng: +location.longitude
+		};
 		const markerIndex = this.markers.length;
 		let marker = new google.maps.Marker({
 			map: this.map,
