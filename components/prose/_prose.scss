@@ -25,6 +25,13 @@
 	h6 {
 		@include typography.heading;
 		color: var(--theme-accent);
+		font-style: italic;
+		@supports (-webkit-text-stroke-width: 1px) {
+			color: transparent;
+			text-shadow: 2px 2px var(--theme-accent-mod);
+			-webkit-text-stroke-width: 1px;
+			-webkit-text-stroke-color: var(--theme-accent);
+		}
 		+ * {
 			margin-top: 0.86em;
 		}
