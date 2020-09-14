@@ -21,7 +21,7 @@
 	}
 	&__time {
 		&::before {
-			@include theme.shade(var(--theme-accent-mod));
+			@include theme.shade;
 			content: "";
 			display: block;
 			width: 100%;

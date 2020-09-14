@@ -44,7 +44,7 @@
 				". body .";
 			position: relative;
 			&::before {
-				@include theme.shade(var(--theme-accent-mod));
+				@include theme.shade;
 				content: "";
 				width: $leftMarginTextureWidth;
 				height: 100%;
