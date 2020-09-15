@@ -1,0 +1,105 @@
+@use "tokens.web" as tokens;
+@use "sass:color";
+@use "mixins/helpers";
+@use "mixins/theme";
+
+.sb-modal {
+	$self: &;
+	display: none;
+	&[aria-hidden="false"] {
+		display: block;
+	}
+	&__overlay {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: color.change(tokens.$color-primary-dark, $alpha: 0.91);
+		animation-name: modalBackdropFadeIn;
+		animation-duration: 0.3333s;
+		animation-timing-function: linear;
+	}
+	&__container {
+		position: relative;
+		&::before {
+			@include theme.shade;
+			content: "";
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 1em;
+			left: 1em;
+			#{$self}[aria-hidden="false"] & {
+				animation-name: modalWipeIn;
+				animation-duration: 0.3333s;
+				animation-timing-function: linear;
+			}
+		}
+	}
+	&__inner {
+		max-width: 28em;
+		max-height: 90vh;
+		padding: 1em;
+		position: relative;
+		border: 1px solid var(--theme-accent-mod);
+		color: var(--theme-text);
+		background-color: var(--theme-background);
+		overflow-y: auto;
+		#{$self}[aria-hidden="false"] & {
+			animation-name: modalWipeIn;
+			animation-duration: 0.3333s;
+			animation-timing-function: linear;
+			animation-delay: 0.25s;
+			animation-fill-mode: both;
+		}
+	}
+	&__heading {
+		margin-right: 2em;
+		font-style: italic;
+	}
+	&__close {
+		@include helpers.button-reset;
+		display: block;
+		padding: 1em;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border: 1px solid var(--theme-accent-mod);
+		border-top: 0;
+		border-right: 0;
+		line-height: 1;
+		> * {
+			pointer-events: none;
+		}
+		&:hover {
+			background-color: var(--theme-accent-mod);
+		}
+	}
+	&__close-icon {
+		width: 1em;
+		height: 1em;
+		fill: currentColor;
+	}
+}
+
+@keyframes modalWipeIn {
+	0% {
+		clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+	}
+	100% {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	}
+}
+
+@keyframes modalBackdropFadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
