@@ -1,4 +1,5 @@
 @use "tokens.web" as tokens;
+@use "mixins/helpers";
 @use "mixins/theme";
 @use "mixins/typography";
 
@@ -57,6 +58,17 @@
 			&::before {
 				filter: drop-shadow(0 0 0.25em var(--theme-accent));
 			}
+		}
+	}
+	&__list-more {
+		@include helpers.button-reset;
+		@include typography.all-caps;
+		padding: 0.25em 0.5em;
+		border: 2px solid var(--theme-accent-mod);
+		background-color: var(--theme-background);
+		font-size: tokens.$size-small;
+		&:hover {
+			background-color: var(--theme-accent-mod);
 		}
 	}
 }

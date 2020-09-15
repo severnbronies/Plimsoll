@@ -18,6 +18,7 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
+		z-index: tokens.$layer-modal;
 		background-color: color.change(tokens.$color-primary-dark, $alpha: 0.91);
 		animation-name: modalBackdropFadeIn;
 		animation-duration: 0.3333s;
@@ -41,14 +42,10 @@
 		}
 	}
 	&__inner {
-		max-width: 28em;
-		max-height: 90vh;
-		padding: 1em;
 		position: relative;
 		border: 1px solid var(--theme-accent-mod);
 		color: var(--theme-text);
 		background-color: var(--theme-background);
-		overflow-y: auto;
 		#{$self}[aria-hidden="false"] & {
 			animation-name: modalWipeIn;
 			animation-duration: 0.3333s;
@@ -58,7 +55,6 @@
 		}
 	}
 	&__heading {
-		margin-right: 2em;
 		font-style: italic;
 	}
 	&__close {
@@ -83,6 +79,12 @@
 		width: 1em;
 		height: 1em;
 		fill: currentColor;
+	}
+	&__body {
+		max-width: 30em;
+		max-height: 90vh;
+		padding: 1em 4em 1em 1em;
+		overflow-y: auto;
 	}
 }
 

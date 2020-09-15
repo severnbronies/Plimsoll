@@ -7,14 +7,14 @@
     class="sb-modal {%- if params.classes %} {{ params.classes }}{% endif %}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 	<div class="sb-modal__overlay" tabindex="-1" data-micromodal-close>
-		<section class="sb-modal__container" role="dialog" aria-modal="true" aria-labelledby="{{ params.id }}-Heading">
+		<section class="sb-modal__container" role="dialog" aria-modal="true" aria-label="{{ params.heading }}">
 			<div class="sb-modal__inner">
-				{{ sbHeading({
+				{# {{ sbHeading({
 					classes: 'sb-modal__heading',
 					html: params.heading,
 					hierarchy: 4,
 					attributes: { 'id': params.id ~ '-Heading' }
-				}) }}
+				}) }} #}
 				<button class="sb-modal__close" type="button" data-micromodal-close="{{ params.id }}">
 					<svg class="sb-modal__close-icon" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none"/>
