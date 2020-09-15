@@ -3,7 +3,10 @@
 // ACF configuration
 function my_acf_init()
 {
-	acf_update_setting('google_api_key', GOOGLE_MAPS_API_KEY);
+	acf_update_setting(
+		'google_api_key',
+		get_field('api_google_maps', 'option')
+	);
 }
 add_action('acf/init', 'my_acf_init');
 
@@ -18,6 +21,7 @@ if (function_exists('acf_add_options_page')) {
 }
 
 require get_template_directory() . '/inc/about.php';
+require get_template_directory() . '/inc/apis.php';
 require get_template_directory() . '/inc/blocks.php';
 require get_template_directory() . '/inc/error-page.php';
 require get_template_directory() . '/inc/footer.php';
@@ -102,10 +106,14 @@ class Plimsoll extends Timber\Site
 	 */
 	public function add_to_context($context)
 	{
+		// API keys
+		$context['api_google_maps'] = get_field('api_google_maps', 'option');
+
 		// Header
 		$context['primary_navigation'] = new Timber\Menu('primary', [
 			'depth' => 1,
 		]);
+
 		// Phase banner
 		$context['phase_banner_visible'] = get_field(
 			'phase_banner_visible',
@@ -123,14 +131,17 @@ class Plimsoll extends Timber\Site
 			'phase_banner_description',
 			'option'
 		);
+
 		// Notification banners
 		$context['banners'] = get_field('banners', 'option');
+
 		// Footer
 		$context['footer_navigation'] = new Timber\Menu('footer');
 		$context['footer_legal_copy'] = get_field(
 			'footer_legal_copy',
 			'option'
 		);
+
 		// Footer - Newsletter sign up
 		$context['newsletter_show'] =
 			get_field('footer_newsletter_visible', 'option') == 'true'
@@ -148,6 +159,7 @@ class Plimsoll extends Timber\Site
 			'footer_newsletter_placeholder',
 			'option'
 		);
+
 		// Asset cachebusting
 		$context['cachebust_css_version'] = filemtime(
 			get_stylesheet_directory() . '/dist/css/all.css'
@@ -155,6 +167,7 @@ class Plimsoll extends Timber\Site
 		$context['cachebust_js_version'] = filemtime(
 			get_stylesheet_directory() . '/dist/js/all.js'
 		);
+
 		// Everything else
 		$context['site'] = $this;
 		return $context;
