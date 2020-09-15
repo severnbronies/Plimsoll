@@ -15,7 +15,7 @@
         {%- if params.height %} height="{{ params.height }}"{% endif %}
         {%- if lazyload %} loading="lazy"{% endif %}
         {%- for attribute, value in params.image.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-    {%- if params.attribution %}
+    {%- if params.attribution.copyright %}
         <figcaption class="sb-image__attribution">
         	{%- if params.attribution.source %}
         		<a
