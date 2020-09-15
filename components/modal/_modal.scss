@@ -9,6 +9,9 @@
 	&[aria-hidden="false"] {
 		display: block;
 	}
+	@at-root html.no-js [data-micromodal-trigger] {
+		display: none;
+	}
 	&__overlay {
 		display: flex;
 		justify-content: center;
