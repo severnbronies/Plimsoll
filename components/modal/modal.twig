@@ -1,0 +1,14 @@
+{% from "@components/modal/macro.twig" import sbModal %}
+
+<button type="button" data-micromodal-trigger="modal-1">Open modal</button>
+
+{% set modalContent %}
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, soluta quia? Repellat in quam sit molestias vel non deleniti voluptatibus amet vitae, qui odio. Nobis, molestias? Consectetur, facilis aut repudiandae?</p>
+	<img alt="" src="//placeponi.es/300">
+{% endset %}
+
+{{ sbModal({
+    id: 'modal-1',
+    heading: 'This is a modal',
+    html: modalContent
+}) }}

@@ -1,5 +1,6 @@
 @use "tokens.web" as *;
 @use "mixins/a11y";
+@use "mixins/media";
 
 @mixin default-link--initial(
 	$textColor: currentColor,
@@ -55,4 +56,11 @@
 	background-color: $color;
 	box-shadow: 0.25em 0 0 0 $color, -0.25em 0 0 0 $color;
 	box-decoration-break: clone;
+}
+
+@mixin shade {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAYAAADAp4fuAAAAY0lEQVQImS3LoQ3CYBSF0QMGHDsgqhGdhREQTRBsUtGqLkBC98C1nhSLR1ZBbvI/c5OT720+7/WICQdc0W3xKDAGsEv5w4IaX/QpV5wLZJvgDTMqDJD37B5PnHBPmWsLvHD5A9uhGH4fxuAoAAAAAElFTkSuQmCC");
+	@include media.dark-mode {
+		background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAYAAADAp4fuAAAAZklEQVQImS3KsQ2CYBSF0aONVLiDBbVhCxdwAkNBsGARY0FC4QISXIAltDcsYUlnXvi/5iYnd9OcpgPe2OOKbosxwSsAu8ASMy7WboELzvilrQNbfFDgEdfAHhkG5HgGRncc8UX1BxG1EHwlb6TtAAAAAElFTkSuQmCC");
+	}
 }

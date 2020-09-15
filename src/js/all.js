@@ -19,6 +19,8 @@ import "what-input";
 import ArchiveNavigation from "../../components/archive-navigation/archive-navigation";
 import Banner from "../../components/banner/banner";
 import Map from "../../components/map/map";
+import MeetDate from "../../components/meet-date/meet-date";
+import Modal from "../../components/modal/modal";
 
 function initAll(options) {
 	options = typeof options !== "undefined" ? options : {};
@@ -34,6 +36,14 @@ function initAll(options) {
 	scope.querySelectorAll('[data-module="sb-banner"]').forEach(m => {
 		new Banner(m);
 	});
+
+	scope.querySelectorAll('[data-module="sb-meet-date"]').forEach(m => {
+		new MeetDate(m);
+	});
+
+	scope.querySelectorAll('[data-module="sb-modal"]').forEach(m => {
+		new Modal(m);
+	});
 }
 
-export { initAll, Banner, Map };
+export { initAll, Banner, Map, MeetDate, Modal };
