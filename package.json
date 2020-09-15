@@ -50,6 +50,7 @@
 		"yargs": "^14.2.0"
 	},
 	"dependencies": {
+		"micromodal": "^0.4.6",
 		"normalize-scss": "^7.0.1",
 		"what-input": "^5.2.9"
 	},

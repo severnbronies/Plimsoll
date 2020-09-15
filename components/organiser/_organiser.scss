@@ -1,48 +1,49 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
+@use "mixins/helpers";
 @use "mixins/media";
+@use "mixins/typography";
 
 .sb-organiser {
-	$flipBreakpoint: 60em;
-	$avatarSize: 9em;
-	$avatarMargin: 1.5em;
-	$avatarPaddingLeft: $avatarSize + $avatarMargin;
-	overflow: hidden;
-	@include media.mq($flipBreakpoint) {
-		padding-left: $avatarPaddingLeft;
-	}
+	$avatarSize: 3em;
+	$avatarMargin: 1em;
+	display: flex;
+	padding-right: 1em;
+	padding-left: 1em;
+	flex-direction: row;
+	align-items: center;
 	& + & {
-		margin-top: $grid-gutter / 2;
+		margin-top: $avatarMargin;
 	}
 	&__image-container {
+		flex-shrink: 0;
+		flex-grow: 0;
 		width: $avatarSize;
-		margin-bottom: $avatarMargin;
-		position: relative;
+		margin-right: $avatarMargin;
 		line-height: 0;
-		&::after {
-			content: "";
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			top: 0;
-			left: 0;
-			border-radius: 50%;
-			box-shadow: inset 0 0 1em rgba($color-black, 0.25);
-		}
-		@include media.mq($flipBreakpoint) {
-			margin-bottom: 0;
-			margin-left: 0 - $avatarPaddingLeft;
-			float: left;
-			clear: left;
-		}
 	}
 	&__image {
 		width: 100%;
-		border-radius: 50%;
 	}
 	&__name {
+		margin-right: 1em;
+		font-weight: 400;
 	}
-	&__biography {
-		max-width: $measure-default;
-		margin-top: 1em;
+	&__more {
+		@include helpers.button-reset;
+		@include typography.all-caps;
+		margin-left: auto;
+		padding: 0.25em 0.5em;
+		border: 2px solid var(--theme-accent-mod);
+		background-color: var(--theme-background);
+		font-size: tokens.$size-small;
+		&:hover {
+			background-color: var(--theme-accent-mod);
+		}
+	}
+	&__modal-image {
+		max-width: 9em;
+		float: right;
+		clear: right;
+		margin-left: 1em;
 	}
 }

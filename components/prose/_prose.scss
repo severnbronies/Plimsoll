@@ -25,6 +25,13 @@
 	h6 {
 		@include typography.heading;
 		color: var(--theme-accent);
+		font-style: italic;
+		@supports (-webkit-text-stroke-width: 1px) {
+			color: transparent;
+			text-shadow: 2px 2px var(--theme-accent-mod);
+			-webkit-text-stroke-width: 1px;
+			-webkit-text-stroke-color: var(--theme-accent);
+		}
 		+ * {
 			margin-top: 0.86em;
 		}
@@ -46,7 +53,7 @@
 	h4 {
 		margin-top: 1.52em;
 		font-size: $size-small-subtitle;
-		line-height: $lead-default;
+		line-height: $lead-title;
 	}
 	h5,
 	h6 {
@@ -57,10 +64,12 @@
 	h5 {
 		margin-top: 1.34em;
 		font-size: $size-byline;
+		line-height: $lead-solid;
 	}
 	h6 {
 		margin-top: 1.18em;
 		font-size: $size-body;
+		line-height: $lead-solid;
 	}
 	dl {
 	}
