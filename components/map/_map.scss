@@ -60,6 +60,10 @@
 			}
 		}
 	}
+	&__list-name {
+		margin-bottom: 0.25em;
+		color: var(--theme-accent);
+	}
 	&__list-more {
 		@include helpers.button-reset;
 		@include typography.all-caps;
