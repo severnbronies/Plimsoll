@@ -12,6 +12,25 @@ if (function_exists('acf_add_options_page')) {
 		'title' => 'Phase Banner',
 		'fields' => [
 			[
+				'key' => 'field_5f614701fd6a8',
+				'label' => 'Show phase banner',
+				'name' => 'phase_banner_visible',
+				'type' => 'true_false',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => [
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				],
+				'message' => 'Show phase banner?',
+				'default_value' => 0,
+				'ui' => 0,
+				'ui_on_text' => '',
+				'ui_off_text' => '',
+			],
+			[
 				'key' => 'field_5ec903ce70362',
 				'label' => 'Title',
 				'name' => 'phase_banner_title',

@@ -10,11 +10,13 @@
 		text: 'Skip to content'
 	}) }}
 
-	{{ sbPhaseBanner({
-		heading: phase_banner_title,
-		subheading: phase_banner_subtitle,
-		html: phase_banner_description
-	}) }}
+	{%- if phase_banner_visible %}
+		{{ sbPhaseBanner({
+			heading: phase_banner_title,
+			subheading: phase_banner_subtitle,
+			html: phase_banner_description
+		}) }}
+	{%- endif %}
 
 	{%- for banner in banners %}
 		{% set bannerId = 'sbAlert-' ~ function('md5', banner.banner_text) %}

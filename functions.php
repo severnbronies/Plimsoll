@@ -107,6 +107,10 @@ class Plimsoll extends Timber\Site
 			'depth' => 1,
 		]);
 		// Phase banner
+		$context['phase_banner_visible'] = get_field(
+			'phase_banner_visible',
+			'option'
+		);
 		$context['phase_banner_title'] = get_field(
 			'phase_banner_title',
 			'option'
