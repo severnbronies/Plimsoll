@@ -64,24 +64,24 @@
 					html: post.content
 				}) }}
 			</div>
-			<section class="sbt-meet__venues">
-				{{ sbMap({
-					points: locations
-				}) }}
-			</section>
-			<section class="sbt-meet__organisers">
-				{{ sbHeading({
-					classes: 'sbt-meet__organisers-heading',
-					html: 'Meet staff',
-					hierarchy: 6,
-					element: 'h2'
-				}) }}
-				<div class="sbt-meet__organisers-body">
+			{%- if locations %}
+				<section class="sbt-meet__venues">
+					<h2 class="sb-sr" id="location">
+						{%- if locations | length == 1 %}Location{% else %}Locations{% endif %}
+					</h2>
+					{{ sbMap({
+						points: locations
+					}) }}
+				</section>
+			{%- endif %}
+			{%- if runners %}
+				<section class="sbt-meet__organisers">
+					<h2 class="sb-sr" id="organisers">Organisers</h2>
 					{%- for runner in runners %}
 						{{ sbOrganiser(runner) }}
 					{%- endfor %}
-				</div>
-			</section>
+				</section>
+			{%- endif%}
 		</div>
 	</article>
 {% endblock %}

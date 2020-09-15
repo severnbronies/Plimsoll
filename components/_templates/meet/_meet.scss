@@ -164,21 +164,4 @@
 	&__prose {
 		max-width: tokens.$measure-default;
 	}
-	// Organisers
-	&__organisers {
-	}
-	&__organisers-heading {
-		padding: 0 $colGutterWidth;
-		color: var(--theme-accent);
-		line-height: 0.7;
-		text-align: right;
-	}
-	&__organisers-body {
-		padding: $colGutterWidth;
-		// color: var(--theme-text);
-		// background-color: var(--theme-accent-mod);
-		border-top: 0.5em solid var(--theme-accent);
-		border-left: 0.5em solid var(--theme-accent);
-		border-top-left-radius: 3em;
-	}
 }
