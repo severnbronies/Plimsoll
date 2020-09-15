@@ -63,7 +63,7 @@
 	window.addEventListener('DOMContentLoaded', function() {
 		var map = new window.sb.Map(
 			document.querySelector('[data-module="sb-map"]'),
-			'{{ GOOGLE_MAPS_API_KEY }}',
+			GOOGLE_MAPS_API_KEY,
 			function() {
 				map.addMultipleLocations({{ params.points | json_encode }});
 			}
