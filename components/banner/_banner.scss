@@ -36,7 +36,7 @@
 		@include typography.all-caps;
 		flex-shrink: 0;
 		margin-left: auto;
-		border: 1px solid var(--theme-background);
+		border: 2px solid var(--theme-background);
 		padding: 0.25em 0.5em;
 		background-color: var(--theme-background);
 		font-size: $size-small;
