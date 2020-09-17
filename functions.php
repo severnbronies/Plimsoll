@@ -210,6 +210,22 @@ class Plimsoll extends Timber\Site
 			},
 			100
 		);
+		// Disable taxonomy and users sitemaps introduced in WordPress 5.5
+		add_filter('wp_sitemaps_taxonomies', function ($taxonomies) {
+			unset($taxonomies['category']);
+			return $taxonomies;
+		});
+		add_filter(
+			'wp_sitemaps_add_provider',
+			function ($provider, $name) {
+				if ($name === 'users') {
+					return false;
+				}
+				return $provider;
+			},
+			10,
+			2
+		);
 	}
 
 	/**
