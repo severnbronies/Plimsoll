@@ -1,13 +1,13 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/theme";
 @use "mixins/typography";
 
 .sb-meet-card {
 	$self: &;
 	position: relative;
-	border-radius: $card-border-radius;
-	color: $color-white;
-	background-color: $color-primary;
+	border-radius: tokens.$card-border-radius;
+	color: tokens.$color-white;
+	background-color: tokens.$color-primary;
 	text-align: center;
 	overflow: hidden;
 	&__image {
@@ -26,18 +26,21 @@
 	}
 	&__title {
 		@include typography.heading;
-		font-size: $size-small-subtitle;
-		line-height: $lead-title;
+		font-size: tokens.$size-small-subtitle;
+		line-height: tokens.$lead-title;
 	}
 	&__link {
-		@include theme.default-link($color-white, $color-primary-light);
+		@include theme.default-link(
+			tokens.$color-white,
+			tokens.$color-primary-light
+		);
 		@include theme.extend-link;
 	}
 	&__details {
 		@include typography.all-caps;
 		order: -1;
 		margin: 0 0 0.25rem 0;
-		font-size: $size-small;
+		font-size: tokens.$size-small;
 		font-weight: 700;
 		pointer-events: none;
 	}
@@ -49,14 +52,14 @@
 				content: "";
 				margin-right: 0.25em;
 				margin-left: 0.25em;
-				opacity: $color-opacity-tertiary;
+				opacity: tokens.$color-opacity-tertiary;
 			}
 		}
 	}
 	&__details-info {
 		display: inline;
 		margin: 0;
-		opacity: $color-opacity-secondary;
+		opacity: tokens.$color-opacity-secondary;
 	}
 	&--banner {
 		#{$self}__image img {

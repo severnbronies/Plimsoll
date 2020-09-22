@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 
 /**
  * Content container so it doesn't get too wide like.
@@ -6,7 +6,7 @@
 
 @mixin container {
 	width: 92%;
-	max-width: $grid-max-width;
+	max-width: tokens.$grid-max-width;
 	margin-right: auto;
 	margin-left: auto;
 }

@@ -1,11 +1,11 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/media";
 
 .sb-switcher {
 	display: flex;
 	flex-direction: column;
 	> * + * {
-		margin-top: $grid-gutter / 2;
+		margin-top: tokens.$grid-gutter / 2;
 	}
 	@include media.mq(50em) {
 		flex-direction: row;
@@ -14,7 +14,7 @@
 		}
 		> * + * {
 			margin-top: 0;
-			margin-left: $grid-gutter;
+			margin-left: tokens.$grid-gutter;
 		}
 	}
 }

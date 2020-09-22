@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/helpers";
 @use "mixins/media";
 @use "mixins/theme";
@@ -8,15 +8,15 @@
 		margin-bottom: 1em;
 	}
 	&__list {
-		--theme-background-opacity0: #{rgba($color-white, 0)};
-		--theme-accent-opacity0: #{rgba($color-primary, 0)};
-		--theme-accent-opacity20: #{rgba($color-primary, 0.2)};
+		--theme-background-opacity0: #{rgba(tokens.$color-white, 0)};
+		--theme-accent-opacity0: #{rgba(tokens.$color-primary, 0)};
+		--theme-accent-opacity20: #{rgba(tokens.$color-primary, 0.2)};
 		min-height: 13em;
 		max-height: 60vh;
 		@include media.dark-mode {
-			--theme-background-opacity0: #{rgba($color-primary-dark, 0)};
-			--theme-accent-opacity0: #{rgba($color-primary-light, 0)};
-			--theme-accent-opacity20: #{rgba($color-primary-light, 0.2)};
+			--theme-background-opacity0: #{rgba(tokens.$color-primary-dark, 0)};
+			--theme-accent-opacity0: #{rgba(tokens.$color-primary-light, 0)};
+			--theme-accent-opacity20: #{rgba(tokens.$color-primary-light, 0.2)};
 		}
 		@include helpers.list-reset;
 		background: linear-gradient(

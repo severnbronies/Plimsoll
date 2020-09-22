@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/typography";
 @use "mixins/theme";
 @use "mixins/media";
@@ -6,8 +6,8 @@
 .sb-prose {
 	@include typography.oldstyle-figures;
 	@include typography.force-wrap;
-	font-family: $font-body;
-	line-height: $lead-default;
+	font-family: tokens.$font-body;
+	line-height: tokens.$lead-default;
 	> * + * {
 		margin-top: 1.52em;
 	}
@@ -42,34 +42,32 @@
 	h1,
 	h2 {
 		margin-top: 1.95em;
-		font-size: $size-subtitle;
-		line-height: $lead-title;
+		font-size: tokens.$size-subtitle;
+		line-height: tokens.$lead-title;
 	}
 	h3 {
 		margin-top: 1.72em;
-		font-size: $size-pullquote;
-		line-height: $lead-title;
+		font-size: tokens.$size-pullquote;
+		line-height: tokens.$lead-title;
 	}
 	h4 {
 		margin-top: 1.52em;
-		font-size: $size-small-subtitle;
-		line-height: $lead-title;
+		font-size: tokens.$size-small-subtitle;
+		line-height: tokens.$lead-title;
 	}
 	h5,
 	h6 {
 		@include typography.all-caps;
-		line-height: $lead-default;
-		letter-spacing: $tracking-wide;
+		line-height: tokens.$lead-solid;
+		letter-spacing: tokens.$tracking-wide;
 	}
 	h5 {
 		margin-top: 1.34em;
-		font-size: $size-byline;
-		line-height: $lead-solid;
+		font-size: tokens.$size-byline;
 	}
 	h6 {
 		margin-top: 1.18em;
-		font-size: $size-body;
-		line-height: $lead-solid;
+		font-size: tokens.$size-body;
 	}
 	dl {
 	}
@@ -78,6 +76,6 @@
 	}
 	a {
 		position: relative;
-		z-index: $layer-default;
+		z-index: tokens.$layer-default;
 	}
 }

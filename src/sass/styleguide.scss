@@ -1,9 +1,9 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&amp;family=Montserrat:wght@900&amp;display=swap");
 
 html {
-	font-family: $font-body;
-	line-height: $lead-default;
+	font-family: tokens.$font-body;
+	line-height: tokens.$lead-default;
 }
 
 // Override font wherever Open Sans is used
@@ -41,8 +41,8 @@ h6,
 }
 
 .Header {
-	color: $color-white;
-	background-color: $color-primary;
+	color: tokens.$color-white;
+	background-color: tokens.$color-primary;
 	font-weight: 700;
 }
 

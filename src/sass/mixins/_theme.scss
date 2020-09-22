@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/a11y";
 @use "mixins/media";
 
@@ -22,7 +22,7 @@
 
 @mixin default-link(
 	$textColor: currentColor,
-	$highlightColor: $color-primary-light
+	$highlightColor: tokens.$color-primary-light
 ) {
 	@include default-link--initial($textColor, $highlightColor);
 	&:hover {

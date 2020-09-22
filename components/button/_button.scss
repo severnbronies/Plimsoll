@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/typography";
 @use "mixins/a11y";
 @use "mixins/helpers";
@@ -12,11 +12,11 @@
 	@include typography.all-caps;
 	display: inline-block;
 	position: relative;
-	font-size: $size-small;
+	font-size: tokens.$size-small;
 	font-weight: 700;
 	text-align: center;
 	text-decoration: none;
-	line-height: $lead-title;
+	line-height: tokens.$lead-title;
 	&::after {
 		content: "";
 		width: $triangleSize;

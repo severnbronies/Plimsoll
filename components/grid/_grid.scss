@@ -1,7 +1,7 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 
 .sb-grid {
 	display: grid;
-	grid-gap: $grid-gutter;
+	grid-gap: tokens.$grid-gutter;
 	grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
 }

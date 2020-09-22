@@ -1,19 +1,19 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 
 .sb-subscription-form {
 	&__heading {
-		font-size: $size-byline;
-		line-height: $lead-title;
+		font-size: tokens.$size-byline;
+		line-height: tokens.$lead-title;
 	}
 	&__body {
-		max-width: $measure-default;
+		max-width: tokens.$measure-default;
 		margin-top: 1em;
 	}
 	&__inner {
-		max-width: $measure-narrow;
+		max-width: tokens.$measure-narrow;
 		margin-top: 1em;
 	}
 	&__checkbox {
-		font-size: $size-small;
+		font-size: tokens.$size-small;
 	}
 }

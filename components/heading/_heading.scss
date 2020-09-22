@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/typography";
 
 .sb-heading {
@@ -7,36 +7,36 @@
 	font-style: normal;
 	&--0 {
 		@include typography.all-caps;
-		font-size: $size-jumbotron;
-		line-height: $lead-solid;
-		letter-spacing: $tracking-narrow;
+		font-size: tokens.$size-jumbotron;
+		line-height: tokens.$lead-solid;
+		letter-spacing: tokens.$tracking-narrow;
 	}
 	&--1 {
-		font-size: $size-title;
-		line-height: $lead-title;
+		font-size: tokens.$size-title;
+		line-height: tokens.$lead-title;
 	}
 	&--2 {
-		font-size: $size-subtitle;
-		line-height: $lead-title;
+		font-size: tokens.$size-subtitle;
+		line-height: tokens.$lead-title;
 	}
 	&--3 {
-		font-size: $size-pullquote;
-		line-height: $lead-title;
+		font-size: tokens.$size-pullquote;
+		line-height: tokens.$lead-title;
 	}
 	&--4 {
-		font-size: $size-small-subtitle;
-		line-height: $lead-title;
+		font-size: tokens.$size-small-subtitle;
+		line-height: tokens.$lead-title;
 	}
 	&--5,
 	&--6 {
 		@include typography.all-caps;
-		line-height: $lead-solid;
-		letter-spacing: $tracking-wide;
+		line-height: tokens.$lead-solid;
+		letter-spacing: tokens.$tracking-wide;
 	}
 	&--5 {
-		font-size: $size-byline;
+		font-size: tokens.$size-byline;
 	}
 	&--6 {
-		font-size: $size-body;
+		font-size: tokens.$size-body;
 	}
 }

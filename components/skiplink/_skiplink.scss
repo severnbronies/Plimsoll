@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/a11y";
 
 .sb-skiplink {
@@ -7,9 +7,9 @@
 	position: absolute;
 	top: -9999rem;
 	left: -9999rem;
-	z-index: $layer-overlay;
-	color: $color-black;
-	background-color: $color-accessibility;
+	z-index: tokens.$layer-overlay;
+	color: tokens.$color-black;
+	background-color: tokens.$color-accessibility;
 	font-weight: 700;
 	text-decoration: none;
 	&:focus {

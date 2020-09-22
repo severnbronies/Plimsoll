@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/typography";
 
 .sb-image {
@@ -20,11 +20,11 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
-		color: $color-white;
-		background-color: rgba($color-black, $color-opacity-tertiary);
-		font-size: $size-small;
+		color: tokens.$color-white;
+		background-color: rgba(tokens.$color-black, tokens.$color-opacity-tertiary);
+		font-size: tokens.$size-small;
 		font-weight: 400;
-		line-height: $lead-solid;
+		line-height: tokens.$lead-solid;
 	}
 	&__attribution-source {
 		color: currentColor;

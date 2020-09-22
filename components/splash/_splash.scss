@@ -1,19 +1,19 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/layout";
 @use "mixins/theme";
 @use "mixins/typography";
 
 .sb-splash {
-	$theme-clip-padding: 6vh;
-	margin-top: $grid-gutter;
-	margin-bottom: $grid-gutter;
+	$clipPadding: 6vh;
+	margin-top: tokens.$grid-gutter;
+	margin-bottom: tokens.$grid-gutter;
 	position: relative;
-	color: $color-primary-light;
-	background-color: $color-primary;
+	color: tokens.$color-primary-light;
+	background-color: tokens.$color-primary;
 	clip-path: polygon(
-		0 #{$theme-clip-padding},
+		0 #{$clipPadding},
 		100% 0,
-		100% calc(100% - #{$theme-clip-padding}),
+		100% calc(100% - #{$clipPadding}),
 		0 100%
 	);
 	&__image {
@@ -32,19 +32,19 @@
 		align-items: center;
 		min-height: 25rem;
 		position: relative;
-		padding-top: $theme-clip-padding * 2;
-		padding-bottom: $theme-clip-padding * 3;
+		padding-top: $clipPadding * 2;
+		padding-bottom: $clipPadding * 3;
 	}
 	&__inner {
 		@include layout.container;
 	}
 	&__heading {
-		@include typography.responsive-size(6vw, $size-title);
+		@include typography.responsive-size(6vw, tokens.$size-title);
 	}
 	&__content {
-		max-width: $measure-narrow;
+		max-width: tokens.$measure-narrow;
 		margin-top: 2rem;
-		color: $color-white;
-		font-size: $size-byline;
+		color: tokens.$color-white;
+		font-size: tokens.$size-byline;
 	}
 }

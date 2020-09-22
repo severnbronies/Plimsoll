@@ -1,9 +1,9 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 
 .sb-stack {
 	display: flex;
 	flex-direction: column;
 	> * + * {
-		margin-top: $grid-gutter / 2;
+		margin-top: tokens.$grid-gutter / 2;
 	}
 }
