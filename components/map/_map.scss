@@ -48,6 +48,7 @@
 			clear: left;
 			color: tokens.$color-white;
 			background-image: url("../images/google-map-pin.png");
+			background-size: $pinIconWidth 35px;
 			background-repeat: no-repeat;
 			font-size: 16px;
 			text-align: center;
