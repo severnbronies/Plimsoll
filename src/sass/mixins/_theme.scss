@@ -58,11 +58,7 @@
 	box-decoration-break: clone;
 }
 
-@mixin shade($overrideColor: false) {
-	$color: var(--theme-accent-mod);
-	@if $overrideColor {
-		$color: $overrideColor;
-	}
+@mixin shade($color: var(--theme-accent-mod)) {
 	background-image: repeating-linear-gradient(
 		-53.13deg,
 		transparent 0,

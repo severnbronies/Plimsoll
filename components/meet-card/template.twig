@@ -1,4 +1,5 @@
 {% from '@components/image/macro.twig' import sbImage %}
+{% from '@components/meet-date/macro.twig' import sbMeetDate %}
 
 <article
     itemscope
@@ -16,12 +17,15 @@
         {{ sbImage(imageParams) }}
     {%- endif %}
     <div class="sb-meet-card__inner">
-        <strong class="sb-meet-card__title" itemprop="name">
-            <a class="sb-meet-card__link" href="{{ params.href }}" itemprop="url">
-                {{ params.name }}
-            </a>
-        </strong>
-        {%- if params.location or params.date %}
+        <div class="sb-meet-card__body">
+            <strong class="sb-meet-card__title" itemprop="name">
+                <a class="sb-meet-card__link" href="{{ params.href }}" itemprop="url">
+                    {{ params.name }}
+                </a>
+            </strong>
+            <div class="sb-meet-card__location" itemprop="location">{{ params.location }}</div>
+        </div>
+        {# {%- if params.location or params.date %}
         <dl class="sb-meet-card__details">
             {%- if params.date %}
             <div class="sb-meet-card__details-item">
@@ -38,6 +42,11 @@
             </div>
             {%- endif %}
         </dl>
-        {%- endif %}
+        {%- endif %} #}
+        {{ sbMeetDate({
+            classes: 'sb-meet-card__date',
+            startDate: params.date,
+            attributes: { 'itemprop': 'startDate' }
+        }) }}
     </div>
 </article>
