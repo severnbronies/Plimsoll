@@ -44,7 +44,7 @@ export default class Map {
 		// Custom marker icon set up
 		this.markerStyle = {
 			url:
-				"https://severnbronies.co.uk/wp-content/themes/plimsoll/dist/images/google-map-pin.png",
+				"https://severnbronies.co.uk/wp-content/themes/plimsoll/dist/images/google-map-pin--small.png",
 			size: new google.maps.Size(28, 35),
 			origin: new google.maps.Point(0, 0),
 			anchor: new google.maps.Point(14, 35),
