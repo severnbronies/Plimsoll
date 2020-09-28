@@ -12,41 +12,26 @@
                 attributes: { 'itemprop': 'image' }
             },
             classes: 'sb-meet-card__image',
-            variants: ['flattened', 'cover']
+            variants: ['cover']
         }) %}
         {{ sbImage(imageParams) }}
+    {%- else %}
+        <div class="sb-meet-card__image" aria-hidden="true"></div>
     {%- endif %}
-    <div class="sb-meet-card__inner">
+    <header class="sb-meet-card__inner">
         <div class="sb-meet-card__body">
-            <strong class="sb-meet-card__title" itemprop="name">
+            <h3 class="sb-meet-card__title" itemprop="name">
                 <a class="sb-meet-card__link" href="{{ params.href }}" itemprop="url">
                     {{ params.name }}
                 </a>
-            </strong>
+            </h3>
             <div class="sb-meet-card__location" itemprop="location">{{ params.location }}</div>
         </div>
-        {# {%- if params.location or params.date %}
-        <dl class="sb-meet-card__details">
-            {%- if params.date %}
-            <div class="sb-meet-card__details-item">
-                <dt class="sb-sr">Start date</dt>
-                <dd class="sb-meet-card__details-info">
-                    <time datetime="{{ params.date }}" itemprop="startDate">{{ params.date | date('l, j F Y') }}</time>
-                </dd>
-            </div>
-            {%- endif %}
-            {%- if params.location %}
-            <div class="sb-meet-card__details-item">
-                <dt class="sb-sr">City</dt>
-                <dd class="sb-meet-card__details-info" itemprop="location">{{ params.location }}</dd>
-            </div>
-            {%- endif %}
-        </dl>
-        {%- endif %} #}
-        {{ sbMeetDate({
-            classes: 'sb-meet-card__date',
-            startDate: params.date,
-            attributes: { 'itemprop': 'startDate' }
-        }) }}
-    </div>
+        <div class="sb-meet-card__date">
+            {{ sbMeetDate({
+                startDate: params.date,
+                attributes: { 'itemprop': 'startDate' }
+            }) }}
+        </div>
+    </header>
 </article>
