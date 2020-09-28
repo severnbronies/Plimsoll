@@ -1,6 +1,5 @@
 @use "tokens.web" as tokens;
 @use "mixins/helpers";
-@use "mixins/media";
 @use "mixins/theme";
 
 .sb-archive-navigation {
@@ -8,42 +7,7 @@
 		margin-bottom: 1em;
 	}
 	&__list {
-		--theme-background-opacity0: #{rgba(tokens.$color-white, 0)};
-		--theme-accent-opacity0: #{rgba(tokens.$color-primary, 0)};
-		--theme-accent-opacity20: #{rgba(tokens.$color-primary, 0.2)};
-		min-height: 13em;
-		max-height: 60vh;
-		@include media.dark-mode {
-			--theme-background-opacity0: #{rgba(tokens.$color-primary-dark, 0)};
-			--theme-accent-opacity0: #{rgba(tokens.$color-primary-light, 0)};
-			--theme-accent-opacity20: #{rgba(tokens.$color-primary-light, 0.2)};
-		}
 		@include helpers.list-reset;
-		background: linear-gradient(
-				var(--theme-background) 30%,
-				var(--theme-background-opacity0)
-			),
-			linear-gradient(
-					var(--theme-background-opacity0),
-					var(--theme-background) 70%
-				)
-				0 100%,
-			radial-gradient(
-				farthest-side at 50% 0,
-				var(--theme-accent-opacity20),
-				var(--theme-accent-opacity0)
-			),
-			radial-gradient(
-					farthest-side at 50% 100%,
-					var(--theme-accent-opacity20),
-					var(--theme-accent-opacity0)
-				)
-				0 100%;
-		background-repeat: no-repeat;
-		background-color: var(--theme-background);
-		background-size: 100% 3.5em, 100% 3.5em, 100% 1em, 100% 1em;
-		background-attachment: local, local, scroll, scroll;
-		overflow: auto;
 	}
 	&__item {
 	}
