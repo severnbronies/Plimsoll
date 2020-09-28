@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/helpers";
 @use "mixins/layout";
 @use "mixins/theme";
@@ -8,7 +8,7 @@
 .sb-masthead {
 	$self: &;
 	$flipBreakpoint: 25em;
-	margin-bottom: $grid-gutter;
+	margin-bottom: tokens.$grid-gutter;
 	&__inner {
 		@include layout.container;
 		position: relative;
@@ -50,7 +50,7 @@
 	}
 	&__nav-link {
 		@include theme.default-link(var(--theme-accent), var(--theme-accent-mod));
-		font-size: $size-byline;
+		font-size: tokens.$size-byline;
 		&[aria-current] {
 			@include theme.default-link(var(--theme-text), var(--theme-accent-mod));
 		}

@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/layout";
 @use "mixins/media";
 @use "mixins/theme";
@@ -9,15 +9,15 @@
 		@include layout.container;
 	}
 	&__header {
-		padding-top: $grid-gutter / 2;
-		padding-bottom: $grid-gutter / 2;
-		margin-bottom: $grid-gutter / 2;
+		padding-top: tokens.$grid-gutter / 2;
+		padding-bottom: tokens.$grid-gutter / 2;
+		margin-bottom: tokens.$grid-gutter / 2;
 		color: var(--theme-accent);
 		background-color: var(--theme-accent-mod);
 	}
 	&__heading {
 		@include typography.all-caps;
-		line-height: $lead-solid;
+		line-height: tokens.$lead-solid;
 	}
 	&__form {
 	}

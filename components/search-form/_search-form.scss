@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/helpers";
 @use "mixins/a11y";
 @use "mixins/typography";
@@ -35,7 +35,7 @@
 	&__input,
 	&__button {
 		@include typography.all-caps;
-		font-size: $size-title;
-		line-height: $lead-title;
+		font-size: tokens.$size-title;
+		line-height: tokens.$lead-title;
 	}
 }

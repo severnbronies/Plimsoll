@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 
 /**
  * Typography helpers.
@@ -8,7 +8,7 @@
 
 // Heading
 @mixin heading {
-	font-family: $font-header;
+	font-family: tokens.$font-header;
 	font-weight: 900;
 }
 

@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/layout";
 @use "mixins/theme";
 @use "mixins/typography";
@@ -7,17 +7,17 @@
 .sbt-error {
 	@include layout.container;
 	&__inner {
-		max-width: $measure-default;
+		max-width: tokens.$measure-default;
 	}
 	&__header {
-		margin-bottom: $grid-gutter;
+		margin-bottom: tokens.$grid-gutter;
 	}
 	&__heading {
 		@include typography.all-caps;
 		@include theme.highlight(var(--theme-accent-mod));
 		display: inline;
 		color: var(--theme-accent);
-		line-height: $lead-solid;
+		line-height: tokens.$lead-solid;
 	}
 	&__body {
 	}

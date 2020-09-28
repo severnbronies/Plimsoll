@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/helpers";
 @use "mixins/layout";
 @use "mixins/a11y";
@@ -53,14 +53,14 @@
 	}
 	&__summary-heading {
 		font-weight: 700;
-		line-height: $lead-title;
+		line-height: tokens.$lead-title;
 	}
 	&__summary-subheading {
 		margin-top: 0.25rem;
-		font-size: $size-small;
+		font-size: tokens.$size-small;
 	}
 	&__body {
-		max-width: $measure-default;
+		max-width: tokens.$measure-default;
 		padding: ($bannerPadding / 2) $bannerPadding ($bannerPadding / 2)
 			($bannerPadding + $arrowMargin);
 	}

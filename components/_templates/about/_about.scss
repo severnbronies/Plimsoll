@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/layout";
 @use "mixins/theme";
 @use "mixins/typography";
@@ -14,14 +14,14 @@
 	&__intro {
 	}
 	&__text {
-		max-width: $measure-default;
+		max-width: tokens.$measure-default;
 	}
 
 	// Stats
 	&__stats {
 		.sb-section__body {
 			column-width: 22em;
-			column-gap: $grid-gutter;
+			column-gap: tokens.$grid-gutter;
 			column-rule: 0.5em solid var(--theme-accent-mod);
 			> div {
 				break-inside: avoid;
@@ -33,7 +33,7 @@
 	&__categories {
 		.sb-prose {
 			column-width: 22em;
-			column-gap: $grid-gutter;
+			column-gap: tokens.$grid-gutter;
 			column-rule: 0.5em solid var(--theme-accent-mod);
 			p {
 				break-inside: avoid;
@@ -45,7 +45,7 @@
 	&__staff {
 		.sb-section__body {
 			column-width: 28em;
-			column-gap: $grid-gutter * 2;
+			column-gap: tokens.$grid-gutter * 2;
 			column-rule: 0.5em solid var(--theme-accent-mod);
 		}
 		.sb-organiser {

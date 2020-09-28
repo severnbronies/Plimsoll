@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "sass:string";
 @use "mixins/media";
 @use "mixins/theme";
@@ -10,18 +10,18 @@
  */
 
 :root {
-	--theme-text: #{$color-off-black};
-	--theme-background: #{$color-white};
-	--theme-accent: #{$color-primary};
-	--theme-accent-mod: #{$color-primary-light};
+	--theme-text: #{tokens.$color-off-black};
+	--theme-background: #{tokens.$color-white};
+	--theme-accent: #{tokens.$color-primary};
+	--theme-accent-mod: #{tokens.$color-primary-light};
 }
 
 @include media.dark-mode {
 	:root {
-		--theme-text: #{$color-white};
-		--theme-background: #{$color-primary-dark};
-		--theme-accent: #{$color-primary-light};
-		--theme-accent-mod: #{$color-primary};
+		--theme-text: #{tokens.$color-white};
+		--theme-background: #{tokens.$color-primary-dark};
+		--theme-accent: #{tokens.$color-primary-light};
+		--theme-accent-mod: #{tokens.$color-primary};
 	}
 }
 
@@ -32,8 +32,8 @@
 html {
 	color: var(--theme-text);
 	background-color: var(--theme-background);
-	font-family: $font-body;
-	line-height: $lead-default;
+	font-family: tokens.$font-body;
+	line-height: tokens.$lead-default;
 	@include media.mq(40em) {
 		font-size: 112.5%;
 	}
@@ -56,16 +56,17 @@ kbd:not([class]) {
 	border-radius: 3px;
 	background-color: var(--theme-background);
 	font-family: inherit;
-	font-size: $size-small;
+	font-size: tokens.$size-small;
 	text-align: center;
 	box-shadow: 0 0 0 1px currentColor, 0 2px 0 0 var(--theme-background),
 		0 2px 0 1px currentColor;
 }
+
 hr {
 	width: 100%;
 	height: 0;
-	margin-top: $grid-gutter;
-	margin-bottom: $grid-gutter;
+	margin-top: tokens.$grid-gutter;
+	margin-bottom: tokens.$grid-gutter;
 	border: none;
 	border-bottom: 0.5em solid var(--theme-accent-mod);
 	background-color: transparent;

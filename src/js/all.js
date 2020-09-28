@@ -16,6 +16,8 @@
 
 import "what-input";
 
+import "./vendor/basket";
+
 import ArchiveNavigation from "../../components/archive-navigation/archive-navigation";
 import Banner from "../../components/banner/banner";
 import Map from "../../components/map/map";

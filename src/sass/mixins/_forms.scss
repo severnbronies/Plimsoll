@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/a11y";
 
 /**
@@ -29,7 +29,7 @@
 	}
 	@include placeholder {
 		color: currentColor;
-		opacity: $color-opacity-tertiary;
+		opacity: tokens.$color-opacity-tertiary;
 	}
 }
 

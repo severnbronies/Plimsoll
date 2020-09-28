@@ -1,4 +1,4 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/helpers";
 @use "mixins/layout";
 @use "mixins/theme";
@@ -6,21 +6,21 @@
 @use "mixins/forms";
 
 .sb-footer {
-	$padding: $grid-gutter;
-	$narrowPadding: $grid-gutter / 2;
+	$padding: tokens.$grid-gutter;
+	$narrowPadding: tokens.$grid-gutter / 2;
 	margin-top: $padding * 2;
 	padding-top: $padding;
 	padding-bottom: $padding;
-	color: $color-white;
-	background-color: $color-off-black;
+	color: tokens.$color-white;
+	background-color: tokens.$color-off-black;
 	@include media.dark-mode {
-		background-color: $color-black;
+		background-color: tokens.$color-black;
 	}
 	&__inner {
 		@include layout.container;
 	}
 	&__subscription-form {
-		max-width: $measure-default;
+		max-width: tokens.$measure-default;
 		margin-top: 0 - ($padding * 2);
 		margin-bottom: $padding;
 		padding: $padding;
@@ -43,19 +43,19 @@
 		}
 	}
 	&__nav-link {
-		@include theme.default-link($color-white, $color-primary);
+		@include theme.default-link(tokens.$color-white, tokens.$color-primary);
 		&[aria-current] {
 		}
 	}
 	&__boilerplate {
 		display: block;
-		max-width: $measure-wide;
+		max-width: tokens.$measure-wide;
 		margin-top: $narrowPadding;
 		font-size: 0.75em;
-		line-height: $lead-title;
-		opacity: $color-opacity-tertiary;
+		line-height: tokens.$lead-title;
+		opacity: tokens.$color-opacity-tertiary;
 		a {
-			@include theme.default-link($color-white, $color-primary);
+			@include theme.default-link(tokens.$color-white, tokens.$color-primary);
 		}
 	}
 }
