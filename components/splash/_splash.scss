@@ -4,18 +4,30 @@
 @use "mixins/typography";
 
 .sb-splash {
-	$clipPadding: 6vh;
+	$vertPadding: 6vh;
 	margin-top: tokens.$grid-gutter;
 	margin-bottom: tokens.$grid-gutter;
 	position: relative;
 	color: tokens.$color-primary-light;
 	background-color: tokens.$color-primary;
-	clip-path: polygon(
-		0 #{$clipPadding},
-		100% 0,
-		100% calc(100% - #{$clipPadding}),
-		0 100%
-	);
+	&::before,
+	&::after {
+		@include theme.shade;
+		content: "";
+		width: 85%;
+		height: $vertPadding;
+		position: absolute;
+	}
+	&::before {
+		top: 0;
+		left: 0;
+		clip-path: polygon(0 0, 100% 0, 0 100%);
+	}
+	&::after {
+		bottom: 0;
+		right: 0;
+		clip-path: polygon(100% 100%, 0 100%, 100% 0);
+	}
 	&__image {
 		width: 100%;
 		height: 100%;
@@ -32,8 +44,8 @@
 		align-items: center;
 		min-height: 25rem;
 		position: relative;
-		padding-top: $clipPadding * 2;
-		padding-bottom: $clipPadding * 3;
+		padding-top: $vertPadding * 1.5;
+		padding-bottom: $vertPadding * 1.5;
 	}
 	&__inner {
 		@include layout.container;
@@ -46,5 +58,8 @@
 		margin-top: 2rem;
 		color: tokens.$color-white;
 		font-size: tokens.$size-byline;
+		a {
+			@include theme.default-link();
+		}
 	}
 }
