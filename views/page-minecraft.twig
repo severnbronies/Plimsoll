@@ -26,6 +26,7 @@
 		{{ sbSplash({
 			image: {
 				src: post.thumbnail.src,
+				srcset: post.thumbnail.srcset('2048x2048'),
 				alt: post.thumbnail.alt | e('html_attr')
 			},
 			heading: post.title,

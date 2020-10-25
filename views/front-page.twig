@@ -2,6 +2,8 @@
 
 {% from "@components/section/macro.twig" import sbSection %}
 {% from "@components/splash/macro.twig" import sbSplash %}
+{% from "@components/grid/macro.twig" import sbGrid %}
+{% from "@components/card/macro.twig" import sbCard %}
 
 {% block main %}
 	<div class="sbt-home">
@@ -9,6 +11,7 @@
 			{{ sbSplash({
 				image: {
 					src: post.thumbnail.src,
+					srcset: post.thumbnail.srcset('2048x2048'),
 					alt: post.thumbnail.alt | e('html_attr')
 				},
 				heading: post.title,
@@ -17,7 +20,7 @@
 		{%- endif %}
 		<div class="sbt-home__inner">
 			{%- if upcoming_meets | length > 0 %}
-				{% set sectionContent %}
+				{% set meetsSectionContent %}
 					{% include "partials/meet-list.twig" with { 'meets': upcoming_meets } %}
 				{% endset %}
 				{{ sbSection({
@@ -25,7 +28,33 @@
 				    heading: {
 					    html: 'Upcoming meets'
 					},
-					html: sectionContent
+					html: meetsSectionContent
+				}) }}
+			{%- endif %}
+			{%- if signposts | length > 0 %}
+				{% set signpostGridContent %}
+					{%- for post in signposts %}
+						{{ sbCard({
+							image: {
+								alt: post.signpost_image.alt,
+								src: post.signpost_image.url
+							},
+							href: post.signpost_link,
+							title: post.signpost_heading,
+							content: post.signpost_blurb
+						}) }}
+					{%- endfor %}
+				{% endset %}
+				{% set signpostSectionContent %}
+					{{ sbGrid({
+						html: signpostGridContent
+					}) }}
+				{% endset %}
+				{{ sbSection({
+				    heading: {
+					    html: 'Check these out!'
+					},
+					html: signpostSectionContent
 				}) }}
 			{%- endif %}
 		</div>
