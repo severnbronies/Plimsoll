@@ -8,7 +8,7 @@
     {%- if params.image %}
         {% set imageParams = merge(params.image, {
             classes: 'sb-splash__image',
-            variants: ['flattened', 'cover']
+            variants: ['cover']
         }) %}
         {{ sbImage(imageParams) }}
     {%- endif %}

@@ -30,12 +30,6 @@
 		color: currentColor;
 		text-decoration: none;
 	}
-	&--flattened {
-		#{$self}__image {
-			filter: grayscale(100%);
-			mix-blend-mode: multiply;
-		}
-	}
 	&--cover {
 		#{$self}__image {
 			height: 100%;
