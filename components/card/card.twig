@@ -1,0 +1,11 @@
+{% from "@components/card/macro.twig" import sbCard %}
+
+{{ sbCard({
+    image: {
+	    alt: 'An image',
+	    src: '//placeponi.es/300/150'
+	},
+	href: '#',
+	title: 'Check out this thing',
+	content: "<p>It's a pretty cool thing.</p>"
+}) }}
