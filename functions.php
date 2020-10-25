@@ -257,6 +257,14 @@ class Plimsoll extends Timber\Site
 		return $return_array_data;
 	}
 
+	/** Function for casting PHP objects to associative arrays, as Twig cannot
+	 * iterate over objects. HT: https://stackoverflow.com/a/17306423
+	 */
+	function twig_cast_to_array($stdClassObject)
+	{
+		return (array) $stdClassObject;
+	}
+
 	/**
 	 * See if a named cookie has been set and, if so, what the value is.
 	 */
@@ -281,6 +289,9 @@ class Plimsoll extends Timber\Site
 				$this,
 				'twig_normalise_custom_field_filter',
 			])
+		);
+		$twig->addFilter(
+			new Twig\TwigFilter('castToArray', [$this, 'twig_cast_to_array'])
 		);
 		$twig->addFunction(
 			new Timber\Twig_Function('merge', [$this, 'twig_merge_function'])

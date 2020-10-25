@@ -1,0 +1,43 @@
+{% extends "_layout.twig" %}
+
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/prose/macro.twig" import sbProse %}
+{% from "@components/splash/macro.twig" import sbSplash %}
+
+{% block main %}
+	<article class="sbt-campaign sbp-minecraft">
+		{% set serverInfo %}
+			{% if server.online %}
+				<p>{{ server.players.online }} {{ server.players.online == 1 ? 'player is' : 'players are' }} currently online.</p>
+				{% if server.players.online > 0 %}
+					<ul class="sbp-minecraft__playerlist">
+						{% for name, id in server.players.uuid | castToArray %}
+							<li class="sbp-minecraft__playerlist-item">
+								<img class="sbp-minecraft__playerlist-avatar" src="https://minotar.net/armor/bust/{{ id }}/32" alt="{{ name }}" title="{{ name }}" width="32" height="32">
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				<p><small>Server version: {{ server.version }}.</small></p>
+			{% else %}
+				<p>The server is currently offline.</p>
+			{% endif %}
+		{% endset %}
+		{{ sbSplash({
+			image: {
+				src: post.thumbnail.src,
+				alt: post.thumbnail.alt | e('html_attr')
+			},
+			heading: post.title,
+			blurb: serverInfo
+		}) }}
+		<div class="sbt-campaign__inner">
+			<div class="sbp-minecraft__main">
+				{{ sbProse({
+					classes: 'sbp-minecraft__prose',
+					html: post.content
+				}) }}
+			</div>
+		</div>
+	</article>
+{% endblock %}
