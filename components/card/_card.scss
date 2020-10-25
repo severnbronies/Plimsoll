@@ -1,0 +1,20 @@
+@use "tokens.web" as tokens;
+@use "mixins/helpers";
+@use "mixins/theme";
+@use "mixins/typography";
+
+.sb-card {
+	@include theme.shade;
+	position: relative;
+	&__image {
+	}
+	&__inner {
+		padding: tokens.$card-padding;
+	}
+	&__heading {
+	}
+	&__link {
+		@include theme.default-link(var(--theme-accent), var(--theme-accent-mod));
+		@include theme.extend-link;
+	}
+}

@@ -26,7 +26,6 @@ require get_template_directory() . '/inc/blocks.php';
 require get_template_directory() . '/inc/error-page.php';
 require get_template_directory() . '/inc/footer.php';
 require get_template_directory() . '/inc/header.php';
-require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/image-copyright.php';
 require get_template_directory() . '/inc/images.php';
 require get_template_directory() . '/inc/location.php';
@@ -37,6 +36,7 @@ require get_template_directory() . '/inc/meet-runners.php';
 require get_template_directory() . '/inc/navigations.php';
 require get_template_directory() . '/inc/phase-banner.php';
 require get_template_directory() . '/inc/search.php';
+require get_template_directory() . '/inc/signposts.php';
 require get_template_directory() . '/inc/site-description.php';
 
 /**

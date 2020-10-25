@@ -27,16 +27,14 @@
 		font-size: tokens.$size-small-subtitle;
 		line-height: tokens.$lead-title;
 	}
-	&--5,
+	&--5 {
+		font-size: tokens.$size-byline;
+		line-height: tokens.$lead-title;
+	}
 	&--6 {
 		@include typography.all-caps;
 		line-height: tokens.$lead-solid;
 		letter-spacing: tokens.$tracking-wide;
-	}
-	&--5 {
-		font-size: tokens.$size-byline;
-	}
-	&--6 {
 		font-size: tokens.$size-body;
 	}
 }
