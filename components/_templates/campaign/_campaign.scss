@@ -1,0 +1,8 @@
+@use "tokens.web" as tokens;
+@use "mixins/layout";
+
+.sbt-campaign {
+	&__inner {
+		@include layout.container;
+	}
+}
