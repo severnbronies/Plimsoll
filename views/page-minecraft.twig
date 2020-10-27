@@ -7,7 +7,7 @@
 {% block main %}
 	<article class="sbt-campaign sbp-minecraft">
 		{% set serverInfo %}
-			{% if server.online %}
+			{% if server and server.online %}
 				<p>{{ server.players.online }} {{ server.players.online == 1 ? 'player is' : 'players are' }} currently online.</p>
 				{% if server.players.online > 0 %}
 					<ul class="sbp-minecraft__playerlist">
