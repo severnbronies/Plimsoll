@@ -73,51 +73,5 @@ She is the best pony.              ( /  \_         `.' / `.
 	<script src="{{ site.theme.link }}/dist/js/all.js?v={{ cachebust_js_version }}"></script>
 	<script>window.sb.initAll();</script>
 
-	<!-- Cookie Control -->
-	<script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js"></script>
-	<script>
-		var config = {
-			apiKey: '1560c340d7218c3d52b19d38f1a583aad92bcfce',
-			product: 'COMMUNITY',
-			statement: {
-				description: "For more information, visit our",
-				name: "privacy policy",
-				url: "https://severnbronies.co.uk/about/privacy-policy/",
-				updated: "17/08/2020"
-			},
-			optionalCookies: [
-				{
-					name: 'analytics',
-					label: 'Analytics',
-					description: 'We use Google Analytics to collect anonymised technical data, which we use to inform how we develop the website.',
-					cookies: ['_ga', '_gid', '_gat', 'APM_TOKEN', '_gac_*'],
-					onAccept : function(){
-						var script = document.createElement("script");
-						script.src = "https://www.googletagmanager.com/gtag/js?id=UA-34034973-1";
-						document.body.appendChild(script);
-						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						gtag('js', new Date());
-						gtag('config', 'UA-34034973-1');
-					},
-					onRevoke: function(){
-						window['ga-disable-UA-34034973-1'] = true;
-					}
-				},
-				{
-					name: 'preferences',
-					label: 'Preferences',
-					description: 'Cookies that remember the things you do so you don\'t need to keep doing them (like dismissing notification banners).',
-					cookies: ['sbAlert-*'],
-					onAccept : function(){},
-					onRevoke: function(){}
-				}
-			],
-			position: 'LEFT',
-			theme: 'DARK'
-		};
-		CookieControl.load( config );
-	</script>
-
 	{{ function('wp_footer') }}
 </body>
