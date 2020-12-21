@@ -19,14 +19,11 @@
 	{%- endif %}
 
 	{%- for banner in banners %}
-		{% set bannerId = 'sbAlert-' ~ function('md5', banner.banner_text) %}
-		{%- if getCookie(bannerId) == false %}
-			{{ sbBanner({
-				id: bannerId,
-				html: banner.banner_text,
-				dismissable: banner.banner_dismissable
-			}) }}
-		{%- endif %}
+		{{ sbBanner({
+			id: 'sbAlert-' ~ function('md5', banner.banner_text),
+			html: banner.banner_text,
+			dismissable: banner.banner_dismissable
+		}) }}
 	{%- endfor %}
 
 	{% block header %}
