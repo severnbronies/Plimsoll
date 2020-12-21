@@ -17,10 +17,6 @@
 		margin-bottom: -1rem;
 		padding-top: 50%;
 		position: relative;
-		img {
-			filter: grayscale(100%);
-			mix-blend-mode: multiply;
-		}
 	}
 	&__inner {
 		display: flex;
