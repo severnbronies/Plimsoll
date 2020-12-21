@@ -72,4 +72,7 @@ foreach ($archives_nav_results as $result) {
 }
 $context['meet_archive'] = $return_archive_array;
 
+$context['empty_emoji'] = get_field("meet_empty_state_emoji");
+$context['empty_text'] = get_field("meet_empty_state_text");
+
 Timber::render('archive.twig', $context);

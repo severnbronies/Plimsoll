@@ -1,0 +1,13 @@
+@use "tokens.web" as tokens;
+@use "mixins/typography";
+
+.sb-empty {
+	padding: 8%;
+	text-align: center;
+	&__emoji {
+		@include typography.responsive-size(10vw, 2.5rem, 5rem);
+		margin-bottom: 1rem;
+	}
+	&__body {
+	}
+}
