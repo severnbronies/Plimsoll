@@ -59,12 +59,13 @@
 }
 
 @mixin shade($color: var(--theme-accent-mod)) {
-	background-image: repeating-linear-gradient(
-		-53.13deg,
-		transparent 0,
-		transparent 2px,
-		#{$color} 2px,
-		#{$color} 4px
-	);
-	background-size: 5px 7px;
+	$bgSize: 4px;
+	background: linear-gradient(225deg, $color 25%, transparent 25%)
+			(0 - $bgSize / 2) 0,
+		linear-gradient(135deg, $color 25%, transparent 25%) (0 - $bgSize / 2)
+			(0 - $bgSize / 2),
+		linear-gradient(45deg, $color 25%, transparent 25%) (0 - $bgSize / 2)
+			(0 - $bgSize / 2),
+		linear-gradient(-45deg, $color 25%, transparent 25%) (0 - $bgSize / 2) 0;
+	background-size: $bgSize $bgSize;
 }

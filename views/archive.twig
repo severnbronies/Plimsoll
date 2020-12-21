@@ -4,6 +4,7 @@
 {% from "@components/prose/macro.twig" import sbProse %}
 {% from "@components/section/macro.twig" import sbSection %}
 {% from "@components/archive-navigation/macro.twig" import sbArchiveNavigation %}
+{% from "@components/empty/macro.twig" import sbEmpty %}
 
 {% block main %}
 	<article class="sbt-archive">
@@ -20,8 +21,9 @@
 					{%- if meets | length > 0 %}
 						{% include "partials/meet-list.twig" with { 'meets': meets } %}
 					{%- else %}
-						{{ sbProse({
-							html: "<p><strong>There are no upcoming meets to list.</strong><br>Check back later, just in case we forgot to put it up yet.</p>"
+						{{ sbEmpty({
+							emoji: empty_emoji,
+							content: empty_text
 						}) }}
 					{%- endif %}
 				{%- else %}
@@ -30,7 +32,7 @@
 			</div>
 			{{ sbArchiveNavigation({
 				classes: 'sbt-archive__nav',
-				heading: 'Meet history by month',
+				heading: 'Past meets',
 				items: meet_archive
 			}) }}
 		</div>
