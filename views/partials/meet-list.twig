@@ -1,10 +1,9 @@
-{% from "@components/stack/macro.twig" import sbStack %}
+{% from "@components/grid/macro.twig" import sbGrid %}
 {% from "@components/meet-card/macro.twig" import sbMeetCard %}
 
-{% set stackContent %}
+{% set gridContent %}
 	{%- for item in meets %}
 		{{ sbMeetCard({
-			variants: ['list'],
 			image: {
 				src: item.thumbnail.src('medium_large'),
 				srcset: item.thumbnail.srcset('medium_large'),
@@ -18,6 +17,7 @@
 	{%- endfor %}
 {% endset %}
 
-{{ sbStack({
-	html: stackContent
+{{ sbGrid({
+	variants: ['meets'],
+	html: gridContent
 }) }}

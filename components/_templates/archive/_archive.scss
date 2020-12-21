@@ -7,19 +7,9 @@
 .sbt-archive {
 	&__inner {
 		@include layout.container;
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-column-gap: tokens.$grid-gutter;
-		grid-row-gap: tokens.$grid-gutter / 2;
-		grid-template-areas: "header" "body" "nav";
-		@include media.mq(60em) {
-			grid-template-columns: 20em 1fr;
-			grid-template-rows: auto 1fr;
-			grid-template-areas: "header body" "nav body";
-		}
 	}
 	&__header {
-		grid-area: header;
+		margin-bottom: tokens.$grid-gutter;
 	}
 	&__heading {
 		@include typography.all-caps;
@@ -29,9 +19,8 @@
 		line-height: tokens.$lead-solid;
 	}
 	&__body {
-		grid-area: body;
+		margin-bottom: tokens.$grid-gutter;
 	}
 	&__nav {
-		grid-area: nav;
 	}
 }

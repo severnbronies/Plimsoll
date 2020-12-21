@@ -8,6 +8,8 @@
 	}
 	&__list {
 		@include helpers.list-reset;
+		column-width: 12em;
+		column-gap: tokens.$grid-gutter;
 	}
 	&__item {
 	}
