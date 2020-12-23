@@ -29,14 +29,13 @@
 		counter-reset: locationList;
 	}
 	&__list-item {
-		$padding: 1em;
 		$pinIconWidth: 28px;
-		padding: $padding;
-		padding-left: calc(#{$pinIconWidth} + 1em + #{$padding});
+		padding: $gutter;
+		padding-left: calc(#{$pinIconWidth} + 1em + #{$gutter});
 		counter-increment: locationList;
 		background-color: var(--theme-background);
 		& + & {
-			margin-top: 1em;
+			margin-top: $gutter;
 		}
 		&::before {
 			// These styles are intended to match those of the custom pins on the Google Map. Don't change these unless you're changing those too.
@@ -73,6 +72,7 @@
 	&__list-more {
 		@include helpers.button-reset;
 		@include typography.all-caps;
+		margin-top: $gutter / 2;
 		padding: 0.25em 0.5em;
 		border: 2px solid var(--theme-accent-mod);
 		background-color: var(--theme-background);

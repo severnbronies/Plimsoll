@@ -80,6 +80,15 @@ export default class Map {
 			icon: this.markerStyle,
 			label: this.markerLabelStyle((markerIndex + 1).toString())
 		});
+		marker.addListener("click", () => {
+			const $listItem = this.$locationList.getElementsByTagName("li")[
+				markerIndex
+			];
+			const $button = $listItem.querySelector("button");
+			if ($button) {
+				$button.click();
+			}
+		});
 		marker.addListener("mouseover", () => {
 			this.$locationList
 				.getElementsByTagName("li")
