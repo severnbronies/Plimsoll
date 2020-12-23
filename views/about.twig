@@ -1,110 +1,32 @@
 {% extends "_layout.twig" %}
 
 {% from "@components/prose/macro.twig" import sbProse %}
-{% from "@components/heading/macro.twig" import sbHeading %}
-{% from "@components/section/macro.twig" import sbSection %}
 {% from "@components/organiser/macro.twig" import sbOrganiser %}
 
 {% block main %}
-<div class="sbt-about">
-
-	{% set introSection %}
-		{{ sbProse({
-			classes: 'sbt-about__text',
-			html: post.content
-		}) }}
-	{% endset %}
-	{{ sbSection({
-		classes: 'sbt-about__intro',
-		heading: {
-			html: 'About us',
-			hierarchy: 1
-		},
-		html: introSection
-	}) }}
-
-	{% set statSection %}
-		<div>
-			We've been doing events for
-			{{ sbHeading({
-				html: meet_years ~ ' years',
-				hierarchy: 0,
-				element: 'strong'
-			}) }}
-		</div>
-		<div>
-			making up a total of 
-			{{ sbHeading({
-				html: meet_count ~ ' meets',
-				hierarchy: 0,
-				element: 'strong'
-			}) }}
-		</div>
-		<div>
-			for more than
-			{{ sbHeading({
-				html: meet_hours ~ ' hours',
-				hierarchy: 0,
-				element: 'strong'
-			}) }}
-			of good times
-		</div>
-	{% endset %}
-	{{ sbSection({
-		classes: 'sbt-about__stats',
-		heading: {
-			html: 'Meet by numbers',
-			hierarchy: 2
-		},
-		html: statSection
-	}) }}
-
-	{% set meetTypesSectionContent %}
-		{%- for cat in meet_types %}
-			{%- if cat.description %}
-				<p>
-					<strong>{{ cat.name }}</strong>:
-					{{ cat.description }}
-				</p>
-			{%- endif %}
-		{%- endfor %}
-	{% endset %}
-	{% set meetTypesSection %}
-		{{ sbProse({
-			html: meetTypesSectionContent
-		}) }}
-	{% endset %}
-	{{ sbSection({
-		classes: 'sbt-about__categories',
-		heading: {
-			html: 'Types of meet',
-			hierarchy: 2
-		},
-		html: meetTypesSection
-	}) }}
-
-	{%- if staff_current %}
-		{% set staffSection %}
+<article class="sbt-about">
+	<header class="sbt-about__header">
+		<h1 class="sbt-about__heading">
+			The Severn Bronies
+			<em>in a nutshell</em>
+		</h1>
+	</header>
+	{{ sbProse({ html: "<p>Hello there, <strong>we are the Severn Bronies</strong>. We hold social events for the <em>My Little Pony</em> fandom (aka, bronies) in south west England and south Wales.</p>
+	<p>We started all the way back in the Summer of 2012 as the <strong>Bristol Bronies</strong>, joined forces with our neighbours the <strong>Cardiff Bronies</strong> in 2016, and have kept expanding from there.</p>
+	<p>Since then, we have held some kind of event nearly <strong>every single week</strong>. Not even a pandemic could stop us spending time together—in a virtual, physically separated manner, of course.</p>
+	<p><strong>We've gotten around a little.</strong> You may have spied us as the bronies everypony should know in the <a>Bristol Post</a>, <a>Radio 2</a>, or <a>Inside Out</a> (amongst others) before.</p>
+	<p>We're a tight-knit bunch of folks, but we're also one of the most accommodating groups of people you might ever meet. <strong>We are pro-LGBTQIA+, pro-BLM, and opposed to fascism in all its forms.</strong></p>
+	<p>If this sounds like your jam, <strong><a>come and say hi</a></strong>. We'd love to meet you!</p>
+	<p>And always remember: with us, <strong>the meet never ends</strong>.</p>" }) }}
+	<section>
+		<header>
+			<h2>The Team</h2>
+		</header>
+		{%- if staff_current %}
 			{%- for item in staff_current %}
 				{{ sbOrganiser(item) }}
 			{%- endfor %}
-		{% endset %}
-		{{ sbSection({
-			classes: 'sbt-about__staff',
-			heading: {
-				html: 'The folks in charge',
-				hierarchy: 2
-			},
-			html: staffSection
-		}) }}
-	{%- endif %}
-
-	{#<h2>staff</h2>
-	<h3>current</h3>
-	{{ dump(staff_current) }}
-	<h3>former</h3>
-	{{ dump(staff_former) }}
-	<h2>Media appearances</h2>
-	{{ dump(media_appearances) }}#}
-</div>
+		{%- endif %}
+	</section>
+</article>
 {% endblock %}
