@@ -5,11 +5,16 @@
 
 .sb-card {
 	@include theme.shade;
+	margin-top: tokens.$card-padding;
+	padding: tokens.$card-padding;
 	position: relative;
 	&__image {
+		margin-top: 0 - (tokens.$card-padding * 2);
 	}
 	&__inner {
+		margin-top: tokens.$card-padding;
 		padding: tokens.$card-padding;
+		background-color: var(--theme-background);
 	}
 	&__heading {
 	}
