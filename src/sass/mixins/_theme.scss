@@ -58,14 +58,29 @@
 	box-decoration-break: clone;
 }
 
-@mixin shade($color: var(--theme-accent-mod)) {
-	$bgSize: 4px;
-	background: linear-gradient(225deg, $color 25%, transparent 25%)
-			(0 - $bgSize / 2) 0,
-		linear-gradient(135deg, $color 25%, transparent 25%) (0 - $bgSize / 2)
-			(0 - $bgSize / 2),
-		linear-gradient(45deg, $color 25%, transparent 25%) (0 - $bgSize / 2)
-			(0 - $bgSize / 2),
-		linear-gradient(-45deg, $color 25%, transparent 25%) (0 - $bgSize / 2) 0;
-	background-size: $bgSize $bgSize;
+@mixin shade(
+	$color: var(--theme-accent-mod),
+	$size: 0.25rem,
+	$direction: "vertical"
+) {
+	@if $direction == "horizontal" {
+		background: linear-gradient(135deg, $color 25%, transparent 25%)
+				(0 - $size / 2)
+				0,
+			linear-gradient(225deg, $color 25%, transparent 25%) (0 - $size / 2) 0,
+			linear-gradient(315deg, $color 25%, transparent 25%),
+			linear-gradient(45deg, $color 25%, transparent 25%);
+	} @else {
+		background: linear-gradient(225deg, $color 25%, transparent 25%)
+				(0 - $size / 2)
+				0,
+			linear-gradient(135deg, $color 25%, transparent 25%)
+				(0 - $size / 2)
+				(0 - $size / 2),
+			linear-gradient(45deg, $color 25%, transparent 25%)
+				(0 - $size / 2)
+				(0 - $size / 2),
+			linear-gradient(-45deg, $color 25%, transparent 25%) (0 - $size / 2) 0;
+	}
+	background-size: $size $size;
 }
