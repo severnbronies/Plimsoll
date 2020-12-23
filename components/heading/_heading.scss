@@ -34,7 +34,6 @@
 	&--6 {
 		@include typography.all-caps;
 		line-height: tokens.$lead-solid;
-		letter-spacing: tokens.$tracking-wide;
 		font-size: tokens.$size-body;
 	}
 }

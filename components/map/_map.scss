@@ -29,9 +29,12 @@
 		counter-reset: locationList;
 	}
 	&__list-item {
+		$padding: 1em;
 		$pinIconWidth: 28px;
-		padding-left: calc(#{$pinIconWidth} + 1em);
+		padding: $padding;
+		padding-left: calc(#{$pinIconWidth} + 1em + #{$padding});
 		counter-increment: locationList;
+		background-color: var(--theme-background);
 		& + & {
 			margin-top: 1em;
 		}
@@ -43,9 +46,11 @@
 			width: $pinIconWidth;
 			height: 35px;
 			margin-left: calc(0px - (#{$pinIconWidth} + 1em));
-			padding-top: 6px;
+			padding-top: 8px;
 			float: left;
 			clear: left;
+			position: relative;
+			top: -7px;
 			color: tokens.$color-white;
 			background-image: url("../images/google-map-pin.png");
 			background-size: $pinIconWidth 35px;
