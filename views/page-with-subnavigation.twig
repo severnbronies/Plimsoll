@@ -1,6 +1,7 @@
 {% extends "_layout.twig" %}
 
 {% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/subnavigation/macro.twig" import sbSubnavigation %}
 {% from "@components/prose/macro.twig" import sbProse %}
 
 {% block main %}
@@ -20,6 +21,14 @@
 					}) }}
 				</div>
 			</div>
+			{%- if subnav %}
+				<div class="sbt-generic__subnav">
+					{{ sbSubnavigation({
+						label: subnavLabel,
+						items: subnav.get_items
+					}) }}
+				</div>
+			{%- endif %}
 		</div>
 	</article>
 {% endblock %}

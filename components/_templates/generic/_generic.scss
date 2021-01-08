@@ -13,19 +13,12 @@
 		grid-template-areas: "header" "main" "sidebar";
 		grid-template-columns: 1fr;
 		@include media.mq(50em) {
-			grid-template-columns: 2fr 1fr;
-			grid-template-areas: "header header" "main sidebar";
+			grid-template-columns: 1fr 2fr;
+			grid-template-areas: ". header" "sidebar main";
 		}
 	}
 	&__header {
 		grid-area: header;
-	}
-	&__heading {
-		@include typography.all-caps;
-		@include theme.highlight(var(--theme-accent-mod));
-		display: inline;
-		color: var(--theme-accent);
-		line-height: tokens.$lead-solid;
 	}
 	&__main {
 		grid-area: main;
@@ -33,7 +26,7 @@
 	&__body {
 		max-width: tokens.$measure-default;
 	}
-	&__sidebar {
+	&__subnav {
 		grid-area: sidebar;
 	}
 }
