@@ -36,7 +36,7 @@ if (function_exists('acf_add_options_page')) {
 				'type' => 'text',
 				'instructions' =>
 					'The Minecraft server URL, including port number, if one is required. For example: mc.domainname.com:5756',
-				'required' => 1,
+				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => [
 					'width' => '',
