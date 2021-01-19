@@ -1,6 +1,7 @@
 @use "tokens.web" as tokens;
 @use "mixins/helpers";
 @use "mixins/media";
+@use "mixins/typography";
 
 .sbp-stream-team {
 	--theme-background: #9147ff;
@@ -41,7 +42,18 @@
 		margin-bottom: 3rem;
 	}
 	&__stream-heading {
-		margin-top: 0;
+		@include typography.heading;
+		margin-bottom: 1rem;
+		color: var(--theme-accent);
+		font-size: tokens.$size-subtitle;
+		font-style: italic;
+		line-height: tokens.$lead-title;
+		@supports (-webkit-text-stroke-width: 1px) {
+			color: transparent;
+			text-shadow: 2px 2px var(--theme-accent-mod);
+			-webkit-text-stroke-width: 1px;
+			-webkit-text-stroke-color: var(--theme-accent);
+		}
 	}
 	&__twitch-container,
 	&__schedule-container {
