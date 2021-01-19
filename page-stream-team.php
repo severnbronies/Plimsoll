@@ -80,4 +80,4 @@ if ($client_id && $client_secret) {
 
 $context['twitch_usernames'] = $users_array;
 
-Timber::render('page-stream-team.twig', $context);
+Timber::render('page-stream-team.twig', $context, 0, Timber\Loader::CACHE_NONE);
