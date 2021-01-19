@@ -16,12 +16,15 @@
 		display: grid;
 		grid-column-gap: tokens.$grid-gutter;
 		grid-row-gap: tokens.$grid-gutter / 2;
-		grid-template-areas: "list" "schedule" "main";
+		grid-template-areas: "main" "list" "schedule";
 		grid-template-columns: 1fr;
 		@include media.mq(50em) {
 			grid-template-columns: 1fr 2fr;
 			grid-template-rows: auto 1fr;
 			grid-template-areas: "list main" "schedule main";
+		}
+		@include media.mq(75em) {
+			grid-template-columns: 1fr 3.75fr;
 		}
 	}
 	&__streamer-list {
