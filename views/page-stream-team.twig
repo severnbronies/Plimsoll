@@ -35,25 +35,23 @@
 				</div>
 			</div>
 			<div class="sbp-stream-team__live">
-				<div class="sb-prose">
-					{%- if twitch_data.data %}
-						{%- for user in twitch_data.data %}
-							<section class="sbp-stream-team__stream">
-								<h2>{{ user.user_name }} is live, playing {{ user.game_name }}!</h2>
-								<div class="sbp-stream-team__twitch-container">
-									<iframe class="sbp-stream-team__twitch-embed" src="https://player.twitch.tv/?channel={{ user.user_name }}&amp;parent=severn-bronies-2020.local&amp;autoplay=false" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%"></iframe>
-								</div>
-							</section>
-						{%- endfor %}
-					{%- else %}
-						<p>No one is currently streaming. Check out the schedule to see when they might be.</p>
-						<div class="sbp-stream-team__schedule-container">
-							<iframe class="sbp-stream-team__schedule-embed" src="{{ stream_calendar_url }}" width="900" height="600" frameborder="0" scrolling="no">
-								<p><a href="{{ stream_calendar_url }}" target="_blank" rel="noopener noreferrer">View the schedule on Google Calendar.</a></p>
-							</iframe>
-						</div>
-					{%- endif %}
-				</div>
+				{%- if twitch_data.data %}
+					{%- for user in twitch_data.data %}
+						<section class="sbp-stream-team__stream">
+							<h2 class="sbp-stream-team__stream-heading">{{ user.user_name }} is playing<br>{{ user.game_name }}</h2>
+							<div class="sbp-stream-team__twitch-container">
+								<iframe class="sbp-stream-team__twitch-embed" src="https://player.twitch.tv/?channel={{ user.user_name }}&amp;parent=severn-bronies-2020.local&amp;autoplay=false" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%"></iframe>
+							</div>
+						</section>
+					{%- endfor %}
+				{%- else %}
+					<p>No one is currently streaming. Check out the schedule to see when they might be.</p>
+					<div class="sbp-stream-team__schedule-container">
+						<iframe class="sbp-stream-team__schedule-embed" src="{{ stream_calendar_url }}" width="900" height="600" frameborder="0" scrolling="no">
+							<p><a href="{{ stream_calendar_url }}" target="_blank" rel="noopener noreferrer">View the schedule on Google Calendar.</a></p>
+						</iframe>
+					</div>
+				{%- endif %}
 			</div>
 		</div>
 	</article>

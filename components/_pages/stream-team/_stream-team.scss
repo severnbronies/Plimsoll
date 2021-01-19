@@ -1,6 +1,7 @@
 @use "tokens.web" as tokens;
 @use "mixins/helpers";
 @use "mixins/media";
+@use "mixins/typography";
 
 .sbp-stream-team {
 	--theme-background: #9147ff;
@@ -40,11 +41,25 @@
 	&__stream {
 		margin-bottom: 3rem;
 	}
+	&__stream-heading {
+		@include typography.heading;
+		margin-bottom: 1rem;
+		color: var(--theme-accent);
+		font-size: tokens.$size-subtitle;
+		font-style: italic;
+		line-height: tokens.$lead-title;
+		@supports (-webkit-text-stroke-width: 1px) {
+			color: transparent;
+			text-shadow: 2px 2px var(--theme-accent-mod);
+			-webkit-text-stroke-width: 1px;
+			-webkit-text-stroke-color: var(--theme-accent);
+		}
+	}
 	&__twitch-container,
 	&__schedule-container {
 		position: relative;
 		width: 100%;
-		padding-top: 75%;
+		padding-top: 56.25%;
 	}
 	&__twitch-embed,
 	&__schedule-embed {
@@ -53,6 +68,9 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+	}
+	&__schedule-container {
+		padding-top: 75%;
 	}
 	@at-root body.page-template-page-stream-team {
 		.sb-footer {
