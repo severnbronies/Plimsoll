@@ -4,6 +4,8 @@
 {% from "@components/prose/macro.twig" import sbProse %}
 {% from "@components/splash/macro.twig" import sbSplash %}
 
+{% set hostname = function('parse_url', site.link).host %}
+
 {% block main %}
 	<article class="sbt-campaign sbp-stream-team">
 		{{ sbSplash({
@@ -40,7 +42,7 @@
 						<section class="sbp-stream-team__stream">
 							<h2 class="sbp-stream-team__stream-heading">{{ user.user_name }} is playing<br>{{ user.game_name }}</h2>
 							<div class="sbp-stream-team__twitch-container">
-								<iframe class="sbp-stream-team__twitch-embed" src="https://player.twitch.tv/?channel={{ user.user_name }}&amp;parent=severn-bronies-2020.local&amp;autoplay=false" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%"></iframe>
+								<iframe class="sbp-stream-team__twitch-embed" src="https://player.twitch.tv/?channel={{ user.user_name }}&amp;parent={{ hostname }}&amp;autoplay=false" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%"></iframe>
 							</div>
 						</section>
 					{%- endfor %}
