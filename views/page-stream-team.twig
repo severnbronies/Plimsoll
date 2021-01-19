@@ -39,7 +39,7 @@
 					{%- if twitch_data.data %}
 						{%- for user in twitch_data.data %}
 							<section class="sbp-stream-team__stream">
-								<h2>{{ user.user_name }} is live, playing {{ user.game_name }}!</h2>
+								<h2 class="sbp-stream-team__stream-heading">{{ user.user_name }} is live, playing {{ user.game_name }}!</h2>
 								<div class="sbp-stream-team__twitch-container">
 									<iframe class="sbp-stream-team__twitch-embed" src="https://player.twitch.tv/?channel={{ user.user_name }}&amp;parent=severn-bronies-2020.local&amp;autoplay=false" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%"></iframe>
 								</div>
