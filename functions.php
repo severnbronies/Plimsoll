@@ -38,6 +38,7 @@ require get_template_directory() . '/inc/phase-banner.php';
 require get_template_directory() . '/inc/search.php';
 require get_template_directory() . '/inc/signposts.php';
 require get_template_directory() . '/inc/site-description.php';
+require get_template_directory() . '/inc/stream-team.php';
 
 /**
  * This ensures that Timber is loaded and available as a PHP class.
