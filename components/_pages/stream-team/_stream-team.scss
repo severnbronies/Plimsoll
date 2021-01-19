@@ -8,6 +8,7 @@
 	--theme-accent: #fff;
 	--theme-accent-mod: #fff;
 	padding-bottom: 6em; /* From sb-footer, which is having margin removed below. */
+	color: var(--theme-text);
 	background-color: var(--theme-background);
 	.sb-splash__heading {
 		color: var(--theme-background);
