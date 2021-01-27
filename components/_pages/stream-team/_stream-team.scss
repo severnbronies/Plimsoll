@@ -3,6 +3,14 @@
 @use "mixins/media";
 @use "mixins/typography";
 
+@function _long-shadow($color) {
+	$val: 0px 0px $color;
+	@for $i from 1 through 420 {
+		$val: #{$val}, -#{$i}px #{$i}px #{$color};
+	}
+	@return $val;
+}
+
 .sbp-stream-team {
 	--theme-background: #9147ff;
 	--theme-text: #fff;
@@ -11,19 +19,29 @@
 	padding-bottom: 6em; /* From sb-footer, which is having margin removed below. */
 	color: var(--theme-text);
 	background-color: var(--theme-background);
-	.sb-splash__heading {
-		color: var(--theme-background);
+	.sb-splash {
+		overflow: hidden;
+		&__heading {
+			text-shadow: _long-shadow(var(--theme-background));
+		}
+		&__content {
+			> * {
+				display: inline;
+				color: var(--theme-text);
+				background-color: var(--theme-background);
+			}
+		}
 	}
 	&__inner {
 		display: grid;
 		grid-column-gap: tokens.$grid-gutter;
 		grid-row-gap: tokens.$grid-gutter / 2;
-		grid-template-areas: "main" "list" "schedule";
+		grid-template-areas: "main" "twitter" "schedule" "list";
 		grid-template-columns: 1fr;
 		@include media.mq(50em) {
 			grid-template-columns: 1fr 2fr;
-			grid-template-rows: auto 1fr;
-			grid-template-areas: "list main" "schedule main";
+			grid-template-rows: auto auto 1fr;
+			grid-template-areas: "twitter main" "schedule main" "list main";
 		}
 		@include media.mq(75em) {
 			grid-template-columns: 1fr 3.75fr;
@@ -34,6 +52,9 @@
 	}
 	&__schedule {
 		grid-area: schedule;
+	}
+	&__twitter {
+		grid-area: twitter;
 	}
 	&__live {
 		grid-area: main;
