@@ -18,24 +18,6 @@
 			blurb: post.content
 		}) }}
 		<div class="sbt-campaign__inner sbp-stream-team__inner">
-			<div class="sbp-stream-team__streamer-list">
-				<div class="sb-prose">
-					<h2>Streamers</h2>
-					<ul>
-						{%- for user in twitch_usernames %}
-							<li>
-								<a href="https://twitch.tv/{{ user }}" target="_blank" rel="noopener noreferrer">{{ user }}</a>
-							</li>
-						{%- endfor %}
-					</ul>
-				</div>
-			</div>
-			<div class="sbp-stream-team__schedule">
-				<div class="sb-prose">
-					<h2>Schedule</h2>
-					<p><a href="{{ stream_calendar_url }}" target="_blank" rel="noopener noreferrer">View the schedule on Google Calendar.</a> It's rough and subject to change, but it's something!</p>
-				</div>
-			</div>
 			<div class="sbp-stream-team__live">
 				{%- if twitch_data.data %}
 					{%- for user in twitch_data.data %}
@@ -54,6 +36,31 @@
 						</iframe>
 					</div>
 				{%- endif %}
+			</div>
+			<div class="sbp-stream-team__twitter">
+				<div class="sb-prose">
+					<h2>Tweets</h2>
+					<p><a class="twitter-timeline" data-height="600" data-dnt="true" data-theme="light" href="https://twitter.com/SevernBronies/lists/stream-team-23683?ref_src=twsrc%5Etfw">A Twitter List by SevernBronies</a></p>
+					<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</div>
+			</div>
+			<div class="sbp-stream-team__schedule">
+				<div class="sb-prose">
+					<h2>Schedule</h2>
+					<p><a href="{{ stream_calendar_url }}" target="_blank" rel="noopener noreferrer">View the schedule on Google Calendar.</a> It's rough and subject to change, but it's something!</p>
+				</div>
+			</div>
+			<div class="sbp-stream-team__streamer-list">
+				<div class="sb-prose">
+					<h2>Streamers</h2>
+					<ul>
+						{%- for user in twitch_usernames %}
+							<li>
+								<a href="https://twitch.tv/{{ user }}" target="_blank" rel="noopener noreferrer">{{ user }}</a>
+							</li>
+						{%- endfor %}
+					</ul>
+				</div>
 			</div>
 		</div>
 	</article>
