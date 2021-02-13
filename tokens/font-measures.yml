@@ -1,6 +1,6 @@
 props:
   measure_default:
-    value: 36em
+    value: 32em
   measure_wide:
     value: 42em
   measure_narrow:

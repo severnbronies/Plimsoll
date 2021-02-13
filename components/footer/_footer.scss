@@ -20,7 +20,7 @@
 		@include layout.container;
 	}
 	&__subscription-form {
-		max-width: tokens.$measure-default;
+		max-width: tokens.$measure-wide;
 		margin-top: 0 - ($padding * 2);
 		margin-bottom: $padding;
 		padding: $padding;
