@@ -36,6 +36,7 @@ if ($meet_year || $meet_month) {
 		"meta_value" => [$meet_range_start, $meet_range_end],
 		'orderby' => 'meta_value',
 		'order' => 'DESC',
+		'post_type' => 'post',
 	]);
 } else {
 	$context['showing_archived_meets'] = false;
@@ -48,6 +49,7 @@ if ($meet_year || $meet_month) {
 		"meta_value" => date('Y-m-d H:i:s'),
 		'orderby' => 'meta_value',
 		'order' => 'DESC',
+		'post_type' => 'post',
 	]);
 }
 

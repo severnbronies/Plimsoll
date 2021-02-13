@@ -1,0 +1,67 @@
+@use "tokens.web" as tokens;
+@use "mixins/layout";
+@use "mixins/theme";
+@use "mixins/typography";
+@use "mixins/media";
+
+.sb-news-banner {
+	$flipBreakpoint: 50em;
+	padding-top: tokens.$grid-gutter / 2;
+	padding-bottom: tokens.$grid-gutter / 2;
+	&__inner {
+		@include layout.container;
+	}
+	&__nameplate {
+		grid-area: nameplate;
+		display: block;
+		padding-top: 1rem;
+		padding-bottom: 0.5rem;
+		text-align: center;
+	}
+	&__nameplate-svg {
+		max-width: 50em;
+		fill: currentColor;
+	}
+	&__nameplate-text {
+	}
+	&__nameplate-icon {
+		fill: var(--theme-accent);
+	}
+	&__decor {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		border-top: 3px double currentColor;
+		border-bottom: 3px double currentColor;
+		font-family: "Times New Roman", Times, serif;
+		font-weight: bold;
+		text-transform: uppercase;
+		line-height: 1;
+	}
+	&__edition,
+	&__date,
+	&__price {
+		flex-shrink: 1;
+		flex-grow: 1;
+		flex-basis: 1px;
+	}
+	&__date,
+	&__price {
+		@include media.mq(null, $flipBreakpoint) {
+			display: none;
+		}
+	}
+	&__edition {
+		text-align: left;
+	}
+	&__date {
+		flex-grow: 2;
+		text-align: center;
+	}
+	&__price {
+		text-align: right;
+	}
+}

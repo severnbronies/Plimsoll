@@ -25,6 +25,7 @@
 @use "meet-card/meet-card";
 @use "meet-date/meet-date";
 @use "modal/modal";
+@use "news-banner/news-banner";
 @use "organiser/organiser";
 @use "phase-banner/phase-banner";
 @use "prose/prose";
@@ -46,6 +47,7 @@
 @use "_templates/generic/generic";
 @use "_templates/home/home";
 @use "_templates/meet/meet";
+@use "_templates/news/news";
 @use "_templates/search/search";
 
 // Pages

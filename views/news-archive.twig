@@ -1,0 +1,23 @@
+{% extends "_layout.twig" %}
+
+{% from "@components/news-banner/macro.twig" import sbNewsBanner %}
+
+{% block main %}
+	{{ sbNewsBanner({
+		landingPage: true,
+	    date: 'now' | date('c')
+	}) }}
+	<div class="sbt-news">
+		<div class="sbt-news__inner">
+			<ol>
+				{%- for post in posts %}
+					<li>
+						{{ post.title }}
+						{{ post.link }}
+						{{ post.date }}
+					</li>
+				{%- endfor %}
+			</ol>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+@use "tokens.web" as tokens;
+@use "mixins/layout";
+@use "mixins/theme";
+@use "mixins/media";
+
+.sbt-news {
+	&__inner {
+		@include layout.container;
+	}
+}

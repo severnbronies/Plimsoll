@@ -8,8 +8,11 @@
 	@include typography.force-wrap;
 	font-family: tokens.$font-body;
 	line-height: tokens.$lead-default;
-	> * + * {
-		margin-top: 1.52em;
+	> * {
+		margin: 0;
+		+ * {
+			margin-top: 1.52em;
+		}
 	}
 	> :first-child {
 		margin-top: 0;
@@ -77,5 +80,8 @@
 	a {
 		position: relative;
 		z-index: tokens.$layer-default;
+	}
+	figure {
+		line-height: 0;
 	}
 }

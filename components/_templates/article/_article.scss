@@ -1,44 +1,56 @@
-@use "tokens.web" as *;
+@use "tokens.web" as tokens;
 @use "mixins/layout";
 @use "mixins/theme";
-@use "mixins/typography";
 @use "mixins/media";
 
 .sbt-article {
+	$flipBreakpoint: 35em;
+	@include media.mq($flipBreakpoint) {
+		@include theme.shade;
+		padding-top: tokens.$card-padding;
+		padding-bottom: tokens.$card-padding;
+	}
 	&__inner {
 		@include layout.container;
+		max-width: tokens.$measure-wide;
 		display: grid;
-		grid-column-gap: $grid-gutter;
-		grid-row-gap: $grid-gutter / 2;
+		grid-column-gap: tokens.$grid-gutter;
+		grid-row-gap: tokens.$grid-gutter / 2;
 		grid-template-areas: "header" "main";
 		grid-template-columns: 1fr;
-		@include media.mq(50em) {
-			grid-template-columns: 2fr 1fr;
-			grid-template-areas: "header header" "main .";
+		@include media.mq($flipBreakpoint) {
+			padding: tokens.$card-padding;
+			background-color: var(--theme-background);
 		}
 	}
 	&__header {
 		grid-area: header;
 	}
 	&__heading {
-		@include typography.all-caps;
-		@include theme.highlight(var(--theme-accent-mod));
-		display: inline;
 		color: var(--theme-accent);
-		line-height: $lead-solid;
+		line-height: tokens.$lead-solid;
 	}
-	&__date {
+	&__meta {
 		display: block;
 		margin-top: 0.25rem;
-		font-size: $size-small;
+		font-size: tokens.$size-small;
 	}
 	&__main {
 		grid-area: main;
 	}
 	&__body {
-		max-width: $measure-default;
-	}
-	&__image {
-		margin-bottom: 1.52em;
+		:is(p, ul, ol, dl) {
+			max-width: tokens.$measure-default;
+		}
+		img {
+			width: 100%;
+			max-width: none;
+			height: auto;
+			@include media.mq($flipBreakpoint) {
+				width: calc(100% + #{tokens.$card-padding * 2});
+				margin-right: 0 - tokens.$card-padding;
+				margin-left: 0 - tokens.$card-padding;
+			}
+		}
 	}
 }
