@@ -34,6 +34,7 @@ require get_template_directory() . '/inc/meet.php';
 require get_template_directory() . '/inc/meet-archive.php';
 require get_template_directory() . '/inc/meet-runners.php';
 require get_template_directory() . '/inc/navigations.php';
+require get_template_directory() . '/inc/page-groups.php';
 require get_template_directory() . '/inc/phase-banner.php';
 require get_template_directory() . '/inc/search.php';
 require get_template_directory() . '/inc/signposts.php';
@@ -278,6 +279,14 @@ class Plimsoll extends Timber\Site
 		}
 	}
 
+	/**
+	 * Real basic function to turn a string into a WordPress-like URL slug
+	 */
+	function twig_slug_filter($string)
+	{
+		return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string)));
+	}
+
 	/** This is where you can add your own functions to twig.
 	 *
 	 * @param string $twig get extension.
@@ -293,6 +302,9 @@ class Plimsoll extends Timber\Site
 		);
 		$twig->addFilter(
 			new Twig\TwigFilter('castToArray', [$this, 'twig_cast_to_array'])
+		);
+		$twig->addFilter(
+			new Twig\TwigFilter('slug', [$this, 'twig_slug_filter'])
 		);
 		$twig->addFunction(
 			new Timber\Twig_Function('merge', [$this, 'twig_merge_function'])

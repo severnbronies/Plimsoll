@@ -1,0 +1,35 @@
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/prose/macro.twig" import sbProse %}
+
+<section
+    data-module="sb-links-group"
+    class="sb-links-group {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    <header class="sb-links-group__header">
+        {{ sbHeading({
+            classes: 'sb-links-group__heading',
+            hierarchy: 2,
+            element: 'h2'
+        } | merge(params.heading)) }}
+        {%- if params.icon %}
+            <img class="sb-links-group__icon" alt="{{ params.heading.html }}" src="{{ params.icon }}">
+        {%- endif %}
+    </header>
+    {%- if params.html %}
+        {{ sbProse({
+            classes: 'sb-links-group__description',
+            html: params.html
+        }) }}
+    {%- endif %}
+    {%- if params.links %}
+        <ul class="sb-links-group__links">
+            {%- for item in params.links %}
+            <li class="sb-links-group__item">
+                <a href="{{ item.href }}" rel="noreferrer noopener" target="_blank">
+                    {{- item.title -}}
+                </a>
+            </li>
+            {%- endfor %}
+        </ul>
+    {%- endif %}
+</section>

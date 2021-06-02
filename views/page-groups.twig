@@ -1,0 +1,46 @@
+{% extends "_layout.twig" %}
+
+{% from "@components/heading/macro.twig" import sbHeading %}
+{% from "@components/subnavigation/macro.twig" import sbSubnavigation %}
+{% from "@components/prose/macro.twig" import sbProse %}
+{% from "@components/links-group/macro.twig" import sbLinksGroup %}
+
+{% block main %}
+	<article class="sbt-generic">
+		<div class="sbt-generic__inner">
+			<header class="sbt-generic__header">
+				{{ sbHeading({
+					hierarchy: 0,
+					element: 'h1',
+					html: post.title
+				}) }}
+			</header>
+			<div class="sbt-generic__subnav">
+				{{ sbSubnavigation({
+					label: 'Sections of this page',
+					items: navItems
+				}) }}
+			</div>
+			<div class="sbt-generic__main">
+				<div class="sbt-generic__body">
+					{{ sbProse({
+						html: post.content
+					}) }}
+					{%- for group in groups %}
+						{{ sbLinksGroup({
+							attributes: {
+								id: (group.group_category_name | slug)
+							},
+							heading: {
+								html: group.group_category_name
+							},
+							icon: Image(group.group_category_icon).src('thumbnail'),
+							html: group.group_content,
+							links: group.group_links
+						}) }}
+					{%- endfor %}
+				</div>
+			</div>
+		</div>
+	</article>
+{% endblock %}
