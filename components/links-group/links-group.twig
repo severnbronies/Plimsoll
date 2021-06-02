@@ -1,0 +1,17 @@
+{% from "@components/links-group/macro.twig" import sbLinksGroup %}
+
+{{ sbLinksGroup({
+    heading: {
+        html: 'Group of links'
+    },
+    icon: '//placeponi.es/150/150',
+    html: '<p>Put some description content here.</p>',
+    links: [
+        { href: '#', html: 'Twitter' },
+        { href: '#', html: 'Instagram' },
+        { href: '#', html: 'Facebook' },
+        { href: '#', html: 'Telegram' },
+        { href: '#', html: 'Discord' },
+        { href: '#', html: 'GitHub' }
+    ]
+}) }}
