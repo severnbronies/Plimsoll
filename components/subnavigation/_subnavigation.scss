@@ -4,7 +4,7 @@
 
 .sb-subnavigation {
 	position: sticky;
-	top: 2rem;
+	top: calc(#{tokens.$masthead-height-desktop} + 2rem);
 	&__list {
 		@include helpers.list-reset;
 		@include media.mq(50em) {

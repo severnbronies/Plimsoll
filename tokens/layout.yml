@@ -15,3 +15,7 @@ props:
     value: 0
     category: border-radius
     type: size
+  masthead_height_desktop:
+    value: 4rem
+    category: sizing
+    type: size

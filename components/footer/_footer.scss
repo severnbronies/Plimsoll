@@ -10,7 +10,7 @@
 	$narrowPadding: tokens.$grid-gutter / 2;
 	margin-top: $padding * 2;
 	padding-top: $padding;
-	padding-bottom: $padding;
+	padding-bottom: calc(#{$padding} + env(safe-area-inset-bottom));
 	color: tokens.$color-white;
 	background-color: tokens.$color-off-black;
 	@include media.dark-mode {

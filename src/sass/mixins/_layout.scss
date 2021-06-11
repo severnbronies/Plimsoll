@@ -5,10 +5,14 @@
  */
 
 @mixin container {
-	width: 92%;
-	max-width: tokens.$grid-max-width;
+	width: 100%;
+	max-width: calc(
+		#{tokens.$grid-max-width} + env(safe-area-inset-left) + env(safe-area-inset-right)
+	);
 	margin-right: auto;
 	margin-left: auto;
+	padding-left: max(1rem, env(safe-area-inset-left));
+	padding-right: max(1rem, env(safe-area-inset-right));
 }
 
 /**
