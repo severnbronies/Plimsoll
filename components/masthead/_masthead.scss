@@ -14,6 +14,9 @@
 	top: 0;
 	z-index: tokens.$layer-overlay;
 	background-color: var(--theme-background);
+	@include media.mq($flipBreakpoint) {
+		height: tokens.$masthead-height-desktop;
+	}
 	&__inner {
 		@include layout.container;
 		display: flex;
