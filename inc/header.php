@@ -8,6 +8,61 @@ if (function_exists('acf_add_options_page')) {
 	]);
 
 	acf_add_local_field_group([
+		'key' => 'group_60c3ba96e91a4',
+		'title' => 'Logo colours',
+		'fields' => [
+			[
+				'key' => 'field_60c3baa0fff2d',
+				'label' => 'Color 1',
+				'name' => 'logo_color_1',
+				'type' => 'color_picker',
+				'instructions' =>
+					'Applied to the \'Severn\' text and speech bubble icon.',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => [
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				],
+				'default_value' => '',
+			],
+			[
+				'key' => 'field_60c3bacffff2e',
+				'label' => 'Color 2',
+				'name' => 'logo_color_2',
+				'type' => 'color_picker',
+				'instructions' => 'Applied to the \'Bronies\' text.',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => [
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				],
+				'default_value' => '',
+			],
+		],
+		'location' => [
+			[
+				[
+					'param' => 'options_page',
+					'operator' => '==',
+					'value' => 'acf-options-header',
+				],
+			],
+		],
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	]);
+
+	acf_add_local_field_group([
 		'key' => 'group_5ec94f2745a73',
 		'title' => 'Banners',
 		'fields' => [

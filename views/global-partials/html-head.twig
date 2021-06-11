@@ -25,6 +25,12 @@
 	<link rel="stylesheet" media="all" href="{{ site.theme.link }}/dist/css/all.css?v={{ cachebust_css_version }}">
 	<link rel="stylesheet" media="print" href="{{ googleFontsUrl }}" onload="this.media='all'">
 	<noscript><link rel="stylesheet" media="all" href="{{ googleFontsUrl }}"></noscript>
+	<style>
+		:root {
+			{%- if logo_color_1 %} --custom-logo-1: {{ logo_color_1 }};{% endif %}
+			{%- if logo_color_2 %} --custom-logo-2: {{ logo_color_2 }};{% endif %}
+		}
+	</style>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/svg" href="/favicon.svg">
