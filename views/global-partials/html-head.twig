@@ -3,7 +3,7 @@
 <html class="no-js" {{ site.language_attributes }}>
 <head>
 	<meta charset="{{ site.charset }}">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -25,6 +25,12 @@
 	<link rel="stylesheet" media="all" href="{{ site.theme.link }}/dist/css/all.css?v={{ cachebust_css_version }}">
 	<link rel="stylesheet" media="print" href="{{ googleFontsUrl }}" onload="this.media='all'">
 	<noscript><link rel="stylesheet" media="all" href="{{ googleFontsUrl }}"></noscript>
+	<style>
+		:root {
+			{%- if logo_color_1 %} --custom-logo-1: {{ logo_color_1 }};{% endif %}
+			{%- if logo_color_2 %} --custom-logo-2: {{ logo_color_2 }};{% endif %}
+		}
+	</style>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/svg" href="/favicon.svg">
@@ -33,7 +39,8 @@
 	<link rel="manifest" href="/site.webmanifest">
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5832ab">
 	<meta name="msapplication-TileColor" content="#5832ab">
-	<meta name="theme-color" content="#5832ab">
+	<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#1f1631" media="(prefers-color-scheme: dark)">
 
 	{{ function('wp_head') }}
 </head>

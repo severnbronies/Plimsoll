@@ -115,6 +115,8 @@ class Plimsoll extends Timber\Site
 		$context['primary_navigation'] = new Timber\Menu('primary', [
 			'depth' => 1,
 		]);
+		$context['logo_color_1'] = get_field('logo_color_1', 'option');
+		$context['logo_color_2'] = get_field('logo_color_2', 'option');
 
 		// Phase banner
 		$context['phase_banner_visible'] = get_field(
