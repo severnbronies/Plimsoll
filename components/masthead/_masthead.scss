@@ -25,6 +25,7 @@
 		@include media.mq($flipBreakpoint) {
 			flex-direction: row;
 			align-items: center;
+			height: 100%;
 		}
 	}
 	&__branding {
