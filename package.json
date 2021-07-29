@@ -14,7 +14,8 @@
 		"export": "gulp export --minify",
 		"add": "sh ./bin/add-component.sh",
 		"prettify": "pretty-quick",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepare": "husky install"
 	},
 	"author": "Kimberly Grey <hi@berly.kim>",
 	"license": "MIT",
@@ -54,11 +55,6 @@
 		"micromodal": "^0.4.6",
 		"normalize-scss": "^7.0.1",
 		"what-input": "^5.2.10"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged"
-		}
 	},
 	"prettier": {
 		"useTabs": true,
