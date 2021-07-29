@@ -7,7 +7,7 @@
 
 .sb-footer {
 	$padding: tokens.$grid-gutter;
-	$narrowPadding: tokens.$grid-gutter / 2;
+	$narrowPadding: tokens.$grid-gutter * 0.5;
 	margin-top: $padding * 2;
 	padding-top: $padding;
 	padding-bottom: calc(#{$padding} + env(safe-area-inset-bottom));

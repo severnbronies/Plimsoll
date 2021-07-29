@@ -65,22 +65,22 @@
 ) {
 	@if $direction == "horizontal" {
 		background: linear-gradient(135deg, $color 25%, transparent 25%)
-				(0 - $size / 2)
+				($size * -0.5)
 				0,
-			linear-gradient(225deg, $color 25%, transparent 25%) (0 - $size / 2) 0,
+			linear-gradient(225deg, $color 25%, transparent 25%) ($size * -0.5) 0,
 			linear-gradient(315deg, $color 25%, transparent 25%),
 			linear-gradient(45deg, $color 25%, transparent 25%);
 	} @else {
 		background: linear-gradient(225deg, $color 25%, transparent 25%)
-				(0 - $size / 2)
+				($size * -0.5)
 				0,
 			linear-gradient(135deg, $color 25%, transparent 25%)
-				(0 - $size / 2)
-				(0 - $size / 2),
+				($size * -0.5)
+				($size * -0.5),
 			linear-gradient(45deg, $color 25%, transparent 25%)
-				(0 - $size / 2)
-				(0 - $size / 2),
-			linear-gradient(-45deg, $color 25%, transparent 25%) (0 - $size / 2) 0;
+				($size * -0.5)
+				($size * -0.5),
+			linear-gradient(-45deg, $color 25%, transparent 25%) ($size * -0.5) 0;
 	}
 	background-size: $size $size;
 }

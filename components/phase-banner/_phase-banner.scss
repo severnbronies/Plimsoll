@@ -29,7 +29,7 @@
 	}
 	&__summary {
 		display: inline-block;
-		padding: ($bannerPadding / 2) $bannerPadding;
+		padding: ($bannerPadding * 0.5) $bannerPadding;
 		#{$self}--interactive & {
 			padding-left: ($bannerPadding + $arrowMargin);
 			cursor: pointer;
@@ -61,7 +61,7 @@
 	}
 	&__body {
 		max-width: tokens.$measure-default;
-		padding: ($bannerPadding / 2) $bannerPadding ($bannerPadding / 2)
+		padding: ($bannerPadding * 0.5) $bannerPadding ($bannerPadding * 0.5)
 			($bannerPadding + $arrowMargin);
 	}
 }

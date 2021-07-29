@@ -72,7 +72,7 @@
 	&__list-more {
 		@include helpers.button-reset;
 		@include typography.all-caps;
-		margin-top: $gutter / 2;
+		margin-top: $gutter * 0.5;
 		padding: 0.25em 0.5em;
 		border: 2px solid var(--theme-accent-mod);
 		background-color: var(--theme-background);
