@@ -9,7 +9,7 @@
 		@include layout.container;
 		display: grid;
 		grid-column-gap: tokens.$grid-gutter;
-		grid-row-gap: tokens.$grid-gutter / 2;
+		grid-row-gap: tokens.$grid-gutter * 0.5;
 		grid-template-areas: "header" "main" "sidebar";
 		grid-template-columns: 1fr;
 		@include media.mq(50em) {

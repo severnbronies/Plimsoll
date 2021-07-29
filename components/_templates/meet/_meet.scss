@@ -11,7 +11,7 @@
 	$leftMarginWidth: 14%;
 	$leftMarginTextureWidth: 2em;
 	$colGutterWidth: 1em;
-	$rowGutterWidth: tokens.$grid-gutter / 2;
+	$rowGutterWidth: tokens.$grid-gutter * 0.5;
 	&__inner {
 		display: grid;
 		grid-template-columns: $colGutterWidth auto $colGutterWidth;

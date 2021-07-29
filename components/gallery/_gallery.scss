@@ -2,7 +2,7 @@
 
 .sb-gallery {
 	display: grid;
-	grid-gap: tokens.$grid-gutter / 2;
+	grid-gap: tokens.$grid-gutter * 0.5;
 	grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
 	&__link {
 		display: block;

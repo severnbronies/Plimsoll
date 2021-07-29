@@ -1,6 +1,8 @@
 @use "tokens.web" as tokens;
 @use "mixins/a11y";
 
+@use "sass:math";
+
 /**
  * Input styles.
  */
@@ -71,10 +73,10 @@
 			);
 			position: absolute;
 			top: calc(
-				#{($size - $checkHeight) / 2.5} - 1px
+				#{math.div(($size - $checkHeight), 2.5)} - 1px
 			); // as below but we want slightly less than half remaining space to bias towards top of box
 			left: calc(
-				#{($size - $checkWidth) / 2} - 1px
+				#{math.div(($size - $checkWidth), 2)} - 1px
 			); // divide remaining space by two to get horizontal offset
 		}
 		&:checked {

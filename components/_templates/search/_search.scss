@@ -9,9 +9,9 @@
 		@include layout.container;
 	}
 	&__header {
-		padding-top: tokens.$grid-gutter / 2;
-		padding-bottom: tokens.$grid-gutter / 2;
-		margin-bottom: tokens.$grid-gutter / 2;
+		padding-top: tokens.$grid-gutter * 0.5;
+		padding-bottom: tokens.$grid-gutter * 0.5;
+		margin-bottom: tokens.$grid-gutter * 0.5;
 		color: var(--theme-accent);
 		background-color: var(--theme-accent-mod);
 	}

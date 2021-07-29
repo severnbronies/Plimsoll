@@ -18,7 +18,7 @@ gulp.task("images:minify", () => {
 		.pipe(newer("./dist/images"))
 		.pipe(
 			imagemin([
-				imagemin.jpegtran({
+				imagemin.mozjpeg({
 					progressive: true
 				}),
 				imagemin.optipng({
