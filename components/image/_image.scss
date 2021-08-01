@@ -1,5 +1,5 @@
-@use "tokens.web" as tokens;
-@use "mixins/typography";
+@use "settings";
+@use "helpers/typography";
 
 .sb-image {
 	$self: &;
@@ -8,23 +8,22 @@
 	position: relative;
 	line-height: 0;
 	&__image {
-		width: 100%;
+		inline-size: 100%;
 		#{$self}:not(#{$self}--cover) & {
-			height: auto;
+			block-size: auto;
 		}
 	}
 	&__attribution {
-		@include typography.all-caps;
+		@include typography.sb-font-size(small-print);
 		display: inline-block;
 		padding: 0.2em 0.4em;
 		position: absolute;
-		right: 0;
-		bottom: 0;
-		color: tokens.$color-white;
-		background-color: rgba(tokens.$color-black, tokens.$color-opacity-tertiary);
-		font-size: tokens.$size-small;
+		inset-block-end: 0;
+		inset-inline-end: 0;
+		color: white;
+		background-color: rgba(black, 0.8);
 		font-weight: 400;
-		line-height: tokens.$lead-solid;
+		line-height: 1;
 	}
 	&__attribution-source {
 		color: currentColor;
@@ -32,10 +31,10 @@
 	}
 	&--cover {
 		#{$self}__image {
-			height: 100%;
+			block-size: 100%;
 			position: absolute;
-			top: 0;
-			left: 0;
+			inset-block-start: 0;
+			inset-inline-start: 0;
 			object-fit: cover;
 		}
 	}

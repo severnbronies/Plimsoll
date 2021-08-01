@@ -1,8 +1,9 @@
-@use "tokens.web" as tokens;
+@use "settings";
+@use "helpers/colors";
 
 .sb-gallery {
 	display: grid;
-	grid-gap: tokens.$grid-gutter * 0.5;
+	gap: settings.$sb-gutter;
 	grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
 	&__link {
 		display: block;
@@ -11,25 +12,26 @@
 		line-height: 0;
 		&::after {
 			content: "";
-			width: 100%;
-			height: 100%;
+			inline-size: 100%;
+			block-size: 100%;
 			position: absolute;
-			top: 0;
-			left: 0;
-			box-shadow: inset 0 0 0 0 var(--theme-accent-mod);
+			inset-block-start: 0;
+			inset-inline-start: 0;
+			box-shadow: inset 0 0 0 0 colors.sb-color(link);
 			transition: box-shadow 0.125s linear;
-			opacity: tokens.$color-opacity-secondary;
+			opacity: 0.69;
 		}
 		&:hover {
 			&::after {
-				box-shadow: inset 0 0 0 1em var(--theme-accent-mod);
+				box-shadow: inset 0 0 0 settings.$sb-form-element-border
+					colors.sb-color(link);
 			}
 		}
 	}
 	&__image,
 	img {
-		height: 100%;
-		min-height: 14em;
-		max-height: 33vh;
+		block-size: 100%;
+		min-block-size: 14em;
+		max-block-size: 33vh;
 	}
 }
