@@ -1,20 +1,13 @@
-{% from "@components/heading/macro.twig" import sbHeading %}
-
 <nav
     data-module="sb-archive-navigation"
-    aria-label="Meet archives by date"
+    aria-label="Meet archives by month"
     class="sb-archive-navigation {%- if params.classes %} {{ params.classes }}{% endif %}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-	{{ sbHeading({
-		classes: 'sb-archive-navigation__heading',
-		hierarchy: 6,
-		element: 'h2',
-		html: params.heading
-	}) }}
-	<ol class="sb-archive-navigation__list">
+	<h2 class="sb-heading-m sb-archive-navigation__heading">{{ params.heading }}</h2>
+	<ol class="sb-list sb-archive-navigation__list">
 		{%- for item in params.items %}
 			<li class="sb-archive-navigation__item">
-				<a class="sb-archive-navigation__link" href="{{ item.link }}" {%- if item.current %} aria-current="page"{% endif %}>
+				<a class="sb-link sb-archive-navigation__link" href="{{ item.link }}" {%- if item.current %} aria-current="page"{% endif %}>
 					{{- item.title -}}
 				</a>
 			</li>
