@@ -1,9 +1,4 @@
 {%- set htmlClasses = 'sb-button' %}
-{%- if params.variants %}
-    {%- for v in params.variants %}
-        {%- set htmlClasses = htmlClasses ~ ' sb-button--' ~ v %}
-    {%- endfor %}
-{% endif %}
 {%- if params.classes %}
 	{% set htmlClasses = htmlClasses ~ ' ' ~ params.classes %}
 {% endif %}
@@ -11,8 +6,10 @@
 {%- set commonAttributes %}
     data-module="sb-button"
     class="{{ htmlClasses }}"
+    {%- if params.appearance %} data-appearance="{{ params.appearance }}"{% endif %}
+    {%- if params.layout %} data-layout="{{ params.layout }}"{% endif %}
+    {%- if params.busy %} aria-busy="true"{% endif %}
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
-    {%- if params.busy %}aria-busy="true"{% endif %}
 {% endset %}
 
 {%- set buttonContent %}
@@ -30,8 +27,8 @@
 <button
     {{- commonAttributes }}
     type="{% if params.type %}{{ params.type }}{% else %}submit{% endif %}"
-    {%- if params.name %}name="{{ params.name }}"{% endif %}
-    {%- if params.value %}value="{{ params.value }}"{% endif %}
+    {%- if params.name %} name="{{ params.name }}"{% endif %}
+    {%- if params.value %} value="{{ params.value }}"{% endif %}
     {%- if params.disabled %} disabled{% endif %}
     >
     {{- buttonContent -}}

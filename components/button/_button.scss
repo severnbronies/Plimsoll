@@ -1,66 +1,124 @@
-@use "tokens.web" as tokens;
-@use "mixins/typography";
-@use "mixins/a11y";
-@use "mixins/helpers";
-@use "mixins/media";
+@use "settings";
+@use "helpers/a11y";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "helpers/reset";
+@use "helpers/spacing";
+@use "helpers/typography";
 
 .sb-button {
 	$self: &;
-	$triangleSize: 0.7em;
-	$triangleOffset: 0.15em;
-	@include helpers.button-reset;
-	@include typography.all-caps;
+	$triangle-size: 0.7em;
+	$triangle-offset: 0.15em;
+	@include reset.sb-reset-button;
+	@include spacing.sb-responsive-spacing(1, gap);
+	@include typography.sb-font-stack(heading, $weight: regular);
+	@include typography.sb-font-size(pretitle);
 	display: inline-block;
+	margin-block: 2px;
+	margin-inline: 0;
 	position: relative;
-	font-size: tokens.$size-small;
-	font-weight: 700;
 	text-align: center;
 	text-decoration: none;
-	line-height: tokens.$lead-title;
+	text-transform: uppercase;
 	&::after {
 		content: "";
-		width: $triangleSize;
-		height: $triangleSize;
+		inline-size: $triangle-size;
+		block-size: $triangle-size;
 		position: absolute;
-		bottom: 0;
-		right: 0;
-		background-color: var(--theme-accent);
+		inset-block-end: 0;
+		inset-inline-end: 0;
+		background-color: colors.sb-color(button-background);
+		opacity: 0.3;
 		clip-path: polygon(100% 0, 100% 100%, 0 100%);
 	}
 	&__label {
-		display: block;
-		padding: 0.75em 1.25em;
-		color: var(--theme-accent);
-		background-color: var(--theme-accent-mod);
+		@include spacing.sb-responsive-padding(3, $direction: block);
+		@include spacing.sb-responsive-padding(3, $direction: inline-start);
+		@include spacing.sb-responsive-padding(4, $direction: inline-end);
+		display: inline-grid;
+		align-items: center;
+		position: relative;
+		color: colors.sb-color(button-text);
+		background-color: colors.sb-color(button-background);
 		clip-path: polygon(
 			0 0,
 			100% 0,
-			100% calc(100% - #{$triangleSize + $triangleOffset}),
-			calc(100% - #{$triangleSize + $triangleOffset}) 100%,
+			100% calc(100% - #{$triangle-size + $triangle-offset}),
+			calc(100% - #{$triangle-size + $triangle-offset}) 100%,
 			0 100%
 		);
-	}
-	// State - Hovered
-	&:hover {
-		#{$self}__label {
-			color: var(--theme-accent-mod);
-			background-color: var(--theme-accent);
+		&::before {
+			content: "";
+			inline-size: 0;
+			block-size: 100%;
+			position: absolute;
+			inset-block-end: 0;
+			inset-inline-start: 0;
+			background-color: currentColor;
+			opacity: 0.3;
+			transition: inline-size 0.3s ease-in-out;
 		}
 	}
-	// State - Focused
+	&:hover:not([aria-busy]) {
+		#{$self}__label::before {
+			inline-size: 100%;
+		}
+	}
 	&:focus {
-		@include a11y.focus-ring;
+		@include a11y.sb-focus-ring;
 	}
-	// State - Disabled
 	&:disabled {
-		filter: saturate(30%) grayscale(50%);
 		pointer-events: none;
-		cursor: default;
-	}
-	// Variant - Elastic
-	&--elastic {
-		@include media.mq(null, 25em) {
-			width: 100%;
+		#{$self}__label {
+			opacity: 0.3;
+			filter: saturate(30%);
 		}
+	}
+	&[aria-busy] {
+		#{$self}__label::before {
+			animation-name: sbButtonBusy;
+			animation-duration: 3s;
+			animation-timing-function: ease-in-out;
+			animation-iteration-count: infinite;
+		}
+	}
+	&[data-layout="block"] {
+		&,
+		#{$self}__label {
+			inline-size: 100%;
+		}
+	}
+	&[data-layout="elastic"] {
+		@include media-queries.sb-mq($to: medium) {
+			&,
+			#{$self}__label {
+				inline-size: 100%;
+			}
+		}
+	}
+}
+
+@keyframes sbButtonBusy {
+	0%,
+	100% {
+		inset-inline-start: 0;
+		inset-inline-end: auto;
+		inline-size: 0;
+	}
+	33% {
+		inset-inline-start: 0;
+		inset-inline-end: auto;
+		inline-size: 100%;
+	}
+	33.01% {
+		inset-inline-start: auto;
+		inset-inline-end: 0;
+		inline-size: 100%;
+	}
+	66% {
+		inset-inline-start: auto;
+		inset-inline-end: 0;
+		inline-size: 0;
 	}
 }

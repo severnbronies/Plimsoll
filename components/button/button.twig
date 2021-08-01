@@ -1,23 +1,30 @@
 {% from "@components/button/macro.twig" import sbButton %}
 
 {{ sbButton({
-    href: '//severnbronies.co.uk',
-    html: 'Link button'
+    href: "//severnbronies.co.uk",
+    html: "Primary button"
 }) }}
 
 {{ sbButton({
-    type: 'submit',
-    html: 'Form button'
-}) }}
-
-{{ sbButton({
-    type: 'submit',
-    html: 'Disabled button',
+    type: "submit",
+    html: "Disabled primary button",
     disabled: true
 }) }}
 
 {{ sbButton({
-    href: '//severnbronies.co.uk',
-    html: 'Elastic button',
-    variants: ['elastic']
+    type: "submit",
+    html: "Busy primary button",
+    busy: true
+}) }}
+
+{{ sbButton({
+    href: "//severnbronies.co.uk",
+    html: "Elastic primary button",
+    layout: "elastic"
+}) }}
+
+{{ sbButton({
+    href: "//severnbronies.co.uk",
+    html: "Block primary button",
+    layout: "block"
 }) }}
