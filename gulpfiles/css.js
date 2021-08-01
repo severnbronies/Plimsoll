@@ -25,7 +25,15 @@ gulp.task("css:compile", () => {
 				includePaths: ["./node_modules"],
 			}).on("error", sass.logError)
 		)
-		.pipe(postcss([postcssPresetEnv()]))
+		.pipe(
+			postcss([
+				postcssPresetEnv({
+					features: {
+						"logical-properties-and-values": { dir: "ltr" },
+					},
+				}),
+			])
+		)
 		.pipe(sourcemaps.write("."))
 		.pipe(gulp.dest("./dist/css"));
 });
