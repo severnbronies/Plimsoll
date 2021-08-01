@@ -1,0 +1,26 @@
+@use "../settings";
+@use "colors";
+
+// Focus ring helper
+@mixin sb-focus-ring($fill: false, $important: false) {
+	outline: settings.$sb-focus-border-width solid
+		colors.sb-color(focus-background) if($important, !important, null);
+	outline-offset: 0 if($important, !important, null);
+	@if $fill {
+		color: colors.sb-color(focus-text) if($important, !important, null);
+		background-color: colors.sb-color(focus-background)
+			if($important, !important, null);
+	}
+}
+
+// Hide something whilst keeping it visible to screen readers
+@mixin sb-visually-hidden($important: false) {
+	position: absolute if($important, !important, null);
+	width: 1px if($important, !important, null);
+	height: 1px if($important, !important, null);
+	margin: -1px if($important, !important, null);
+	padding: 0 if($important, !important, null);
+	border: 0 if($important, !important, null);
+	overflow: hidden if($important, !important, null);
+	clip: rect(0 0 0 0) if($important, !important, null);
+}

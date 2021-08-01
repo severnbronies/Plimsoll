@@ -1,0 +1,5 @@
+@use "../helpers/layout";
+
+.sb-width-container {
+	@include layout.sb-width-container;
+}

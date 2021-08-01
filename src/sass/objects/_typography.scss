@@ -1,0 +1,74 @@
+@use "../helpers/spacing";
+@use "../helpers/typography";
+
+//
+// HEADINGS
+//
+
+.sb-heading-l,
+.sb-heading-m {
+	@include typography.sb-font-stack(heading, $weight: bold);
+	display: block;
+	margin-block-start: 0;
+}
+
+.sb-heading-l {
+	@include spacing.sb-responsive-margin(8, $direction: block-end);
+	@include typography.sb-font-size(title);
+}
+
+.sb-heading-m {
+	@include spacing.sb-responsive-margin(4, $direction: block-end);
+	@include typography.sb-font-size(small-title);
+}
+
+//
+// SUBHEADINGS
+//
+
+.sb-subheading-l,
+.sb-subheading-m {
+	@include typography.sb-font-stack(heading, $weight: regular);
+	display: block;
+	margin-block-start: 0;
+}
+
+.sb-subheading-l {
+	@include spacing.sb-responsive-margin(1, $direction: block-end);
+	@include typography.sb-font-size(subtitle);
+}
+
+.sb-subheading-m {
+	@include typography.sb-font-size(small-subtitle);
+}
+
+//
+// BODY
+//
+
+.sb-body,
+.sb-body-l,
+.sb-body-s {
+	@include spacing.sb-responsive-margin(4, $direction: block-end);
+	margin-block-start: 0;
+}
+
+.sb-body {
+	@include typography.sb-font-size(body);
+}
+
+.sb-body-l {
+	@include typography.sb-font-size(body-large);
+}
+
+.sb-body-s {
+	@include typography.sb-font-size(body-small);
+}
+
+//
+// SMALL PRINT
+//
+
+.sb-small-print {
+	@include typography.sb-font-size(small-print);
+}

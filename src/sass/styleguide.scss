@@ -1,9 +1,11 @@
-@use "tokens.web" as tokens;
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&amp;family=Montserrat:wght@900&amp;display=swap");
+@use "helpers/colors";
+@use "helpers/typography";
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@500;900&display=swap");
 
 html {
-	font-family: tokens.$font-body;
-	line-height: tokens.$lead-default;
+	@include typography.sb-font-stack(body);
+	@include typography.sb-font-size(body);
 }
 
 // Override font wherever Open Sans is used
@@ -41,9 +43,9 @@ h6,
 }
 
 .Header {
-	color: tokens.$color-white;
-	background-color: tokens.$color-primary;
-	font-weight: 700;
+	@include typography.sb-font-stack(heading, $weight: bold);
+	color: #fff;
+	background-color: colors.sb-color(brand-primary);
 }
 
 .Fractal-Swatch {

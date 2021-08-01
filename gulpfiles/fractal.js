@@ -2,22 +2,8 @@ const gulp = require("gulp");
 const path = require("path");
 const fs = require("fs");
 const _ = require("lodash");
-const yamljs = require("yamljs");
 const fractal = require("@frctl/fractal").create();
 const mandelbrot = require("@frctl/mandelbrot");
-
-function getDesignTokens() {
-	const dirPath = path.resolve(__dirname, "../tokens");
-	const files = fs.readdirSync(dirPath);
-	let tokenData = {};
-	files.forEach((file) => {
-		const fileName = file.split(".")[0];
-		const fileProps = yamljs.load(path.resolve(dirPath, file)).props;
-		tokenData[fileName] = fileProps ? fileProps : {};
-	});
-	console.log({ tokenData });
-	return tokenData;
-}
 
 // Twig (for components)
 const twig = require("@frctl/twig")({
@@ -42,22 +28,6 @@ const twig = require("@frctl/twig")({
 // Nunjucks (for docs)
 const nunjucks = require("@frctl/nunjucks")({
 	paths: ["components", "docs"],
-	globals: {
-		tokens: getDesignTokens(),
-	},
-	filters: {
-		theoTokenCategory: function (object, filterCategory) {
-			let filteredTokens = {};
-			Object.keys(object).forEach((key) => {
-				const val = object[key];
-				if (val.category === filterCategory) filteredTokens[key] = val;
-			});
-			return filteredTokens;
-		},
-		theoTokenSass: function (string) {
-			return `$${string.replace(/_/g, "-")}`;
-		},
-	},
 });
 
 fractal.set("project.title", `Plimsoll design system`);

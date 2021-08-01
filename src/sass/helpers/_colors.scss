@@ -1,0 +1,25 @@
+@use "../settings";
+
+@use "sass:map";
+
+// Get color from palette
+@function sb-color($key, $dark: false) {
+	$palette: map.deep-merge(
+		settings.$sb-color-palette,
+		settings.$sb-light-color-palette
+	);
+	@if $dark {
+		$palette: map.deep-merge($palette, settings.$sb-dark-color-palette);
+	}
+	@if not map.has-key($palette, $key) {
+		@error "Unknown color `#{$key}` - expected a color from the configured color palette.";
+	}
+	$color: map.get($palette, $key);
+	@return var(--sb-#{$key}, #{$color});
+}
+
+// Text selection highlight colour
+@mixin sb-selection-highlight {
+	color: sb-color(highlight-text);
+	background-color: sb-color(highlight-background);
+}

@@ -1,0 +1,24 @@
+@use "../settings";
+@use "../helpers/colors";
+@use "../helpers/spacing";
+@use "../helpers/typography";
+
+* {
+	box-sizing: border-box;
+	&::before,
+	&::after {
+		box-sizing: inherit;
+	}
+}
+
+.sb-template {
+	text-size-adjust: 100%;
+	&__body {
+		@include typography.sb-typography-common;
+		@include typography.sb-font-stack(body);
+		@include typography.sb-font-size(body);
+		margin: 0;
+		color: colors.sb-color(text);
+		background-color: colors.sb-color(page-background);
+	}
+}

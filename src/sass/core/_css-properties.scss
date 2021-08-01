@@ -1,0 +1,21 @@
+@use "../settings";
+@use "../helpers/media-queries";
+
+@use "sass:map";
+
+:root {
+	@each $key, $color in settings.$sb-color-palette {
+		--sb-#{$key}: #{$color};
+	}
+	@each $key, $color in settings.$sb-light-color-palette {
+		--sb-#{$key}: #{$color};
+	}
+}
+
+@include media-queries.sb-dark-mode {
+	:root {
+		@each $key, $color in settings.$sb-dark-color-palette {
+			--sb-#{$key}: #{$color};
+		}
+	}
+}

@@ -1,0 +1,13 @@
+@use "../settings";
+
+@use "sass:math";
+
+// px to rem unit conversion
+@function sb-px-to-rem($value) {
+	@if (math.is-unitless($value)) {
+		$value: $value * 1px;
+	}
+	// 16px is the default browser font size, so we assume that
+	// If it's not the case for this user, it doesn't matter that much because rems will scale anyway
+	@return math.div($value, 16px) * 1rem;
+}

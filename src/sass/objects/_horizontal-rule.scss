@@ -1,0 +1,20 @@
+@use "../settings";
+@use "../helpers/colors";
+@use "../helpers/spacing";
+
+.sb-rule {
+	margin: 0;
+	border: 0;
+	&--xl {
+		@include spacing.sb-responsive-margin(8, $direction: block);
+	}
+	&--l {
+		@include spacing.sb-responsive-margin(6, $direction: block);
+	}
+	&--m {
+		@include spacing.sb-responsive-margin(4, $direction: block);
+	}
+	&--visible {
+		border-block-end: settings.$sb-hr-width solid colors.sb-color(furniture);
+	}
+}

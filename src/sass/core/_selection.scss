@@ -1,0 +1,5 @@
+@use "../helpers/colors";
+
+::selection {
+	@include colors.sb-selection-highlight;
+}

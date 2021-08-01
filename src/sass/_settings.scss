@@ -1,0 +1,283 @@
+@use "sass:color";
+@use "sass:map";
+
+//
+// BREAKPOINTS
+//
+
+$sb-breakpoints: (
+	medium: 600px,
+	large: 800px,
+	extra-large: 1000px,
+);
+
+//
+// SIZES
+//
+
+$sb-page-width: 1000px;
+$sb-gutter: 2rem;
+$sb-gutter-half: $sb-gutter * 0.5;
+
+$sb-focus-border-width: 4px;
+$sb-hr-width: 0.5rem;
+$sb-form-element-border: 2px;
+
+//
+// COLOURS
+//
+
+// Brand colours
+$sb-color-palette: (
+	"brand-primary": hsl(259, 55%, 43%),
+	"brand-secondary": hsl(326, 100%, 41%),
+	"brand-tertiary": hsl(254, 54%, 13%),
+	"brand-light": hsl(0, 0%, 98%),
+	"accessibility-yellow": hsl(48, 100%, 50%),
+);
+
+// Default/light mode colour palette
+$sb-light-color-palette: (
+	"page-background": white,
+	"furniture": hsl(0, 0%, 73%),
+	"text": hsl(259, 14%, 40%),
+	"text-emphasised": hsl(259, 14%, 22%),
+	"text-deemphasised": hsl(259, 14%, 69%),
+	"link": map.get($sb-color-palette, "brand-secondary"),
+	"link-hover":
+		color.adjust(map.get($sb-color-palette, "brand-secondary"), $lightness: 20%),
+	"link-active":
+		color.adjust(map.get($sb-color-palette, "brand-secondary"), $lightness: 20%),
+	"link-visited":
+		color.adjust(
+			map.get($sb-color-palette, "brand-secondary"),
+			$lightness: -20%
+		),
+	"highlight-text": white,
+	"highlight-background": map.get($sb-color-palette, "brand-tertiary"),
+	"focus-text": black,
+	"focus-background": map.get($sb-color-palette, "accessibility-yellow"),
+	"button-text": white,
+	"button-background": map.get($sb-color-palette, "brand-secondary"),
+);
+
+// Dark mode colour palette
+// If a key is missing from here it will continue to use light mode version
+$sb-dark-color-palette: (
+	"page-background": map.get($sb-color-palette, "brand-tertiary"),
+	"furniture": hsl(0, 0%, 73%),
+	"text": hsl(259, 14%, 69%),
+	"text-emphasised": white,
+	"text-deemphasised": hsl(259, 14%, 22%),
+	"link": map.get($sb-color-palette, "brand-light"),
+	"link-hover":
+		color.adjust(map.get($sb-color-palette, "brand-light"), $lightness: 20%),
+	"link-active":
+		color.adjust(map.get($sb-color-palette, "brand-light"), $lightness: 20%),
+	"link-visited":
+		color.adjust(map.get($sb-color-palette, "brand-light"), $lightness: -20%),
+	"highlight-text": white,
+	"highlight-background": map.get($sb-color-palette, "brand-primary"),
+	"button-text": map.get($sb-color-palette, "brand-tertiary"),
+	"button-background": map.get($sb-color-palette, "brand-light"),
+);
+
+// $color-primary-light: hsl(259, 67%, 90%);
+// $color-primary-dark: hsl(259, 38%, 14%);
+
+//
+// FONT FAMILIES
+//
+
+$sb-font-stacks: (
+	heading: (
+		stack: (
+			Montserrat,
+			IBM Plex Sans,
+			system-ui,
+		),
+		regular: 500,
+		bold: 900,
+	),
+	body: (
+		stack: (
+			IBM Plex Sans,
+			system-ui,
+		),
+		regular: 400,
+		bold: 700,
+	),
+	code: (
+		stack: (
+			Hack,
+			Consolas,
+			Monaco,
+			Andale Mono,
+			monospace,
+			monospace,
+		),
+		regular: 400,
+		bold: 700,
+	),
+);
+
+//
+// FONT SIZES
+//
+
+$sb-font-sizes: (
+	small-print: (
+		null: (
+			font-size: 12px,
+			line-height: 18px,
+		),
+	),
+	body-small: (
+		null: (
+			font-size: 14px,
+			line-height: 22px,
+		),
+	),
+	body: (
+		null: (
+			font-size: 16px,
+			line-height: 24px,
+		),
+		medium: (
+			font-size: 18px,
+			line-height: 26px,
+		),
+	),
+	body-large: (
+		null: (
+			font-size: 18px,
+			line-height: 26px,
+		),
+		medium: (
+			font-size: 20px,
+			line-height: 28px,
+		),
+	),
+	pretitle: (
+		null: (
+			font-size: 14px,
+			line-height: 14px,
+			letter-spacing: 0.05em,
+		),
+	),
+	pullquote: (
+		null: (
+			font-size: 18px,
+			line-height: 22px,
+		),
+		medium: (
+			font-size: 20px,
+			line-height: 24px,
+		),
+	),
+	small-subtitle: (
+		null: (
+			font-size: 20px,
+			line-height: 24px,
+		),
+		medium: (
+			font-size: 28px,
+			line-height: 32px,
+		),
+	),
+	small-title: (
+		null: (
+			font-size: 24px,
+			line-height: 28px,
+		),
+		medium: (
+			font-size: 32px,
+			line-height: 36px,
+		),
+	),
+	subtitle: (
+		null: (
+			font-size: 28px,
+			line-height: 32px,
+		),
+		medium: (
+			font-size: 36px,
+			line-height: 44px,
+		),
+	),
+	title: (
+		null: (
+			font-size: 32px,
+			line-height: 36px,
+		),
+		medium: (
+			font-size: 40px,
+			line-height: 48px,
+		),
+	),
+	jumbotron: (
+		null: (
+			font-size: 40px,
+			line-height: 44px,
+		),
+		medium: (
+			font-size: 60px,
+			line-height: 64px,
+		),
+	),
+);
+
+//
+// SPACING
+//
+
+$sb-spacing: (
+	0: (
+		null: 0,
+	),
+	1: (
+		null: 4px,
+	),
+	2: (
+		null: 8px,
+	),
+	3: (
+		null: 16px,
+	),
+	4: (
+		null: 16px,
+		medium: 24px,
+	),
+	5: (
+		null: 24px,
+		medium: 32px,
+	),
+	6: (
+		null: 32px,
+		medium: 40px,
+	),
+	7: (
+		null: 40px,
+		medium: 48px,
+	),
+	8: (
+		null: 48px,
+		medium: 56px,
+	),
+	9: (
+		null: 56px,
+		medium: 64px,
+	),
+);
+
+//
+// LAYERS
+//
+
+$sb-layers: (
+	underlay: -1,
+	default: 1,
+	overlay: 1000,
+	backdrop: 8000,
+	modal: 9000,
+);

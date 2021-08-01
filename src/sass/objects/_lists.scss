@@ -1,0 +1,30 @@
+@use "../helpers/spacing";
+
+.sb-list {
+	@include spacing.sb-responsive-margin(4, $direction: block-end);
+	margin-block-start: 0;
+	padding: 0;
+	list-style-type: none;
+	li + li {
+		@include spacing.sb-responsive-margin(1, $direction: block-end);
+	}
+	&--bulleted,
+	&--numbered,
+	&--lettered {
+		padding-inline-start: 2em;
+	}
+	&--bulleted {
+		list-style-type: disc;
+	}
+	&--numbered {
+		list-style-type: decimal;
+	}
+	&--lettered {
+		list-style-type: lower-alpha;
+	}
+	&--spaced {
+		li + li {
+			@include spacing.sb-responsive-margin(3, $direction: block-end);
+		}
+	}
+}

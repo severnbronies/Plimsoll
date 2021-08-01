@@ -1,0 +1,78 @@
+@use "../settings";
+@use "measurements";
+@use "media-queries";
+
+@use "sass:map";
+@use "sass:math";
+
+// Common typography rules
+@mixin sb-typography-common {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Convert pixel line-heights into relative values
+@function _sb-line-height($line-height, $font-size) {
+	@if not
+		math.is-unitless($line-height) and
+		math.unit($line-height) ==
+		math.unit($font-size)
+	{
+		$line-height: math.div($line-height, $font-size);
+	}
+	@return $line-height;
+}
+
+// Font stacks
+@mixin sb-font-stack($stack, $weight: false, $important: false) {
+	@if not map.has-key(settings.$sb-font-stacks, $stack) {
+		@error "Unknown font stack `#{$stack}` - expected a family from the font families map.";
+	}
+	$stack-map: map.get(settings.$sb-font-stacks, $stack);
+	font-family: map.get($stack-map, "stack") if($important, !important, null);
+	@if $weight {
+		@if map.has-key($stack-map, $weight) {
+			font-weight: map.get($stack-map, $weight)
+				if($important, !important, null);
+		} @else {
+			font-weight: $weight if($important, !important, null);
+		}
+	}
+}
+
+// Loop through each property and work it into how we need it
+@mixin _sb-parse-font-size-map($map) {
+	@each $key, $value in $map {
+		@if $key == "font-size" {
+			font-size: measurements.sb-px-to-rem($value);
+		} @else if $key == "line-height" {
+			$font-size: map.get($map, "font-size");
+			line-height: _sb-line-height($value, $font-size);
+		} @else {
+			#{$key}: #{$value};
+		}
+	}
+}
+
+// Font sizes and line-heights
+@mixin sb-font-size($size) {
+	@if not map.has-key(settings.$sb-font-sizes, $size) {
+		@error "Unknown font size `#{$size}` - expected a point from the typography scale.";
+	}
+	$size-map: map.get(settings.$sb-font-sizes, $size);
+	@each $breakpoint, $breakpoint-map in $size-map {
+		@if ($breakpoint == null) {
+			@include _sb-parse-font-size-map($breakpoint-map);
+		} @else {
+			@include media-queries.sb-mq($from: $breakpoint) {
+				@include _sb-parse-font-size-map($breakpoint-map);
+			}
+		}
+	}
+}
+
+// Activate tabular figures (only works if the font supports it)
+@mixin sb-tabular-figures {
+	font-variant-numeric: tabular-nums;
+	font-feature-settings: "tnum";
+}

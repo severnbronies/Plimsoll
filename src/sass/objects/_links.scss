@@ -1,0 +1,11 @@
+@use "../helpers/links";
+
+// Default link
+.sb-link {
+	@include links.sb-link;
+}
+
+// Default link without visited style
+.sb-link-no-visited {
+	@include links.sb-link($visited-style: false);
+}

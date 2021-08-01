@@ -1,0 +1,37 @@
+@use "../settings";
+
+@use "sass:map";
+
+// Content container
+@mixin sb-width-container {
+	width: 100%;
+	max-width: calc(
+		#{settings.$sb-page-width} + env(safe-area-inset-left) + env(safe-area-inset-right)
+	);
+	margin-inline: auto;
+	padding-block-start: max(
+		#{settings.$sb-gutter-half},
+		env(safe-area-inset-left)
+	);
+	padding-block-end: max(
+		#{settings.$sb-gutter-half},
+		env(safe-area-inset-right)
+	);
+}
+
+// Non-overflow based clearfix
+@mixin sb-clearfix {
+	&::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+// z-index management
+@function sb-layer($key) {
+	@if not map.has-key(settings.$sb-layers, $key) {
+		@error "Unknown layer `#{$key}` - expected a layer from the layers configuration map.";
+	}
+	@return map.get(settings.$sb-layers, $key);
+}

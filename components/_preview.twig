@@ -1,6 +1,6 @@
-{% set googleFontsUrl = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&amp;family=Montserrat:ital,wght@0,900;1,900&amp;display=swap" %}
+{% set googleFontsUrl = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@500;900&display=swap" %}
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="sb-template no-js">
 	<head>
 		<meta charset="UTF-8">
 		<script>var w = document.documentElement;w.classList.remove('no-js');w.classList.add('js');</script>
@@ -10,7 +10,7 @@
 		<noscript><link rel="stylesheet" media="all" href="{{ googleFontsUrl }}"></noscript>
 		<title>Preview</title>
 	</head>
-	<body>
+	<body class="sb-template__body">
 		{{ yield }}
 		<script src="{{ '/js/all.js' | path }}"></script>
 		<script>window.sb.initAll();</script>

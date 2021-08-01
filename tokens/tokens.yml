@@ -1,9 +1,0 @@
-imports:
-  - ./colors.yml
-  - ./font-family.yml
-  - ./font-leading.yml
-  - ./font-measures.yml
-  - ./font-size.yml
-  - ./font-tracking.yml
-  - ./layout.yml
-  - ./z-index.yml

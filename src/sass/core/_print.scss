@@ -1,0 +1,13 @@
+@use "../helpers/media-queries";
+
+@include media-queries.sb-print {
+	// Render links to have visible URLs
+	a:where([href^="/"], [href^="http://"], [href^="https://"])
+	{
+		&:after {
+			content: " (" attr(href) ")";
+			font-size: 90%;
+			word-wrap: break-word;
+		}
+	}
+}
