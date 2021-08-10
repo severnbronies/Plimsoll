@@ -3,6 +3,10 @@
 @use "helpers/spacing";
 
 .sb-archive-navigation {
+	&__heading {
+		@include spacing.sb-responsive-margin(4, $direction: block-end);
+		text-align: center;
+	}
 	&__list {
 		column-width: 12em;
 		gap: settings.$sb-gutter;

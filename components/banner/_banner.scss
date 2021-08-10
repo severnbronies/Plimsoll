@@ -1,57 +1,37 @@
-@use "tokens.web" as tokens;
-@use "mixins/a11y";
-@use "mixins/helpers";
-@use "mixins/layout";
-@use "mixins/typography";
-@use "mixins/media";
-@use "mixins/theme";
+@use "settings";
+@use "helpers/colors";
+@use "helpers/layout";
+@use "helpers/links";
+@use "helpers/reset";
+@use "helpers/spacing";
+@use "helpers/media-queries";
+
+@use "sass:color";
 
 .sb-banner {
 	$self: &;
-	$flipBreakpoint: 30em;
-	color: var(--theme-accent);
-	background-color: var(--theme-accent-mod);
-	& + & {
-		border-top: 1px solid var(--theme-background);
-	}
+	@include spacing.sb-responsive-padding(1, $direction: block);
+	color: colors.sb-color(text-emphasised);
+	background-color: colors.sb-color(banner-background);
+	border-block-end: settings.$sb-hr-width solid colors.sb-color(brand-primary);
 	&__inner {
-		@include layout.container;
-		padding-top: 1em;
-		padding-bottom: 1em;
-		@include media.mq($flipBreakpoint) {
+		@include layout.sb-width-container;
+		@include spacing.sb-responsive-padding(2, $direction: block);
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		@include media-queries.sb-mq($from: medium) {
 			display: flex;
-			align-items: center;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-end;
 		}
 	}
 	&__body {
-		margin-right: 2rem;
-		font-size: tokens.$size-small;
-		line-height: tokens.$lead-default;
-		a {
-			@include theme.default-link(var(--theme-accent), var(--theme-background));
-		}
+		@include spacing.sb-responsive-padding(2, $direction: inline-end);
 	}
 	&__dismiss {
-		@include helpers.button-reset;
-		@include typography.all-caps;
-		flex-shrink: 0;
-		margin-left: auto;
-		border: 2px solid var(--theme-background);
-		padding: 0.25em 0.5em;
-		background-color: var(--theme-background);
-		font-size: tokens.$size-small;
-		@include media.mq(null, $flipBreakpoint) {
-			margin-top: 1em;
-		}
-		&:hover {
-			border-color: var(--theme-accent);
-		}
-		&:focus {
-			@include a11y.focus-ring;
-		}
-	}
-	&--info {
-	}
-	&--highlight {
+		@include reset.sb-reset-button;
+		@include links.sb-link-cta($visited-style: false);
 	}
 }

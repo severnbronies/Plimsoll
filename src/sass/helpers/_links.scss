@@ -1,6 +1,7 @@
 @use "../settings";
 @use "a11y";
 @use "colors";
+@use "typography";
 
 // Styles common to all links
 @mixin _sb-link-common {
@@ -30,5 +31,27 @@
 	}
 	&:active {
 		color: colors.sb-color(link-active);
+	}
+}
+
+// CTA link
+@mixin sb-link-cta($visited-style: true) {
+	$pre-pad: 2em;
+	$dash-size: $pre-pad * 0.75;
+	$dash-stroke: settings.$sb-form-element-border;
+	@include typography.sb-font-stack(heading, $weight: regular);
+	@include typography.sb-font-size(body-small);
+	@include sb-link($visited-style: $visited-style, $underline: false);
+	padding-inline-start: $pre-pad;
+	position: relative;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	&::before {
+		content: "";
+		width: $dash-size;
+		border-block-end: $dash-stroke solid colors.sb-color(link);
+		position: absolute;
+		inset-inline-start: 0;
+		inset-block-start: calc(50% - #{$dash-stroke * 0.5});
 	}
 }

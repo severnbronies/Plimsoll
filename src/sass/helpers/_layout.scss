@@ -9,11 +9,11 @@
 		#{settings.$sb-page-width} + env(safe-area-inset-left) + env(safe-area-inset-right)
 	);
 	margin-inline: auto;
-	padding-block-start: max(
+	padding-inline-start: max(
 		#{settings.$sb-gutter-half},
 		env(safe-area-inset-left)
 	);
-	padding-block-end: max(
+	padding-inline-end: max(
 		#{settings.$sb-gutter-half},
 		env(safe-area-inset-right)
 	);

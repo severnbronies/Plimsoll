@@ -1,81 +1,127 @@
-@use "tokens.web" as tokens;
-@use "mixins/typography";
-@use "mixins/theme";
-@use "mixins/media";
+@use "settings";
+@use "helpers/spacing";
+
+@forward "objects/lists";
+@forward "objects/typography";
 
 .sb-prose {
-	@include typography.oldstyle-figures;
-	@include typography.force-wrap;
-	font-family: tokens.$font-body;
-	line-height: tokens.$lead-default;
-	> * + * {
-		margin-top: 1.52em;
-	}
-	> :first-child {
-		margin-top: 0;
-	}
-	> :last-child {
-		margin-bottom: 0;
-	}
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@include typography.heading;
-		color: var(--theme-accent);
-		font-style: italic;
-		@supports (-webkit-text-stroke-width: 1px) {
-			color: transparent;
-			text-shadow: 2px 2px var(--theme-accent-mod);
-			-webkit-text-stroke-width: 1px;
-			-webkit-text-stroke-color: var(--theme-accent);
-		}
-		+ * {
-			margin-top: 0.86em;
+	> * {
+		@include spacing.sb-responsive-margin(4, $direction: block-end);
+		margin-block-start: 0;
+		&:last-child {
+			margin-block-end: 0;
 		}
 	}
-	// TODO: These styles are intended to be aligned with the ones in the
-	// Heading component (with added spacing rules). These could probably be
-	// abstracted into a mixin or something.
-	h1,
-	h2 {
-		margin-top: 1.95em;
-		font-size: tokens.$size-subtitle;
-		line-height: tokens.$lead-title;
+	// Prose content probably should never contain the H1, but in case it does...
+	:is(h1, h2) {
+		@include spacing.sb-responsive-margin(8, $direction: block-start);
+		@include spacing.sb-responsive-margin(4, $direction: block-end);
+		@extend .sb-heading-l;
 	}
 	h3 {
-		margin-top: 1.72em;
-		font-size: tokens.$size-pullquote;
-		line-height: tokens.$lead-title;
+		@include spacing.sb-responsive-margin(6, $direction: block-start);
+		@include spacing.sb-responsive-margin(4, $direction: block-end);
+		@extend .sb-heading-m;
 	}
 	h4 {
-		margin-top: 1.52em;
-		font-size: tokens.$size-small-subtitle;
-		line-height: tokens.$lead-title;
-	}
-	h5,
-	h6 {
-		@include typography.all-caps;
-		line-height: tokens.$lead-solid;
-		letter-spacing: tokens.$tracking-wide;
 	}
 	h5 {
-		margin-top: 1.34em;
-		font-size: tokens.$size-byline;
 	}
-	h6 {
-		margin-top: 1.18em;
-		font-size: tokens.$size-body;
+	:is(ol, ul) {
+		@extend .sb-list;
 	}
-	dl {
+	ol {
+		@extend .sb-list--numbered;
+	}
+	ul {
+		@extend .sb-list--bulleted;
 	}
 	dt {
-		font-weight: 700;
+		font-weight: bolder;
 	}
-	a {
-		position: relative;
-		z-index: tokens.$layer-default;
+	abbr {
+		cursor: help;
 	}
 }
+
+// @use "tokens.web" as tokens;
+// @use "mixins/typography";
+// @use "mixins/theme";
+// @use "mixins/media";
+//
+// .sb-prose {
+// 	@include typography.oldstyle-figures;
+// 	@include typography.force-wrap;
+// 	font-family: tokens.$font-body;
+// 	line-height: tokens.$lead-default;
+// 	> * + * {
+// 		margin-top: 1.52em;
+// 	}
+// 	> :first-child {
+// 		margin-top: 0;
+// 	}
+// 	> :last-child {
+// 		margin-bottom: 0;
+// 	}
+// 	h1,
+// 	h2,
+// 	h3,
+// 	h4,
+// 	h5,
+// 	h6 {
+// 		@include typography.heading;
+// 		color: var(--theme-accent);
+// 		font-style: italic;
+// 		@supports (-webkit-text-stroke-width: 1px) {
+// 			color: transparent;
+// 			text-shadow: 2px 2px var(--theme-accent-mod);
+// 			-webkit-text-stroke-width: 1px;
+// 			-webkit-text-stroke-color: var(--theme-accent);
+// 		}
+// 		+ * {
+// 			margin-top: 0.86em;
+// 		}
+// 	}
+// 	// TODO: These styles are intended to be aligned with the ones in the
+// 	// Heading component (with added spacing rules). These could probably be
+// 	// abstracted into a mixin or something.
+// 	h1,
+// 	h2 {
+// 		margin-top: 1.95em;
+// 		font-size: tokens.$size-subtitle;
+// 		line-height: tokens.$lead-title;
+// 	}
+// 	h3 {
+// 		margin-top: 1.72em;
+// 		font-size: tokens.$size-pullquote;
+// 		line-height: tokens.$lead-title;
+// 	}
+// 	h4 {
+// 		margin-top: 1.52em;
+// 		font-size: tokens.$size-small-subtitle;
+// 		line-height: tokens.$lead-title;
+// 	}
+// 	h5,
+// 	h6 {
+// 		@include typography.all-caps;
+// 		line-height: tokens.$lead-solid;
+// 		letter-spacing: tokens.$tracking-wide;
+// 	}
+// 	h5 {
+// 		margin-top: 1.34em;
+// 		font-size: tokens.$size-byline;
+// 	}
+// 	h6 {
+// 		margin-top: 1.18em;
+// 		font-size: tokens.$size-body;
+// 	}
+// 	dl {
+// 	}
+// 	dt {
+// 		font-weight: 700;
+// 	}
+// 	a {
+// 		position: relative;
+// 		z-index: tokens.$layer-default;
+// 	}
+// }

@@ -1,4 +1,7 @@
+@use "settings";
+@use "../helpers/colors";
 @use "../helpers/links";
+@use "../helpers/typography";
 
 // Default link
 .sb-link {
@@ -8,4 +11,9 @@
 // Default link without visited style
 .sb-link-no-visited {
 	@include links.sb-link($visited-style: false);
+}
+
+// CTA link
+.sb-cta-link {
+	@include links.sb-link-cta($visited-style: false);
 }

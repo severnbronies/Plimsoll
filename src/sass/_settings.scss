@@ -59,13 +59,14 @@ $sb-light-color-palette: (
 	"focus-background": map.get($sb-color-palette, "accessibility-yellow"),
 	"button-text": white,
 	"button-background": map.get($sb-color-palette, "brand-secondary"),
+	"banner-background":
+		color.change(map.get($sb-color-palette, "brand-primary"), $lightness: 96%),
 );
 
 // Dark mode colour palette
 // If a key is missing from here it will continue to use light mode version
 $sb-dark-color-palette: (
 	"page-background": map.get($sb-color-palette, "brand-tertiary"),
-	"furniture": hsl(0, 0%, 73%),
 	"text": hsl(259, 14%, 69%),
 	"text-emphasised": white,
 	"text-deemphasised": hsl(259, 14%, 22%),
@@ -80,6 +81,8 @@ $sb-dark-color-palette: (
 	"highlight-background": map.get($sb-color-palette, "brand-primary"),
 	"button-text": map.get($sb-color-palette, "brand-tertiary"),
 	"button-background": map.get($sb-color-palette, "brand-light"),
+	"banner-background":
+		color.change(map.get($sb-color-palette, "brand-primary"), $lightness: 4%),
 );
 
 // $color-primary-light: hsl(259, 67%, 90%);
@@ -136,6 +139,10 @@ $sb-font-sizes: (
 		null: (
 			font-size: 14px,
 			line-height: 22px,
+		),
+		medium: (
+			font-size: 16px,
+			line-height: 24px,
 		),
 	),
 	body: (
