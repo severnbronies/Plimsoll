@@ -1,12 +1,19 @@
-@use "tokens.web" as tokens;
-@use "mixins/typography";
+@use "settings";
+@use "helpers/colors";
+@use "helpers/spacing";
+@use "helpers/typography";
 
 .sb-empty {
-	padding: 8%;
+	@include spacing.sb-responsive-padding(8);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: colors.sb-color(text-emphasised);
+	background-color: colors.sb-color(shade-subtle);
 	text-align: center;
 	&__emoji {
-		@include typography.responsive-size(10vw, 2.5rem, 5rem);
-		margin-bottom: 1rem;
+		@include spacing.sb-responsive-padding(4, $direction: block-end);
+		@include typography.sb-font-size(title);
 	}
 	&__body {
 	}
