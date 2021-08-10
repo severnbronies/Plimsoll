@@ -18,6 +18,7 @@
 	color: colors.sb-color(link);
 	@if $underline {
 		text-decoration: underline;
+		text-underline-offset: 0.25em;
 	} @else {
 		text-decoration: none;
 	}
@@ -48,7 +49,7 @@
 	letter-spacing: 0.05em;
 	&::before {
 		content: "";
-		width: $dash-size;
+		inline-size: $dash-size;
 		border-block-end: $dash-stroke solid colors.sb-color(link);
 		position: absolute;
 		inset-inline-start: 0;

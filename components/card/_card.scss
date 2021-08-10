@@ -1,25 +1,25 @@
-@use "tokens.web" as tokens;
-@use "mixins/helpers";
-@use "mixins/theme";
-@use "mixins/typography";
+@use "settings";
+@use "helpers/colors";
+@use "helpers/links";
+@use "helpers/spacing";
+@use "helpers/theme";
 
 .sb-card {
-	@include theme.shade;
-	margin-top: tokens.$card-padding;
-	padding: tokens.$card-padding;
-	position: relative;
+	$self: &;
+	@include theme.sb-shade($color: colors.sb-color(shade-subtle));
 	&__image {
-		margin-top: 0 - (tokens.$card-padding * 2);
 	}
 	&__inner {
-		margin-top: tokens.$card-padding;
-		padding: tokens.$card-padding;
-		background-color: var(--theme-background);
+		@include spacing.sb-responsive-padding(3);
+	}
+	&__body {
+		@include spacing.sb-responsive-padding(3);
+		background-color: colors.sb-color(page-background);
 	}
 	&__heading {
+		@include spacing.sb-responsive-margin(3, $direction: block-end);
 	}
 	&__link {
-		@include theme.default-link(var(--theme-accent), var(--theme-accent-mod));
-		@include theme.extend-link;
+		@include links.sb-link($visited-style: true, $underline: false);
 	}
 }

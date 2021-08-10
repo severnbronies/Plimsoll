@@ -1,8 +1,7 @@
 {% from '@components/image/macro.twig' import sbImage %}
-{% from '@components/heading/macro.twig' import sbHeading %}
 {% from '@components/prose/macro.twig' import sbProse %}
 
-<div
+<article
     data-module="sb-card"
     class="sb-card {%- if params.classes %} {{ params.classes }}{% endif %}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
@@ -12,19 +11,16 @@
         </div>
     {%- endif %}
     <div class="sb-card__inner">
-    	{% set headingHtml %}
-    		<a class="sb-card__link" href="{{ params.href }}">
-                {{ params.title }}
-            </a>
-    	{% endset %}
-    	{{ sbHeading({
-    		classes: 'sb-card__heading',
-	    	hierarchy: 5,
-	    	element: 'h3',
-	    	html: headingHtml
-	    }) }}
-        {{ sbProse({
-	        html: params.content
-	    }) }}
+        <div class="sb-card__body">
+        	{% set headingHtml %}
+        		<a class="sb-card__link" href="{{ params.href }}">
+                    {{ params.title }}
+                </a>
+        	{% endset %}
+        	<h3 class="sb-heading-m sb-card__heading">{{ headingHtml }}</h3>
+            {{ sbProse({
+    	        html: params.content
+    	    }) }}
+        </div>
     </div>
-</div>
+</article>
