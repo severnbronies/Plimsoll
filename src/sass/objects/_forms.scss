@@ -4,11 +4,11 @@
 @use "helpers/typography";
 
 .sb-form {
-	@include spacing.sb-responsive-margin(6, $direction: block-end);
+	@include spacing.sb-responsive-margin(9, $direction: block-end);
 }
 
 .sb-form-row {
-	@include spacing.sb-responsive-margin(3, $direction: block-end);
+	@include spacing.sb-responsive-margin(6, $direction: block-end);
 }
 
 .sb-form-label {

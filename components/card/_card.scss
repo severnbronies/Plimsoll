@@ -5,7 +5,7 @@
 @use "helpers/theme";
 
 .sb-card {
-	$self: &;
+	@include spacing.sb-responsive-margin(6, $direction: block-end);
 	@include theme.sb-shade($color: colors.sb-color(shade-subtle));
 	&__image {
 	}
