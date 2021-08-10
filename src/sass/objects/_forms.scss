@@ -1,0 +1,23 @@
+@use "settings";
+@use "helpers/colors";
+@use "helpers/spacing";
+@use "helpers/typography";
+
+.sb-form {
+	@include spacing.sb-responsive-margin(6, $direction: block-end);
+}
+
+.sb-form-row {
+	@include spacing.sb-responsive-margin(3, $direction: block-end);
+}
+
+.sb-form-label {
+	@include typography.sb-font-stack(body, $weight: medium);
+	@include spacing.sb-responsive-margin(1, $direction: block-end);
+	display: block;
+	color: colors.sb-color(text-emphasised);
+	&__optional {
+		@include typography.sb-font-weight(body, $weight: regular);
+		color: colors.sb-color(text);
+	}
+}

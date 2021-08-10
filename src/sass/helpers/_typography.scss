@@ -31,12 +31,20 @@
 	$stack-map: map.get(settings.$sb-font-stacks, $stack);
 	font-family: map.get($stack-map, "stack") if($important, !important, null);
 	@if $weight {
-		@if map.has-key($stack-map, $weight) {
-			font-weight: map.get($stack-map, $weight)
-				if($important, !important, null);
-		} @else {
-			font-weight: $weight if($important, !important, null);
-		}
+		@include sb-font-weight($stack, $weight, $important);
+	}
+}
+
+// Font stack weights
+@mixin sb-font-weight($stack, $weight, $important: false) {
+	@if not map.has-key(settings.$sb-font-stacks, $stack) {
+		@error "Unknown font stack `#{$stack}` - expected a family from the font families map.";
+	}
+	$stack-map: map.get(settings.$sb-font-stacks, $stack);
+	@if map.has-key($stack-map, $weight) {
+		font-weight: map.get($stack-map, $weight) if($important, !important, null);
+	} @else {
+		font-weight: $weight if($important, !important, null);
 	}
 }
 
