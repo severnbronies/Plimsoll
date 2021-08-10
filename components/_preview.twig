@@ -1,4 +1,4 @@
-{% set googleFontsUrl = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@500;900&display=swap" %}
+{% set webfontUrl = '/css/webfonts.css' | path %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="sb-template no-js">
 	<head>
@@ -6,8 +6,8 @@
 		<script>var w = document.documentElement;w.classList.remove('no-js');w.classList.add('js');</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" media="all" href="{{ '/css/all.css' | path }}">
-		<link rel="stylesheet" media="print" href="{{ googleFontsUrl }}" onload="this.media='all'">
-		<noscript><link rel="stylesheet" media="all" href="{{ googleFontsUrl }}"></noscript>
+		<link rel="stylesheet" media="print" href="{{ webfontUrl }}" onload="this.media='all'">
+		<noscript><link rel="stylesheet" media="all" href="{{ webfontUrl }}"></noscript>
 		<title>Preview</title>
 	</head>
 	<body class="sb-template__body">
