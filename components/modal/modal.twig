@@ -1,10 +1,23 @@
 {% from "@components/modal/macro.twig" import sbModal %}
+{% from "@components/prose/macro.twig" import sbProse %}
 
 <button type="button" data-micromodal-trigger="modal-1">Open modal</button>
 
-{% set modalContent %}
+{% set proseContent %}
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, soluta quia? Repellat in quam sit molestias vel non deleniti voluptatibus amet vitae, qui odio. Nobis, molestias? Consectetur, facilis aut repudiandae?</p>
 	<img alt="" src="//placeponi.es/300">
+    <p>Officia pariatur incididunt ea nostrud proident labore sit voluptate incididunt ad dolore ut. Voluptate ex ad ipsum ea laborum in id dolor magna. Sit consectetur consectetur Lorem eiusmod ut. Culpa veniam magna non culpa consequat nisi. Non occaecat cillum reprehenderit non adipisicing sunt. Pariatur exercitation ipsum laborum aliquip consectetur amet fugiat. Et magna veniam cupidatat ullamco esse irure esse aliqua duis aliquip.</p>
+    <p>Eiusmod Lorem nostrud fugiat qui. Ad ex excepteur proident velit. Adipisicing incididunt excepteur nulla ad ea est ullamco anim et. Nostrud consequat anim in aliquip occaecat. In amet eu id commodo velit occaecat sit amet commodo magna. Voluptate sit eu minim mollit incididunt aute elit quis duis amet laboris aliqua. Dolore dolore ipsum voluptate nisi minim laboris magna reprehenderit cillum mollit cupidatat aute do.</p>
+    <p>Irure minim aliqua consequat id qui non duis voluptate esse. Quis adipisicing dolore laborum officia elit do. Tempor enim non dolor exercitation esse laboris non consectetur nostrud excepteur mollit esse esse in. Aliqua culpa minim consequat mollit ad reprehenderit sit. Laborum est dolor ex pariatur officia. Reprehenderit exercitation cupidatat incididunt do amet occaecat esse quis et ut.</p>
+    <p>Dolor voluptate ut elit sunt adipisicing quis ea ipsum incididunt sit. Sint commodo ex deserunt deserunt. Mollit voluptate id ea ullamco quis exercitation quis ea.</p>
+    <p>Dolore proident sit culpa in nostrud. Sunt eu aliqua esse dolor officia Lorem consectetur velit aliqua exercitation anim est. Occaecat nulla cillum aliquip aute id id. Anim eu exercitation sunt mollit incididunt ullamco laboris voluptate commodo in. Consequat consequat esse cupidatat exercitation ullamco id in sit dolore exercitation Lorem.</p>
+    <p>Ullamco cupidatat ex aute irure. Elit tempor esse cillum cillum nisi consectetur incididunt. Exercitation laborum tempor commodo reprehenderit consequat irure tempor ullamco id ex ullamco minim laborum. Amet laborum sint reprehenderit elit magna nisi deserunt sunt fugiat ex pariatur ullamco. Aliqua est ea mollit mollit enim ipsum ad ad est duis amet nostrud ex. Nostrud aliqua reprehenderit pariatur Lorem voluptate adipisicing nisi cupidatat nisi esse labore irure. Amet excepteur anim consectetur ex quis ex magna veniam occaecat ut cupidatat.</p>
+{% endset %}
+
+{% set modalContent %}
+    {{ sbProse({
+        html: proseContent
+    }) }}
 {% endset %}
 
 {{ sbModal({

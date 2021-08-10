@@ -2,8 +2,14 @@
 
 @use "sass:map";
 
-// Get color from palette
-@function sb-color($key, $dark: false) {
+// Get color from palette as CSS custom property
+@function sb-color($key, $fallback-dark: false) {
+	$color: sb-color-raw($key, $dark: $fallback-dark);
+	@return var(--sb-#{$key}, #{$color});
+}
+
+// Get raw color from palette
+@function sb-color-raw($key, $dark: false) {
 	$palette: map.deep-merge(
 		settings.$sb-color-palette,
 		settings.$sb-light-color-palette
@@ -15,7 +21,7 @@
 		@error "Unknown color `#{$key}` - expected a color from the configured color palette.";
 	}
 	$color: map.get($palette, $key);
-	@return var(--sb-#{$key}, #{$color});
+	@return $color;
 }
 
 // Text selection highlight colour

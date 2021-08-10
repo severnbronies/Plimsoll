@@ -1,7 +1,14 @@
-@use "tokens.web" as tokens;
+@use "settings";
+@use "helpers/colors";
+@use "helpers/layout";
+@use "helpers/links";
+@use "helpers/media-queries";
+@use "helpers/reset";
+@use "helpers/spacing";
+@use "helpers/theme";
+@use "helpers/typography";
+
 @use "sass:color";
-@use "mixins/helpers";
-@use "mixins/theme";
 
 .sb-modal {
 	$self: &;
@@ -9,89 +16,135 @@
 	&[aria-hidden="false"] {
 		display: block;
 	}
+	// If no JS available, hide controls that open modals
 	@at-root html.no-js [data-micromodal-trigger] {
 		display: none;
 	}
+	// Containing element, including the backdrop
 	&__overlay {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-end;
 		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		z-index: tokens.$layer-modal;
-		background-color: color.change(tokens.$color-primary-dark, $alpha: 0.91);
-		animation-name: modalBackdropFadeIn;
+		inset: 0;
+		z-index: layout.sb-layer(modal);
+		animation-name: sbModalBackdropFadeIn;
 		animation-duration: 0.3333s;
 		animation-timing-function: linear;
+		background-color: color.change(
+			colors.sb-color-raw(page-background, $dark: false),
+			$alpha: 0.7
+		);
+		backdrop-filter: blur(20px);
+		@include media-queries.sb-dark-mode {
+			background-color: color.change(
+				colors.sb-color-raw(page-background, $dark: true),
+				$alpha: 0.3
+			);
+		}
+		@include media-queries.sb-mq($from: medium) {
+			align-items: center;
+		}
 	}
+	// The modal itself
 	&__container {
 		position: relative;
 		&::before {
-			@include theme.shade;
+			@include theme.sb-shade($color: colors.sb-color(shade-subtle));
 			content: "";
-			width: 100%;
-			height: 100%;
+			block-size: 100%;
+			inline-size: 100%;
 			position: absolute;
-			top: 1em;
-			left: 1em;
+			inset-block-start: -1rem;
+			inset-inline-start: 0;
+			@include media-queries.sb-mq($from: medium) {
+				inset-block-start: 1rem;
+				inset-inline-start: 1rem;
+			}
 			#{$self}[aria-hidden="false"] & {
-				animation-name: modalWipeIn;
+				animation-name: sbModalWipeInMobile;
 				animation-duration: 0.3333s;
 				animation-timing-function: linear;
+				@include media-queries.sb-mq($from: medium) {
+					animation-name: sbModalWipeIn;
+				}
 			}
 		}
 	}
 	&__inner {
 		position: relative;
-		border: 1px solid var(--theme-accent-mod);
-		color: var(--theme-text);
-		background-color: var(--theme-background);
+		max-block-size: 80vh;
+		border-width: 0;
+		border-block-start-width: 1px;
+		border-style: solid;
+		border-color: colors.sb-color(shade-subtle);
+		color: colors.sb-color(text);
+		background-color: colors.sb-color(page-background);
+		overflow-y: auto;
+		@include media-queries.sb-mq($from: medium) {
+			border-width: 1px;
+		}
 		#{$self}[aria-hidden="false"] & {
-			animation-name: modalWipeIn;
+			animation-name: sbModalWipeInMobile;
 			animation-duration: 0.3333s;
 			animation-timing-function: linear;
 			animation-delay: 0.25s;
 			animation-fill-mode: both;
+			@include media-queries.sb-mq($from: medium) {
+				animation-name: sbModalWipeIn;
+			}
+		}
+	}
+	&__header {
+		@include spacing.sb-responsive-padding(4);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-end;
+		position: sticky;
+		inset-block-start: 0;
+		z-index: layout.sb-layer(default);
+		background-color: color.change(
+			colors.sb-color-raw(page-background, $dark: false),
+			$alpha: 0.7
+		);
+		backdrop-filter: blur(40px);
+		@include media-queries.sb-dark-mode {
+			background-color: color.change(
+				colors.sb-color-raw(page-background, $dark: true),
+				$alpha: 0.3
+			);
 		}
 	}
 	&__heading {
-		font-style: italic;
+		@include spacing.sb-responsive-margin(0);
+		@include spacing.sb-responsive-margin(3, $direction: inline-end);
+		@include typography.sb-font-stack(heading, $weight: bold);
+		@include typography.sb-font-size(body-large);
+		color: colors.sb-color(text-emphasised);
 	}
 	&__close {
-		@include helpers.button-reset;
-		display: block;
-		padding: 1em;
-		position: absolute;
-		top: 0;
-		right: 0;
-		border: 1px solid var(--theme-accent-mod);
-		border-top: 0;
-		border-right: 0;
-		line-height: 1;
-		> * {
-			pointer-events: none;
-		}
-		&:hover {
-			background-color: var(--theme-accent-mod);
-		}
-	}
-	&__close-icon {
-		width: 1em;
-		height: 1em;
-		fill: currentColor;
+		@include reset.sb-reset-button;
+		@include links.sb-link-cta($visited-style: false);
 	}
 	&__body {
-		max-width: 30em;
-		max-height: 80vh;
-		padding: 1em 4em 1em 1em;
-		overflow-y: auto;
+		@include spacing.sb-responsive-padding(4);
+		@include media-queries.sb-mq($from: medium) {
+			max-inline-size: 30em;
+		}
 	}
 }
 
-@keyframes modalWipeIn {
+@keyframes sbModalWipeInMobile {
+	0% {
+		clip-path: polygon(0 100%, 0 100%, 100% 100%, 100% 100%);
+	}
+	100% {
+		clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+	}
+}
+
+@keyframes sbModalWipeIn {
 	0% {
 		clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
 	}
@@ -100,7 +153,7 @@
 	}
 }
 
-@keyframes modalBackdropFadeIn {
+@keyframes sbModalBackdropFadeIn {
 	0% {
 		opacity: 0;
 	}
