@@ -28,7 +28,6 @@
                     </button>
                     {% set modalContent %}
                         {% set modalDetailsInner %}
-                            <h4 class="sb-heading-s">Address</h4>
                             <p>{{ loc.address | split(',') | join('<br>') }}</p>
                             <ul class="sb-list">
                                 <li><a class="sb-link-no-visited" href="https://www.google.com/maps/place/{{ loc.latitude }},{{ loc.longitude }}" rel="noindex noreferrer noopener" target="_blank">View on Google Maps</a></li>
@@ -36,12 +35,12 @@
                             </ul>
                             {%- if loc.travel_info %}
                                 <hr class="sb-rule sb-rule--visible sb-rule--l">
-                                <h4 class="sb-heading-s">Travelling to {{ loc.name }}</h4>
+                                <h3 class="sb-heading-s">Travelling to {{ loc.name }}</h3>
                                 {{ loc.travel_info }}
                             {%- endif %}
                             {%- if loc.accessibility_info %}
                                 <hr class="sb-rule sb-rule--visible sb-rule--l">
-                                <h4 class="sb-heading-s">Accessibility at {{ loc.name }}</h4>
+                                <h3 class="sb-heading-s">Accessibility at {{ loc.name }}</h3>
                                 {{ loc.accessibility_info }}
                             {%- endif %}
                         {% endset %}
