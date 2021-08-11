@@ -1,3 +1,8 @@
+@use "colors";
+
+@use "sass:color";
+
+// Patterning
 @mixin sb-shade($color, $size: 0.25rem, $direction: "vertical") {
 	@if $direction == "horizontal" {
 		background: linear-gradient(135deg, $color 25%, transparent 25%)
@@ -19,4 +24,14 @@
 			linear-gradient(-45deg, $color 25%, transparent 25%) ($size * -0.5) 0;
 	}
 	background-size: $size $size;
+}
+
+// Frosted glass
+@mixin sb-frosted($color, $dark: false, $blur: 40px) {
+	$background-color: colors.sb-color-raw($color, $dark: $dark);
+	background-color: color.change($background-color, $alpha: 0.9);
+	@supports (backdrop-filter: blur(0px)) {
+		background-color: color.change($background-color, $alpha: 0.3);
+		backdrop-filter: blur(#{$blur});
+	}
 }

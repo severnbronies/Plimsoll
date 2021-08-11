@@ -15,6 +15,6 @@
 		@include spacing.sb-responsive-margin(4, $direction: block);
 	}
 	&--visible {
-		border-block-end: settings.$sb-hr-width solid colors.sb-color(furniture);
+		border-block-end: settings.$sb-hr-width solid colors.sb-color(shade-subtle);
 	}
 }

@@ -8,8 +8,6 @@
 @use "helpers/theme";
 @use "helpers/typography";
 
-@use "sass:color";
-
 .sb-modal {
 	$self: &;
 	display: none;
@@ -22,6 +20,12 @@
 	}
 	// Containing element, including the backdrop
 	&__overlay {
+		$overlay-blur: 20px;
+		@include theme.sb-frosted(
+			page-background,
+			$dark: false,
+			$blur: $overlay-blur
+		);
 		display: flex;
 		justify-content: center;
 		align-items: flex-end;
@@ -31,15 +35,11 @@
 		animation-name: sbModalBackdropFadeIn;
 		animation-duration: 0.3333s;
 		animation-timing-function: linear;
-		background-color: color.change(
-			colors.sb-color-raw(page-background, $dark: false),
-			$alpha: 0.7
-		);
-		backdrop-filter: blur(20px);
 		@include media-queries.sb-dark-mode {
-			background-color: color.change(
-				colors.sb-color-raw(page-background, $dark: true),
-				$alpha: 0.3
+			@include theme.sb-frosted(
+				page-background,
+				$dark: true,
+				$blur: $overlay-blur
 			);
 		}
 		@include media-queries.sb-mq($from: medium) {
@@ -49,6 +49,10 @@
 	// The modal itself
 	&__container {
 		position: relative;
+		@include media-queries.sb-mq($from: medium) {
+			inline-size: 90%;
+			max-inline-size: 36em;
+		}
 		&::before {
 			@include theme.sb-shade($color: colors.sb-color(shade-subtle));
 			content: "";
@@ -96,7 +100,12 @@
 		}
 	}
 	&__header {
+		--gradient-direction: to right;
+		@at-root [dir="rtl"] & {
+			--gradient-direction: to left;
+		}
 		@include spacing.sb-responsive-padding(4);
+		@include theme.sb-frosted(page-background, $dark: false);
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -104,16 +113,8 @@
 		position: sticky;
 		inset-block-start: 0;
 		z-index: layout.sb-layer(default);
-		background-color: color.change(
-			colors.sb-color-raw(page-background, $dark: false),
-			$alpha: 0.7
-		);
-		backdrop-filter: blur(40px);
 		@include media-queries.sb-dark-mode {
-			background-color: color.change(
-				colors.sb-color-raw(page-background, $dark: true),
-				$alpha: 0.3
-			);
+			@include theme.sb-frosted(page-background, $dark: true);
 		}
 	}
 	&__heading {
@@ -129,9 +130,6 @@
 	}
 	&__body {
 		@include spacing.sb-responsive-padding(4);
-		@include media-queries.sb-mq($from: medium) {
-			max-inline-size: 30em;
-		}
 	}
 }
 

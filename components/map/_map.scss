@@ -1,58 +1,55 @@
-@use "tokens.web" as tokens;
-@use "mixins/helpers";
-@use "mixins/theme";
-@use "mixins/typography";
+@use "settings";
+@use "helpers/colors";
+@use "helpers/reset";
+@use "helpers/spacing";
+@use "helpers/links";
+@use "helpers/theme";
+@use "helpers/typography";
 
 .sb-map {
-	@include theme.shade;
-	$gutter: 1em;
-	margin-top: $gutter * 2;
-	padding: $gutter;
+	@include theme.sb-shade(colors.sb-color(shade-subtle));
 	&__map-container {
-		margin-top: 0 - ($gutter * 2);
-		margin-bottom: $gutter;
-		padding-top: 56.25%;
+		padding-block-start: 56.25%;
 		position: relative;
 	}
 	&__map {
-		width: 100%;
-		height: 100%;
+		block-size: 100%;
+		inline-size: 100%;
 		position: absolute;
-		top: 0;
-		left: 0;
+		inset-block-start: 0;
+		inset-inline-start: 0;
 	}
 	&__list {
-		margin: 0;
-		padding: 0;
-		list-style-type: none;
-		font-size: tokens.$size-small;
+		@include reset.sb-reset-list;
+		@include spacing.sb-responsive-padding(3);
 		counter-reset: locationList;
 	}
 	&__list-item {
-		$pinIconWidth: 28px;
-		padding: $gutter;
-		padding-left: calc(#{$pinIconWidth} + 1em + #{$gutter});
+		$pin-width: 1.75rem;
+		$pin-offset: $pin-width + spacing.sb-spacing(3);
+		@include spacing.sb-responsive-padding(3);
+		padding-inline-start: $pin-offset + spacing.sb-spacing(3);
+		background-color: colors.sb-color(page-background);
 		counter-increment: locationList;
-		background-color: var(--theme-background);
 		& + & {
-			margin-top: $gutter;
+			@include spacing.sb-responsive-margin(3, $direction: block-start);
 		}
 		&::before {
 			// These styles are intended to match those of the custom pins on the Google Map. Don't change these unless you're changing those too.
-			@include typography.heading;
+			@include typography.sb-font-stack(heading, $weight: bold);
 			content: counter(locationList);
 			display: block;
-			width: $pinIconWidth;
-			height: 35px;
-			margin-left: calc(0px - (#{$pinIconWidth} + 1em));
-			padding-top: 8px;
-			float: left;
-			clear: left;
+			inline-size: $pin-width;
+			block-size: 35px;
+			margin-inline-start: $pin-offset * -1;
+			padding-block-start: 8px;
+			float: inline-start;
+			clear: inline-start;
 			position: relative;
-			top: -7px;
-			color: tokens.$color-white;
+			inset-block-start: -3px;
+			color: white;
 			background-image: url("../images/google-map-pin.png");
-			background-size: $pinIconWidth 35px;
+			background-size: $pin-width 35px;
 			background-repeat: no-repeat;
 			font-size: 16px;
 			text-align: center;
@@ -61,24 +58,36 @@
 		}
 		&--highlight {
 			&::before {
-				filter: drop-shadow(0 0 0.25em var(--theme-accent));
+				filter: drop-shadow(0 0 0.25rem colors.sb-color(link));
 			}
 		}
 	}
 	&__list-name {
-		margin-bottom: 0.25em;
-		color: var(--theme-accent);
+		@include spacing.sb-responsive-margin(0);
+		@include spacing.sb-responsive-margin(2, $direction: block-end);
+		@include typography.sb-font-stack(heading, $weight: bold);
+		@include typography.sb-font-size(body-large);
+		color: colors.sb-color(text-emphasised);
+	}
+	&__list-address {
+		@include spacing.sb-responsive-margin(2, $direction: block-end);
 	}
 	&__list-more {
-		@include helpers.button-reset;
-		@include typography.all-caps;
-		margin-top: $gutter * 0.5;
-		padding: 0.25em 0.5em;
-		border: 2px solid var(--theme-accent-mod);
-		background-color: var(--theme-background);
-		font-size: tokens.$size-small;
-		&:hover {
-			background-color: var(--theme-accent-mod);
-		}
+		@include reset.sb-reset-button;
+		@include links.sb-link-cta($visited-style: false);
 	}
 }
+
+// 	&__list-more {
+// 		@include helpers.button-reset;
+// 		@include typography.all-caps;
+// 		margin-top: $gutter * 0.5;
+// 		padding: 0.25em 0.5em;
+// 		border: 2px solid var(--theme-accent-mod);
+// 		background-color: var(--theme-background);
+// 		font-size: tokens.$size-small;
+// 		&:hover {
+// 			background-color: var(--theme-accent-mod);
+// 		}
+// 	}
+// }
