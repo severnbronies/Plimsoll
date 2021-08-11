@@ -9,8 +9,8 @@
 	&__header {
 		@include spacing.sb-responsive-margin(3, $direction: block-end);
 		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
+		flex-direction: row;
+		align-items: flex-end;
 		position: relative;
 		&::after {
 			@include theme.sb-shade(
@@ -25,17 +25,11 @@
 			inset-block-start: 100%;
 			inset-inline-start: 0;
 		}
-		@include media-queries.sb-mq($from: medium) {
-			flex-direction: row;
-			align-items: flex-end;
-		}
 	}
 	&__heading {
 		@include spacing.sb-responsive-padding(2, $direction: block);
+		@include spacing.sb-responsive-padding(3, $direction: inline);
 		color: colors.sb-color(text-emphasised);
-		@include media-queries.sb-mq($from: medium) {
-			@include spacing.sb-responsive-padding(3, $direction: inline);
-		}
 	}
 	&__icon {
 		flex-grow: 0;
@@ -43,7 +37,6 @@
 		order: -1;
 		inline-size: 20%;
 		max-inline-size: 8rem;
-		border-radius: 50%;
 	}
 	&__description {
 	}
