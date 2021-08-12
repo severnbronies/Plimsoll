@@ -1,5 +1,4 @@
 {% from "@components/modal/macro.twig" import sbModal %}
-{% from "@components/heading/macro.twig" import sbHeading %}
 {% from "@components/prose/macro.twig" import sbProse %}
 
 {% set modalId = 'Organiser-' ~ (params.name | url_encode) ~ '-Modal' %}
@@ -31,12 +30,10 @@
 	</h3>
 	{%- if params.biography %}
 		<button type="button" class="sb-organiser__more" data-micromodal-trigger="{{ modalId }}">
-			<span aria-hidden="true">Bio</span>
-			<span class="sb-sr">{{ params.name }}'s biography</span>
+			About <span class="sb-!-sr">{{ params.name }}</span>
 		</button>
 		{% set modalContent %}
 	        {% set modalDetailsInner %}
-	            <h4>About {{ params.name }}</h4>
 	        	<div class="sb-organiser__modal-image">{{ avatarHtml }}</div>
 	            <div itemprop="description">{{ params.biography }}</div>
 	        {% endset %}
@@ -46,7 +43,7 @@
 	    {% endset %}
 	    {{ sbModal({
 	        id: modalId,
-	        heading: 'Information about ' ~ params.name,
+	        heading: 'About ' ~ params.name,
 	        html: modalContent
 	    }) }}
 	{%- endif %}

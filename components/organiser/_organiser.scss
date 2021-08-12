@@ -1,50 +1,41 @@
-@use "tokens.web" as tokens;
-@use "mixins/helpers";
-@use "mixins/media";
-@use "mixins/typography";
+@use "settings";
+@use "helpers/links";
+@use "helpers/reset";
+@use "helpers/spacing";
+@use "helpers/typography";
 
 .sb-organiser {
-	$avatarSize: 3em;
-	$avatarMargin: 1em;
+	$avatar-width: 4rem;
+	$avatar-offset: $avatar-width + spacing.sb-spacing(3);
+	@include spacing.sb-responsive-margin(3, $direction: block-end);
+	@include spacing.sb-responsive-padding(3, $direction: inline);
 	display: flex;
-	padding-right: 1em;
-	padding-left: 1em;
 	flex-direction: row;
 	align-items: center;
-	& + & {
-		margin-top: $avatarMargin;
-	}
 	&__image-container {
-		flex-shrink: 0;
-		flex-grow: 0;
-		width: $avatarSize;
-		margin-right: $avatarMargin;
+		@include spacing.sb-responsive-margin(3, $direction: inline-end);
+		flex: 0 0 $avatar-width;
 		line-height: 0;
 	}
 	&__image {
-		width: 100%;
+		block-size: $avatar-width;
+		inline-size: $avatar-width;
 	}
 	&__name {
-		margin-right: 1em;
-		font-weight: 400;
+		@include spacing.sb-responsive-margin(3, $direction: inline-end);
+		@include typography.sb-font-stack(body, $weight: medium);
 	}
 	&__more {
-		@include helpers.button-reset;
-		@include typography.all-caps;
-		margin-left: auto;
-		padding: 0.25em 0.5em;
-		border: 2px solid var(--theme-accent-mod);
-		background-color: var(--theme-background);
-		font-size: tokens.$size-small;
-		&:hover {
-			background-color: var(--theme-accent-mod);
-		}
+		@include reset.sb-reset-button;
+		@include links.sb-link-cta($visited-style: false);
+		margin-inline-start: auto;
 	}
 	&__modal-image {
-		width: 100%;
-		max-width: 9em;
-		float: right;
-		clear: right;
-		margin-left: 1em;
+		@include spacing.sb-responsive-margin(3, $direction: inline-start);
+		@include spacing.sb-responsive-margin(3, $direction: block-end);
+		block-size: $avatar-width * 2;
+		inline-size: $avatar-width * 2;
+		float: inline-end;
+		clear: inline-end;
 	}
 }
