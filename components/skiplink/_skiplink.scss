@@ -1,20 +1,20 @@
-@use "tokens.web" as tokens;
-@use "mixins/a11y";
+@use "settings";
+@use "helpers/a11y";
+@use "helpers/colors";
+@use "helpers/spacing";
+@use "helpers/typography";
 
 .sb-skiplink {
-	display: inline-block;
-	padding: 0.5rem 1rem;
+	@include spacing.sb-responsive-padding(2);
+	display: block;
 	position: absolute;
-	top: -9999rem;
-	left: -9999rem;
-	z-index: tokens.$layer-overlay;
-	color: tokens.$color-black;
-	background-color: tokens.$color-accessibility;
-	font-weight: 700;
-	text-decoration: none;
+	inset-block-start: -9999rem;
+	inset-inline-start: -9999rem;
+	color: colors.sb-color(focus-text);
+	background-color: colors.sb-color(focus-background);
+	text-align: center;
 	&:focus {
-		@include a11y.focus-ring;
-		top: 0;
-		left: 1rem;
+		@include a11y.sb-focus-ring;
+		position: static;
 	}
 }
