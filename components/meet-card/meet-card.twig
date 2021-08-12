@@ -1,12 +1,38 @@
 {% from "components::meet-card/macro.twig" import sbMeetCard %}
 
 {{ sbMeetCard({
+    horizontal: true,
     image: {
-        src: '//placeponi.es/400/400/1',
-        alt: 'A pony, probably.'
+        src: '//placeponi.es/400/200',
+        alt: 'A pony, probably.',
+        width: 400,
+        height: 200
     },
     href: '#',
     name: 'Derpy Day 2020',
     location: 'Bristol',
-    date: '2020-03-01 12:00:00'
+    startDate: '2020-03-01 12:00:00',
+    extract: '<p>Ad ex laboris eu commodo laboris sit excepteur Lorem in labore Lorem. Minim tempor velit in commodo dolore ea commodo. Et enim reprehenderit occaecat quis ad enim magna. Velit sit adipisicing non magna cillum.</p>'
+}) }}
+
+{{ sbMeetCard({
+    image: {
+        src: '//placeponi.es/400/200',
+        alt: 'A pony, probably.',
+        width: 400,
+        height: 200
+    },
+    href: '#',
+    name: 'Derpy Day 2020',
+    location: 'Bristol',
+    startDate: '2020-03-01 12:00:00',
+    extract: '<p>Ad ex laboris eu commodo laboris sit excepteur Lorem in labore Lorem. Minim tempor velit in commodo dolore ea commodo. Et enim reprehenderit occaecat quis ad enim magna. Velit sit adipisicing non magna cillum.</p>'
+}) }}
+
+{{ sbMeetCard({
+    href: '#',
+    name: 'Derpy Day 2020',
+    location: 'Bristol',
+    startDate: '2020-03-01 12:00:00',
+    extract: '<p>Adipisicing anim irure in officia sunt magna amet cillum cupidatat nostrud enim sint. Exercitation voluptate sit eiusmod commodo. Ut sunt incididunt excepteur do deserunt nisi minim minim. Non proident culpa pariatur sint Lorem reprehenderit laborum deserunt est. Elit cillum dolor incididunt excepteur eu. Aliquip irure reprehenderit ullamco nostrud aute id occaecat. Elit eiusmod pariatur labore ullamco ut nulla sint labore officia incididunt enim tempor.</p>'
 }) }}

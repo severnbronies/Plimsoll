@@ -20,7 +20,6 @@ import "./vendor/basket";
 
 import Banner from "../../components/banner/banner";
 import Map from "../../components/map/map";
-import MeetDate from "../../components/meet-date/meet-date";
 import Modal from "../../components/modal/modal";
 
 function initAll(options) {
@@ -30,17 +29,13 @@ function initAll(options) {
 	// Defaults to entire document if not set
 	const scope = typeof options.scope !== "undefined" ? options.scope : document;
 
-	scope.querySelectorAll('[data-module="sb-banner"]').forEach(m => {
+	scope.querySelectorAll('[data-module="sb-banner"]').forEach((m) => {
 		new Banner(m);
 	});
 
-	scope.querySelectorAll('[data-module="sb-meet-date"]').forEach(m => {
-		new MeetDate(m);
-	});
-
-	scope.querySelectorAll('[data-module="sb-modal"]').forEach(m => {
+	scope.querySelectorAll('[data-module="sb-modal"]').forEach((m) => {
 		new Modal(m);
 	});
 }
 
-export { initAll, Banner, Map, MeetDate, Modal };
+export { initAll, Banner, Map, Modal };

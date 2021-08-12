@@ -10,10 +10,10 @@
 	&__image {
 	}
 	&__inner {
-		@include spacing.sb-responsive-padding(3);
+		@include spacing.sb-responsive-padding(4);
 	}
 	&__body {
-		@include spacing.sb-responsive-padding(3);
+		@include spacing.sb-responsive-padding(4);
 		background-color: colors.sb-color(page-background);
 	}
 	&__heading {

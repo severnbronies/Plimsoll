@@ -1,36 +1,36 @@
 {% from '@components/image/macro.twig' import sbImage %}
-{% from '@components/meet-date/macro.twig' import sbMeetDate %}
+{% from '@components/prose/macro.twig' import sbProse %}
 
 <article
     itemscope
     itemtype="http://schema.org/Event"
-    class="sb-meet-card {%- for v in params.variants %} sb-meet-card--{{ v }} {% endfor %} {%- if params.classes %} {{ params.classes }}{% endif %}"
+    class="sb-meet-card {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- if params.horizontal %} data-horizontal{% endif %}
+    {%- if params.image.src %} data-image{% endif %}
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
     {%- if params.image.src %}
         {% set imageParams = merge(params.image, {
             image: {
                 attributes: { 'itemprop': 'image' }
             },
-            classes: 'sb-meet-card__image',
-            variants: ['cover']
+            classes: 'sb-meet-card__image'
         }) %}
         {{ sbImage(imageParams) }}
-    {%- else %}
-        <div class="sb-meet-card__image" aria-hidden="true"></div>
     {%- endif %}
     <header class="sb-meet-card__inner">
         <div class="sb-meet-card__body">
-            <h3 class="sb-meet-card__title" itemprop="name">
+            <h3 class="sb-heading-m sb-meet-card__title">
                 <a class="sb-meet-card__link" href="{{ params.href }}" itemprop="url">
-                    {{ params.name }}
+                    <span itemprop="name">{{ params.name }}</span>
                 </a>
             </h3>
             <div class="sb-meet-card__location" itemprop="location">{{ params.location }}</div>
-        </div>
-        <div class="sb-meet-card__date">
-            {{ sbMeetDate({
-                startDate: params.date,
-                attributes: { 'itemprop': 'startDate' }
+            <time class="sb-meet-card__date" itemprop="startDate">
+                {{ params.startDate | date('l, jS F Y; H:ia') }}
+            </time>
+            {{ sbProse({
+                classes: "sb-meet-card__extract",
+                html: params.extract
             }) }}
         </div>
     </header>
