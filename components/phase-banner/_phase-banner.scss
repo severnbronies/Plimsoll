@@ -1,22 +1,24 @@
-@use "tokens.web" as tokens;
-@use "mixins/helpers";
-@use "mixins/layout";
-@use "mixins/a11y";
+@use "settings";
+@use "helpers/a11y";
+@use "helpers/colors";
+@use "helpers/layout";
+@use "helpers/reset";
+@use "helpers/spacing";
+@use "helpers/typography";
 
 .sb-phase-banner {
 	$self: &;
-	$bannerPadding: 1rem;
-	$arrowSize: 0.8rem;
-	$arrowMargin: 1.5rem;
-	color: var(--theme-text);
-	background-color: var(--theme-background);
-	border-bottom: 0.5em solid var(--theme-accent-mod);
+	$arrow-width: 0.8rem;
+	$arrow-offset: $arrow-width + spacing.sb-spacing(3);
+	color: colors.sb-color(text);
+	background-color: colors.sb-color(page-background);
+	border-block-end: settings.$sb-hr-width solid colors.sb-color(brand-primary);
 	&__inner {
-		@include layout.container;
+		@include layout.sb-width-container;
 		#{$self}--interactive & {
-			@include helpers.details-no-arrow;
+			@include reset.sb-reset-details-arrow;
 			> summary:focus {
-				@include a11y.focus-ring;
+				@include a11y.sb-focus-ring;
 			}
 			&[open] {
 				#{$self}__summary {
@@ -28,40 +30,42 @@
 		}
 	}
 	&__summary {
+		@include spacing.sb-responsive-padding(4, $direction: block);
+		@include spacing.sb-responsive-padding(4, $direction: inline-end);
 		display: inline-block;
-		padding: ($bannerPadding * 0.5) $bannerPadding;
 		#{$self}--interactive & {
-			padding-left: ($bannerPadding + $arrowMargin);
+			padding-inline-start: $arrow-offset;
 			cursor: pointer;
 			&::before {
 				content: "";
 				display: inline-block;
-				width: $arrowSize;
-				height: $arrowSize;
-				margin-top: 0.2em;
-				margin-left: 0 - $arrowMargin;
-				float: left;
-				clear: left;
-				background-color: var(--theme-accent);
+				width: $arrow-width;
+				height: $arrow-width;
+				margin-block-start: 0.2rem;
+				margin-inline-start: $arrow-offset * -1;
+				float: inline-start;
+				clear: inline-start;
+				background-color: colors.sb-color(text-emphasised);
 				clip-path: polygon(0 0, 100% 50%, 0 100%);
 			}
 		}
 	}
 	&__summary-heading,
 	&__summary-subheading {
+		@include typography.sb-font-stack(body, $weight: medium);
 		display: block;
 	}
 	&__summary-heading {
-		font-weight: 700;
-		line-height: tokens.$lead-title;
+		color: colors.sb-color(text-emphasised);
 	}
 	&__summary-subheading {
-		margin-top: 0.25rem;
-		font-size: tokens.$size-small;
+		@include typography.sb-font-weight(body, $weight: regular);
+		color: colors.sb-color(text);
 	}
 	&__body {
-		max-width: tokens.$measure-default;
-		padding: ($bannerPadding * 0.5) $bannerPadding ($bannerPadding * 0.5)
-			($bannerPadding + $arrowMargin);
+		@include spacing.sb-responsive-padding(4, $direction: block-end);
+		@include spacing.sb-responsive-padding(4, $direction: inline-end);
+		max-inline-size: 34em;
+		padding-inline-start: $arrow-offset;
 	}
 }
