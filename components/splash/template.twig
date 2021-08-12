@@ -1,25 +1,18 @@
 {% from '@components/image/macro.twig' import sbImage %}
-{% from '@components/heading/macro.twig' import sbHeading %}
 {% from '@components/prose/macro.twig' import sbProse %}
 
 <section
     class="sb-splash {%- for v in params.variants %} sb-splash--{{ v }}{% endfor %} {%- if params.classes %} {{ params.classes }}{% endif %}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-    {%- if params.image %}
-        {% set imageParams = merge(params.image, {
-            classes: 'sb-splash__image',
-            variants: ['cover']
-        }) %}
-        {{ sbImage(imageParams) }}
-    {%- endif %}
-    <div class="sb-splash__container">
-        <div class="sb-splash__inner">
-            {{ sbHeading({
-                classes: 'sb-splash__heading',
-                hierarchy: 0,
-                element: 'h1',
-                html: params.heading
-            }) }}
+    <div class="sb-splash__inner">
+        {%- if params.image %}
+            {% set imageParams = merge(params.image, {
+                classes: 'sb-splash__image'
+            }) %}
+            {{ sbImage(imageParams) }}
+        {%- endif %}
+        <div class="sb-splash__body">
+            <h1 class="sb-heading-l sb-splash__heading">{{ params.heading }}</h1>
             {{ sbProse({
                 classes: 'sb-splash__content',
                 html: params.blurb

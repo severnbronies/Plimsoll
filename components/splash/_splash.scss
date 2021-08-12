@@ -1,72 +1,61 @@
-@use "tokens.web" as tokens;
-@use "mixins/layout";
-@use "mixins/theme";
-@use "mixins/typography";
-@use "mixins/media";
+@use "settings";
+@use "helpers/colors";
+@use "helpers/layout";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/theme";
+@use "helpers/typography";
 
 .sb-splash {
-	$vertPadding: 6vh;
-	margin-top: tokens.$grid-gutter;
-	margin-bottom: tokens.$grid-gutter;
-	position: relative;
-	color: var(--theme-accent-mod);
-	background-color: var(--theme-accent);
-	&::before,
-	&::after {
-		@include theme.shade(var(--theme-background));
-		content: "";
-		width: 85%;
-		height: $vertPadding;
-		position: absolute;
-		z-index: tokens.$layer-default;
-	}
-	&::before {
-		top: 0;
-		left: 0;
-		clip-path: polygon(0 0, 100% 0, 0 100%);
-	}
-	&::after {
-		bottom: 0;
-		right: 0;
-		clip-path: polygon(100% 100%, 0 100%, 100% 0);
-	}
-	&__image {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		img {
-			height: 100%;
-			filter: grayscale(100%);
-			mix-blend-mode: multiply;
-			@include media.dark-mode {
-				mix-blend-mode: soft-light;
-			}
-		}
-	}
-	&__container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 25rem;
-		position: relative;
-		padding-top: $vertPadding * 1.5;
-		padding-bottom: $vertPadding * 1.5;
+	$self: &;
+	$heading-overlap: spacing.sb-spacing(9, $breakpoint: medium);
+	@include theme.sb-frosted(shade-subtle, $dark: false, $blur: false);
+	@include media-queries.sb-dark-mode {
+		@include theme.sb-frosted(shade-subtle, $dark: true, $blur: false);
 	}
 	&__inner {
-		@include layout.container;
+	}
+	&__image {
+	}
+	&__body {
 	}
 	&__heading {
-		@include typography.responsive-size(6vw, tokens.$size-title, 6.1em);
+		@include spacing.sb-responsive-margin(3, $direction: block-end);
+		@include typography.sb-font-stack(heading, $weight: heavy);
+		color: colors.sb-color(brand-primary);
+		@include media-queries.sb-dark-mode {
+			color: colors.sb-color(text-emphasised);
+		}
 	}
 	&__content {
-		max-width: tokens.$measure-narrow;
-		margin-top: 2rem;
-		color: var(--theme-background);
-		font-size: tokens.$size-byline;
-		a {
-			@include theme.default-link();
+	}
+	@include media-queries.sb-mq($to: large) {
+		#{$self}__body {
+			@include layout.sb-width-container;
+			@include spacing.sb-responsive-padding(3, $direction: block);
+		}
+	}
+	@include media-queries.sb-mq($from: large) {
+		#{$self}__inner {
+			@include layout.sb-width-container;
+			@include spacing.sb-responsive-padding(6, $direction: block);
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			border-block-start: settings.$sb-hr-width solid
+				colors.sb-color(page-background);
+		}
+		#{$self}__image {
+			order: 2;
+			flex: 0 0 60%;
+		}
+		#{$self}__body {
+			@include spacing.sb-responsive-padding(4, $direction: inline-end);
+		}
+		#{$self}__heading {
+			inline-size: calc(100% + #{$heading-overlap});
+			position: relative;
+			z-index: layout.sb-layer(default);
 		}
 	}
 }
