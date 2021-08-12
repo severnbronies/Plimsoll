@@ -62,6 +62,8 @@ $sb-light-color-palette: (
 	"banner-background":
 		color.change(map.get($sb-color-palette, "brand-primary"), $lightness: 96%),
 	"shade-subtle": map.get($sb-color-palette, "brand-light"),
+	"logo-severn": map.get($sb-color-palette, "brand-primary"),
+	"logo-bronies": map.get($sb-color-palette, "brand-tertiary"),
 );
 
 // Dark mode colour palette
@@ -85,6 +87,8 @@ $sb-dark-color-palette: (
 	"banner-background":
 		color.change(map.get($sb-color-palette, "brand-primary"), $lightness: 4%),
 	"shade-subtle": map.get($sb-color-palette, "brand-primary"),
+	"logo-severn": map.get($sb-color-palette, "brand-light"),
+	"logo-bronies": map.get($sb-color-palette, "brand-secondary"),
 );
 
 //
