@@ -21,11 +21,7 @@
 	// Containing element, including the backdrop
 	&__overlay {
 		$overlay-blur: 20px;
-		@include theme.sb-frosted(
-			page-background,
-			$dark: false,
-			$blur: $overlay-blur
-		);
+		@include theme.sb-frosted(shade-subtle, $dark: false, $blur: $overlay-blur);
 		display: flex;
 		justify-content: center;
 		align-items: flex-end;
@@ -37,7 +33,7 @@
 		animation-timing-function: linear;
 		@include media-queries.sb-dark-mode {
 			@include theme.sb-frosted(
-				page-background,
+				shade-subtle,
 				$dark: true,
 				$blur: $overlay-blur
 			);
