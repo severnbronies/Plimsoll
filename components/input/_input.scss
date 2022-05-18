@@ -1,7 +1,0 @@
-@use "mixins/forms";
-
-.sb-input {
-	&__input {
-		@include forms.form-base--input;
-	}
-}

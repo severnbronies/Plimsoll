@@ -21,7 +21,7 @@ gulp.task("css:compile", () => {
 		.pipe(
 			sass({
 				outputStyle: argv.minify ? "compressed" : "expanded",
-				includePaths: ["./node_modules", "./components", "./dist/tokens"]
+				includePaths: ["./node_modules", "./components"],
 			}).on("error", sass.logError)
 		)
 		.pipe(autoprefixer())

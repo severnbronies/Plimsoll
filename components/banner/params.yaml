@@ -1,7 +1,0 @@
-params:
-  - name: attributes
-    type: object
-    description: HTML attributes, such as data attributes, to add to the component.
-  - name: classes
-    type: string
-    description: Classes to add to the component.

@@ -1,0 +1,37 @@
+/// Breakpoints
+$sb-breakpoints: (
+	small-mobile: 320px,
+	mobile: 380px,
+	small-tablet: 600px,
+	tablet: 768px,
+	small-desktop: 940px,
+	desktop: 1200px,
+);
+
+/// Colors
+$sb-color-white: #fff;
+$sb-color-black: #000;
+$sb-color-darkness: #170f32;
+$sb-color-purple: #5831aa;
+$sb-color-pink: #ff199c;
+$sb-color-green: #008042;
+$sb-color-accessibility: #f7cf60;
+
+/// Font families
+$sb-font-body: (
+	"IBM Plex Sans",
+	ui-sans-serif,
+	"Apple Color Emoji",
+	"Segoe UI Emoji",
+	"Segoe UI Symbol"
+);
+$sb-font-heading: (
+	Montserrat,
+	"IBM Plex Sans",
+	ui-rounded,
+	sans-serif,
+	"Apple Color Emoji",
+	"Segoe UI Emoji",
+	"Segoe UI Symbol"
+);
+$sb-font-code: (ui-monospace, monospace);

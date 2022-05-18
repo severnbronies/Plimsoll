@@ -1,6 +1,0 @@
-@use "mixins";
-
-// Visually hide copy while keeping it available to screen readers.
-[class~="sb-sr"] {
-	@include mixins.a11y-hidden;
-}
