@@ -1,0 +1,10 @@
+@use "../settings";
+@use "../helpers/color";
+@use "../helpers/spacing";
+
+.sb-rule {
+	margin-block: spacing.sb-spacing(5);
+	margin-inline: 0;
+	border: 0;
+	border-block-end: 0.5rem solid color.sb-color(accent);
+}

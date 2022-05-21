@@ -1,0 +1,73 @@
+@use "../settings";
+@use "media-queries";
+
+@use "sass:map";
+@use "sass:string";
+
+// Main wrapper definition
+@mixin sb-width-container {
+	$gutter-safe-area-right: calc(
+		#{settings.$sb-grid-gutter-half} + env(safe-area-inset-right)
+	);
+	$gutter-safe-area-left: calc(
+		#{settings.$sb-grid-gutter-half} + env(safe-area-inset-left)
+	);
+	display: block;
+	max-inline-size: settings.$sb-page-max-width;
+	margin-inline: settings.$sb-grid-gutter-half;
+	@supports (margin: max(calc(0px))) {
+		// These relate to physical environment constants
+		// so we use physical properties, not logical ones
+		margin-right: max(
+			#{settings.$sb-grid-gutter-half},
+			#{$gutter-safe-area-right}
+		);
+		margin-left: max(
+			#{settings.$sb-grid-gutter-half},
+			#{$gutter-safe-area-left}
+		);
+	}
+	@include media-queries.sb-mq($from: small) {
+		margin-inline: settings.$sb-grid-gutter;
+		@supports (margin: max(calc(0px))) {
+			margin-right: max(
+				#{settings.$sb-grid-gutter},
+				#{$gutter-safe-area-right}
+			);
+			margin-left: max(#{settings.$sb-grid-gutter}, #{$gutter-safe-area-left});
+		}
+	}
+	@include media-queries.sb-mq(
+		$and:
+			"(min-width: #{settings.$sb-page-max-width + (settings.$sb-grid-gutter * 2)})"
+	) {
+		margin-inline: auto;
+		@supports (margin: max(calc(0px))) {
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+}
+
+// Grid column function
+@function sb-grid-column($width) {
+	@if not map.has-key(settings.$sb-grid-system, $width) {
+		@error "Unknown width `#{$width}`. Expected a key from `$sb-grid-system`.";
+	}
+	@return map.get(settings.$sb-grid-system, $width);
+}
+
+// Grid row
+@mixin sb-grid-row {
+	@include sb-clearfix;
+	margin-inline: 0 - settings.$sb-grid-gutter-half;
+}
+
+// Non-overflow based clearfix
+@mixin sb-clearfix {
+	&::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}

@@ -1,0 +1,43 @@
+@use "../settings";
+@use "../helpers/a11y";
+@use "../helpers/color";
+@use "../helpers/typography";
+
+.sb-page {
+	background-color: color.sb-color(background);
+	text-size-adjust: 100%;
+	@if settings.$sb-rem-unit != 16px {
+		font-size: settings.$sb-rem-unit;
+	}
+}
+
+.sb-page__body {
+	@include typography.sb-typography-common;
+	min-block-size: 100vh;
+	margin: 0;
+	color: color.sb-color(text);
+	background-color: transparent;
+	font-family: settings.$sb-font-body;
+}
+
+@if settings.$sb-enable-core-styles {
+	* {
+		box-sizing: border-box;
+		&::before,
+		&::after {
+			box-sizing: inherit;
+		}
+	}
+
+	:focus {
+		@include a11y.sb-focus-ring;
+	}
+
+	html {
+		@extend .sb-page;
+	}
+
+	body {
+		@extend .sb-page__body;
+	}
+}

@@ -1,0 +1,28 @@
+@use "../helpers/color";
+
+@mixin sb-focus-ring($fill: true) {
+	outline: 3px solid color.sb-color(focus-ring);
+	outline-offset: 0px;
+	@if $fill {
+		color: color.sb-color(focus-ring-text);
+		background-color: color.sb-color(focus-ring);
+	}
+}
+
+@mixin sb-visually-hidden {
+	block-size: auto;
+	inline-size: 1px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	position: absolute;
+	overflow: hidden;
+	white-space: nowrap;
+	clip: rect(0 0 0 0);
+}
+
+@mixin sb-visually-hidden-focusable {
+	&:not(:focus):not(:focus-within) {
+		@include sb-visually-hidden;
+	}
+}

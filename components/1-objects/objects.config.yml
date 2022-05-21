@@ -1,0 +1,3 @@
+root: true
+prefix: object-
+notes: Objects are styles that are too universal to belong to any one component, but for which we want an explicit opt-in to use.

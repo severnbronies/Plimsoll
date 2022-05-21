@@ -8,7 +8,7 @@ module.exports = {
 			return config.namespace;
 		},
 		componentPath: () => {
-			return config.paths.components;
+			return config.paths.components_blocks;
 		},
 		cssPath: () => {
 			return config.paths.src_css;

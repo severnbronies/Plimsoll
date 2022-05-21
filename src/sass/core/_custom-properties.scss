@@ -1,0 +1,28 @@
+@use "../settings";
+@use "../helpers/color";
+
+@use "sass:map";
+
+:root {
+	@each $name in map.keys(settings.$sb-colors) {
+		--#{$name}: #{color.sb-color-map($name, $palette: light)};
+	}
+}
+
+[class~="high-contrast"]:root {
+	@each $name in map.keys(settings.$sb-colors) {
+		--#{$name}: #{color.sb-color-map($name, $palette: high-contrast-light)};
+	}
+}
+
+[class~="dark-theme"]:root {
+	@each $name in map.keys(settings.$sb-colors) {
+		--#{$name}: #{color.sb-color-map($name, $palette: dark)};
+	}
+}
+
+[class~="dark-theme"][class~="high-contrast"]:root {
+	@each $name in map.keys(settings.$sb-colors) {
+		--#{$name}: #{color.sb-color-map($name, $palette: high-contrast-dark)};
+	}
+}

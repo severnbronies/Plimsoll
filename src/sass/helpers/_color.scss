@@ -1,0 +1,25 @@
+@use "../settings";
+
+@use "sass:color";
+@use "sass:math";
+@use "sass:map";
+@use "sass:meta";
+
+// Get semantic color by variable name (with fallback)
+@function sb-color($name, $palette: light) {
+	@return var(--#{$name}, #{sb-color-map($name, $palette)});
+}
+
+// Get semantic color from palette
+@function sb-color-map($name, $palette: light) {
+	@if map.has-key(settings.$sb-colors, $name) {
+		$color: map.get(settings.$sb-colors, $name);
+		@if meta.type-of($color) == "map" and $palette {
+			@return map.get($color, $palette);
+		} @else {
+			@return $color;
+		}
+	}
+	@warn "Color `#{$name}` could not be found - expected a key from the `$sb-colors` map.";
+	@return #000;
+}

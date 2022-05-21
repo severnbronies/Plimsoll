@@ -1,0 +1,24 @@
+@use "a11y";
+@use "color";
+
+@mixin sb-link($visited: true, $underline: true) {
+	color: color.sb-color(link);
+	border-block-end: 0.15em solid currentColor;
+	text-decoration: none;
+	@if not $underline {
+		border-block-end-width: 0;
+	}
+	@if $visited {
+		&:visited {
+			color: color.sb-color(text);
+		}
+	}
+	&:focus {
+		@include a11y.sb-focus-ring;
+	}
+	&:focus,
+	&:hover,
+	&:active {
+		border-block-end-width: 0.3em;
+	}
+}

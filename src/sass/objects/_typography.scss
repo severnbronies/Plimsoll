@@ -1,0 +1,73 @@
+@use "../settings";
+@use "../helpers/color";
+@use "../helpers/spacing";
+@use "../helpers/typography";
+
+.sb-heading-xl,
+.sb-heading-l,
+.sb-heading-m,
+.sb-heading-s {
+	display: block;
+	margin-block-start: spacing.sb-spacing(0);
+	font-family: settings.$sb-font-heading;
+}
+
+.sb-heading-xl {
+	@include typography.sb-font-size(heading-xl);
+	margin-block-end: spacing.sb-spacing(8);
+}
+
+.sb-heading-l {
+	@include typography.sb-font-size(heading-l);
+	margin-block-end: spacing.sb-spacing(7);
+}
+
+.sb-heading-m {
+	@include typography.sb-font-size(heading-m);
+	margin-block-end: spacing.sb-spacing(6);
+}
+
+.sb-heading-s {
+	@include typography.sb-font-size(heading-s);
+	margin-block-end: spacing.sb-spacing(5);
+}
+
+.sb-subheading-xl,
+.sb-subheading-l,
+.sb-subheading-m {
+	display: block;
+	margin-block: spacing.sb-spacing(0);
+	color: color.sb-color(text-secondary);
+	font-family: settings.$sb-font-heading;
+}
+
+.sb-subheading-xl {
+	@include typography.sb-font-size(subheading-xl);
+}
+
+.sb-subheading-l {
+	@include typography.sb-font-size(subheading-l);
+}
+
+.sb-subheading-m {
+	@include typography.sb-font-size(subheading-m);
+}
+
+.sb-body,
+.sb-body-l,
+.sb-body-s {
+	margin-block-start: spacing.sb-spacing(0);
+	margin-block-end: spacing.sb-spacing(5);
+}
+
+.sb-body {
+	@include typography.sb-font-size(body);
+}
+
+.sb-body-l {
+	@include typography.sb-font-size(body-large);
+}
+
+.sb-body-s {
+	@include typography.sb-font-size(body-small);
+}

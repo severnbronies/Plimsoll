@@ -1,0 +1,13 @@
+@use "../helpers/links";
+
+.sb-link {
+	@include links.sb-link($visited: true);
+}
+
+.sb-link-no-visited {
+	@include links.sb-link($visited: false);
+}
+
+.sb-link-no-underline {
+	@include links.sb-link($visited: false, $underline: false);
+}

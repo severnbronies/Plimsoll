@@ -1,0 +1,11 @@
+@use "../settings";
+
+@use "sass:map";
+
+@function sb-spacing($spacing-point) {
+	@if map.has-key(settings.$sb-spacing, $spacing-point) {
+		@return map.get(settings.$sb-spacing, $spacing-point);
+	}
+	@warn "Unknown spacing point `#{$spacing-point}` - expected a key from the `$sb-spacing` map.";
+	@return 0;
+}

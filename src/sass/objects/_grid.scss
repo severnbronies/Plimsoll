@@ -1,0 +1,31 @@
+@use "../settings";
+@use "../helpers/layout";
+@use "../helpers/media-queries";
+
+@use "sass:map";
+
+.sb-grid {
+	@include layout.sb-width-container;
+}
+
+.sb-grid-row {
+	@include layout.sb-grid-row;
+}
+
+@each $width in map.keys(settings.$sb-grid-system) {
+	.sb-grid-column-#{$width} {
+		inline-size: layout.sb-grid-column($width);
+		padding-inline: settings.$sb-grid-gutter-half;
+		float: inline-start;
+	}
+}
+
+@each $breakpoint in map.keys(settings.$sb-breakpoints) {
+	@include media-queries.sb-mq($from: $breakpoint) {
+		@each $width in map.keys(settings.$sb-grid-system) {
+			.#{$breakpoint}\:sb-grid-column-#{$width} {
+				inline-size: layout.sb-grid-column($width);
+			}
+		}
+	}
+}

@@ -1,33 +1,73 @@
+@use "sass:color";
+
+/// Feature toggles
+$sb-enable-core-styles: true;
+
 /// Breakpoints
 $sb-breakpoints: (
-	small-mobile: 320px,
-	mobile: 380px,
-	small-tablet: 600px,
-	tablet: 768px,
-	small-desktop: 940px,
-	desktop: 1200px,
+	tiny: 320px,
+	small: 600px,
+	medium: 768px,
+	large: 940px,
+	xlarge: 1200px,
 );
 
-/// Colors
-$sb-color-white: #fff;
-$sb-color-black: #000;
-$sb-color-darkness: #170f32;
-$sb-color-purple: #5831aa;
-$sb-color-pink: #ff199c;
-$sb-color-green: #008042;
-$sb-color-accessibility: #f7cf60;
+/// Colour palette
+$_sb-color-white: #fff;
+$_sb-color-black: #000;
+$_sb-color-darkness: #170f32;
+$_sb-color-purple: #5831aa;
+$_sb-color-pink: #ff199c;
+$_sb-color-green: #008042;
+$_sb-color-accessibility: #f7cf60;
+
+$sb-colors: (
+	background: (
+		light: $_sb-color-white,
+		high-contrast-light: $_sb-color-white,
+		dark: $_sb-color-darkness,
+		high-contrast-dark: $_sb-color-black,
+	),
+	text: (
+		light: $_sb-color-darkness,
+		high-contrast-light: $_sb-color-black,
+		dark: $_sb-color-white,
+		high-contrast-dark: $_sb-color-white,
+	),
+	text-secondary: (
+		light: color.mix($_sb-color-darkness, $_sb-color-white, 66%),
+		high-contrast-light: $_sb-color-black,
+		dark: color.mix($_sb-color-white, $_sb-color-darkness, 66%),
+		high-contrast-dark: $_sb-color-white,
+	),
+	accent: (
+		light: $_sb-color-pink,
+		high-contrast-light: $_sb-color-black,
+		// Needs review
+		dark: $_sb-color-purple,
+		high-contrast-dark: $_sb-color-white,
+		// Needs review
+	),
+	link: (
+		light: $_sb-color-purple,
+		high-contrast-light: blue,
+		dark: $_sb-color-pink,
+		high-contrast-dark: $_sb-color-accessibility,
+	),
+	focus-ring: $_sb-color-accessibility,
+	focus-ring-text: $_sb-color-black,
+);
 
 /// Font families
 $sb-font-body: (
-	"IBM Plex Sans",
 	ui-sans-serif,
+	sans-serif,
 	"Apple Color Emoji",
 	"Segoe UI Emoji",
 	"Segoe UI Symbol"
 );
 $sb-font-heading: (
 	Montserrat,
-	"IBM Plex Sans",
 	ui-rounded,
 	sans-serif,
 	"Apple Color Emoji",
@@ -35,3 +75,89 @@ $sb-font-heading: (
 	"Segoe UI Symbol"
 );
 $sb-font-code: (ui-monospace, monospace);
+
+/// Font sizes
+$sb-font-sizes: (
+	body-small: (
+		font-size: 0.82rem,
+		line-height: 1.5,
+	),
+	body: (
+		font-size: 1rem,
+		line-height: 1.5,
+	),
+	body-large: (
+		font-size: 1.22rem,
+		line-height: 1.5,
+	),
+	heading-s: (
+		font-size: 1.266rem,
+		line-height: 1.5,
+		font-weight: 800,
+	),
+	subheading-m: (
+		font-size: 1.424rem,
+		line-height: 1.5,
+		font-weight: 600,
+	),
+	heading-m: (
+		font-size: 1.602rem,
+		line-height: 1.5,
+		font-weight: 800,
+		letter-spacing: -0.01em,
+	),
+	subheading-l: (
+		font-size: 1.802rem,
+		line-height: 1.25,
+		font-weight: 600,
+	),
+	heading-l: (
+		font-size: 2.027rem,
+		line-height: 1.25,
+		font-weight: 800,
+		letter-spacing: -0.01em,
+	),
+	subheading-xl: (
+		font-size: 2.281rem,
+		line-height: 1.1,
+		font-weight: 600,
+	),
+	heading-xl: (
+		font-size: 2.566rem,
+		line-height: 1,
+		font-weight: 800,
+		letter-spacing: -0.01em,
+	),
+);
+
+/// Measurements
+$sb-rem-unit: clamp(16px, 1.22vw, 30px);
+$sb-page-max-width: 62rem;
+
+/// Spacing
+$sb-spacing: (
+	0: 0rem,
+	1: 0.25rem,
+	2: 0.5rem,
+	3: 0.75rem,
+	4: 1rem,
+	5: 1.5rem,
+	6: 2rem,
+	7: 3rem,
+	8: 5rem,
+	9: 8rem,
+	10: 13rem,
+);
+
+// Grid system
+$sb-grid-gutter: 2rem;
+$sb-grid-gutter-half: $sb-grid-gutter * 0.5;
+
+$sb-grid-system: (
+	full: 100%,
+	three-quarters: 75%,
+	two-thirds: 66.6666%,
+	one-half: 50%,
+	one-third: 33.3333%,
+	one-quarter: 25%,
+);

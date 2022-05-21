@@ -1,0 +1,16 @@
+@use "../settings";
+
+@use "sass:map";
+
+// Common typography rules
+@mixin sb-typography-common {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Get font size by semantic name
+@mixin sb-font-size($name) {
+	@each $property, $value in map.get(settings.$sb-font-sizes, $name) {
+		#{$property}: #{$value};
+	}
+}

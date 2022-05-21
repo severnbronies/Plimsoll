@@ -1,0 +1,26 @@
+@use "../helpers/spacing";
+@use "../helpers/typography";
+
+.sb-list {
+	@include typography.sb-font-size(body);
+	margin-block-start: spacing.sb-spacing(0);
+	margin-block-end: spacing.sb-spacing(5);
+	padding-inline: spacing.sb-spacing(0);
+	list-style: none;
+	li {
+		margin-block-end: spacing.sb-spacing(1);
+	}
+	&--spaced li {
+		margin-block-end: spacing.sb-spacing(4);
+	}
+	&--bulleted,
+	&--numbered {
+		margin-inline-start: 3em;
+	}
+	&--bulleted {
+		list-style-type: square;
+	}
+	&--numbered {
+		list-style-type: decimal;
+	}
+}
