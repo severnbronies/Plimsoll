@@ -1,4 +1,6 @@
-const config = require("../package.json");
+const config = require("../.config.json");
+const paths = config.paths;
+
 const gulp = require("gulp");
 const browserify = require("browserify");
 const sourcemaps = require("gulp-sourcemaps");
@@ -10,18 +12,18 @@ const uglify = require("gulp-uglify");
 
 gulp.task("js:clean", () => {
 	const del = require("del");
-	return del(["./dist/js"]);
+	return del([paths.dist_js]);
 });
 
 gulp.task("js:watch", () => {
-	gulp.watch("./src/js", gulp.parallel("js:compile"));
-	gulp.watch("./components/**/*.js", gulp.parallel("js:compile"));
+	gulp.watch(paths.src_js + "/**/*.js", gulp.parallel("js:compile"));
+	gulp.watch(paths.components + "/**/*.js", gulp.parallel("js:compile"));
 });
 
 gulp.task("js:compile", () => {
 	const b = browserify({
-		entries: ["./src/js/all.js"],
-		standalone: config.namespace
+		entries: [paths.src_js + "/all.js"],
+		standalone: config.namespace,
 	});
 	return b
 		.transform("babelify", { presets: ["@babel/preset-env"] })
@@ -31,7 +33,7 @@ gulp.task("js:compile", () => {
 		.pipe(sourcemaps.init({ loadMaps: true }))
 		.pipe(gulpif(argv.minify, uglify()))
 		.pipe(sourcemaps.write("."))
-		.pipe(gulp.dest("./dist/js"));
+		.pipe(gulp.dest(paths.dist_js));
 });
 
 gulp.task("js", gulp.series("js:clean", "js:compile"));

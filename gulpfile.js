@@ -7,31 +7,19 @@ requireDir("./gulpfiles");
 // Bundled tasks
 gulp.task(
 	"clean",
-	gulp.parallel(
-		"images:clean",
-		"js:clean",
-		"css:clean",
-		"fonts:clean",
-		"fractal:clean"
-	)
+	gulp.parallel("images:clean", "js:clean", "css:clean", "fractal:clean")
 );
 
 gulp.task(
 	"watch",
 	gulp.series(
-		gulp.parallel(
-			"images:watch",
-			"js:watch",
-			"css:watch",
-			"fonts:watch",
-			"fractal:watch"
-		)
+		gulp.parallel("images:watch", "js:watch", "css:watch", "fractal:watch")
 	)
 );
 
 gulp.task(
 	"build",
-	gulp.parallel("images", "js", "css", "fonts", (cb) => cb())
+	gulp.parallel("images", "js", "css", (cb) => cb())
 );
 
 gulp.task("export", gulp.series("build", "fractal"));

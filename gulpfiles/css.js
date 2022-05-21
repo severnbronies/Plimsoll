@@ -1,3 +1,4 @@
+const paths = require("../.config.json").paths;
 const gulp = require("gulp");
 const sourcemaps = require("gulp-sourcemaps");
 const autoprefixer = require("gulp-autoprefixer");
@@ -6,27 +7,30 @@ const argv = require("yargs").argv;
 
 gulp.task("css:clean", () => {
 	const del = require("del");
-	return del(["./dist/css"]);
+	return del([paths.dist_css]);
 });
 
 gulp.task("css:watch", () => {
-	gulp.watch("./src/sass/**/*", gulp.parallel("css:compile"));
-	gulp.watch("./components/**/*.{sass,scss}", gulp.parallel("css:compile"));
+	gulp.watch(paths.src_css + "/**/*", gulp.parallel("css:compile"));
+	gulp.watch(
+		paths.components + "/**/*.{sass,scss}",
+		gulp.parallel("css:compile")
+	);
 });
 
 gulp.task("css:compile", () => {
 	return gulp
-		.src("./src/sass/**/*.{sass,scss}")
+		.src(paths.src_css + "/**/*.{sass,scss}")
 		.pipe(sourcemaps.init())
 		.pipe(
 			sass({
 				outputStyle: argv.minify ? "compressed" : "expanded",
-				includePaths: ["./node_modules", "./components"],
+				includePaths: ["./node_modules", paths.components],
 			}).on("error", sass.logError)
 		)
 		.pipe(autoprefixer())
 		.pipe(sourcemaps.write("."))
-		.pipe(gulp.dest("./dist/css"));
+		.pipe(gulp.dest(paths.dist_css));
 });
 
 gulp.task("css", gulp.series("css:clean", "css:compile"));

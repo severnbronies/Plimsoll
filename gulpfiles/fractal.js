@@ -1,3 +1,5 @@
+const paths = require("../.config.json").paths;
+
 const gulp = require("gulp");
 const path = require("path");
 const fs = require("fs");
@@ -35,7 +37,7 @@ fractal.set("project.title", `Plimsoll design system`);
 
 fractal.components.engine(twig);
 fractal.components.set("ext", ".twig");
-fractal.components.set("path", "./components");
+fractal.components.set("path", paths.components);
 fractal.components.set("default.preview", "@preview");
 fractal.components.set("default.status", "prototype");
 fractal.components.set("statuses", {
@@ -63,11 +65,11 @@ fractal.components.set("statuses", {
 });
 
 fractal.docs.engine(nunjucks);
-fractal.docs.set("path", "./docs");
+fractal.docs.set("path", paths.fractal_docs);
 fractal.docs.set("default.status", "draft");
 
-fractal.web.set("static.path", "./dist");
-fractal.web.set("builder.dest", "./export");
+fractal.web.set("static.path", paths.dist);
+fractal.web.set("builder.dest", paths.fractal_export);
 fractal.web.theme(
 	mandelbrot({
 		format: "yaml",
@@ -79,7 +81,7 @@ fractal.web.theme(
 
 gulp.task("fractal:clean", () => {
 	const del = require("del");
-	return del(["./export"]);
+	return del([paths.fractal_export]);
 });
 
 gulp.task("fractal:watch", () => {

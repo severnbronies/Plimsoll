@@ -1,3 +1,4 @@
+const paths = require("../.config.json").paths;
 const gulp = require("gulp");
 const gulplog = require("gulplog");
 const newer = require("gulp-newer");
@@ -5,27 +6,27 @@ const imagemin = require("gulp-imagemin");
 
 gulp.task("images:clean", () => {
 	const del = require("del");
-	return del(["./dist/images"]);
+	return del([paths.dist_images]);
 });
 
 gulp.task("images:watch", () => {
-	gulp.watch("./src/images/**/*", gulp.parallel("images"));
+	gulp.watch(paths.src_images + "/**/*", gulp.parallel("images"));
 });
 
 gulp.task("images:minify", () => {
 	return gulp
-		.src("./src/images/**/*")
-		.pipe(newer("./dist/images"))
+		.src(paths.src_images + "/**/*")
+		.pipe(newer(paths.dist_images))
 		.pipe(
 			imagemin([
 				imagemin.mozjpeg({
-					progressive: true
+					progressive: true,
 				}),
 				imagemin.optipng({
-					optimizationLevel: 5
+					optimizationLevel: 5,
 				}),
 				imagemin.gifsicle({
-					interlaced: true
+					interlaced: true,
 				}),
 				imagemin.svgo({
 					multipass: true,
@@ -33,16 +34,16 @@ gulp.task("images:minify", () => {
 						{ convertShapeToPath: false },
 						{ removeViewBox: false },
 						{ removeDimensions: true },
-						{ cleanupIDs: false }
-					]
-				})
+						{ cleanupIDs: false },
+					],
+				}),
 			])
 		)
-		.on("error", ex => {
+		.on("error", (ex) => {
 			gulplog.error(ex);
 			this.emit("end");
 		})
-		.pipe(gulp.dest("./dist/images"));
+		.pipe(gulp.dest(paths.dist_images));
 });
 
 gulp.task("images", gulp.series("images:clean", "images:minify"));

@@ -1,0 +1,20 @@
+{
+	"namespace": "sb",
+	"paths": {
+		"src": "./src",
+		"src_css": "./src/sass",
+		"src_js": "./src/js",
+		"src_images": "./src/images",
+		"src_images": "./src/images",
+		"components": "./components",
+		"components_objects": "./components/1-objects",
+		"components_blocks": "./components/2-blocks",
+		"components_overrides": "./components/3-overrides",
+		"dist": "./dist",
+		"dist_css": "./dist/css",
+		"dist_js": "./dist/js",
+		"dist_images": "./dist/images",
+		"fractal_docs": "./docs",
+		"fractal_export": "./export"
+	}
+}
