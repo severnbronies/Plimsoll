@@ -1,0 +1,29 @@
+@use "settings";
+@use "helpers/color";
+@use "helpers/typography";
+
+.sb-image {
+	$self: &;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	line-height: 0;
+	&__image {
+		width: 100%;
+	}
+	&__attribution {
+		@include typography.sb-font-size(body-small);
+		display: inline-block;
+		padding-block: 0.2em;
+		padding-inline: 0.4em;
+		position: absolute;
+		inset-inline-end: 0;
+		inset-block-end: 0;
+		color: color.sb-color(text);
+		background-color: color.sb-color(background);
+	}
+	&__attribution-source {
+		color: currentColor;
+		text-decoration: none;
+	}
+}

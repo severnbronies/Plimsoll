@@ -3,10 +3,19 @@
 
 @mixin sb-link($visited-style: true, $underline: true) {
 	color: color.sb-color(link);
-	border-block-end: 0.15em solid currentColor;
-	text-decoration: none;
-	@if not $underline {
-		border-block-end-width: 0;
+	@if $underline {
+		text-decoration: underline;
+		text-decoration-color: currentColor;
+		text-decoration-style: solid;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.1em;
+		&:focus,
+		&:hover,
+		&:active {
+			text-decoration-color: color.sb-color(accent);
+		}
+	} @else {
+		text-decoration: none;
 	}
 	@if $visited-style {
 		&:visited {
@@ -15,10 +24,5 @@
 	}
 	&:focus {
 		@include a11y.sb-focus-ring;
-	}
-	&:focus,
-	&:hover,
-	&:active {
-		border-block-end-width: 0.25em;
 	}
 }

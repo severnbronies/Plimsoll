@@ -43,16 +43,20 @@ $sb-colors: (
 	accent: (
 		light: $_sb-color-pink,
 		high-contrast-light: $_sb-color-black,
-		// Needs review
 		dark: $_sb-color-purple,
 		high-contrast-dark: $_sb-color-white,
-		// Needs review
 	),
 	link: (
 		light: $_sb-color-purple,
 		high-contrast-light: blue,
 		dark: $_sb-color-pink,
 		high-contrast-dark: $_sb-color-accessibility,
+	),
+	border: (
+		light: color.mix($_sb-color-darkness, $_sb-color-white, 18%),
+		high-contrast-light: $_sb-color-black,
+		dark: color.mix($_sb-color-white, $_sb-color-darkness, 18%),
+		high-contrast-dark: $_sb-color-white,
 	),
 	focus-ring: $_sb-color-accessibility,
 	focus-ring-text: $_sb-color-black,

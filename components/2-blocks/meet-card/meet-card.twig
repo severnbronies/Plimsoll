@@ -1,0 +1,36 @@
+{% from "components::meet-card/macro.twig" import sbMeetCard %}
+
+{{ sbMeetCard({
+	featured: true,
+	image: {
+		src: '//placeponi.es/400/300/1',
+		alt: 'A pony, probably.'
+	},
+	href: '#',
+	name: 'The RABBI (Resumption of Aimless Bristol Bumbling, Innit)',
+	location: 'Bristol',
+	date: '2022-04-23T11:30:00+00:00'
+}) }}
+
+<div>
+	{{ sbMeetCard({
+		image: {
+			src: '//placeponi.es/400/300/2',
+			alt: 'A pony, probably.'
+		},
+		href: '#',
+		name: 'Derpy Day 2020',
+		location: 'Bristol',
+		date: '2020-03-01 12:00:00'
+	}) }}
+	{{ sbMeetCard({
+		image: {
+			src: '//placeponi.es/400/300/3',
+			alt: 'A pony, probably.'
+		},
+		href: '#',
+		name: 'Derpy Day 2020',
+		location: 'Bristol',
+		date: '2020-03-01 12:00:00'
+	}) }}
+</div>

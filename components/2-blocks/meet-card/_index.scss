@@ -1,0 +1,89 @@
+@use "settings";
+@use "helpers/color";
+@use "helpers/links";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+
+.sb-meet-card {
+	$self: &;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	&__media {
+		display: none;
+		@include media-queries.sb-mq($from: small) {
+			display: block;
+			flex: 0 0 20%;
+			max-inline-size: 12rem;
+		}
+	}
+	&__body {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		padding-block: spacing.sb-spacing(2);
+		border-block: 1px solid color.sb-color(border);
+		@include media-queries.sb-mq($from: small) {
+			margin-inline-start: spacing.sb-spacing(4);
+		}
+	}
+	&__name {
+		order: 2;
+	}
+	&__link {
+		@include links.sb-link($visited-style: true, $underline: true);
+		&::after {
+			content: "";
+			block-size: 100%;
+			inline-size: 100%;
+			position: absolute;
+			inset: 0;
+		}
+	}
+	&__location {
+		order: 3;
+		margin-block-start: auto;
+	}
+	&__date {
+		order: 1;
+		margin-block-end: spacing.sb-spacing(1);
+		color: color.sb-color(text-secondary);
+	}
+	+ #{$self} {
+		#{$self}__body {
+			border-block-start-width: 0;
+		}
+	}
+	&[data-featured] {
+		flex-direction: column;
+		padding: spacing.sb-spacing(5);
+		color: color.sb-color(background);
+		background-color: color.sb-color(link);
+		@include media-queries.sb-mq($from: small) {
+			flex-direction: row-reverse;
+		}
+		#{$self}__media {
+			display: block;
+			inline-size: 100%;
+			@include media-queries.sb-mq($from: small) {
+				flex-basis: 40%;
+				max-inline-size: none;
+			}
+		}
+		#{$self}__body {
+			padding-block: spacing.sb-spacing(4);
+			border-color: color.sb-color(accent);
+			border-block-width: 0.25rem;
+			@include media-queries.sb-mq($from: small) {
+				margin-inline-start: 0;
+				margin-inline-end: settings.$sb-grid-gutter;
+			}
+		}
+		#{$self}__link {
+			color: currentColor;
+		}
+		#{$self}__date {
+			color: currentColor;
+		}
+	}
+}

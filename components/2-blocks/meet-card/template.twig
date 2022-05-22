@@ -1,0 +1,28 @@
+{% from "components::image/macro.twig" import sbImage %}
+
+{% set imageParams = merge(params.image, {
+	classes: 'sb-meet-card__image'
+}) %}
+
+<div 
+	data-module="sb-meet-card"
+	class="sb-meet-card {%- if params.classes %} {{ params.classes }}{% endif %}"
+	{%- if params.featured %} data-featured{% endif %}
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+	<div class="sb-meet-card__media">
+		{{ sbImage(imageParams) }}
+	</div>
+	<div class="sb-meet-card__body">
+		<div class="{% if params.featured %} sb-heading-xl{% else %} sb-heading-m{% endif %} sb-meet-card__name">
+			<a class="sb-meet-card__link" href="{{ params.href }}">
+				{{- params.name -}}
+			</a>
+		</div>
+		<div class="sb-meet-card__location">
+			{{- params.location -}}
+		</div>
+		<time class="sb-meet-card__date" datetime="{{ params.date }}">
+			{{- params.date | date('l, jS F Y') -}}
+		</time>
+	</div>
+</div>
