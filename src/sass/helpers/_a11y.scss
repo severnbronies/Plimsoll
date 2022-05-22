@@ -9,20 +9,20 @@
 	}
 }
 
-@mixin sb-visually-hidden {
-	block-size: auto;
-	inline-size: 1px;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	position: absolute;
-	overflow: hidden;
-	white-space: nowrap;
-	clip: rect(0 0 0 0);
+@mixin sb-visually-hidden($important: false) {
+	block-size: auto if($important, !important, null);
+	inline-size: 1px if($important, !important, null);
+	margin: 0 if($important, !important, null);
+	padding: 0 if($important, !important, null);
+	border: 0 if($important, !important, null);
+	position: absolute if($important, !important, null);
+	overflow: hidden if($important, !important, null);
+	white-space: nowrap if($important, !important, null);
+	clip: rect(0 0 0 0) if($important, !important, null);
 }
 
-@mixin sb-visually-hidden-focusable {
+@mixin sb-visually-hidden-focusable($important: false) {
 	&:not(:focus):not(:focus-within) {
-		@include sb-visually-hidden;
+		@include sb-visually-hidden($important: $important);
 	}
 }

@@ -1,0 +1,20 @@
+@use "../settings";
+@use "../helpers/spacing";
+
+@use "sass:map";
+
+@each $size in map.keys(settings.$sb-spacing) {
+	@each $dir
+		in (all, block, inline, block-start, block-end, inline-start, inline-end)
+	{
+		$dir-property: if($dir == "all", null, "-" + $dir);
+		$margin-property: "margin" + $dir-property;
+		$padding-property: "padding" + $dir-property;
+		.sb-\!-#{$margin-property}-#{$size} {
+			#{$margin-property}: spacing.sb-spacing($size) !important;
+		}
+		.sb-\!-#{$padding-property}-#{$size} {
+			#{$padding-property}: spacing.sb-spacing($size) !important;
+		}
+	}
+}

@@ -71,3 +71,18 @@
 .sb-body-s {
 	@include typography.sb-font-size(body-small);
 }
+
+:is(.sb-body, .sb-body-l, .sb-body-s) {
+	+ .sb-heading-xl {
+		margin-block-start: spacing.sb-spacing(9);
+	}
+	+ .sb-heading-l {
+		margin-block-start: spacing.sb-spacing(8);
+	}
+	+ .sb-heading-m {
+		margin-block-start: spacing.sb-spacing(7);
+	}
+	+ .sb-heading-s {
+		margin-block-start: spacing.sb-spacing(6);
+	}
+}

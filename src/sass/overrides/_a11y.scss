@@ -1,0 +1,5 @@
+@use "../helpers/a11y";
+
+.sb-\!-sr {
+	@include a11y.sb-visually-hidden($important: true);
+}
