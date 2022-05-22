@@ -1,0 +1,12 @@
+@use "settings";
+@use "helpers/color";
+
+.sb-logo {
+	&__icon {
+		fill: color.sb-color(link);
+	}
+	&__left,
+	&__right {
+		fill: color.sb-color(text);
+	}
+}

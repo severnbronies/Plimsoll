@@ -1,14 +1,14 @@
 @use "a11y";
 @use "color";
 
-@mixin sb-link($visited: true, $underline: true) {
+@mixin sb-link($visited-style: true, $underline: true) {
 	color: color.sb-color(link);
 	border-block-end: 0.15em solid currentColor;
 	text-decoration: none;
 	@if not $underline {
 		border-block-end-width: 0;
 	}
-	@if $visited {
+	@if $visited-style {
 		&:visited {
 			color: color.sb-color(text);
 		}
@@ -19,6 +19,6 @@
 	&:focus,
 	&:hover,
 	&:active {
-		border-block-end-width: 0.3em;
+		border-block-end-width: 0.25em;
 	}
 }

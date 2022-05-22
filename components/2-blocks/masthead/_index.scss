@@ -1,0 +1,54 @@
+@use "settings";
+@use "helpers/color";
+@use "helpers/links";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+
+.sb-masthead {
+	$self: &;
+	margin-block-end: spacing.sb-spacing(3);
+	position: sticky;
+	inset-block-start: 0;
+	z-index: 1;
+	background-color: color.sb-color(background);
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		padding-block: spacing.sb-spacing(4);
+		position: relative;
+		border-block-start: 0.25rem solid color.sb-color(accent);
+		@include media-queries.sb-mq($from: small) {
+			block-size: 100%;
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+	&__branding {
+		display: block;
+		inline-size: 100%;
+		max-inline-size: 15rem;
+		margin: 0 auto;
+		line-height: 0;
+		@include media-queries.sb-mq($from: small) {
+			margin-inline-start: 0;
+		}
+	}
+	&__nav {
+		margin-block-start: spacing.sb-spacing(3);
+		@include media-queries.sb-mq($from: small) {
+			margin-block-start: 0;
+		}
+	}
+	&__nav-list {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		gap: settings.$sb-grid-gutter-half;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	&__nav-link {
+		@include links.sb-link($visited-style: false, $underline: false);
+	}
+}
