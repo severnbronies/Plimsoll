@@ -16,8 +16,10 @@ gulp.task("js:clean", () => {
 });
 
 gulp.task("js:watch", () => {
-	gulp.watch(paths.src_js + "/**/*.js", gulp.parallel("js:compile"));
-	gulp.watch(paths.components + "/**/*.js", gulp.parallel("js:compile"));
+	gulp.watch(
+		[paths.src_js + "/**/*.js", paths.components + "/**/*.js"],
+		gulp.parallel("js:compile")
+	);
 });
 
 gulp.task("js:compile", () => {

@@ -12,7 +12,7 @@ const mandelbrot = require("@frctl/mandelbrot");
 const twig = require("@frctl/twig")({
 	method: "fs",
 	namespaces: {
-		components: path.join(__dirname, "../components"),
+		components: path.resolve(__dirname, "..", paths.components_blocks),
 	},
 	functions: {
 		merge: function (...objs) {

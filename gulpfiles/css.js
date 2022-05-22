@@ -11,9 +11,11 @@ gulp.task("css:clean", () => {
 });
 
 gulp.task("css:watch", () => {
-	gulp.watch(paths.src_css + "/**/*", gulp.parallel("css:compile"));
 	gulp.watch(
-		paths.components + "/**/*.{sass,scss}",
+		[
+			paths.src_css + "/**/*.{sass,scss}",
+			paths.components + "/**/*.{sass,scss}",
+		],
 		gulp.parallel("css:compile")
 	);
 });
@@ -25,7 +27,11 @@ gulp.task("css:compile", () => {
 		.pipe(
 			sass({
 				outputStyle: argv.minify ? "compressed" : "expanded",
-				includePaths: ["./node_modules", paths.components],
+				includePaths: [
+					"./node_modules",
+					paths.src_css,
+					paths.components_blocks,
+				],
 			}).on("error", sass.logError)
 		)
 		.pipe(autoprefixer())
