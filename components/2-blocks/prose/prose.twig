@@ -1,0 +1,20 @@
+{% from "components::prose/macro.twig" import sbProse %}
+
+{% set proseContent %}
+	<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos deserunt aperiam sint optio? Architecto est quae aliquam qui magnam amet nemo necessitatibus voluptate reiciendis debitis repellat, cumque excepturi fugit repellendus?</p>
+	<h2>Lorem ipsum dolor sit amet</h2>
+	<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa facere officiis cum nobis. Quasi libero corporis assumenda quaerat sed minus, alias dolore voluptas, molestias officia quisquam tempore, adipisci commodi quibusdam.</p>
+	<hr>
+	<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, dignissimos delectus excepturi omnis voluptate doloribus cum quam obcaecati laborum iure nobis dolor nisi saepe suscipit ullam accusamus consequuntur magni quibusdam.</p>
+	<ul>
+		<li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta, totam. Voluptas, earum beatae. Itaque sit ea aliquid perspiciatis rerum debitis placeat? Deserunt ea odio fugit suscipit corrupti dignissimos, qui pariatur?</li>
+		<li>Illum ea eum velit sit quisquam libero voluptatibus pariatur hic illo, cum, dicta quae perferendis quam ducimus voluptas! Dolor commodi deserunt laboriosam natus pariatur doloremque eveniet minima corrupti explicabo sint?</li>
+		<li>Mollitia, officia quibusdam. Tempore natus reprehenderit voluptatum mollitia quo in adipisci voluptas sit veniam? Officiis, obcaecati unde reprehenderit repudiandae temporibus autem aliquam odio perspiciatis exercitationem fugiat in, aspernatur saepe non?</li>
+		<li>Dolor inventore sequi modi neque obcaecati sint consectetur ullam eligendi odit laborum corporis minima dolorem placeat eaque quam ratione excepturi deleniti quas, tempora fugit hic. Nam odio excepturi odit ipsam.</li>
+		<li>Ullam modi cum eius dolores illo neque, cupiditate sint impedit perferendis maxime quos quo quasi, totam vel minus, a perspiciatis? Exercitationem nam ab nobis molestiae molestias voluptate architecto, voluptatibus animi.</li>
+	</ul>
+{% endset %}
+
+{{ sbProse({
+	html: proseContent
+}) }}

@@ -1,0 +1,38 @@
+@use "settings";
+@use "helpers/spacing";
+
+@forward "objects/links";
+@forward "objects/lists";
+@forward "objects/rule";
+@forward "objects/typography";
+
+.sb-prose {
+	p {
+		@extend .sb-body;
+	}
+	h1 {
+		@extend .sb-heading-xl;
+	}
+	h2 {
+		@extend .sb-heading-l;
+	}
+	h3 {
+		@extend .sb-heading-m;
+	}
+	h4 {
+		@extend .sb-heading-s;
+	}
+	hr {
+		@extend .sb-rule;
+	}
+	ul,
+	ol {
+		@extend .sb-list;
+	}
+	ul {
+		@extend .sb-list--bulleted;
+	}
+	ol {
+		@extend .sb-list--numbered;
+	}
+}
