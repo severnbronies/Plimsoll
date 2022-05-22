@@ -12,10 +12,7 @@ gulp.task("css:clean", () => {
 
 gulp.task("css:watch", () => {
 	gulp.watch(
-		[
-			paths.src_css + "/**/*.{sass,scss}",
-			paths.components + "/**/*.{sass,scss}",
-		],
+		[paths.src_css + "/**/*.scss", paths.components + "/**/*.scss"],
 		gulp.parallel("css:compile")
 	);
 });
