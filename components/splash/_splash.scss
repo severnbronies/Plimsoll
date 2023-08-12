@@ -58,7 +58,7 @@
 		@include layout.container;
 	}
 	&__heading {
-		@include typography.responsive-size(6vw, tokens.$size-title, 6.1em);
+		font-size: clamp(2.6em, 8vw, 6.1em);
 	}
 	&__content {
 		max-width: tokens.$measure-narrow;
